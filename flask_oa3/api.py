@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Dict, List, Union
 from flask import Flask
 
 from .base import Base
@@ -42,24 +42,32 @@ class API(Base):
             if email is not None:
                 self.contact["email"] = email
     
-    def set_spdx_license_info(self, license: License, url: Union[str, None] = None):
+    def set_spdx_license_info(self, license: License, url: Union[str, None] = None, specification_extensions: Union[dict, None] = None):
         """_summary_
 
         Args:
             license (License): An spdx defined license.
             url (Union[str, None], optional): A URL to the license used for the API. This MUST be in the form of a URL. Defaults to None.
+            specification_extensions (Union[dict, None], optional): Allows extensions to the OpenAPI Schema. The field name MUST begin with x-, for example, x-internal-id. Field names beginning x-oai- and x-oas- are reserved. Defaults to None.
         """        
         self.license = license.schema
         if url is not None:
             self.license["url"] = url
+        if specification_extensions is not None:
+            for key in specification_extensions:
+                if key.startswith("x-"):
+                    self.license[key] = specification_extensions[key]
+                else:
+                    self.license[f"x-{key}"] = specification_extensions[key]
 
-    def set_custom_license_info(self, name: Union[str, None], identifier: Union[str, None] = None, url: Union[str, None] = None):
+    def set_custom_license_info(self, name: Union[str, None], identifier: Union[str, None] = None, url: Union[str, None] = None, specification_extensions: Union[dict, None] = None):
         """License information for the exposed API.
 
         Args:
             name (Union[str, None]): REQUIRED. The license name used for the API. If None all other parameters are ignored and the license is disabled.
             identifier (Union[str, None], optional): An SPDX license expression for the API. The identifier field is mutually exclusive of the url field. Defaults to None.
             url (Union[str, None], optional): A URL to the license used for the API. This MUST be in the form of a URL. The url field is mutually exclusive of the identifier field. Defaults to None.
+            specification_extensions (Union[dict, None], optional): Allows extensions to the OpenAPI Schema. The field name MUST begin with x-, for example, x-internal-id. Field names beginning x-oai- and x-oas- are reserved. Defaults to None.
         """        
         if name is None:
             self.license = None
@@ -71,6 +79,12 @@ class API(Base):
                 self.license["identifier"] = identifier
             if url is not None:
                 self.license["url"] = url
+            if specification_extensions is not None:
+                for key in specification_extensions:
+                    if key.startswith("x-"):
+                        self.license[key] = specification_extensions[key]
+                    else:
+                        self.license[f"x-{key}"] = specification_extensions[key]
 
     @property
     def schema(self) -> dict:
