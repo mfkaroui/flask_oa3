@@ -1,3 +1,4 @@
+from .licenses import Licenses
 from .api import *
 from .base import *
 from .fields import *
