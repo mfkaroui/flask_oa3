@@ -103,3 +103,4 @@ class API(Base):
             schema["info"]["contact"] = self.contact
         if self.license is not None:
             schema["info"]["license"] = self.license
+        return schema
