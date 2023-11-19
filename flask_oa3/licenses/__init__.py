@@ -3,17 +3,27 @@ class License:
     VERSION: str = "2502b90"
     RELEASE_DATE: str = "2023-11-10"
     
-    def __init__(self, isDeprecatedLicenseId, reference, name, detailsUrl, licenseId, seeAlso, isOsiApproved, referenceNumber, isFsfLibre):
+    def __init__(self, name, licenseId, isFsfLibre, isDeprecatedLicenseId, reference, detailsUrl, referenceNumber, isOsiApproved, seeAlso):
+        self.name = name
+        self.licenseId = licenseId
+        self.isFsfLibre = isFsfLibre
         self.isDeprecatedLicenseId = isDeprecatedLicenseId
         self.reference = reference
-        self.name = name
         self.detailsUrl = detailsUrl
-        self.licenseId = licenseId
-        self.seeAlso = seeAlso
-        self.isOsiApproved = isOsiApproved
         self.referenceNumber = referenceNumber
-        self.isFsfLibre = isFsfLibre
+        self.isOsiApproved = isOsiApproved
+        self.seeAlso = seeAlso
 
+    @property
+    def schema(self):
+        return {
+            'name': self.name,
+            'identifier': self.licenseId,
+            'x-reference': self.reference,
+            'x-reference-number': self.referenceNumber,
+            'x-is-depricated': self.isDeprecatedLicenseId,
+            'x-is-osi-approved': self.isOsiApproved,
+        }
 
 class Licenses:
     license_0bsd = License(reference="https://spdx.org/licenses/0BSD.html", isDeprecatedLicenseId=False, detailsUrl="https://spdx.org/licenses/0BSD.json", referenceNumber=398, name="BSD Zero Clause License", licenseId="0BSD", seeAlso=['http://landley.net/toybox/license.html', 'https://opensource.org/licenses/0BSD'], isOsiApproved=True)

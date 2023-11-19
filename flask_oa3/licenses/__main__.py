@@ -23,6 +23,14 @@ class License:
         license_class = license_class + f"""        self.{key} = {key}
 """
     license_class = license_class + """
+    @property
+    def schema(self):
+        return {
+"""
+    for key in licenses_json["oa3_schema"]:
+        license_class = license_class + f"""            '{key}': self.{licenses_json["oa3_schema"][key]},
+"""
+    license_class = license_class + """        }
 
 class Licenses:
 """

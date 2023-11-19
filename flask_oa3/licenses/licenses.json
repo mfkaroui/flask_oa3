@@ -1,5 +1,13 @@
 {
     "licenseListVersion": "2502b90",
+    "oa3_schema": {
+      "name": "name",
+      "identifier": "licenseId",
+      "x-reference": "reference",
+      "x-reference-number": "referenceNumber",
+      "x-is-depricated": "isDeprecatedLicenseId",
+      "x-is-osi-approved": "isOsiApproved"
+    },
     "licenses": [
       {
         "reference": "https://spdx.org/licenses/0BSD.html",
