@@ -3,16 +3,16 @@ class License:
     VERSION: str = "2502b90"
     RELEASE_DATE: str = "2023-11-10"
     
-    def __init__(self, name, licenseId, isFsfLibre, isDeprecatedLicenseId, reference, detailsUrl, referenceNumber, isOsiApproved, seeAlso):
-        self.name = name
-        self.licenseId = licenseId
-        self.isFsfLibre = isFsfLibre
-        self.isDeprecatedLicenseId = isDeprecatedLicenseId
-        self.reference = reference
+    def __init__(self, detailsUrl, referenceNumber, reference, isOsiApproved, seeAlso, isFsfLibre, isDeprecatedLicenseId, licenseId, name):
         self.detailsUrl = detailsUrl
         self.referenceNumber = referenceNumber
+        self.reference = reference
         self.isOsiApproved = isOsiApproved
         self.seeAlso = seeAlso
+        self.isFsfLibre = isFsfLibre
+        self.isDeprecatedLicenseId = isDeprecatedLicenseId
+        self.licenseId = licenseId
+        self.name = name
 
     @property
     def schema(self):
@@ -21,7 +21,7 @@ class License:
             'identifier': self.licenseId,
             'x-reference': self.reference,
             'x-reference-number': self.referenceNumber,
-            'x-is-depricated': self.isDeprecatedLicenseId,
+            'x-is-deprecated': self.isDeprecatedLicenseId,
             'x-is-osi-approved': self.isOsiApproved,
         }
 

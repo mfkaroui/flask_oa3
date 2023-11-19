@@ -5,7 +5,7 @@
       "identifier": "licenseId",
       "x-reference": "reference",
       "x-reference-number": "referenceNumber",
-      "x-is-depricated": "isDeprecatedLicenseId",
+      "x-is-deprecated": "isDeprecatedLicenseId",
       "x-is-osi-approved": "isOsiApproved"
     },
     "licenses": [
