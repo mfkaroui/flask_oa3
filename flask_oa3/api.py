@@ -3,6 +3,7 @@ from flask import Flask
 
 from .base import Base
 from .namespace import Namespace
+from .licenses import License
 
 class API(Base):
     def __init__(self, title: str, version: Union[str, None] = None) -> None:
@@ -40,8 +41,19 @@ class API(Base):
                 self.contact["url"] = url
             if email is not None:
                 self.contact["email"] = email
+    
+    def set_spdx_license_info(self, license: License, url: Union[str, None] = None):
+        """_summary_
 
-    def set_license_info(self, name: Union[str, None], identifier: Union[str, None] = None, url: Union[str, None] = None):
+        Args:
+            license (License): An spdx defined license.
+            url (Union[str, None], optional): A URL to the license used for the API. This MUST be in the form of a URL. Defaults to None.
+        """        
+        self.license = license.schema
+        if url is not None:
+            self.license["url"] = url
+
+    def set_custom_license_info(self, name: Union[str, None], identifier: Union[str, None] = None, url: Union[str, None] = None):
         """License information for the exposed API.
 
         Args:
