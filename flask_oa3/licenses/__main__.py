@@ -17,7 +17,7 @@ class License:
     VERSION: str = "{licenses_json['licenseListVersion']}"
     RELEASE_DATE: str = "{licenses_json['releaseDate']}"
     
-    def __init__(self, {', '.join(license_keys)}):
+    def __init__(self, {' = None, '.join(license_keys)} = None):
 """
     for key in license_keys:
         license_class = license_class + f"""        self.{key} = {key}

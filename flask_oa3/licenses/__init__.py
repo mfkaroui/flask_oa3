@@ -3,16 +3,16 @@ class License:
     VERSION: str = "2502b90"
     RELEASE_DATE: str = "2023-11-10"
     
-    def __init__(self, detailsUrl, referenceNumber, reference, isOsiApproved, seeAlso, isFsfLibre, isDeprecatedLicenseId, licenseId, name):
+    def __init__(self, isOsiApproved = None, detailsUrl = None, licenseId = None, referenceNumber = None, reference = None, isDeprecatedLicenseId = None, name = None, seeAlso = None, isFsfLibre = None):
+        self.isOsiApproved = isOsiApproved
         self.detailsUrl = detailsUrl
+        self.licenseId = licenseId
         self.referenceNumber = referenceNumber
         self.reference = reference
-        self.isOsiApproved = isOsiApproved
+        self.isDeprecatedLicenseId = isDeprecatedLicenseId
+        self.name = name
         self.seeAlso = seeAlso
         self.isFsfLibre = isFsfLibre
-        self.isDeprecatedLicenseId = isDeprecatedLicenseId
-        self.licenseId = licenseId
-        self.name = name
 
     @property
     def schema(self):
