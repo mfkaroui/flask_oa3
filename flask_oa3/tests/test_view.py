@@ -8,4 +8,7 @@ class TestView:
         assert "not_real_method" not in methods
         for method in methods:
             assert method in View.ALLOWED_METHODS
-        
+    
+    def test_schema(self, view_fixture):
+        schema = view_fixture.schema()
+        print("test")
