@@ -1,4 +1,5 @@
 import functools
+from typing import Union
 from .errors import ReservedSpecificationExtentionError
 
 def specification_extensions_support(function):
@@ -23,3 +24,21 @@ def specification_extensions_support(function):
             specification_extensions[x_key] = kwargs[key]
         return function(*args, **specification_extensions)
     return wrapper
+
+def view_docs(
+    summary: Union[str, None] = None,
+    description: Union[str, None] = None,
+):
+    """Add global documentation to the view
+
+    Args:
+        summary (Union[str, None], optional): An optional, string summary, intended to apply to all operations in this path. Defaults to None.
+        description (Union[str, None], optional): An optional, string description, intended to apply to all operations in this path. CommonMark syntax MAY be used for rich text representation. Defaults to None.
+    """    
+    def decorator(cls):
+        if summary is not None:
+            cls.__api_docs__["summary"] = summary
+        if description is not None:
+            cls.__api_docs__["description"] = description
+        return cls
+    return decorator
