@@ -1,7 +1,6 @@
 from typing import Dict, List, Union
 from flask import Flask
 
-from .base import Base
 from .decorators import specification_extensions_support
 from .namespace import Namespace
 from .licenses import License

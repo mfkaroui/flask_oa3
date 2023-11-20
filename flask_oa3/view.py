@@ -1,6 +1,5 @@
 import inspect
 from typing import Dict, List
-from .base import Base
 from .model import Model
 from .errors import ModelAlreadyRegisteredError
 
