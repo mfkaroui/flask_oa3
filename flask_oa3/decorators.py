@@ -34,8 +34,18 @@ def view_docs(
     Args:
         summary (Union[str, None], optional): An optional, string summary, intended to apply to all operations in this path. Defaults to None.
         description (Union[str, None], optional): An optional, string description, intended to apply to all operations in this path. CommonMark syntax MAY be used for rich text representation. Defaults to None.
+    
+    Raises:
+        TypeError: Raised when the class being decorated is not a subclass of view
+
+    Returns:
+        _type_: The decorated class
     """    
+    from .view import View
     def decorator(cls):
+        if not issubclass(cls, View):
+            raise TypeError('View_docs can only be used on a subclass of View')
+
         if summary is not None:
             cls.__api_docs__["summary"] = summary
         if description is not None:
