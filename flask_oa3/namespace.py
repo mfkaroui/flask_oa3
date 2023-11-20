@@ -2,14 +2,13 @@ import os
 from typing import Dict, List
 from urllib.parse import urljoin
 
-from .base import Base
 from .model import Model
 from .view import View
 from .errors import RouteInUseError, ModelAlreadyRegisteredError
 
-class Namespace(Base):
+class Namespace:
     def __init__(self, name: str, base_route: str):
-        super().__init__(name)
+        self.name = name
         self.base_route = Namespace._format_route(base_route)
         self.views: Dict[str, View] = {}
         self.models: Dict[str, Model] = {}

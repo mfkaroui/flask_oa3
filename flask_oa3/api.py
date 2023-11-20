@@ -7,8 +7,10 @@ from .namespace import Namespace
 from .licenses import License
 
 class API(Base):
+    OPENAPI_VERSION = "3.1.0"
+
     def __init__(self, title: str, version: Union[str, None] = None) -> None:
-        super().__init__(None)
+        super().__init__()
         self.title: str = title
         self.summary: Union[str, None] = None
         self.description: Union[str, None] = None
@@ -80,10 +82,13 @@ class API(Base):
 
     @property
     def schema(self) -> dict:
-        schema = super().schema
-        schema["info"] = {
-            "title": self.title,
-            "version": self.version
+        schema = {
+            "openapi": self.OPENAPI_VERSION,
+            "jsonSchemaDialect": "https://spec.openapis.org/oas/3.1/dialect/base",
+            "info": {
+                "title": self.title,
+                "version": self.version,
+            }
         }
         if self.summary is not None:
             schema["info"]["summary"] = self.summary

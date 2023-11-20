@@ -4,7 +4,7 @@ from .base import Base
 from .model import Model
 from .errors import ModelAlreadyRegisteredError
 
-class View(Base):
+class View:
     ALLOWED_METHODS: List[str] = [
         "get",
         "post",
