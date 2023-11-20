@@ -5,11 +5,10 @@ from .decorators import specification_extensions_support
 from .namespace import Namespace
 from .licenses import License
 
-class API(Base):
+class API:
     OPENAPI_VERSION = "3.1.0"
 
     def __init__(self, title: str, version: Union[str, None] = None) -> None:
-        super().__init__()
         self.title: str = title
         self.summary: Union[str, None] = None
         self.description: Union[str, None] = None
