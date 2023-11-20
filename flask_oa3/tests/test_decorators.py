@@ -8,8 +8,9 @@ class TestDecorators:
         def test_function(**specification_extensions):
             for key in specification_extensions:
                 assert key.startswith("x-")
+                assert "_" not in key
         
-        test_function(x="", y="", z="")
+        test_function(x="", y="", z="", a_b="")
 
         with pytest.raises(ReservedSpecificationExtentionError):
             test_function(oas_a="test")
