@@ -8,6 +8,8 @@ class TestView:
         assert "not_real_method" not in methods
         for method in methods:
             assert method in View.ALLOWED_METHODS
+            assert "__api_docs__" in methods[method].__dict__
+            assert "schema" in methods[method].__dict__
     
     def test_schema(self, view_fixture):
         schema = view_fixture.schema()
