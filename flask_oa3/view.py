@@ -16,6 +16,38 @@ class View:
     __api_docs__: Dict[str, str] = {}
 
     @classmethod
+    def _method_schema_generator(cls, function: Callable) -> Callable:
+        """Generates a callable function that will be bound to all allowed methods in the view. The bound method will produce the schema for the operation.
+
+        Args:
+            function (Callable): The allowed method to bind to.
+
+        Returns:
+            Callable: The function to be called when a schema is needed for the allowed method.
+        """        
+        def method_schema() -> dict:
+            """Constructs the Open API 'Operation Object' according to specifications
+
+            Returns:
+                dict: The Open API schema
+            """            
+            schema = {
+                "operationId": function.__qualname__.replace(".", "::").replace("<", "__").replace(">", "__")
+            }
+            if "tags" in function.__api_docs__:
+                schema["tags"] = function.__api_docs__["tags"]
+            if "summary" in function.__api_docs__:
+                schema["summary"] = function.__api_docs__["summary"]
+            if "description" in function.__api_docs__:
+                schema["description"] = function.__api_docs__["description"]
+            if "external_docs" in function.__api_docs__:
+                schema["externalDocs"] = function.__api_docs__["external_docs"].schema()
+            if "deprecated" in function.__api_docs__:
+                schema["deprecated"] = function.__api_docs__["deprecated"]
+            return schema
+        return method_schema
+
+    @classmethod
     def _get_methods(cls) -> Dict[str, Callable]:
         """Gets all methods defined that have a name listed in the allowed methods list
 
@@ -25,6 +57,10 @@ class View:
         methods = {}
         for func_name, func in inspect.getmembers(cls, inspect.isfunction):
             if func_name.lower() in cls.ALLOWED_METHODS:
+                if "__api_docs__" not in func.__dict__:
+                    func.__api_docs__ = {}
+                if "schema" not in func.__dict__:
+                    func.__dict__["schema"] = cls._method_schema_generator(func)
                 methods[func_name] = func
         return methods
     
@@ -37,10 +73,7 @@ class View:
         """        
         methods = cls._get_methods()
         schema = {
-            method: {
-                "tags": [method],
-                "operationId": methods[method].__qualname__.replace(".", "::").replace("<", "__").replace(">", "__")
-            } for method in methods
+            method: methods[method].schema() for method in methods
         }
         schema.update(cls.__api_docs__)
         return schema
