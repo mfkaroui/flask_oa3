@@ -24,12 +24,17 @@ class View:
         return methods
     
     @classmethod
-    def schema(cls):
+    def schema(cls) -> dict:    
+        """Constructs the Open API 'Path Item Object' according to specifications
+
+        Returns:
+            dict: The Open API schema
+        """        
         methods = cls._get_methods()
         schema = {
             method: {
                 "tags": [method],
-                "operationId": methods[method].__qualname__
+                "operationId": methods[method].__qualname__.replace(".", "::").replace("<", "__").replace(">", "__")
             } for method in methods
         }
         schema.update(cls.__api_docs__)
