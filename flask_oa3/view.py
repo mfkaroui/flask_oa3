@@ -21,7 +21,6 @@ class View:
 
         Args:
             function (Callable): The allowed method to bind to.
-
         """        
         if "__api_docs__" not in function.__dict__:
             function.__api_docs__ = {}
