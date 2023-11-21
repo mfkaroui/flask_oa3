@@ -17,6 +17,11 @@ class View:
 
     @classmethod
     def _get_methods(cls) -> Dict[str, Callable]:
+        """Gets all methods defined that have a name listed in the allowed methods list
+
+        Returns:
+            Dict[str, Callable]: A dictionary that maps the name of a method to the method itself
+        """        
         methods = {}
         for func_name, func in inspect.getmembers(cls, inspect.isfunction):
             if func_name.lower() in cls.ALLOWED_METHODS:
