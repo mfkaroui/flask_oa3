@@ -16,15 +16,15 @@ class View:
     __api_docs__: Dict[str, str] = {}
 
     @classmethod
-    def _method_schema_generator(cls, function: Callable) -> Callable:
-        """Generates a callable function that will be bound to all allowed methods in the view. The bound method will produce the schema for the operation.
+    def _bind_method_schema(cls, function: Callable):
+        """Generates a callable function that will be bound to a defined function. The bound method will produce the schema for the operation.
 
         Args:
             function (Callable): The allowed method to bind to.
 
-        Returns:
-            Callable: The function to be called when a schema is needed for the allowed method.
         """        
+        if "__api_docs__" not in function.__dict__:
+            function.__api_docs__ = {}
         def method_schema() -> dict:
             """Constructs the Open API 'Operation Object' according to specifications
 
@@ -45,7 +45,7 @@ class View:
             if "deprecated" in function.__api_docs__:
                 schema["deprecated"] = function.__api_docs__["deprecated"]
             return schema
-        return method_schema
+        function.__dict__["schema"] = method_schema
 
     @classmethod
     def _get_methods(cls) -> Dict[str, Callable]:
@@ -57,10 +57,8 @@ class View:
         methods = {}
         for func_name, func in inspect.getmembers(cls, inspect.isfunction):
             if func_name.lower() in cls.ALLOWED_METHODS:
-                if "__api_docs__" not in func.__dict__:
-                    func.__api_docs__ = {}
                 if "schema" not in func.__dict__:
-                    func.__dict__["schema"] = cls._method_schema_generator(func)
+                    cls._bind_method_schema(func)
                 methods[func_name] = func
         return methods
     
