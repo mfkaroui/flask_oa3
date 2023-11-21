@@ -1,5 +1,5 @@
 import pytest
-from ..decorators import specification_extensions_support, view_docs
+from ..decorators import specification_extensions_support, view_docs, view_tags
 from ..errors import ReservedSpecificationExtentionError
 
 class TestDecorators:
@@ -23,17 +23,37 @@ class TestDecorators:
         
         summary = "Test summary"
         description = "A long test description"
+        x_some_data = "some extra data"
 
-        @view_docs(summary=summary, description=description)
+        @view_docs(summary, description, x_some_data=x_some_data)
         class TestView(View):
             def get(self, **kwargs):
                 pass
         
         assert "summary" in TestView.__api_docs__ and TestView.__api_docs__["summary"] == summary
         assert "description" in TestView.__api_docs__ and TestView.__api_docs__["description"] == description
+        assert "x-some-data" in TestView.__api_docs__ and TestView.__api_docs__["x-some-data"] == x_some_data
 
         with pytest.raises(TypeError):
-            @view_docs(summary=summary, description=description)
+            @view_docs(summary, description)
+            class TestView:
+                def get(self, **kwargs):
+                    pass
+    
+    def test_view_tags(self):
+        from ..view import View #Local import to not corrupt scope of test document, needed for the decorator
+        
+        tags = [f"tag_{i}" for i in range(10)]
+
+        @view_tags(tags)
+        class TestView(View):
+            def get(self, **kwargs):
+                pass
+        
+        assert "tags" in TestView.get.__api_docs__ and TestView.get.__api_docs__["tags"] == tags
+
+        with pytest.raises(TypeError):
+            @view_tags(tags)
             class TestView:
                 def get(self, **kwargs):
                     pass
