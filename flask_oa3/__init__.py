@@ -1,7 +1,7 @@
 from .licenses import Licenses
-from .api import *
-from .decorators import *
-from .fields import *
-from .model import *
-from .namespace import *
-from .view import *
+from .api import API
+from .decorators import view_docs, view_tags
+import fields
+from .model import Model
+from .namespace import Namespace
+from .view import View
