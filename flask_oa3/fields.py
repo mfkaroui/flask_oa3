@@ -45,7 +45,7 @@ class FieldBase(type):
     def __prepare__(metacls, name, bases):
         return {}
 
-class RawMixin:
+class BaseMixin:
     @classmethod
     def keyword_schema(cls) -> dict:
         """Converts between field properties and their respective Open API keyword names.
@@ -55,7 +55,7 @@ class RawMixin:
         """        
         return {}
 
-class BaseMixin(RawMixin):
+class RawMixin(BaseMixin):
     def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: bool = False):
         """Contains general initializers for keywords related to all fields.
 
@@ -75,7 +75,7 @@ class BaseMixin(RawMixin):
             "allow_null": "nullable"
         }
 
-class NumberMixin(RawMixin):
+class NumberMixin(BaseMixin):
     def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: bool = False, exclusive_maximum: bool = False, multiple_of: Union[int, None] = None):
         """Contains initializers for keywords related to number type fields.
 
@@ -102,7 +102,7 @@ class NumberMixin(RawMixin):
             "multiple_of": "multipleOf"
         }
 
-class NestedField(BaseMixin, metaclass=FieldBase):
+class NestedField(RawMixin, metaclass=FieldBase):
     from .model import Model
     __FIELD_TYPE__ = "object"
 
@@ -114,36 +114,36 @@ class NestedField(BaseMixin, metaclass=FieldBase):
         """        
         pass
 
-class ListField(BaseMixin, metaclass=FieldBase):
+class ListField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = "list"
 
     def __init__(self, **kwargs):
         pass
 
-class StringField(BaseMixin, metaclass=FieldBase):
+class StringField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = "string"
 
     def __init__(self, **kwargs):
         pass
 
-class BooleanField(BaseMixin, metaclass=FieldBase):
+class BooleanField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = "boolean"
 
     def __init__(self, **kwargs):
         pass
 
-class IntegerField(BaseMixin, NumberMixin, metaclass=FieldBase):
+class IntegerField(RawMixin, NumberMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = "integer"
     def __init__(self, **kwargs):
         pass
 
-class FloatField(BaseMixin, NumberMixin, metaclass=FieldBase):
+class FloatField(RawMixin, NumberMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = "number"
 
     def __init__(self, **kwargs):
         pass
 
-class ArbitraryField(BaseMixin, NumberMixin, metaclass=FieldBase):
+class ArbitraryField(RawMixin, NumberMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = "number"
 
     def __init__(self, **kwargs):
