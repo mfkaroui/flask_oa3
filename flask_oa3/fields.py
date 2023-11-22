@@ -2,6 +2,7 @@ from typing import Any, List, Union
 from enum import StrEnum
 
 class FieldType(StrEnum):
+    """The data type of a schema. OpenAPI defines the following basic types"""    
     STRING = "string"
     NUMBER = "number"
     INTEGER = "integer"
@@ -47,6 +48,7 @@ class FieldBase(type):
             return keyword_schema
         
         attrs["keyword_schema"] = new_keyword_schema
+        attrs["_meta"] = cls
 
         return super_new(cls, name, bases, attrs, **kwargs)
 
@@ -86,8 +88,9 @@ class BaseMixin:
         return schema
 
 class RawMixin(BaseMixin):
+    """Contains keywords and options that are available to all field types"""    
     def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: Union[bool, None] = None):
-        """Contains general initializers for keywords related to all fields.
+        """Initializers for keywords related to all fields.
 
         Args:
             description (Union[str, None], optional): _description_. Defaults to None.
@@ -106,8 +109,9 @@ class RawMixin(BaseMixin):
         }
 
 class NumberMixin(BaseMixin):
+    """Contains keywords and options that are available to number field types"""    
     def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: Union[bool, None] = None, exclusive_maximum: Union[bool, None] = None, multiple_of: Union[int, None] = None):
-        """Contains initializers for keywords related to number type fields.
+        """Initializers for keywords related to number type fields.
 
         Args:
             minimum (Union[int, None], optional): Minimum boundary of the number. Defaults to None.
@@ -133,8 +137,10 @@ class NumberMixin(BaseMixin):
         }
 
 class StringMixin(BaseMixin):
+    """Contains keywords and options that are available to string field types"""    
+
     def __init__(self, min_length: Union[int, None] = None, max_length: Union[int, None] = None, pattern: Union[str, None] = None, format: Union[str, None] = None):
-        """Contains initializers for keywords related to string type fields.
+        """Initializers for keywords related to string type fields.
 
         Args:
             min_length (Union[int, None], optional): Minimum amount of characters in the string. Defaults to None.
@@ -157,10 +163,10 @@ class StringMixin(BaseMixin):
         }
 
 class NestedField(RawMixin, metaclass=FieldBase):
-    from .model import Model #importing within class to avoid circular dependancies
+    """A field the references an existing model as its values"""
     __FIELD_TYPE__ = FieldType.OBJECT
 
-    def __init__(self, model: Model, **kwargs):
+    def __init__(self, model, **kwargs):
         """References another model to be used as a field.
 
         Args:
