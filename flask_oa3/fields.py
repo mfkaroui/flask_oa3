@@ -1,4 +1,13 @@
 from typing import Any, List, Union
+from enum import StrEnum
+
+class FieldType(StrEnum):
+    STRING = "string"
+    NUMBER = "number"
+    INTEGER = "integer"
+    BOOLEAN = "boolean"
+    ARRAY = "array"
+    OBJECT = "object"
 
 class FieldBase(type):  
     def __new__(cls, name, bases, attrs, **kwargs):
@@ -31,7 +40,7 @@ class FieldBase(type):
                 derived_constructor(self, *args, **init_kwargs)
         attrs["__init__"] = __new__init__
         
-        def new_keyword_schema():
+        def new_keyword_schema(*args):
             keyword_schema = {}
             for keyword_schemas_classmethod in keyword_schemas_classmethods:
                 keyword_schema.update(keyword_schemas_classmethod())
@@ -46,6 +55,8 @@ class FieldBase(type):
         return {}
 
 class BaseMixin:
+    __FIELD_TYPE__: Union[FieldType, None] = None
+
     @classmethod
     def keyword_schema(cls) -> dict:
         """Converts between field properties and their respective Open API keyword names.
@@ -55,8 +66,20 @@ class BaseMixin:
         """        
         return {}
 
+    @property
+    def schema(self) -> dict:
+        if self.__FIELD_TYPE__ is None or not isinstance(self.__FIELD_TYPE__, FieldType):
+            raise TypeError("The field type does not match OpenAPI Specifications")
+        schema = {
+            "type": self.__FIELD_TYPE__.value
+        }
+        for property_name, keyword in self.keyword_schema().items():
+            if self.__dict__[property_name] is not None:
+                schema[keyword] = self.__dict__[property_name]
+        return schema
+
 class RawMixin(BaseMixin):
-    def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: bool = False):
+    def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: Union[bool, None] = None):
         """Contains general initializers for keywords related to all fields.
 
         Args:
@@ -66,17 +89,17 @@ class RawMixin(BaseMixin):
         """        
         self.description = description
         self.required = required
+        self.allow_null = allow_null
     
     @classmethod
     def keyword_schema(cls):
         return {
             "description": "description",
-            "required": "required",
             "allow_null": "nullable"
         }
 
 class NumberMixin(BaseMixin):
-    def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: bool = False, exclusive_maximum: bool = False, multiple_of: Union[int, None] = None):
+    def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: Union[bool, None] = None, exclusive_maximum: Union[bool, None] = None, multiple_of: Union[int, None] = None):
         """Contains initializers for keywords related to number type fields.
 
         Args:
@@ -102,9 +125,33 @@ class NumberMixin(BaseMixin):
             "multiple_of": "multipleOf"
         }
 
+class StringMixin(BaseMixin):
+    def __init__(self, min_length: Union[int, None] = None, max_length: Union[int, None] = None, pattern: Union[str, None] = None, format: Union[str, None] = None):
+        """Contains initializers for keywords related to string type fields.
+
+        Args:
+            min_length (Union[int, None], optional): _description_. Defaults to None.
+            max_length (Union[int, None], optional): _description_. Defaults to None.
+            pattern (Union[str, None], optional): _description_. Defaults to None.
+            format (Union[str, None], optional): _description_. Defaults to None.
+        """        
+        self.min_length = min_length
+        self.max_length = max_length
+        self.pattern = pattern
+        self.format = format
+    
+    @classmethod
+    def keyword_schema(cls):
+        return {
+            "min_length": "minLength",
+            "max_length": "maxLength",
+            "pattern": "pattern",
+            "format": "format"
+        }
+
 class NestedField(RawMixin, metaclass=FieldBase):
     from .model import Model
-    __FIELD_TYPE__ = "object"
+    __FIELD_TYPE__ = FieldType.OBJECT
 
     def __init__(self, model: Model, **kwargs):
         """References another model to be used as a field.
@@ -115,36 +162,36 @@ class NestedField(RawMixin, metaclass=FieldBase):
         pass
 
 class ListField(RawMixin, metaclass=FieldBase):
-    __FIELD_TYPE__ = "list"
+    __FIELD_TYPE__ = FieldType.ARRAY
 
     def __init__(self, **kwargs):
         pass
 
-class StringField(RawMixin, metaclass=FieldBase):
-    __FIELD_TYPE__ = "string"
+class StringField(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
 
     def __init__(self, **kwargs):
         pass
 
 class BooleanField(RawMixin, metaclass=FieldBase):
-    __FIELD_TYPE__ = "boolean"
+    __FIELD_TYPE__ = FieldType.BOOLEAN
 
     def __init__(self, **kwargs):
         pass
 
 class IntegerField(RawMixin, NumberMixin, metaclass=FieldBase):
-    __FIELD_TYPE__ = "integer"
+    __FIELD_TYPE__ = FieldType.INTEGER
     def __init__(self, **kwargs):
         pass
 
 class FloatField(RawMixin, NumberMixin, metaclass=FieldBase):
-    __FIELD_TYPE__ = "number"
+    __FIELD_TYPE__ = FieldType.NUMBER
 
     def __init__(self, **kwargs):
         pass
 
 class ArbitraryField(RawMixin, NumberMixin, metaclass=FieldBase):
-    __FIELD_TYPE__ = "number"
+    __FIELD_TYPE__ = FieldType.NUMBER
 
     def __init__(self, **kwargs):
 
