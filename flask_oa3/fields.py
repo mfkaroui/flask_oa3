@@ -137,10 +137,10 @@ class StringMixin(BaseMixin):
         """Contains initializers for keywords related to string type fields.
 
         Args:
-            min_length (Union[int, None], optional): _description_. Defaults to None.
-            max_length (Union[int, None], optional): _description_. Defaults to None.
-            pattern (Union[str, None], optional): _description_. Defaults to None.
-            format (Union[str, None], optional): _description_. Defaults to None.
+            min_length (Union[int, None], optional): Minimum amount of characters in the string. Defaults to None.
+            max_length (Union[int, None], optional): Maximum amount of characters in the string. Defaults to None.
+            pattern (Union[str, None], optional): Lets you define a regular expression template for the string value. Only the values that match this template will be accepted. The regular expression syntax used is from JavaScript (more specifically, ECMA 262). Defaults to None.
+            format (Union[str, None], optional): An optional format modifier serves as a hint at the contents and format of the string.
         """        
         self.min_length = min_length
         self.max_length = max_length
@@ -157,7 +157,7 @@ class StringMixin(BaseMixin):
         }
 
 class NestedField(RawMixin, metaclass=FieldBase):
-    from .model import Model
+    from .model import Model #importing within class to avoid circular dependancies
     __FIELD_TYPE__ = FieldType.OBJECT
 
     def __init__(self, model: Model, **kwargs):
@@ -179,6 +179,60 @@ class StringField(RawMixin, StringMixin, metaclass=FieldBase):
 
     def __init__(self, **kwargs):
         pass
+
+class DateField(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "date"
+
+class DateTimeField(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "date-time"
+
+class PasswordField(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "password"
+
+class Base64EncodedField(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "byte"
+
+class EmailField(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "email"
+
+class UUID4Field(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "uuid4"
+
+class URIField(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "uri"
+
+class IPv4Field(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "ipv4"
+
+class IPv6Field(RawMixin, StringMixin, metaclass=FieldBase):
+    __FIELD_TYPE__ = FieldType.STRING
+
+    def __init__(self, **kwargs):
+        self.format = "ipv6"
 
 class BooleanField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.BOOLEAN
