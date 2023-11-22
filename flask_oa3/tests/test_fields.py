@@ -21,6 +21,7 @@ class TestFields:
         (ArbitraryField, [RawMixin, NumberMixin])
     ])
     def test_field_mixin(self, field_class, expected_bases):
+        assert field_class.__class__ == FieldBase
         for expected_base in expected_bases:
             assert issubclass(field_class, expected_base)
 
