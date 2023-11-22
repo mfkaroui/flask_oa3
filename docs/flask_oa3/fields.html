@@ -30,6 +30,7 @@
 from enum import StrEnum
 
 class FieldType(StrEnum):
+    &#34;&#34;&#34;The data type of a schema. OpenAPI defines the following basic types&#34;&#34;&#34;    
     STRING = &#34;string&#34;
     NUMBER = &#34;number&#34;
     INTEGER = &#34;integer&#34;
@@ -75,6 +76,7 @@ class FieldBase(type):
             return keyword_schema
         
         attrs[&#34;keyword_schema&#34;] = new_keyword_schema
+        attrs[&#34;_meta&#34;] = cls
 
         return super_new(cls, name, bases, attrs, **kwargs)
 
@@ -114,8 +116,9 @@ class BaseMixin:
         return schema
 
 class RawMixin(BaseMixin):
+    &#34;&#34;&#34;Contains keywords and options that are available to all field types&#34;&#34;&#34;    
     def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: Union[bool, None] = None):
-        &#34;&#34;&#34;Contains general initializers for keywords related to all fields.
+        &#34;&#34;&#34;Initializers for keywords related to all fields.
 
         Args:
             description (Union[str, None], optional): _description_. Defaults to None.
@@ -134,8 +137,9 @@ class RawMixin(BaseMixin):
         }
 
 class NumberMixin(BaseMixin):
+    &#34;&#34;&#34;Contains keywords and options that are available to number field types&#34;&#34;&#34;    
     def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: Union[bool, None] = None, exclusive_maximum: Union[bool, None] = None, multiple_of: Union[int, None] = None):
-        &#34;&#34;&#34;Contains initializers for keywords related to number type fields.
+        &#34;&#34;&#34;Initializers for keywords related to number type fields.
 
         Args:
             minimum (Union[int, None], optional): Minimum boundary of the number. Defaults to None.
@@ -161,8 +165,10 @@ class NumberMixin(BaseMixin):
         }
 
 class StringMixin(BaseMixin):
+    &#34;&#34;&#34;Contains keywords and options that are available to string field types&#34;&#34;&#34;    
+
     def __init__(self, min_length: Union[int, None] = None, max_length: Union[int, None] = None, pattern: Union[str, None] = None, format: Union[str, None] = None):
-        &#34;&#34;&#34;Contains initializers for keywords related to string type fields.
+        &#34;&#34;&#34;Initializers for keywords related to string type fields.
 
         Args:
             min_length (Union[int, None], optional): Minimum amount of characters in the string. Defaults to None.
@@ -185,10 +191,10 @@ class StringMixin(BaseMixin):
         }
 
 class NestedField(RawMixin, metaclass=FieldBase):
-    from .model import Model #importing within class to avoid circular dependancies
+    &#34;&#34;&#34;A field the references an existing model as its values&#34;&#34;&#34;
     __FIELD_TYPE__ = FieldType.OBJECT
 
-    def __init__(self, model: Model, **kwargs):
+    def __init__(self, model, **kwargs):
         &#34;&#34;&#34;References another model to be used as a field.
 
         Args:
@@ -301,7 +307,7 @@ class ArbitraryField(RawMixin, NumberMixin, metaclass=FieldBase):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -334,7 +340,7 @@ class ArbitraryField(RawMixin, NumberMixin, metaclass=FieldBase):
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -501,7 +507,7 @@ def schema(self) -&gt; dict:
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -532,7 +538,7 @@ def schema(self) -&gt; dict:
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -564,7 +570,7 @@ def schema(self) -&gt; dict:
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -596,7 +602,7 @@ def schema(self) -&gt; dict:
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -672,6 +678,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
             return keyword_schema
         
         attrs[&#34;keyword_schema&#34;] = new_keyword_schema
+        attrs[&#34;_meta&#34;] = cls
 
         return super_new(cls, name, bases, attrs, **kwargs)</code></pre>
 </details>
@@ -685,12 +692,13 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwds)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Enum where members are also (and must be) strings</p></div>
+<div class="desc"><p>The data type of a schema. OpenAPI defines the following basic types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class FieldType(StrEnum):
+    &#34;&#34;&#34;The data type of a schema. OpenAPI defines the following basic types&#34;&#34;&#34;    
     STRING = &#34;string&#34;
     NUMBER = &#34;number&#34;
     INTEGER = &#34;integer&#34;
@@ -738,7 +746,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -770,7 +778,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -802,7 +810,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -834,7 +842,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -865,7 +873,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -896,16 +904,16 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>A field the references an existing model as its values</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class NestedField(RawMixin, metaclass=FieldBase):
-    from .model import Model #importing within class to avoid circular dependancies
+    &#34;&#34;&#34;A field the references an existing model as its values&#34;&#34;&#34;
     __FIELD_TYPE__ = FieldType.OBJECT
 
-    def __init__(self, model: Model, **kwargs):
+    def __init__(self, model, **kwargs):
         &#34;&#34;&#34;References another model to be used as a field.
 
         Args:
@@ -918,13 +926,6 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <li><a title="flask_oa3.fields.RawMixin" href="#flask_oa3.fields.RawMixin">RawMixin</a></li>
 <li><a title="flask_oa3.fields.BaseMixin" href="#flask_oa3.fields.BaseMixin">BaseMixin</a></li>
 </ul>
-<h3>Class variables</h3>
-<dl>
-<dt id="flask_oa3.fields.NestedField.Model"><code class="name">var <span class="ident">Model</span></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-</dl>
 <h3>Inherited members</h3>
 <ul class="hlist">
 <li><code><b><a title="flask_oa3.fields.RawMixin" href="#flask_oa3.fields.RawMixin">RawMixin</a></b></code>:
@@ -940,7 +941,8 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>minimum: Optional[int] = None, maximum: Optional[int] = None, exclusive_minimum: Optional[bool] = None, exclusive_maximum: Optional[bool] = None, multiple_of: Optional[int] = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Contains initializers for keywords related to number type fields.</p>
+<div class="desc"><p>Contains keywords and options that are available to number field types</p>
+<p>Initializers for keywords related to number type fields.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>minimum</code></strong> :&ensp;<code>Union[int, None]</code>, optional</dt>
@@ -959,8 +961,9 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class NumberMixin(BaseMixin):
+    &#34;&#34;&#34;Contains keywords and options that are available to number field types&#34;&#34;&#34;    
     def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: Union[bool, None] = None, exclusive_maximum: Union[bool, None] = None, multiple_of: Union[int, None] = None):
-        &#34;&#34;&#34;Contains initializers for keywords related to number type fields.
+        &#34;&#34;&#34;Initializers for keywords related to number type fields.
 
         Args:
             minimum (Union[int, None], optional): Minimum boundary of the number. Defaults to None.
@@ -1010,7 +1013,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1042,7 +1045,8 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>description: Optional[str] = None, required: bool = False, allow_null: Optional[bool] = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Contains general initializers for keywords related to all fields.</p>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p>
+<p>Initializers for keywords related to all fields.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>description</code></strong> :&ensp;<code>Union[str, None]</code>, optional</dt>
@@ -1057,8 +1061,9 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class RawMixin(BaseMixin):
+    &#34;&#34;&#34;Contains keywords and options that are available to all field types&#34;&#34;&#34;    
     def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: Union[bool, None] = None):
-        &#34;&#34;&#34;Contains general initializers for keywords related to all fields.
+        &#34;&#34;&#34;Initializers for keywords related to all fields.
 
         Args:
             description (Union[str, None], optional): _description_. Defaults to None.
@@ -1114,7 +1119,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1146,7 +1151,8 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>min_length: Optional[int] = None, max_length: Optional[int] = None, pattern: Optional[str] = None, format: Optional[str] = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Contains initializers for keywords related to string type fields.</p>
+<div class="desc"><p>Contains keywords and options that are available to string field types</p>
+<p>Initializers for keywords related to string type fields.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>min_length</code></strong> :&ensp;<code>Union[int, None]</code>, optional</dt>
@@ -1163,8 +1169,10 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class StringMixin(BaseMixin):
+    &#34;&#34;&#34;Contains keywords and options that are available to string field types&#34;&#34;&#34;    
+
     def __init__(self, min_length: Union[int, None] = None, max_length: Union[int, None] = None, pattern: Union[str, None] = None, format: Union[str, None] = None):
-        &#34;&#34;&#34;Contains initializers for keywords related to string type fields.
+        &#34;&#34;&#34;Initializers for keywords related to string type fields.
 
         Args:
             min_length (Union[int, None], optional): Minimum amount of characters in the string. Defaults to None.
@@ -1218,7 +1226,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1250,7 +1258,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>(</span><span>*args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Contains keywords and options that are available to all field types</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1350,9 +1358,6 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 </li>
 <li>
 <h4><code><a title="flask_oa3.fields.NestedField" href="#flask_oa3.fields.NestedField">NestedField</a></code></h4>
-<ul class="">
-<li><code><a title="flask_oa3.fields.NestedField.Model" href="#flask_oa3.fields.NestedField.Model">Model</a></code></li>
-</ul>
 </li>
 <li>
 <h4><code><a title="flask_oa3.fields.NumberMixin" href="#flask_oa3.fields.NumberMixin">NumberMixin</a></code></h4>

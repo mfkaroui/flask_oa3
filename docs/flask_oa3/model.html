@@ -26,7 +26,19 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class Model:
+<pre><code class="python">import inspect
+from typing import Dict
+from .fields import FieldBase
+
+class Model:
+    @classmethod
+    def _get_fields(cls) -&gt; Dict[str, FieldBase]:
+        fields = {}
+        for field_name, field in inspect.getmembers(cls, lambda m: hasattr(m, &#34;_meta&#34;)):
+            if field._meta == FieldBase:
+                fields[field_name] = field
+        return fields
+
     @classmethod
     def schema(cls):
         pass</code></pre>
@@ -51,6 +63,14 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Model:
+    @classmethod
+    def _get_fields(cls) -&gt; Dict[str, FieldBase]:
+        fields = {}
+        for field_name, field in inspect.getmembers(cls, lambda m: hasattr(m, &#34;_meta&#34;)):
+            if field._meta == FieldBase:
+                fields[field_name] = field
+        return fields
+
     @classmethod
     def schema(cls):
         pass</code></pre>
