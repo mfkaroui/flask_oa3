@@ -2,33 +2,27 @@ import pytest
 from ..fields import *
 
 class TestFields:
-    def test_nested_field(self):
-        field = NestedField(description="This is a test", minimum=12)
-        print("test")
-    
-    def test_list_field(self):
-        field = ListField(description="This is a test", minimum=12)
-        print("test")
-
-    def test_string_field(self):
-        field = StringField(description="This is a test", minimum=12)
-        print("test")
-    
-    def test_boolean_field(self):
-        field = BooleanField(description="This is a test", minimum=12)
-        print("test")
-
-    def test_integer_field(self):
-        field = IntegerField(description="This is a test", minimum=12)
-        print("test")
-    
-    def test_float_field(self):
-        field = FloatField(description="This is a test", minimum=12)
-        print("test")
-    
-    def test_arbitrary_field(self):
-        field = ArbitraryField(description="This is a test", minimum=12)
-        print("test")
+    @pytest.mark.parametrize(("field_class, expected_bases"), [
+        (NestedField, [RawMixin]),
+        (ListField, [RawMixin]),
+        (StringField, [RawMixin, StringMixin]),
+        (DateField, [RawMixin, StringMixin]),
+        (DateTimeField, [RawMixin, StringMixin]),
+        (PasswordField, [RawMixin, StringMixin]),
+        (Base64EncodedField, [RawMixin, StringMixin]),
+        (EmailField, [RawMixin, StringMixin]),
+        (UUID4Field, [RawMixin, StringMixin]),
+        (URIField, [RawMixin, StringMixin]),
+        (IPv4Field, [RawMixin, StringMixin]),
+        (IPv6Field, [RawMixin, StringMixin]),
+        (BooleanField, [RawMixin]),
+        (IntegerField, [RawMixin, NumberMixin]),
+        (FloatField, [RawMixin, NumberMixin]),
+        (ArbitraryField, [RawMixin, NumberMixin])
+    ])
+    def test_field_mixin(self, field_class, expected_bases):
+        for expected_base in expected_bases:
+            assert issubclass(field_class, expected_base)
 
     @pytest.mark.parametrize(("field_class, expected_field_type"), [
         (NestedField, FieldType.OBJECT),
