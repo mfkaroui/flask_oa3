@@ -13,4 +13,10 @@ class Model:
 
     @classmethod
     def schema(cls):
-        pass
+        model_fields = cls._get_fields()
+        schema = {
+            "type": "object",
+            "required": [field_name for field_name in model_fields if model_fields[field_name].required],
+            "properties": {field_name: model_fields[field_name].schema for field_name in model_fields}
+        }
+        return schema
