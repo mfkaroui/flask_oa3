@@ -50,10 +50,6 @@ class FieldBase(type):
 
         return super_new(cls, name, bases, attrs, **kwargs)
 
-    @classmethod
-    def __prepare__(metacls, name, bases):
-        return {}
-
 class BaseMixin:
     __FIELD_TYPE__: Union[FieldType, None] = None
 
@@ -65,6 +61,17 @@ class BaseMixin:
             dict: A conversion dictionary.
         """        
         return {}
+
+    def validate(self, data: Any):
+        """Validates data against the expected type
+
+        Args:
+            data (Any): The data to validate
+
+        Raises:
+            NotImplementedError: This error flags that the derived class has not implemented a validator yet and should do so.
+        """        
+        raise NotImplementedError("Validation is not implemented in the BaseMixin class. The field class should override this method.")
 
     @property
     def schema(self) -> dict:
