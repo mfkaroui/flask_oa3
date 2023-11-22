@@ -47,12 +47,17 @@ class FieldBase(type):
 
 class RawMixin:
     @classmethod
-    def keyword_schema(cls):
+    def keyword_schema(cls) -> dict:
+        """Converts between field properties and their respective Open API keyword names.
+
+        Returns:
+            dict: A conversion dictionary.
+        """        
         return {}
 
 class BaseMixin(RawMixin):
     def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: bool = False):
-        """Contains general initializers for keywords related to all fields
+        """Contains general initializers for keywords related to all fields.
 
         Args:
             description (Union[str, None], optional): _description_. Defaults to None.
@@ -72,7 +77,7 @@ class BaseMixin(RawMixin):
 
 class NumberMixin(RawMixin):
     def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: bool = False, exclusive_maximum: bool = False, multiple_of: Union[int, None] = None):
-        """Contains initializers for keywords related to number type fields
+        """Contains initializers for keywords related to number type fields.
 
         Args:
             minimum (Union[int, None], optional): Minimum boundary of the number. Defaults to None.
