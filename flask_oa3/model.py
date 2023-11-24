@@ -4,6 +4,10 @@ from .fields import FieldBase
 
 class Model:
     @classmethod
+    def _get_component_name(cls) -> str:
+        return f"#/components/schemas/{cls.__name__}"
+
+    @classmethod
     def _get_fields(cls) -> Dict[str, FieldBase]:
         fields = {}
         for field_name, field in inspect.getmembers(cls, lambda m: hasattr(m, "_meta")):
