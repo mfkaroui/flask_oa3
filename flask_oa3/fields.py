@@ -2,7 +2,8 @@ from typing import Any, List, Union
 from enum import StrEnum
 
 class FieldType(StrEnum):
-    """The data type of a schema. OpenAPI defines the following basic types"""    
+    """The data type of a schema. OpenAPI defines the following basic types"""  
+    NO_TYPE = "<no_type>"  
     STRING = "string"
     NUMBER = "number"
     INTEGER = "integer"
@@ -79,9 +80,12 @@ class BaseMixin:
     def schema(self) -> dict:
         if self.__FIELD_TYPE__ is None or not isinstance(self.__FIELD_TYPE__, FieldType):
             raise TypeError("The field type does not match OpenAPI Specifications")
-        schema = {
-            "type": self.__FIELD_TYPE__.value
-        }
+        if self.__FIELD_TYPE__ == FieldType.NO_TYPE:
+            schema = {}
+        else:
+            schema = {
+                "type": self.__FIELD_TYPE__.value
+            }
         for property_name, keyword in self.keyword_schema().items():
             if self.__dict__[property_name] is not None:
                 schema[keyword] = self.__dict__[property_name]
@@ -164,7 +168,7 @@ class StringMixin(BaseMixin):
 
 class NestedField(RawMixin, metaclass=FieldBase):
     """A field the references an existing model as its values"""
-    __FIELD_TYPE__ = FieldType.OBJECT
+    __FIELD_TYPE__ = FieldType.NO_TYPE
 
     def __init__(self, model, **kwargs):
         """References another model to be used as a field.
@@ -177,7 +181,6 @@ class NestedField(RawMixin, metaclass=FieldBase):
     @property
     def schema(self) -> dict:
         schema = super().schema()
-        schema.pop("type")
         schema["$ref"] = self.model._get_component_name()
 
 class ListField(RawMixin, metaclass=FieldBase):
