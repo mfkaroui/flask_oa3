@@ -49,3 +49,17 @@ class TestFields:
     def test_nested_field_schema(self, model_fixture):
         nested_field = NestedField(model_fixture)
         assert "$ref" in nested_field.schema and nested_field.schema["$ref"] == model_fixture._get_component_name()
+
+    def test_list_field_schema(self, model_fixture):
+        single_type_list_field = ListField(IntegerField())
+        multi_type_list_field = ListField([
+            NestedField(model_fixture),
+            StringField(),
+            IntegerField()
+        ])
+        assert "items" in single_type_list_field.schema and "items" in multi_type_list_field.schema
+        assert single_type_list_field.schema["items"] == IntegerField().schema
+        assert "oneOf" in multi_type_list_field.schema["items"] and isinstance(multi_type_list_field.schema["items"]["oneOf"], list)
+        assert NestedField(model_fixture).schema in multi_type_list_field.schema["items"]["oneOf"]
+        assert StringField().schema in multi_type_list_field.schema["items"]["oneOf"]
+        assert IntegerField().schema in multi_type_list_field.schema["items"]["oneOf"]

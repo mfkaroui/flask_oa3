@@ -187,8 +187,19 @@ class NestedField(RawMixin, metaclass=FieldBase):
 class ListField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.ARRAY
 
-    def __init__(self, **kwargs):
-        pass
+    def __init__(self, items: Union[BaseMixin, List[BaseMixin]], **kwargs):
+        self.items = items
+    
+    @property
+    def schema(self) -> dict:
+        schema = super().schema
+        if isinstance(self.items, list): #multi-type list
+            schema["items"] = {
+                "oneOf" : [item.schema for item in self.items]
+            }
+        else:
+            schema["items"] = self.items.schema
+        return schema
 
 class StringField(RawMixin, StringMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.STRING
