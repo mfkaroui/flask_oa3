@@ -31,16 +31,16 @@ class License:
     VERSION: str = &#34;2502b90&#34;
     RELEASE_DATE: str = &#34;2023-11-10&#34;
     
-    def __init__(self, isOsiApproved = None, detailsUrl = None, licenseId = None, referenceNumber = None, reference = None, isDeprecatedLicenseId = None, name = None, seeAlso = None, isFsfLibre = None):
-        self.isOsiApproved = isOsiApproved
+    def __init__(self, isFsfLibre = None, isDeprecatedLicenseId = None, detailsUrl = None, name = None, referenceNumber = None, reference = None, seeAlso = None, licenseId = None, isOsiApproved = None):
+        self.isFsfLibre = isFsfLibre
+        self.isDeprecatedLicenseId = isDeprecatedLicenseId
         self.detailsUrl = detailsUrl
-        self.licenseId = licenseId
+        self.name = name
         self.referenceNumber = referenceNumber
         self.reference = reference
-        self.isDeprecatedLicenseId = isDeprecatedLicenseId
-        self.name = name
         self.seeAlso = seeAlso
-        self.isFsfLibre = isFsfLibre
+        self.licenseId = licenseId
+        self.isOsiApproved = isOsiApproved
 
     @property
     def schema(self):
@@ -673,7 +673,7 @@ class Licenses:
 <dl>
 <dt id="flask_oa3.licenses.License"><code class="flex name class">
 <span>class <span class="ident">License</span></span>
-<span>(</span><span>isOsiApproved=None, detailsUrl=None, licenseId=None, referenceNumber=None, reference=None, isDeprecatedLicenseId=None, name=None, seeAlso=None, isFsfLibre=None)</span>
+<span>(</span><span>isFsfLibre=None, isDeprecatedLicenseId=None, detailsUrl=None, name=None, referenceNumber=None, reference=None, seeAlso=None, licenseId=None, isOsiApproved=None)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -685,16 +685,16 @@ class Licenses:
     VERSION: str = &#34;2502b90&#34;
     RELEASE_DATE: str = &#34;2023-11-10&#34;
     
-    def __init__(self, isOsiApproved = None, detailsUrl = None, licenseId = None, referenceNumber = None, reference = None, isDeprecatedLicenseId = None, name = None, seeAlso = None, isFsfLibre = None):
-        self.isOsiApproved = isOsiApproved
+    def __init__(self, isFsfLibre = None, isDeprecatedLicenseId = None, detailsUrl = None, name = None, referenceNumber = None, reference = None, seeAlso = None, licenseId = None, isOsiApproved = None):
+        self.isFsfLibre = isFsfLibre
+        self.isDeprecatedLicenseId = isDeprecatedLicenseId
         self.detailsUrl = detailsUrl
-        self.licenseId = licenseId
+        self.name = name
         self.referenceNumber = referenceNumber
         self.reference = reference
-        self.isDeprecatedLicenseId = isDeprecatedLicenseId
-        self.name = name
         self.seeAlso = seeAlso
-        self.isFsfLibre = isFsfLibre
+        self.licenseId = licenseId
+        self.isOsiApproved = isOsiApproved
 
     @property
     def schema(self):

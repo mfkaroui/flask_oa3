@@ -28,7 +28,11 @@
 </summary>
 <pre><code class="python">class TestModel:
     def test__get_fields(self, model_fixture):
-        fields = model_fixture._get_fields()</code></pre>
+        fields = model_fixture._get_fields()
+    
+    def test__get_component_name(self, model_fixture):
+        model_component_name = model_fixture._get_component_name()
+        assert model_component_name.startswith(&#34;#/components/schemas/&#34;)</code></pre>
 </details>
 </section>
 <section>
@@ -51,10 +55,28 @@
 </summary>
 <pre><code class="python">class TestModel:
     def test__get_fields(self, model_fixture):
-        fields = model_fixture._get_fields()</code></pre>
+        fields = model_fixture._get_fields()
+    
+    def test__get_component_name(self, model_fixture):
+        model_component_name = model_fixture._get_component_name()
+        assert model_component_name.startswith(&#34;#/components/schemas/&#34;)</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
+<dt id="flask_oa3.tests.test_model.TestModel.test__get_component_name"><code class="name flex">
+<span>def <span class="ident">test__get_component_name</span></span>(<span>self, model_fixture)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test__get_component_name(self, model_fixture):
+    model_component_name = model_fixture._get_component_name()
+    assert model_component_name.startswith(&#34;#/components/schemas/&#34;)</code></pre>
+</details>
+</dd>
 <dt id="flask_oa3.tests.test_model.TestModel.test__get_fields"><code class="name flex">
 <span>def <span class="ident">test__get_fields</span></span>(<span>self, model_fixture)</span>
 </code></dt>
@@ -89,6 +111,7 @@
 <li>
 <h4><code><a title="flask_oa3.tests.test_model.TestModel" href="#flask_oa3.tests.test_model.TestModel">TestModel</a></code></h4>
 <ul class="">
+<li><code><a title="flask_oa3.tests.test_model.TestModel.test__get_component_name" href="#flask_oa3.tests.test_model.TestModel.test__get_component_name">test__get_component_name</a></code></li>
 <li><code><a title="flask_oa3.tests.test_model.TestModel.test__get_fields" href="#flask_oa3.tests.test_model.TestModel.test__get_fields">test__get_fields</a></code></li>
 </ul>
 </li>

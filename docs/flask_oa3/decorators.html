@@ -73,16 +73,16 @@ def view_docs(
         _type_: The decorated class
     &#34;&#34;&#34;    
     from .view import View
-    def decorator(cls):
-        if not issubclass(cls, View):
+    def decorator(view):
+        if not issubclass(view, View):
             raise TypeError(&#39;View_docs can only be used on a subclass of View&#39;)
 
         if summary is not None:
-            cls.__api_docs__[&#34;summary&#34;] = summary
+            view.__api_docs__[&#34;summary&#34;] = summary
         if description is not None:
-            cls.__api_docs__[&#34;description&#34;] = description
-        cls.__api_docs__.update(specification_extentions)
-        return cls
+            view.__api_docs__[&#34;description&#34;] = description
+        view.__api_docs__.update(specification_extentions)
+        return view
     return decorator
 
 def view_tags(tags: List[str]):
@@ -98,10 +98,10 @@ def view_tags(tags: List[str]):
         _type_: The decorated class
     &#34;&#34;&#34;    
     from .view import View
-    def decorator(cls):
-        if not issubclass(cls, View):
+    def decorator(view):
+        if not issubclass(view, View):
             raise TypeError(&#39;View_docs can only be used on a subclass of View&#39;)
-        for _, method in cls._get_methods().items():
+        for _, method in view._get_methods().items():
             if &#34;__api_docs__&#34; not in method.__dict__:
                 method.__api_docs__ = {}
             if &#34;tags&#34; not in method.__api_docs__:
@@ -109,7 +109,20 @@ def view_tags(tags: List[str]):
             else:
                 method.__api_docs__[&#34;tags&#34;].extend(tags)
                 method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
-        return cls
+        return view
+    return decorator
+
+def view_method_tags(tags: List[str]):
+    &#34;&#34;&#34;Adds tags to a method in a view&#34;&#34;&#34;
+    def decorator(method):
+        if &#34;__api_docs__&#34; not in method.__dict__:
+            method.__api_docs__ = {}
+        if &#34;tags&#34; not in method.__api_docs__:
+            method.__api_docs__[&#34;tags&#34;] = tags
+        else:
+            method.__api_docs__[&#34;tags&#34;].extend(tags)
+            method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
+        return method
     return decorator</code></pre>
 </details>
 </section>
@@ -214,16 +227,39 @@ def view_docs(
         _type_: The decorated class
     &#34;&#34;&#34;    
     from .view import View
-    def decorator(cls):
-        if not issubclass(cls, View):
+    def decorator(view):
+        if not issubclass(view, View):
             raise TypeError(&#39;View_docs can only be used on a subclass of View&#39;)
 
         if summary is not None:
-            cls.__api_docs__[&#34;summary&#34;] = summary
+            view.__api_docs__[&#34;summary&#34;] = summary
         if description is not None:
-            cls.__api_docs__[&#34;description&#34;] = description
-        cls.__api_docs__.update(specification_extentions)
-        return cls
+            view.__api_docs__[&#34;description&#34;] = description
+        view.__api_docs__.update(specification_extentions)
+        return view
+    return decorator</code></pre>
+</details>
+</dd>
+<dt id="flask_oa3.decorators.view_method_tags"><code class="name flex">
+<span>def <span class="ident">view_method_tags</span></span>(<span>tags: List[str])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Adds tags to a method in a view</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def view_method_tags(tags: List[str]):
+    &#34;&#34;&#34;Adds tags to a method in a view&#34;&#34;&#34;
+    def decorator(method):
+        if &#34;__api_docs__&#34; not in method.__dict__:
+            method.__api_docs__ = {}
+        if &#34;tags&#34; not in method.__api_docs__:
+            method.__api_docs__[&#34;tags&#34;] = tags
+        else:
+            method.__api_docs__[&#34;tags&#34;].extend(tags)
+            method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
+        return method
     return decorator</code></pre>
 </details>
 </dd>
@@ -264,10 +300,10 @@ def view_docs(
         _type_: The decorated class
     &#34;&#34;&#34;    
     from .view import View
-    def decorator(cls):
-        if not issubclass(cls, View):
+    def decorator(view):
+        if not issubclass(view, View):
             raise TypeError(&#39;View_docs can only be used on a subclass of View&#39;)
-        for _, method in cls._get_methods().items():
+        for _, method in view._get_methods().items():
             if &#34;__api_docs__&#34; not in method.__dict__:
                 method.__api_docs__ = {}
             if &#34;tags&#34; not in method.__api_docs__:
@@ -275,7 +311,7 @@ def view_docs(
             else:
                 method.__api_docs__[&#34;tags&#34;].extend(tags)
                 method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
-        return cls
+        return view
     return decorator</code></pre>
 </details>
 </dd>
@@ -299,6 +335,7 @@ def view_docs(
 <ul class="">
 <li><code><a title="flask_oa3.decorators.specification_extensions_support" href="#flask_oa3.decorators.specification_extensions_support">specification_extensions_support</a></code></li>
 <li><code><a title="flask_oa3.decorators.view_docs" href="#flask_oa3.decorators.view_docs">view_docs</a></code></li>
+<li><code><a title="flask_oa3.decorators.view_method_tags" href="#flask_oa3.decorators.view_method_tags">view_method_tags</a></code></li>
 <li><code><a title="flask_oa3.decorators.view_tags" href="#flask_oa3.decorators.view_tags">view_tags</a></code></li>
 </ul>
 </li>

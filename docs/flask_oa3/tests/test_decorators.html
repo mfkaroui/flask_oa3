@@ -27,7 +27,7 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">import pytest
-from ..decorators import specification_extensions_support, view_docs, view_tags
+from ..decorators import specification_extensions_support, view_docs, view_tags, view_method_tags
 from ..errors import ReservedSpecificationExtentionError
 
 class TestDecorators:
@@ -84,7 +84,24 @@ class TestDecorators:
             @view_tags(tags)
             class TestView:
                 def get(self, **kwargs):
-                    pass</code></pre>
+                    pass
+    
+    def test_view_method_tags(self):
+        from ..view import View #Local import to not corrupt scope of test document, needed for the decorator
+        
+        tags = [f&#34;tag_{i}&#34; for i in range(10)]
+
+        
+        class TestView(View):
+            @view_method_tags(tags)
+            def get(self, **kwargs):
+                pass
+            
+            def delete(self, **kwargs):
+                pass
+        
+        assert &#34;tags&#34; in TestView.get.__api_docs__ and TestView.get.__api_docs__[&#34;tags&#34;] == tags
+        assert &#34;__api_docs__&#34; not in TestView.delete.__dict__ or &#34;tags&#34; not in TestView.delete.__api_docs__ or len(TestView.delete.__api_docs__[&#34;tags&#34;]) == 0</code></pre>
 </details>
 </section>
 <section>
@@ -159,7 +176,24 @@ class TestDecorators:
             @view_tags(tags)
             class TestView:
                 def get(self, **kwargs):
-                    pass</code></pre>
+                    pass
+    
+    def test_view_method_tags(self):
+        from ..view import View #Local import to not corrupt scope of test document, needed for the decorator
+        
+        tags = [f&#34;tag_{i}&#34; for i in range(10)]
+
+        
+        class TestView(View):
+            @view_method_tags(tags)
+            def get(self, **kwargs):
+                pass
+            
+            def delete(self, **kwargs):
+                pass
+        
+        assert &#34;tags&#34; in TestView.get.__api_docs__ and TestView.get.__api_docs__[&#34;tags&#34;] == tags
+        assert &#34;__api_docs__&#34; not in TestView.delete.__dict__ or &#34;tags&#34; not in TestView.delete.__api_docs__ or len(TestView.delete.__api_docs__[&#34;tags&#34;]) == 0</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
@@ -220,6 +254,33 @@ class TestDecorators:
                 pass</code></pre>
 </details>
 </dd>
+<dt id="flask_oa3.tests.test_decorators.TestDecorators.test_view_method_tags"><code class="name flex">
+<span>def <span class="ident">test_view_method_tags</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_view_method_tags(self):
+    from ..view import View #Local import to not corrupt scope of test document, needed for the decorator
+    
+    tags = [f&#34;tag_{i}&#34; for i in range(10)]
+
+    
+    class TestView(View):
+        @view_method_tags(tags)
+        def get(self, **kwargs):
+            pass
+        
+        def delete(self, **kwargs):
+            pass
+    
+    assert &#34;tags&#34; in TestView.get.__api_docs__ and TestView.get.__api_docs__[&#34;tags&#34;] == tags
+    assert &#34;__api_docs__&#34; not in TestView.delete.__dict__ or &#34;tags&#34; not in TestView.delete.__api_docs__ or len(TestView.delete.__api_docs__[&#34;tags&#34;]) == 0</code></pre>
+</details>
+</dd>
 <dt id="flask_oa3.tests.test_decorators.TestDecorators.test_view_tags"><code class="name flex">
 <span>def <span class="ident">test_view_tags</span></span>(<span>self)</span>
 </code></dt>
@@ -271,6 +332,7 @@ class TestDecorators:
 <ul class="">
 <li><code><a title="flask_oa3.tests.test_decorators.TestDecorators.test_specification_extensions_support" href="#flask_oa3.tests.test_decorators.TestDecorators.test_specification_extensions_support">test_specification_extensions_support</a></code></li>
 <li><code><a title="flask_oa3.tests.test_decorators.TestDecorators.test_view_docs" href="#flask_oa3.tests.test_decorators.TestDecorators.test_view_docs">test_view_docs</a></code></li>
+<li><code><a title="flask_oa3.tests.test_decorators.TestDecorators.test_view_method_tags" href="#flask_oa3.tests.test_decorators.TestDecorators.test_view_method_tags">test_view_method_tags</a></code></li>
 <li><code><a title="flask_oa3.tests.test_decorators.TestDecorators.test_view_tags" href="#flask_oa3.tests.test_decorators.TestDecorators.test_view_tags">test_view_tags</a></code></li>
 </ul>
 </li>

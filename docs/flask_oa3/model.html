@@ -32,6 +32,10 @@ from .fields import FieldBase
 
 class Model:
     @classmethod
+    def _get_component_name(cls) -&gt; str:
+        return f&#34;#/components/schemas/{cls.__name__}&#34;
+
+    @classmethod
     def _get_fields(cls) -&gt; Dict[str, FieldBase]:
         fields = {}
         for field_name, field in inspect.getmembers(cls, lambda m: hasattr(m, &#34;_meta&#34;)):
@@ -41,7 +45,15 @@ class Model:
 
     @classmethod
     def schema(cls):
-        pass</code></pre>
+        model_fields = cls._get_fields()
+        schema = {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;required&#34;: [field_name for field_name in model_fields if model_fields[field_name].required],
+            &#34;properties&#34;: {field_name: model_fields[field_name].schema for field_name in model_fields}
+        }
+        if len(schema[&#34;required&#34;]) == 0:
+            schema.pop(&#34;required&#34;) #dont need it, remove it
+        return schema</code></pre>
 </details>
 </section>
 <section>
@@ -64,6 +76,10 @@ class Model:
 </summary>
 <pre><code class="python">class Model:
     @classmethod
+    def _get_component_name(cls) -&gt; str:
+        return f&#34;#/components/schemas/{cls.__name__}&#34;
+
+    @classmethod
     def _get_fields(cls) -&gt; Dict[str, FieldBase]:
         fields = {}
         for field_name, field in inspect.getmembers(cls, lambda m: hasattr(m, &#34;_meta&#34;)):
@@ -73,7 +89,15 @@ class Model:
 
     @classmethod
     def schema(cls):
-        pass</code></pre>
+        model_fields = cls._get_fields()
+        schema = {
+            &#34;type&#34;: &#34;object&#34;,
+            &#34;required&#34;: [field_name for field_name in model_fields if model_fields[field_name].required],
+            &#34;properties&#34;: {field_name: model_fields[field_name].schema for field_name in model_fields}
+        }
+        if len(schema[&#34;required&#34;]) == 0:
+            schema.pop(&#34;required&#34;) #dont need it, remove it
+        return schema</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
@@ -88,7 +112,15 @@ class Model:
 </summary>
 <pre><code class="python">@classmethod
 def schema(cls):
-    pass</code></pre>
+    model_fields = cls._get_fields()
+    schema = {
+        &#34;type&#34;: &#34;object&#34;,
+        &#34;required&#34;: [field_name for field_name in model_fields if model_fields[field_name].required],
+        &#34;properties&#34;: {field_name: model_fields[field_name].schema for field_name in model_fields}
+    }
+    if len(schema[&#34;required&#34;]) == 0:
+        schema.pop(&#34;required&#34;) #dont need it, remove it
+    return schema</code></pre>
 </details>
 </dd>
 </dl>
