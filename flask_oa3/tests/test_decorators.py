@@ -1,5 +1,5 @@
 import pytest
-from ..decorators import specification_extensions_support, view_docs, view_tags
+from ..decorators import specification_extensions_support, view_docs, view_tags, view_method_tags
 from ..errors import ReservedSpecificationExtentionError
 
 class TestDecorators:
@@ -57,3 +57,20 @@ class TestDecorators:
             class TestView:
                 def get(self, **kwargs):
                     pass
+    
+    def test_view_method_tags(self):
+        from ..view import View #Local import to not corrupt scope of test document, needed for the decorator
+        
+        tags = [f"tag_{i}" for i in range(10)]
+
+        
+        class TestView(View):
+            @view_method_tags(tags)
+            def get(self, **kwargs):
+                pass
+            
+            def delete(self, **kwargs):
+                pass
+        
+        assert "tags" in TestView.get.__api_docs__ and TestView.get.__api_docs__["tags"] == tags
+        assert "__api_docs__" not in TestView.delete.__dict__ or "tags" not in TestView.delete.__api_docs__ or len(TestView.delete.__api_docs__["tags"]) == 0

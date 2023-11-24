@@ -45,16 +45,16 @@ def view_docs(
         _type_: The decorated class
     """    
     from .view import View
-    def decorator(cls):
-        if not issubclass(cls, View):
+    def decorator(view):
+        if not issubclass(view, View):
             raise TypeError('View_docs can only be used on a subclass of View')
 
         if summary is not None:
-            cls.__api_docs__["summary"] = summary
+            view.__api_docs__["summary"] = summary
         if description is not None:
-            cls.__api_docs__["description"] = description
-        cls.__api_docs__.update(specification_extentions)
-        return cls
+            view.__api_docs__["description"] = description
+        view.__api_docs__.update(specification_extentions)
+        return view
     return decorator
 
 def view_tags(tags: List[str]):
@@ -70,10 +70,10 @@ def view_tags(tags: List[str]):
         _type_: The decorated class
     """    
     from .view import View
-    def decorator(cls):
-        if not issubclass(cls, View):
+    def decorator(view):
+        if not issubclass(view, View):
             raise TypeError('View_docs can only be used on a subclass of View')
-        for _, method in cls._get_methods().items():
+        for _, method in view._get_methods().items():
             if "__api_docs__" not in method.__dict__:
                 method.__api_docs__ = {}
             if "tags" not in method.__api_docs__:
@@ -81,5 +81,18 @@ def view_tags(tags: List[str]):
             else:
                 method.__api_docs__["tags"].extend(tags)
                 method.__api_docs__["tags"] = list(set(method.__api_docs__["tags"]))
-        return cls
+        return view
+    return decorator
+
+def view_method_tags(tags: List[str]):
+    """Adds tags to a method in a view"""
+    def decorator(method):
+        if "__api_docs__" not in method.__dict__:
+            method.__api_docs__ = {}
+        if "tags" not in method.__api_docs__:
+            method.__api_docs__["tags"] = tags
+        else:
+            method.__api_docs__["tags"].extend(tags)
+            method.__api_docs__["tags"] = list(set(method.__api_docs__["tags"]))
+        return method
     return decorator
