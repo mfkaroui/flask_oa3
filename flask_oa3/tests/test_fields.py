@@ -26,7 +26,7 @@ class TestFields:
             assert issubclass(field_class, expected_base)
 
     @pytest.mark.parametrize(("field_class, expected_field_type"), [
-        (NestedField, FieldType.OBJECT),
+        (NestedField, FieldType.NO_TYPE),
         (ListField, FieldType.ARRAY),
         (StringField, FieldType.STRING),
         (DateField, FieldType.STRING),
@@ -45,3 +45,7 @@ class TestFields:
     ])
     def test___FIELD_TYPE___value(self, field_class, expected_field_type):
         assert field_class.__FIELD_TYPE__ == expected_field_type
+
+    def test_nested_field_schema(self, model_fixture):
+        nested_field = NestedField(model_fixture)
+        assert "$ref" in nested_field.schema and nested_field.schema["$ref"] == model_fixture._get_component_name()

@@ -180,8 +180,9 @@ class NestedField(RawMixin, metaclass=FieldBase):
 
     @property
     def schema(self) -> dict:
-        schema = super().schema()
+        schema = super().schema
         schema["$ref"] = self.model._get_component_name()
+        return schema
 
 class ListField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.ARRAY

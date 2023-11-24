@@ -19,3 +19,4 @@ class TestView:
     def test_schema(self, view_fixture):
         schema = view_fixture.schema()
         print("test")
+    
