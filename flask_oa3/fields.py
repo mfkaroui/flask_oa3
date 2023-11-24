@@ -172,7 +172,13 @@ class NestedField(RawMixin, metaclass=FieldBase):
         Args:
             model (Union[Model, List[Model]]): A model to reference.
         """        
-        pass
+        self.model = model
+
+    @property
+    def schema(self) -> dict:
+        schema = super().schema()
+        schema.pop("type")
+        schema["$ref"] = self.model._get_component_name()
 
 class ListField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.ARRAY
