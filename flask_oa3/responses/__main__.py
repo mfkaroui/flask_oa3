@@ -8,7 +8,7 @@ if __name__ == "__main__":
     with open(os.path.join(run_dir, "status_codes.json"), "r", encoding="utf8") as file_handle:
         file_handle.seek(0)
         status_codes_json = loads(file_handle.read())
-    status_codes_class = f"""from .response import BaseResponse
+    status_codes_class = f"""from .response import BaseResponse, ResponseType
 
 """
     for status_code in status_codes_json:

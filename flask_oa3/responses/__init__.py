@@ -1,4 +1,4 @@
-from .response import BaseResponse
+from .response import BaseResponse, ResponseType
 
 class ContinueResponse(BaseResponse):
     """

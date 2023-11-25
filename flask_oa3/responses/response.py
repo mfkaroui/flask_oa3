@@ -59,3 +59,15 @@ class BaseResponse:
             return ResponseType.X_CUSTOM
         else:
             return ResponseType(int(f"{str(cls.__STATUS_CODE__)[0]}00"))
+
+    @classmethod
+    def schema(cls) -> dict:
+        """Constructs the Open API 'Response Object' according to specifications
+
+        Returns:
+            dict: The Open API schema
+        """     
+        schema = {
+
+        }
+        return schema
