@@ -11,6 +11,14 @@
             "program": "./flask_oa3/licenses",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Build Responses",
+            "type": "python",
+            "request": "launch",
+            "program": "./flask_oa3/responses",
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

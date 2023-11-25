@@ -31,6 +31,7 @@ class BaseResponse:
     """
 
     __STATUS_CODE__: Union[int, None] = None
+    __PHRASE__: Union[str, None] = None
 
     def __init__(self, data: Any):
         """
@@ -58,6 +59,3 @@ class BaseResponse:
             return ResponseType.X_CUSTOM
         else:
             return ResponseType(int(f"{str(cls.__STATUS_CODE__)[0]}00"))
-
-class OkResponse(BaseResponse):
-    __STATUS_CODE__: int = 200
