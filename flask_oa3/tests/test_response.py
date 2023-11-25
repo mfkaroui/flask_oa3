@@ -1,5 +1,5 @@
-from ..responses import OK
+from ..responses import OKResponse
 
 class TestResponse:
     def test__get_response_type(self):
-        OK._get_response_type()
+        OKResponse._get_response_type()

@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
 """
     for status_code in status_codes_json:
-        status_codes_class = status_codes_class + f"""class {status_code['phrase'].replace(' ', '').replace('-', '')}(BaseResponse):
+        status_codes_class = status_codes_class + f"""class {status_code['phrase'].replace(' ', '').replace('-', '')}Response(BaseResponse):
     \"\"\"
     {status_code['description']}
 

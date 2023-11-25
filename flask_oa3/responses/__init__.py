@@ -1,6 +1,6 @@
 from .response import BaseResponse
 
-class Continue(BaseResponse):
+class ContinueResponse(BaseResponse):
     """
     indicates that the initial part of a request has been received and has not yet been rejected by the server.
 
@@ -13,7 +13,7 @@ class Continue(BaseResponse):
     __STATUS_CODE__: int = 100
     __PHRASE__: str = "Continue"
 
-class SwitchingProtocols(BaseResponse):
+class SwitchingProtocolsResponse(BaseResponse):
     """
     indicates that the server understands and is willing to comply with the client's request, via the Upgrade header field, for a change in the application protocol being used on this connection.
 
@@ -26,7 +26,7 @@ class SwitchingProtocols(BaseResponse):
     __STATUS_CODE__: int = 101
     __PHRASE__: str = "Switching Protocols"
 
-class OK(BaseResponse):
+class OKResponse(BaseResponse):
     """
     indicates that the request has succeeded.
 
@@ -39,7 +39,7 @@ class OK(BaseResponse):
     __STATUS_CODE__: int = 200
     __PHRASE__: str = "OK"
 
-class Created(BaseResponse):
+class CreatedResponse(BaseResponse):
     """
     indicates that the request has been fulfilled and has resulted in one or more new resources being created.
 
@@ -52,7 +52,7 @@ class Created(BaseResponse):
     __STATUS_CODE__: int = 201
     __PHRASE__: str = "Created"
 
-class Accepted(BaseResponse):
+class AcceptedResponse(BaseResponse):
     """
     indicates that the request has been accepted for processing, but the processing has not been completed.
 
@@ -65,7 +65,7 @@ class Accepted(BaseResponse):
     __STATUS_CODE__: int = 202
     __PHRASE__: str = "Accepted"
 
-class NonAuthoritativeInformation(BaseResponse):
+class NonAuthoritativeInformationResponse(BaseResponse):
     """
     indicates that the request was successful but the enclosed payload has been modified from that of the origin server's 200 (OK) response by a transforming proxy.
 
@@ -78,7 +78,7 @@ class NonAuthoritativeInformation(BaseResponse):
     __STATUS_CODE__: int = 203
     __PHRASE__: str = "Non-Authoritative Information"
 
-class NoContent(BaseResponse):
+class NoContentResponse(BaseResponse):
     """
     indicates that the server has successfully fulfilled the request and that there is no additional content to send in the response payload body.
 
@@ -91,7 +91,7 @@ class NoContent(BaseResponse):
     __STATUS_CODE__: int = 204
     __PHRASE__: str = "No Content"
 
-class ResetContent(BaseResponse):
+class ResetContentResponse(BaseResponse):
     """
     indicates that the server has fulfilled the request and desires that the user agent reset the document view, which caused the request to be sent, to its original state as received from the origin server.
 
@@ -104,7 +104,7 @@ class ResetContent(BaseResponse):
     __STATUS_CODE__: int = 205
     __PHRASE__: str = "Reset Content"
 
-class PartialContent(BaseResponse):
+class PartialContentResponse(BaseResponse):
     """
     indicates that the server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the requests's Range header field.
 
@@ -117,7 +117,7 @@ class PartialContent(BaseResponse):
     __STATUS_CODE__: int = 206
     __PHRASE__: str = "Partial Content"
 
-class MultipleChoices(BaseResponse):
+class MultipleChoicesResponse(BaseResponse):
     """
     indicates that the target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.
 
@@ -130,7 +130,7 @@ class MultipleChoices(BaseResponse):
     __STATUS_CODE__: int = 300
     __PHRASE__: str = "Multiple Choices"
 
-class MovedPermanently(BaseResponse):
+class MovedPermanentlyResponse(BaseResponse):
     """
     indicates that the target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.
 
@@ -143,7 +143,7 @@ class MovedPermanently(BaseResponse):
     __STATUS_CODE__: int = 301
     __PHRASE__: str = "Moved Permanently"
 
-class Found(BaseResponse):
+class FoundResponse(BaseResponse):
     """
     indicates that the target resource resides temporarily under a different URI.
 
@@ -156,7 +156,7 @@ class Found(BaseResponse):
     __STATUS_CODE__: int = 302
     __PHRASE__: str = "Found"
 
-class SeeOther(BaseResponse):
+class SeeOtherResponse(BaseResponse):
     """
     indicates that the server is redirecting the user agent to a different resource, as indicated by a URI in the Location header field, that is intended to provide an indirect response to the original request.
 
@@ -169,7 +169,7 @@ class SeeOther(BaseResponse):
     __STATUS_CODE__: int = 303
     __PHRASE__: str = "See Other"
 
-class NotModified(BaseResponse):
+class NotModifiedResponse(BaseResponse):
     """
     indicates that a conditional GET request has been received and would have resulted in a 200 (OK) response if it were not for the fact that the condition has evaluated to false.
 
@@ -182,7 +182,7 @@ class NotModified(BaseResponse):
     __STATUS_CODE__: int = 304
     __PHRASE__: str = "Not Modified"
 
-class UseProxy(BaseResponse):
+class UseProxyResponse(BaseResponse):
     """
     *deprecated*
 
@@ -195,7 +195,7 @@ class UseProxy(BaseResponse):
     __STATUS_CODE__: int = 305
     __PHRASE__: str = "Use Proxy"
 
-class TemporaryRedirect(BaseResponse):
+class TemporaryRedirectResponse(BaseResponse):
     """
     indicates that the target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.
 
@@ -208,7 +208,7 @@ class TemporaryRedirect(BaseResponse):
     __STATUS_CODE__: int = 307
     __PHRASE__: str = "Temporary Redirect"
 
-class BadRequest(BaseResponse):
+class BadRequestResponse(BaseResponse):
     """
     indicates that the server cannot or will not process the request because the received syntax is invalid, nonsensical, or exceeds some limitation on what the server is willing to process.
 
@@ -221,7 +221,7 @@ class BadRequest(BaseResponse):
     __STATUS_CODE__: int = 400
     __PHRASE__: str = "Bad Request"
 
-class Unauthorized(BaseResponse):
+class UnauthorizedResponse(BaseResponse):
     """
     indicates that the request has not been applied because it lacks valid authentication credentials for the target resource.
 
@@ -234,7 +234,7 @@ class Unauthorized(BaseResponse):
     __STATUS_CODE__: int = 401
     __PHRASE__: str = "Unauthorized"
 
-class PaymentRequired(BaseResponse):
+class PaymentRequiredResponse(BaseResponse):
     """
     *reserved*
 
@@ -247,7 +247,7 @@ class PaymentRequired(BaseResponse):
     __STATUS_CODE__: int = 402
     __PHRASE__: str = "Payment Required"
 
-class Forbidden(BaseResponse):
+class ForbiddenResponse(BaseResponse):
     """
     indicates that the server understood the request but refuses to authorize it.
 
@@ -260,7 +260,7 @@ class Forbidden(BaseResponse):
     __STATUS_CODE__: int = 403
     __PHRASE__: str = "Forbidden"
 
-class NotFound(BaseResponse):
+class NotFoundResponse(BaseResponse):
     """
     indicates that the origin server did not find a current representation for the target resource or is not willing to disclose that one exists.
 
@@ -273,7 +273,7 @@ class NotFound(BaseResponse):
     __STATUS_CODE__: int = 404
     __PHRASE__: str = "Not Found"
 
-class MethodNotAllowed(BaseResponse):
+class MethodNotAllowedResponse(BaseResponse):
     """
     indicates that the method specified in the request-line is known by the origin server but not supported by the target resource.
 
@@ -286,7 +286,7 @@ class MethodNotAllowed(BaseResponse):
     __STATUS_CODE__: int = 405
     __PHRASE__: str = "Method Not Allowed"
 
-class NotAcceptable(BaseResponse):
+class NotAcceptableResponse(BaseResponse):
     """
     indicates that the target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to supply a default representation.
 
@@ -299,7 +299,7 @@ class NotAcceptable(BaseResponse):
     __STATUS_CODE__: int = 406
     __PHRASE__: str = "Not Acceptable"
 
-class ProxyAuthenticationRequired(BaseResponse):
+class ProxyAuthenticationRequiredResponse(BaseResponse):
     """
     is similar to 401 (Unauthorized), but indicates that the client needs to authenticate itself in order to use a proxy.
 
@@ -312,7 +312,7 @@ class ProxyAuthenticationRequired(BaseResponse):
     __STATUS_CODE__: int = 407
     __PHRASE__: str = "Proxy Authentication Required"
 
-class RequestTimeout(BaseResponse):
+class RequestTimeoutResponse(BaseResponse):
     """
     indicates that the server did not receive a complete request message within the time that it was prepared to wait.
 
@@ -325,7 +325,7 @@ class RequestTimeout(BaseResponse):
     __STATUS_CODE__: int = 408
     __PHRASE__: str = "Request Timeout"
 
-class Conflict(BaseResponse):
+class ConflictResponse(BaseResponse):
     """
     indicates that the request could not be completed due to a conflict with the current state of the resource.
 
@@ -338,7 +338,7 @@ class Conflict(BaseResponse):
     __STATUS_CODE__: int = 409
     __PHRASE__: str = "Conflict"
 
-class Gone(BaseResponse):
+class GoneResponse(BaseResponse):
     """
     indicates that access to the target resource is no longer available at the origin server and that this condition is likely to be permanent.
 
@@ -351,7 +351,7 @@ class Gone(BaseResponse):
     __STATUS_CODE__: int = 410
     __PHRASE__: str = "Gone"
 
-class LengthRequired(BaseResponse):
+class LengthRequiredResponse(BaseResponse):
     """
     indicates that the server refuses to accept the request without a defined Content-Length.
 
@@ -364,7 +364,7 @@ class LengthRequired(BaseResponse):
     __STATUS_CODE__: int = 411
     __PHRASE__: str = "Length Required"
 
-class PreconditionFailed(BaseResponse):
+class PreconditionFailedResponse(BaseResponse):
     """
     indicates that one or more preconditions given in the request header fields evaluated to false when tested on the server.
 
@@ -377,7 +377,7 @@ class PreconditionFailed(BaseResponse):
     __STATUS_CODE__: int = 412
     __PHRASE__: str = "Precondition Failed"
 
-class PayloadTooLarge(BaseResponse):
+class PayloadTooLargeResponse(BaseResponse):
     """
     indicates that the server is refusing to process a request because the request payload is larger than the server is willing or able to process.
 
@@ -390,7 +390,7 @@ class PayloadTooLarge(BaseResponse):
     __STATUS_CODE__: int = 413
     __PHRASE__: str = "Payload Too Large"
 
-class URITooLong(BaseResponse):
+class URITooLongResponse(BaseResponse):
     """
     indicates that the server is refusing to service the request because the request-target is longer than the server is willing to interpret.
 
@@ -403,7 +403,7 @@ class URITooLong(BaseResponse):
     __STATUS_CODE__: int = 414
     __PHRASE__: str = "URI Too Long"
 
-class UnsupportedMediaType(BaseResponse):
+class UnsupportedMediaTypeResponse(BaseResponse):
     """
     indicates that the origin server is refusing to service the request because the payload is in a format not supported by the target resource for this method.
 
@@ -416,7 +416,7 @@ class UnsupportedMediaType(BaseResponse):
     __STATUS_CODE__: int = 415
     __PHRASE__: str = "Unsupported Media Type"
 
-class RangeNotSatisfiable(BaseResponse):
+class RangeNotSatisfiableResponse(BaseResponse):
     """
     indicates that none of the ranges in the request's Range header field overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
 
@@ -429,7 +429,7 @@ class RangeNotSatisfiable(BaseResponse):
     __STATUS_CODE__: int = 416
     __PHRASE__: str = "Range Not Satisfiable"
 
-class ExpectationFailed(BaseResponse):
+class ExpectationFailedResponse(BaseResponse):
     """
     indicates that the expectation given in the request's Expect header field could not be met by at least one of the inbound servers.
 
@@ -442,7 +442,7 @@ class ExpectationFailed(BaseResponse):
     __STATUS_CODE__: int = 417
     __PHRASE__: str = "Expectation Failed"
 
-class UpgradeRequired(BaseResponse):
+class UpgradeRequiredResponse(BaseResponse):
     """
     indicates that the server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.
 
@@ -455,7 +455,7 @@ class UpgradeRequired(BaseResponse):
     __STATUS_CODE__: int = 426
     __PHRASE__: str = "Upgrade Required"
 
-class InternalServerError(BaseResponse):
+class InternalServerErrorResponse(BaseResponse):
     """
     indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.
 
@@ -468,7 +468,7 @@ class InternalServerError(BaseResponse):
     __STATUS_CODE__: int = 500
     __PHRASE__: str = "Internal Server Error"
 
-class NotImplemented(BaseResponse):
+class NotImplementedResponse(BaseResponse):
     """
     indicates that the server does not support the functionality required to fulfill the request.
 
@@ -481,7 +481,7 @@ class NotImplemented(BaseResponse):
     __STATUS_CODE__: int = 501
     __PHRASE__: str = "Not Implemented"
 
-class BadGateway(BaseResponse):
+class BadGatewayResponse(BaseResponse):
     """
     indicates that the server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.
 
@@ -494,7 +494,7 @@ class BadGateway(BaseResponse):
     __STATUS_CODE__: int = 502
     __PHRASE__: str = "Bad Gateway"
 
-class ServiceUnavailable(BaseResponse):
+class ServiceUnavailableResponse(BaseResponse):
     """
     indicates that the server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay.
 
@@ -507,7 +507,7 @@ class ServiceUnavailable(BaseResponse):
     __STATUS_CODE__: int = 503
     __PHRASE__: str = "Service Unavailable"
 
-class GatewayTimeout(BaseResponse):
+class GatewayTimeoutResponse(BaseResponse):
     """
     indicates that the server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request.
 
@@ -520,7 +520,7 @@ class GatewayTimeout(BaseResponse):
     __STATUS_CODE__: int = 504
     __PHRASE__: str = "Gateway Time-out"
 
-class HTTPVersionNotSupported(BaseResponse):
+class HTTPVersionNotSupportedResponse(BaseResponse):
     """
     indicates that the server does not support, or refuses to support, the protocol version that was used in the request message.
 
@@ -533,7 +533,7 @@ class HTTPVersionNotSupported(BaseResponse):
     __STATUS_CODE__: int = 505
     __PHRASE__: str = "HTTP Version Not Supported"
 
-class Processing(BaseResponse):
+class ProcessingResponse(BaseResponse):
     """
     is an interim response used to inform the client that the server has accepted the complete request, but has not yet completed it.
 
@@ -546,7 +546,7 @@ class Processing(BaseResponse):
     __STATUS_CODE__: int = 102
     __PHRASE__: str = "Processing"
 
-class MultiStatus(BaseResponse):
+class MultiStatusResponse(BaseResponse):
     """
     provides status for multiple independent operations.
 
@@ -559,7 +559,7 @@ class MultiStatus(BaseResponse):
     __STATUS_CODE__: int = 207
     __PHRASE__: str = "Multi-Status"
 
-class IMUsed(BaseResponse):
+class IMUsedResponse(BaseResponse):
     """
     The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.
 
@@ -572,7 +572,7 @@ class IMUsed(BaseResponse):
     __STATUS_CODE__: int = 226
     __PHRASE__: str = "IM Used"
 
-class PermanentRedirect(BaseResponse):
+class PermanentRedirectResponse(BaseResponse):
     """
     The target resource has been assigned a new permanent URI and any future references to this resource outght to use one of the enclosed URIs. [...] This status code is similar to 301 Moved Permanently (Section 7.3.2 of rfc7231), except that it does not allow rewriting the request method from POST to GET.
 
@@ -585,7 +585,7 @@ class PermanentRedirect(BaseResponse):
     __STATUS_CODE__: int = 308
     __PHRASE__: str = "Permanent Redirect"
 
-class UnprocessableEntity(BaseResponse):
+class UnprocessableEntityResponse(BaseResponse):
     """
     means the server understands the content type of the request entity (hence a 415(Unsupported Media Type) status code is inappropriate), and the syntax of the request entity is correct (thus a 400 (Bad Request) status code is inappropriate) but was unable to process the contained instructions.
 
@@ -598,7 +598,7 @@ class UnprocessableEntity(BaseResponse):
     __STATUS_CODE__: int = 422
     __PHRASE__: str = "Unprocessable Entity"
 
-class Locked(BaseResponse):
+class LockedResponse(BaseResponse):
     """
     means the source or destination resource of a method is locked.
 
@@ -611,7 +611,7 @@ class Locked(BaseResponse):
     __STATUS_CODE__: int = 423
     __PHRASE__: str = "Locked"
 
-class FailedDependency(BaseResponse):
+class FailedDependencyResponse(BaseResponse):
     """
     means that the method could not be performed on the resource because the requested action depended on another action and that action failed.
 
@@ -624,7 +624,7 @@ class FailedDependency(BaseResponse):
     __STATUS_CODE__: int = 424
     __PHRASE__: str = "Failed Dependency"
 
-class PreconditionRequired(BaseResponse):
+class PreconditionRequiredResponse(BaseResponse):
     """
     indicates that the origin server requires the request to be conditional.
 
@@ -637,7 +637,7 @@ class PreconditionRequired(BaseResponse):
     __STATUS_CODE__: int = 428
     __PHRASE__: str = "Precondition Required"
 
-class TooManyRequests(BaseResponse):
+class TooManyRequestsResponse(BaseResponse):
     """
     indicates that the user has sent too many requests in a given amount of time (rate limiting).
 
@@ -650,7 +650,7 @@ class TooManyRequests(BaseResponse):
     __STATUS_CODE__: int = 429
     __PHRASE__: str = "Too Many Requests"
 
-class RequestHeaderFieldsTooLarge(BaseResponse):
+class RequestHeaderFieldsTooLargeResponse(BaseResponse):
     """
     indicates that the server is unwilling to process the request because its header fields are too large.
 
@@ -663,7 +663,7 @@ class RequestHeaderFieldsTooLarge(BaseResponse):
     __STATUS_CODE__: int = 431
     __PHRASE__: str = "Request Header Fields Too Large"
 
-class UnavailableForLegalReasons(BaseResponse):
+class UnavailableForLegalReasonsResponse(BaseResponse):
     """
     This status code indicates that the server is denying access to the resource in response to a legal demand.
 
@@ -676,7 +676,7 @@ class UnavailableForLegalReasons(BaseResponse):
     __STATUS_CODE__: int = 451
     __PHRASE__: str = "Unavailable For Legal Reasons"
 
-class VariantAlsoNegotiates(BaseResponse):
+class VariantAlsoNegotiatesResponse(BaseResponse):
     """
     indicates that the server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.
 
@@ -689,7 +689,7 @@ class VariantAlsoNegotiates(BaseResponse):
     __STATUS_CODE__: int = 506
     __PHRASE__: str = "Variant Also Negotiates"
 
-class InsufficientStorage(BaseResponse):
+class InsufficientStorageResponse(BaseResponse):
     """
     means the method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.
 
@@ -702,7 +702,7 @@ class InsufficientStorage(BaseResponse):
     __STATUS_CODE__: int = 507
     __PHRASE__: str = "Insufficient Storage"
 
-class NetworkAuthenticationRequired(BaseResponse):
+class NetworkAuthenticationRequiredResponse(BaseResponse):
     """
     indicates that the client needs to authenticate to gain network access.
 
