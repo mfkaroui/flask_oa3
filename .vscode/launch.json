@@ -22,7 +22,7 @@
         },
         {
             "name": "Build Documentation",
-            "type": "clr",
+            "type": "python",
             "request": "launch",
             "program": "pdoc3",
             "args": ["--force", "--html", "-o", "./docs", "flask_oa3"],
