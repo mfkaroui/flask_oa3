@@ -54,7 +54,7 @@ class TestFields:
             assert issubclass(field_class, expected_base)
 
     @pytest.mark.parametrize((&#34;field_class, expected_field_type&#34;), [
-        (NestedField, FieldType.OBJECT),
+        (NestedField, FieldType.NO_TYPE),
         (ListField, FieldType.ARRAY),
         (StringField, FieldType.STRING),
         (DateField, FieldType.STRING),
@@ -72,7 +72,25 @@ class TestFields:
         (ArbitraryField, FieldType.NUMBER)
     ])
     def test___FIELD_TYPE___value(self, field_class, expected_field_type):
-        assert field_class.__FIELD_TYPE__ == expected_field_type</code></pre>
+        assert field_class.__FIELD_TYPE__ == expected_field_type
+
+    def test_nested_field_schema(self, model_fixture):
+        nested_field = NestedField(model_fixture)
+        assert &#34;$ref&#34; in nested_field.schema and nested_field.schema[&#34;$ref&#34;] == model_fixture._get_component_name()
+
+    def test_list_field_schema(self, model_fixture):
+        single_type_list_field = ListField(IntegerField())
+        multi_type_list_field = ListField([
+            NestedField(model_fixture),
+            StringField(),
+            IntegerField()
+        ])
+        assert &#34;items&#34; in single_type_list_field.schema and &#34;items&#34; in multi_type_list_field.schema
+        assert single_type_list_field.schema[&#34;items&#34;] == IntegerField().schema
+        assert &#34;oneOf&#34; in multi_type_list_field.schema[&#34;items&#34;] and isinstance(multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;], list)
+        assert NestedField(model_fixture).schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]
+        assert StringField().schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]
+        assert IntegerField().schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]</code></pre>
 </details>
 </section>
 <section>
@@ -118,7 +136,7 @@ class TestFields:
             assert issubclass(field_class, expected_base)
 
     @pytest.mark.parametrize((&#34;field_class, expected_field_type&#34;), [
-        (NestedField, FieldType.OBJECT),
+        (NestedField, FieldType.NO_TYPE),
         (ListField, FieldType.ARRAY),
         (StringField, FieldType.STRING),
         (DateField, FieldType.STRING),
@@ -136,7 +154,25 @@ class TestFields:
         (ArbitraryField, FieldType.NUMBER)
     ])
     def test___FIELD_TYPE___value(self, field_class, expected_field_type):
-        assert field_class.__FIELD_TYPE__ == expected_field_type</code></pre>
+        assert field_class.__FIELD_TYPE__ == expected_field_type
+
+    def test_nested_field_schema(self, model_fixture):
+        nested_field = NestedField(model_fixture)
+        assert &#34;$ref&#34; in nested_field.schema and nested_field.schema[&#34;$ref&#34;] == model_fixture._get_component_name()
+
+    def test_list_field_schema(self, model_fixture):
+        single_type_list_field = ListField(IntegerField())
+        multi_type_list_field = ListField([
+            NestedField(model_fixture),
+            StringField(),
+            IntegerField()
+        ])
+        assert &#34;items&#34; in single_type_list_field.schema and &#34;items&#34; in multi_type_list_field.schema
+        assert single_type_list_field.schema[&#34;items&#34;] == IntegerField().schema
+        assert &#34;oneOf&#34; in multi_type_list_field.schema[&#34;items&#34;] and isinstance(multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;], list)
+        assert NestedField(model_fixture).schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]
+        assert StringField().schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]
+        assert IntegerField().schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
@@ -150,7 +186,7 @@ class TestFields:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@pytest.mark.parametrize((&#34;field_class, expected_field_type&#34;), [
-    (NestedField, FieldType.OBJECT),
+    (NestedField, FieldType.NO_TYPE),
     (ListField, FieldType.ARRAY),
     (StringField, FieldType.STRING),
     (DateField, FieldType.STRING),
@@ -204,6 +240,44 @@ def test_field_mixin(self, field_class, expected_bases):
         assert issubclass(field_class, expected_base)</code></pre>
 </details>
 </dd>
+<dt id="flask_oa3.tests.test_fields.TestFields.test_list_field_schema"><code class="name flex">
+<span>def <span class="ident">test_list_field_schema</span></span>(<span>self, model_fixture)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_list_field_schema(self, model_fixture):
+    single_type_list_field = ListField(IntegerField())
+    multi_type_list_field = ListField([
+        NestedField(model_fixture),
+        StringField(),
+        IntegerField()
+    ])
+    assert &#34;items&#34; in single_type_list_field.schema and &#34;items&#34; in multi_type_list_field.schema
+    assert single_type_list_field.schema[&#34;items&#34;] == IntegerField().schema
+    assert &#34;oneOf&#34; in multi_type_list_field.schema[&#34;items&#34;] and isinstance(multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;], list)
+    assert NestedField(model_fixture).schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]
+    assert StringField().schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]
+    assert IntegerField().schema in multi_type_list_field.schema[&#34;items&#34;][&#34;oneOf&#34;]</code></pre>
+</details>
+</dd>
+<dt id="flask_oa3.tests.test_fields.TestFields.test_nested_field_schema"><code class="name flex">
+<span>def <span class="ident">test_nested_field_schema</span></span>(<span>self, model_fixture)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_nested_field_schema(self, model_fixture):
+    nested_field = NestedField(model_fixture)
+    assert &#34;$ref&#34; in nested_field.schema and nested_field.schema[&#34;$ref&#34;] == model_fixture._get_component_name()</code></pre>
+</details>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -227,6 +301,8 @@ def test_field_mixin(self, field_class, expected_bases):
 <ul class="">
 <li><code><a title="flask_oa3.tests.test_fields.TestFields.test___FIELD_TYPE___value" href="#flask_oa3.tests.test_fields.TestFields.test___FIELD_TYPE___value">test___FIELD_TYPE___value</a></code></li>
 <li><code><a title="flask_oa3.tests.test_fields.TestFields.test_field_mixin" href="#flask_oa3.tests.test_fields.TestFields.test_field_mixin">test_field_mixin</a></code></li>
+<li><code><a title="flask_oa3.tests.test_fields.TestFields.test_list_field_schema" href="#flask_oa3.tests.test_fields.TestFields.test_list_field_schema">test_list_field_schema</a></code></li>
+<li><code><a title="flask_oa3.tests.test_fields.TestFields.test_nested_field_schema" href="#flask_oa3.tests.test_fields.TestFields.test_nested_field_schema">test_nested_field_schema</a></code></li>
 </ul>
 </li>
 </ul>

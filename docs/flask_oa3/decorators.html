@@ -26,9 +26,12 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import functools
-from typing import List, Union
-from .errors import ReservedSpecificationExtentionError
+<pre><code class="python">import inspect
+import functools
+from typing import List, Union, Callable
+from .errors import ReservedSpecificationExtentionError, PayloadModelAlreadyExistsError
+from .model import Model
+from .view import View
 
 def specification_extensions_support(function):
     &#34;&#34;&#34;A decorator to allow for extensions to the OpenAPI Schema. The value can be null, a primitive, an array or an object.
@@ -85,36 +88,21 @@ def view_docs(
         return view
     return decorator
 
-def view_tags(tags: List[str]):
-    &#34;&#34;&#34;Adds tags to each method in a view
+def tag(tags: List[str]):
+    &#34;&#34;&#34;Decorator that can be used to add tags either to each method in a view class 
+    or to a single method in a view.
 
     Args:
-        tags (List[str]): A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier.
-    
+        tags (List[str]): A list of tags for API documentation control.
+
     Raises:
-        TypeError: Raised when the class being decorated is not a subclass of view
+        TypeError: Raised when the class being decorated is not a subclass of View
+                  or when the object being decorated is neither a View subclass nor a method.
 
     Returns:
-        _type_: The decorated class
-    &#34;&#34;&#34;    
-    from .view import View
-    def decorator(view):
-        if not issubclass(view, View):
-            raise TypeError(&#39;View_docs can only be used on a subclass of View&#39;)
-        for _, method in view._get_methods().items():
-            if &#34;__api_docs__&#34; not in method.__dict__:
-                method.__api_docs__ = {}
-            if &#34;tags&#34; not in method.__api_docs__:
-                method.__api_docs__[&#34;tags&#34;] = tags
-            else:
-                method.__api_docs__[&#34;tags&#34;].extend(tags)
-                method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
-        return view
-    return decorator
-
-def view_method_tags(tags: List[str]):
-    &#34;&#34;&#34;Adds tags to a method in a view&#34;&#34;&#34;
-    def decorator(method):
+        The decorated class or method.
+    &#34;&#34;&#34;
+    def _add_tags_to_method(method, tags):
         if &#34;__api_docs__&#34; not in method.__dict__:
             method.__api_docs__ = {}
         if &#34;tags&#34; not in method.__api_docs__:
@@ -122,6 +110,27 @@ def view_method_tags(tags: List[str]):
         else:
             method.__api_docs__[&#34;tags&#34;].extend(tags)
             method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
+
+    def decorator(obj: Union[View, Callable]):
+        if inspect.isclass(obj):
+            if not issubclass(obj, View):
+                raise TypeError(&#39;&#34;tags&#34; can only be used on a subclass of View&#39;)
+            for _, method in obj._get_methods().items():
+                _add_tags_to_method(method, tags)
+        else:
+            _add_tags_to_method(obj, tags)
+        return obj
+    return decorator
+
+def view_method_expect_payload(model: Model):
+    &#34;&#34;&#34;Adds a payload expectation to a method in a view&#34;&#34;&#34;
+    def decorator(method):
+        if &#34;__api_docs__&#34; not in method.__dict__:
+            method.__api_docs__ = {}
+        if &#34;payload_model&#34; not in method.__api_docs__:
+            method.__api_docs__[&#34;payload_model&#34;] = model
+        else:
+            raise PayloadModelAlreadyExistsError(f&#34;&#34;)
         return method
     return decorator</code></pre>
 </details>
@@ -182,6 +191,64 @@ def view_method_tags(tags: List[str]):
     return wrapper</code></pre>
 </details>
 </dd>
+<dt id="flask_oa3.decorators.tag"><code class="name flex">
+<span>def <span class="ident">tag</span></span>(<span>tags: List[str])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decorator that can be used to add tags either to each method in a view class
+or to a single method in a view.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tags</code></strong> :&ensp;<code>List[str]</code></dt>
+<dd>A list of tags for API documentation control.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>TypeError</code></dt>
+<dd>Raised when the class being decorated is not a subclass of View
+or when the object being decorated is neither a View subclass nor a method.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The decorated class or method.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tag(tags: List[str]):
+    &#34;&#34;&#34;Decorator that can be used to add tags either to each method in a view class 
+    or to a single method in a view.
+
+    Args:
+        tags (List[str]): A list of tags for API documentation control.
+
+    Raises:
+        TypeError: Raised when the class being decorated is not a subclass of View
+                  or when the object being decorated is neither a View subclass nor a method.
+
+    Returns:
+        The decorated class or method.
+    &#34;&#34;&#34;
+    def _add_tags_to_method(method, tags):
+        if &#34;__api_docs__&#34; not in method.__dict__:
+            method.__api_docs__ = {}
+        if &#34;tags&#34; not in method.__api_docs__:
+            method.__api_docs__[&#34;tags&#34;] = tags
+        else:
+            method.__api_docs__[&#34;tags&#34;].extend(tags)
+            method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
+
+    def decorator(obj: Union[View, Callable]):
+        if inspect.isclass(obj):
+            if not issubclass(obj, View):
+                raise TypeError(&#39;&#34;tags&#34; can only be used on a subclass of View&#39;)
+            for _, method in obj._get_methods().items():
+                _add_tags_to_method(method, tags)
+        else:
+            _add_tags_to_method(obj, tags)
+        return obj
+    return decorator</code></pre>
+</details>
+</dd>
 <dt id="flask_oa3.decorators.view_docs"><code class="name flex">
 <span>def <span class="ident">view_docs</span></span>(<span>summary: Optional[str] = None, description: Optional[str] = None, **specification_extentions)</span>
 </code></dt>
@@ -240,78 +307,25 @@ def view_docs(
     return decorator</code></pre>
 </details>
 </dd>
-<dt id="flask_oa3.decorators.view_method_tags"><code class="name flex">
-<span>def <span class="ident">view_method_tags</span></span>(<span>tags: List[str])</span>
+<dt id="flask_oa3.decorators.view_method_expect_payload"><code class="name flex">
+<span>def <span class="ident">view_method_expect_payload</span></span>(<span>model: <a title="flask_oa3.model.Model" href="model.html#flask_oa3.model.Model">Model</a>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Adds tags to a method in a view</p></div>
+<div class="desc"><p>Adds a payload expectation to a method in a view</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def view_method_tags(tags: List[str]):
-    &#34;&#34;&#34;Adds tags to a method in a view&#34;&#34;&#34;
+<pre><code class="python">def view_method_expect_payload(model: Model):
+    &#34;&#34;&#34;Adds a payload expectation to a method in a view&#34;&#34;&#34;
     def decorator(method):
         if &#34;__api_docs__&#34; not in method.__dict__:
             method.__api_docs__ = {}
-        if &#34;tags&#34; not in method.__api_docs__:
-            method.__api_docs__[&#34;tags&#34;] = tags
+        if &#34;payload_model&#34; not in method.__api_docs__:
+            method.__api_docs__[&#34;payload_model&#34;] = model
         else:
-            method.__api_docs__[&#34;tags&#34;].extend(tags)
-            method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
+            raise PayloadModelAlreadyExistsError(f&#34;&#34;)
         return method
-    return decorator</code></pre>
-</details>
-</dd>
-<dt id="flask_oa3.decorators.view_tags"><code class="name flex">
-<span>def <span class="ident">view_tags</span></span>(<span>tags: List[str])</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Adds tags to each method in a view</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>tags</code></strong> :&ensp;<code>List[str]</code></dt>
-<dd>A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier.</dd>
-</dl>
-<h2 id="raises">Raises</h2>
-<dl>
-<dt><code>TypeError</code></dt>
-<dd>Raised when the class being decorated is not a subclass of view</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>_type_</code></dt>
-<dd>The decorated class</dd>
-</dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def view_tags(tags: List[str]):
-    &#34;&#34;&#34;Adds tags to each method in a view
-
-    Args:
-        tags (List[str]): A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier.
-    
-    Raises:
-        TypeError: Raised when the class being decorated is not a subclass of view
-
-    Returns:
-        _type_: The decorated class
-    &#34;&#34;&#34;    
-    from .view import View
-    def decorator(view):
-        if not issubclass(view, View):
-            raise TypeError(&#39;View_docs can only be used on a subclass of View&#39;)
-        for _, method in view._get_methods().items():
-            if &#34;__api_docs__&#34; not in method.__dict__:
-                method.__api_docs__ = {}
-            if &#34;tags&#34; not in method.__api_docs__:
-                method.__api_docs__[&#34;tags&#34;] = tags
-            else:
-                method.__api_docs__[&#34;tags&#34;].extend(tags)
-                method.__api_docs__[&#34;tags&#34;] = list(set(method.__api_docs__[&#34;tags&#34;]))
-        return view
     return decorator</code></pre>
 </details>
 </dd>
@@ -334,9 +348,9 @@ def view_docs(
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
 <li><code><a title="flask_oa3.decorators.specification_extensions_support" href="#flask_oa3.decorators.specification_extensions_support">specification_extensions_support</a></code></li>
+<li><code><a title="flask_oa3.decorators.tag" href="#flask_oa3.decorators.tag">tag</a></code></li>
 <li><code><a title="flask_oa3.decorators.view_docs" href="#flask_oa3.decorators.view_docs">view_docs</a></code></li>
-<li><code><a title="flask_oa3.decorators.view_method_tags" href="#flask_oa3.decorators.view_method_tags">view_method_tags</a></code></li>
-<li><code><a title="flask_oa3.decorators.view_tags" href="#flask_oa3.decorators.view_tags">view_tags</a></code></li>
+<li><code><a title="flask_oa3.decorators.view_method_expect_payload" href="#flask_oa3.decorators.view_method_expect_payload">view_method_expect_payload</a></code></li>
 </ul>
 </li>
 </ul>

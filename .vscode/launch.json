@@ -19,6 +19,15 @@
             "program": "./flask_oa3/responses",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Build Documentation",
+            "type": "clr",
+            "request": "launch",
+            "program": "pdoc3",
+            "args": ["--force", "--html", "-o", "./docs", "flask_oa3"],
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

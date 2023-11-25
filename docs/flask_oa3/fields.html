@@ -30,7 +30,8 @@
 from enum import StrEnum
 
 class FieldType(StrEnum):
-    &#34;&#34;&#34;The data type of a schema. OpenAPI defines the following basic types&#34;&#34;&#34;    
+    &#34;&#34;&#34;The data type of a schema. OpenAPI defines the following basic types&#34;&#34;&#34;  
+    NO_TYPE = &#34;&lt;no_type&gt;&#34;  
     STRING = &#34;string&#34;
     NUMBER = &#34;number&#34;
     INTEGER = &#34;integer&#34;
@@ -107,9 +108,12 @@ class BaseMixin:
     def schema(self) -&gt; dict:
         if self.__FIELD_TYPE__ is None or not isinstance(self.__FIELD_TYPE__, FieldType):
             raise TypeError(&#34;The field type does not match OpenAPI Specifications&#34;)
-        schema = {
-            &#34;type&#34;: self.__FIELD_TYPE__.value
-        }
+        if self.__FIELD_TYPE__ == FieldType.NO_TYPE:
+            schema = {}
+        else:
+            schema = {
+                &#34;type&#34;: self.__FIELD_TYPE__.value
+            }
         for property_name, keyword in self.keyword_schema().items():
             if self.__dict__[property_name] is not None:
                 schema[keyword] = self.__dict__[property_name]
@@ -192,7 +196,7 @@ class StringMixin(BaseMixin):
 
 class NestedField(RawMixin, metaclass=FieldBase):
     &#34;&#34;&#34;A field the references an existing model as its values&#34;&#34;&#34;
-    __FIELD_TYPE__ = FieldType.OBJECT
+    __FIELD_TYPE__ = FieldType.NO_TYPE
 
     def __init__(self, model, **kwargs):
         &#34;&#34;&#34;References another model to be used as a field.
@@ -204,15 +208,26 @@ class NestedField(RawMixin, metaclass=FieldBase):
 
     @property
     def schema(self) -&gt; dict:
-        schema = super().schema()
-        schema.pop(&#34;type&#34;)
+        schema = super().schema
         schema[&#34;$ref&#34;] = self.model._get_component_name()
+        return schema
 
 class ListField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.ARRAY
 
-    def __init__(self, **kwargs):
-        pass
+    def __init__(self, items: Union[BaseMixin, List[BaseMixin]], **kwargs):
+        self.items = items
+    
+    @property
+    def schema(self) -&gt; dict:
+        schema = super().schema
+        if isinstance(self.items, list): #multi-type list
+            schema[&#34;items&#34;] = {
+                &#34;oneOf&#34; : [item.schema for item in self.items]
+            }
+        else:
+            schema[&#34;items&#34;] = self.items.schema
+        return schema
 
 class StringField(RawMixin, StringMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.STRING
@@ -409,9 +424,12 @@ class ArbitraryField(RawMixin, NumberMixin, metaclass=FieldBase):
     def schema(self) -&gt; dict:
         if self.__FIELD_TYPE__ is None or not isinstance(self.__FIELD_TYPE__, FieldType):
             raise TypeError(&#34;The field type does not match OpenAPI Specifications&#34;)
-        schema = {
-            &#34;type&#34;: self.__FIELD_TYPE__.value
-        }
+        if self.__FIELD_TYPE__ == FieldType.NO_TYPE:
+            schema = {}
+        else:
+            schema = {
+                &#34;type&#34;: self.__FIELD_TYPE__.value
+            }
         for property_name, keyword in self.keyword_schema().items():
             if self.__dict__[property_name] is not None:
                 schema[keyword] = self.__dict__[property_name]
@@ -463,9 +481,12 @@ def keyword_schema(cls) -&gt; dict:
 def schema(self) -&gt; dict:
     if self.__FIELD_TYPE__ is None or not isinstance(self.__FIELD_TYPE__, FieldType):
         raise TypeError(&#34;The field type does not match OpenAPI Specifications&#34;)
-    schema = {
-        &#34;type&#34;: self.__FIELD_TYPE__.value
-    }
+    if self.__FIELD_TYPE__ == FieldType.NO_TYPE:
+        schema = {}
+    else:
+        schema = {
+            &#34;type&#34;: self.__FIELD_TYPE__.value
+        }
     for property_name, keyword in self.keyword_schema().items():
         if self.__dict__[property_name] is not None:
             schema[keyword] = self.__dict__[property_name]
@@ -704,7 +725,8 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class FieldType(StrEnum):
-    &#34;&#34;&#34;The data type of a schema. OpenAPI defines the following basic types&#34;&#34;&#34;    
+    &#34;&#34;&#34;The data type of a schema. OpenAPI defines the following basic types&#34;&#34;&#34;  
+    NO_TYPE = &#34;&lt;no_type&gt;&#34;  
     STRING = &#34;string&#34;
     NUMBER = &#34;number&#34;
     INTEGER = &#34;integer&#34;
@@ -730,6 +752,10 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <div class="desc"></div>
 </dd>
 <dt id="flask_oa3.fields.FieldType.INTEGER"><code class="name">var <span class="ident">INTEGER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="flask_oa3.fields.FieldType.NO_TYPE"><code class="name">var <span class="ident">NO_TYPE</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -887,14 +913,47 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 <pre><code class="python">class ListField(RawMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.ARRAY
 
-    def __init__(self, **kwargs):
-        pass</code></pre>
+    def __init__(self, items: Union[BaseMixin, List[BaseMixin]], **kwargs):
+        self.items = items
+    
+    @property
+    def schema(self) -&gt; dict:
+        schema = super().schema
+        if isinstance(self.items, list): #multi-type list
+            schema[&#34;items&#34;] = {
+                &#34;oneOf&#34; : [item.schema for item in self.items]
+            }
+        else:
+            schema[&#34;items&#34;] = self.items.schema
+        return schema</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="flask_oa3.fields.RawMixin" href="#flask_oa3.fields.RawMixin">RawMixin</a></li>
 <li><a title="flask_oa3.fields.BaseMixin" href="#flask_oa3.fields.BaseMixin">BaseMixin</a></li>
 </ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="flask_oa3.fields.ListField.schema"><code class="name">var <span class="ident">schema</span> : dict</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def schema(self) -&gt; dict:
+    schema = super().schema
+    if isinstance(self.items, list): #multi-type list
+        schema[&#34;items&#34;] = {
+            &#34;oneOf&#34; : [item.schema for item in self.items]
+        }
+    else:
+        schema[&#34;items&#34;] = self.items.schema
+    return schema</code></pre>
+</details>
+</dd>
+</dl>
 <h3>Inherited members</h3>
 <ul class="hlist">
 <li><code><b><a title="flask_oa3.fields.RawMixin" href="#flask_oa3.fields.RawMixin">RawMixin</a></b></code>:
@@ -917,7 +976,7 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 </summary>
 <pre><code class="python">class NestedField(RawMixin, metaclass=FieldBase):
     &#34;&#34;&#34;A field the references an existing model as its values&#34;&#34;&#34;
-    __FIELD_TYPE__ = FieldType.OBJECT
+    __FIELD_TYPE__ = FieldType.NO_TYPE
 
     def __init__(self, model, **kwargs):
         &#34;&#34;&#34;References another model to be used as a field.
@@ -929,9 +988,9 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 
     @property
     def schema(self) -&gt; dict:
-        schema = super().schema()
-        schema.pop(&#34;type&#34;)
-        schema[&#34;$ref&#34;] = self.model._get_component_name()</code></pre>
+        schema = super().schema
+        schema[&#34;$ref&#34;] = self.model._get_component_name()
+        return schema</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -949,9 +1008,9 @@ type(name, bases, dict, **kwds) -&gt; a new type</p></div>
 </summary>
 <pre><code class="python">@property
 def schema(self) -&gt; dict:
-    schema = super().schema()
-    schema.pop(&#34;type&#34;)
-    schema[&#34;$ref&#34;] = self.model._get_component_name()</code></pre>
+    schema = super().schema
+    schema[&#34;$ref&#34;] = self.model._get_component_name()
+    return schema</code></pre>
 </details>
 </dd>
 </dl>
@@ -1365,6 +1424,7 @@ def schema(self) -&gt; dict:
 <li><code><a title="flask_oa3.fields.FieldType.ARRAY" href="#flask_oa3.fields.FieldType.ARRAY">ARRAY</a></code></li>
 <li><code><a title="flask_oa3.fields.FieldType.BOOLEAN" href="#flask_oa3.fields.FieldType.BOOLEAN">BOOLEAN</a></code></li>
 <li><code><a title="flask_oa3.fields.FieldType.INTEGER" href="#flask_oa3.fields.FieldType.INTEGER">INTEGER</a></code></li>
+<li><code><a title="flask_oa3.fields.FieldType.NO_TYPE" href="#flask_oa3.fields.FieldType.NO_TYPE">NO_TYPE</a></code></li>
 <li><code><a title="flask_oa3.fields.FieldType.NUMBER" href="#flask_oa3.fields.FieldType.NUMBER">NUMBER</a></code></li>
 <li><code><a title="flask_oa3.fields.FieldType.OBJECT" href="#flask_oa3.fields.FieldType.OBJECT">OBJECT</a></code></li>
 <li><code><a title="flask_oa3.fields.FieldType.STRING" href="#flask_oa3.fields.FieldType.STRING">STRING</a></code></li>
@@ -1384,6 +1444,9 @@ def schema(self) -&gt; dict:
 </li>
 <li>
 <h4><code><a title="flask_oa3.fields.ListField" href="#flask_oa3.fields.ListField">ListField</a></code></h4>
+<ul class="">
+<li><code><a title="flask_oa3.fields.ListField.schema" href="#flask_oa3.fields.ListField.schema">schema</a></code></li>
+</ul>
 </li>
 <li>
 <h4><code><a title="flask_oa3.fields.NestedField" href="#flask_oa3.fields.NestedField">NestedField</a></code></h4>

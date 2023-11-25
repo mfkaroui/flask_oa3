@@ -28,6 +28,7 @@
 </summary>
 <pre><code class="python">class RouteInUseError(Exception): ...
 class ModelAlreadyRegisteredError(Exception): ...
+class PayloadModelAlreadyExistsError(Exception): ...
 class ReservedSpecificationExtentionError(Exception): ...</code></pre>
 </details>
 </section>
@@ -51,6 +52,24 @@ class ReservedSpecificationExtentionError(Exception): ...</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class ModelAlreadyRegisteredError(Exception): ...</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="flask_oa3.errors.PayloadModelAlreadyExistsError"><code class="flex name class">
+<span>class <span class="ident">PayloadModelAlreadyExistsError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PayloadModelAlreadyExistsError(Exception): ...</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -112,6 +131,9 @@ class ReservedSpecificationExtentionError(Exception): ...</code></pre>
 <ul>
 <li>
 <h4><code><a title="flask_oa3.errors.ModelAlreadyRegisteredError" href="#flask_oa3.errors.ModelAlreadyRegisteredError">ModelAlreadyRegisteredError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="flask_oa3.errors.PayloadModelAlreadyExistsError" href="#flask_oa3.errors.PayloadModelAlreadyExistsError">PayloadModelAlreadyExistsError</a></code></h4>
 </li>
 <li>
 <h4><code><a title="flask_oa3.errors.ReservedSpecificationExtentionError" href="#flask_oa3.errors.ReservedSpecificationExtentionError">ReservedSpecificationExtentionError</a></code></h4>
