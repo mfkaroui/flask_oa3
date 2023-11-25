@@ -1,6 +1,9 @@
+import inspect
 import functools
-from typing import List, Union
-from .errors import ReservedSpecificationExtentionError
+from typing import List, Union, Callable
+from .errors import ReservedSpecificationExtentionError, PayloadModelAlreadyExistsError
+from .model import Model
+from .view import View
 
 def specification_extensions_support(function):
     """A decorator to allow for extensions to the OpenAPI Schema. The value can be null, a primitive, an array or an object.
@@ -57,36 +60,21 @@ def view_docs(
         return view
     return decorator
 
-def view_tags(tags: List[str]):
-    """Adds tags to each method in a view
+def tag(tags: List[str]):
+    """Decorator that can be used to add tags either to each method in a view class 
+    or to a single method in a view.
 
     Args:
-        tags (List[str]): A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier.
-    
+        tags (List[str]): A list of tags for API documentation control.
+
     Raises:
-        TypeError: Raised when the class being decorated is not a subclass of view
+        TypeError: Raised when the class being decorated is not a subclass of View
+                  or when the object being decorated is neither a View subclass nor a method.
 
     Returns:
-        _type_: The decorated class
-    """    
-    from .view import View
-    def decorator(view):
-        if not issubclass(view, View):
-            raise TypeError('View_docs can only be used on a subclass of View')
-        for _, method in view._get_methods().items():
-            if "__api_docs__" not in method.__dict__:
-                method.__api_docs__ = {}
-            if "tags" not in method.__api_docs__:
-                method.__api_docs__["tags"] = tags
-            else:
-                method.__api_docs__["tags"].extend(tags)
-                method.__api_docs__["tags"] = list(set(method.__api_docs__["tags"]))
-        return view
-    return decorator
-
-def view_method_tags(tags: List[str]):
-    """Adds tags to a method in a view"""
-    def decorator(method):
+        The decorated class or method.
+    """
+    def _add_tags_to_method(method, tags):
         if "__api_docs__" not in method.__dict__:
             method.__api_docs__ = {}
         if "tags" not in method.__api_docs__:
@@ -94,5 +82,26 @@ def view_method_tags(tags: List[str]):
         else:
             method.__api_docs__["tags"].extend(tags)
             method.__api_docs__["tags"] = list(set(method.__api_docs__["tags"]))
+
+    def decorator(obj: Union[View, Callable]):
+        if inspect.isclass(obj):
+            if not issubclass(obj, View):
+                raise TypeError('"tags" can only be used on a subclass of View')
+            for _, method in obj._get_methods().items():
+                _add_tags_to_method(method, tags)
+        else:
+            _add_tags_to_method(obj, tags)
+        return obj
+    return decorator
+
+def view_method_expect_payload(model: Model):
+    """Adds a payload expectation to a method in a view"""
+    def decorator(method):
+        if "__api_docs__" not in method.__dict__:
+            method.__api_docs__ = {}
+        if "payload_model" not in method.__api_docs__:
+            method.__api_docs__["payload_model"] = model
+        else:
+            raise PayloadModelAlreadyExistsError(f"")
         return method
     return decorator

@@ -1,5 +1,5 @@
 import pytest
-from ..decorators import specification_extensions_support, view_docs, view_tags, view_method_tags
+from ..decorators import specification_extensions_support, view_docs, tag
 from ..errors import ReservedSpecificationExtentionError
 
 class TestDecorators:
@@ -45,7 +45,7 @@ class TestDecorators:
         
         tags = [f"tag_{i}" for i in range(10)]
 
-        @view_tags(tags)
+        @tag(tags)
         class TestView(View):
             def get(self, **kwargs):
                 pass
@@ -53,7 +53,7 @@ class TestDecorators:
         assert "tags" in TestView.get.__api_docs__ and TestView.get.__api_docs__["tags"] == tags
 
         with pytest.raises(TypeError):
-            @view_tags(tags)
+            @tag(tags)
             class TestView:
                 def get(self, **kwargs):
                     pass
@@ -65,7 +65,7 @@ class TestDecorators:
 
         
         class TestView(View):
-            @view_method_tags(tags)
+            @tag(tags)
             def get(self, **kwargs):
                 pass
             
