@@ -68,6 +68,6 @@ class BaseResponse:
             dict: The Open API schema
         """     
         schema = {}
-        if "description" in self.__api_docs__:
-            schema["description"] = cls.
+        if self.description is not None:
+            schema["description"] = self.description
         return schema

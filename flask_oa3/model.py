@@ -1,6 +1,7 @@
 import inspect
 from typing import Dict
-from .fields import FieldBase
+
+from .fields.metaclass import FieldBase
 
 class Model:
     @classmethod
@@ -11,7 +12,7 @@ class Model:
     def _get_fields(cls) -> Dict[str, FieldBase]:
         fields = {}
         for field_name, field in inspect.getmembers(cls, lambda m: hasattr(m, "_meta")):
-            if field._meta == FieldBase:
+            if field._meta.__name__ == FieldBase:
                 fields[field_name] = field
         return fields
 

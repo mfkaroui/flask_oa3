@@ -1,5 +1,7 @@
 import pytest
 from ..fields import *
+from ..fields.metaclass import FieldBase
+from ..fields.mixin import *
 
 class TestFields:
     @pytest.mark.parametrize(("field_class, expected_bases"), [
