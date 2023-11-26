@@ -1,3 +1,4 @@
+### AUTO-GENERATED ###
 from .response import BaseResponse, ResponseType
 
 class ContinueResponse(BaseResponse):

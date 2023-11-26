@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import Any, Union
+from typing import Any, Dict, Union
 
 class ResponseType(IntEnum):
     """
@@ -29,18 +29,18 @@ class BaseResponse:
         __STATUS_CODE__ (Union[int, None]): A class-level attribute that defines the status code for the response.
         data (Any): The data to be included in the response.
     """
-
+    __api_docs__: Dict[str, str] = {}
     __STATUS_CODE__: Union[int, None] = None
     __PHRASE__: Union[str, None] = None
 
-    def __init__(self, data: Any):
+    def __init__(self, description: Union[str, None] = None):
         """
         Initializes a new instance of BaseResponse.
 
         Args:
             data (Any): The data to be included in the response.
         """
-        self.data = data
+        self.description = description
 
     @classmethod
     def _get_response_type(cls) -> ResponseType:
@@ -60,14 +60,14 @@ class BaseResponse:
         else:
             return ResponseType(int(f"{str(cls.__STATUS_CODE__)[0]}00"))
 
-    @classmethod
-    def schema(cls) -> dict:
+    @property
+    def schema(self) -> dict:
         """Constructs the Open API 'Response Object' according to specifications
 
         Returns:
             dict: The Open API schema
         """     
-        schema = {
-
-        }
+        schema = {}
+        if "description" in self.__api_docs__:
+            schema["description"] = cls.
         return schema
