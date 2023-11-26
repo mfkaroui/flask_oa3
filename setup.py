@@ -34,7 +34,7 @@ setup(
         "Development Status :: 3 - Alpha",
         # Indicate who your project is intended for
         "Intended Audience :: Developers",
-        "Topic :: Software Development :: Build Tools",
+        "Topic :: Software Development :: API Tools :: Open API 3 :: REST",
         # Pick your license as you wish
         "License :: OSI Approved :: GPL 3.0 License",
         "Programming Language :: Python :: 3.11",
