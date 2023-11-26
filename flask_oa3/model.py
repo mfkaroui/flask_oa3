@@ -17,6 +17,11 @@ class Model:
 
     @classmethod
     def schema(cls):
+        """Constructs the Open API 'Schema Object' according to specifications
+
+        Returns:
+            dict: The Open API schema
+        """   
         model_fields = cls._get_fields()
         schema = {
             "type": "object",
