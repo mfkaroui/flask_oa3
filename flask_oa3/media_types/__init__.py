@@ -1,13 +1,14 @@
 ### AUTO-GENERATED ###
 class MediaType:    
-    def __init__(self, template = None, spec_href = None, spec_title = None, media_type = None):
-        self.template = template
-        self.spec_href = spec_href
-        self.spec_title = spec_title
+    def __init__(self, media_type = None, spec_title = None, spec_href = None, template = None):
         self.media_type = media_type
+        self.spec_title = spec_title
+        self.spec_href = spec_href
+        self.template = template
 
 
 class MediaTypes:
+    media_type_yaml = MediaType(media_type="application/yaml", template="https://www.iana.org/assignments/media-types/application/yaml", spec_title="draft-ietf-httpapi-yaml-mediatypes", spec_href="https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-yaml-mediatypes")
     media_type_1d_interleaved_parityfec = MediaType(media_type="application/1d-interleaved-parityfec", template="https://www.iana.org/assignments/media-types/application/1d-interleaved-parityfec", spec_title="RFC6015", spec_href="https://tools.ietf.org/html/rfc6015")
     media_type_batch_smtp = MediaType(media_type="application/batch-SMTP", template="https://www.iana.org/assignments/media-types/application/batch-SMTP", spec_title="RFC2442", spec_href="https://tools.ietf.org/html/rfc2442")
     media_type_call_completion = MediaType(media_type="application/call-completion", template="https://www.iana.org/assignments/media-types/application/call-completion", spec_title="RFC6910", spec_href="https://tools.ietf.org/html/rfc6910")

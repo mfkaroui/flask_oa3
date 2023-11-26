@@ -1,6 +1,12 @@
 {
     "media_types": [
         {
+            "media_type": "application/yaml",
+            "template": "https://www.iana.org/assignments/media-types/application/yaml",
+            "spec_title": "draft-ietf-httpapi-yaml-mediatypes",
+            "spec_href": "https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-yaml-mediatypes"
+        },
+        {
             "media_type": "application/1d-interleaved-parityfec",
             "template": "https://www.iana.org/assignments/media-types/application/1d-interleaved-parityfec",
             "spec_title": "RFC6015",
