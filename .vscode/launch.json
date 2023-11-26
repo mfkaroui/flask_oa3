@@ -21,6 +21,14 @@
             "justMyCode": true
         },
         {
+            "name": "Build Media Types",
+            "type": "python",
+            "request": "launch",
+            "program": "./flask_oa3/media_types",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Build Documentation",
             "type": "python",
             "request": "launch",
