@@ -1,4 +1,7 @@
 {
+    "oa3_schema": {
+        "media_type": "media_type"
+    },
     "media_types": [
         {
             "media_type": "application/yaml",

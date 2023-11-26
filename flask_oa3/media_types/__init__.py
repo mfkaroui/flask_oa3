@@ -1,11 +1,29 @@
 ### AUTO-GENERATED ###
-class MediaType:    
-    def __init__(self, media_type = None, spec_title = None, spec_href = None, template = None):
-        self.media_type = media_type
-        self.spec_title = spec_title
-        self.spec_href = spec_href
-        self.template = template
+from typing import Union
+from ..model import Model
 
+class MediaType:    
+    def __init__(self, spec_href = None, media_type = None, template = None, spec_title = None):
+        self.model: Union[Model, None] = None
+        self.spec_href = spec_href
+        self.media_type = media_type
+        self.template = template
+        self.spec_title = spec_title
+
+    def register_model(self, model: Model):
+        self.model = model
+
+    @property
+    def schema(self):
+        if self.model is None:
+            raise ValueError("No model was registered to the media type. Unable to generate the schema")
+        return {
+            self.media_type: {
+                "schema": {
+                    "$ref": self.model._get_component_name()
+                }
+            }
+        }
 
 class MediaTypes:
     media_type_yaml = MediaType(media_type="application/yaml", template="https://www.iana.org/assignments/media-types/application/yaml", spec_title="draft-ietf-httpapi-yaml-mediatypes", spec_href="https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-yaml-mediatypes")

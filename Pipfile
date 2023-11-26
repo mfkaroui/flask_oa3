@@ -9,6 +9,8 @@ flask = "*"
 [dev-packages]
 pytest = "*"
 pdoc3 = "*"
+vistir = "< 0.7.0"
+pipenv-setup = {extras = ["black"], version = "*"}
 
 [requires]
 python_version = "3.11"

@@ -13,22 +13,31 @@ if __name__ == "__main__":
         media_type_keys.extend(list(media_type.keys()))
     media_type_keys = list(set(media_type_keys))
     media_type_class = f"""### AUTO-GENERATED ###
+from typing import Union
+from ..model import Model
+
 class MediaType:    
     def __init__(self, {' = None, '.join(media_type_keys)} = None):
+        self.model: Union[Model, None] = None
 """
     for key in media_type_keys:
         media_type_class = media_type_class + f"""        self.{key} = {key}
 """
-#    media_type_class = media_type_class + """
-#    @property
-#    def schema(self):
-#        return {
-#"""
-#    for key in media_types_json["oa3_schema"]:
-#        media_type_class = media_type_class + f"""            '{key}': self.{media_types_json["oa3_schema"][key]},
-#"""
-#    media_type_class = media_type_class + """        }
     media_type_class = media_type_class + """
+    def register_model(self, model: Model):
+        self.model = model
+
+    @property
+    def schema(self):
+        if self.model is None:
+            raise ValueError("No model was registered to the media type. Unable to generate the schema")
+        return {""" + f"""
+            self.{media_types_json["oa3_schema"]["media_type"]}: """ + """{
+                "schema": {
+                    "$ref": self.model._get_component_name()
+                }
+            }
+        }
 
 class MediaTypes:
 """
