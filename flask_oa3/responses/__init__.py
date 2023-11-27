@@ -1,4 +1,5 @@
 ### AUTO-GENERATED ###
+from typing import Union
 from .response import BaseResponse, ResponseType
 
 class ContinueResponse(BaseResponse):
@@ -716,3 +717,63 @@ class NetworkAuthenticationRequiredResponse(BaseResponse):
     __STATUS_CODE__: int = 511
     __PHRASE__: str = "Network Authentication Required"
 
+
+def get_response_by_status_code(status_code: int) -> Union[BaseResponse, None]:
+    responses = {
+            "100": ContinueResponse,
+            "101": SwitchingProtocolsResponse,
+            "200": OKResponse,
+            "201": CreatedResponse,
+            "202": AcceptedResponse,
+            "203": NonAuthoritativeInformationResponse,
+            "204": NoContentResponse,
+            "205": ResetContentResponse,
+            "206": PartialContentResponse,
+            "300": MultipleChoicesResponse,
+            "301": MovedPermanentlyResponse,
+            "302": FoundResponse,
+            "303": SeeOtherResponse,
+            "304": NotModifiedResponse,
+            "305": UseProxyResponse,
+            "307": TemporaryRedirectResponse,
+            "400": BadRequestResponse,
+            "401": UnauthorizedResponse,
+            "402": PaymentRequiredResponse,
+            "403": ForbiddenResponse,
+            "404": NotFoundResponse,
+            "405": MethodNotAllowedResponse,
+            "406": NotAcceptableResponse,
+            "407": ProxyAuthenticationRequiredResponse,
+            "408": RequestTimeoutResponse,
+            "409": ConflictResponse,
+            "410": GoneResponse,
+            "411": LengthRequiredResponse,
+            "412": PreconditionFailedResponse,
+            "413": PayloadTooLargeResponse,
+            "414": URITooLongResponse,
+            "415": UnsupportedMediaTypeResponse,
+            "416": RangeNotSatisfiableResponse,
+            "417": ExpectationFailedResponse,
+            "426": UpgradeRequiredResponse,
+            "500": InternalServerErrorResponse,
+            "501": NotImplementedResponse,
+            "502": BadGatewayResponse,
+            "503": ServiceUnavailableResponse,
+            "504": GatewayTimeoutResponse,
+            "505": HTTPVersionNotSupportedResponse,
+            "102": ProcessingResponse,
+            "207": MultiStatusResponse,
+            "226": IMUsedResponse,
+            "308": PermanentRedirectResponse,
+            "422": UnprocessableEntityResponse,
+            "423": LockedResponse,
+            "424": FailedDependencyResponse,
+            "428": PreconditionRequiredResponse,
+            "429": TooManyRequestsResponse,
+            "431": RequestHeaderFieldsTooLargeResponse,
+            "451": UnavailableForLegalReasonsResponse,
+            "506": VariantAlsoNegotiatesResponse,
+            "507": InsufficientStorageResponse,
+            "511": NetworkAuthenticationRequiredResponse,
+    }
+    return responses.get(str(status_code), None)
