@@ -1,6 +1,5 @@
 import os
 from json import loads
-from typing import List
 
 def to_pascal_case(input_str: str) -> str:
     # Split the string by both '/' and '-'
@@ -33,7 +32,6 @@ from .media_type import BaseMediaType
 """
     for media_type in media_types_json:
         media_type_name = to_pascal_case(media_type["media_type"])
-
         media_types_class = media_types_class + f"""class {media_type_name}(BaseMediaType):
     \"\"\"
     Template:
