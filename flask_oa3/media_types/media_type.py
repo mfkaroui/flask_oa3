@@ -1,15 +1,12 @@
 from typing import Union, TYPE_CHECKING
 
 class BaseMediaType:
-    if TYPE_CHECKING:
-        from ..model import Model
-
     __MEDIA_TYPE__: Union[str, None] = None
 
-    def __init__(self, model: Union[Model, None] = None) -> None:
+    def __init__(self, model = None) -> None:
         self.model = model
 
-    def apply_model(self, model: Model):
+    def apply_model(self, model):
         self.model = model
 
     @classmethod
