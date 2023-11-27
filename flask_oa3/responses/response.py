@@ -90,7 +90,9 @@ class BaseResponse:
         Returns:
             dict: The Open API schema
         """     
-        schema = {}
+        schema = {
+            "x-phrase": self.__PHRASE__
+        }
         if self.description is not None:
             schema["description"] = self.description
         if len(self.content) > 0:
