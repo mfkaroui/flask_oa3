@@ -1,331 +1,3942 @@
 ### AUTO-GENERATED ###
-from typing import Union
-from ..model import Model
+from .media_type import BaseMediaType
 
-class MediaType:    
-    def __init__(self, spec_href = None, media_type = None, template = None, spec_title = None):
-        self.model: Union[Model, None] = None
-        self.spec_href = spec_href
-        self.media_type = media_type
-        self.template = template
-        self.spec_title = spec_title
+class ApplicationYaml(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/yaml
 
-    def register_model(self, model: Model):
-        self.model = model
+    SpecTitle:
+        draft-ietf-httpapi-yaml-mediatypes
+    
+    SpecReference:
+        https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-yaml-mediatypes
+    """
+    __MEDIA_TYPE__: str = "application/yaml"
 
-    @property
-    def schema(self):
-        if self.model is None:
-            raise ValueError("No model was registered to the media type. Unable to generate the schema")
-        return {
-            self.media_type: {
-                "schema": {
-                    "$ref": self.model._get_component_name()
-                }
-            }
-        }
+class Application1DInterleavedParityfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/1d-interleaved-parityfec
 
-class MediaTypes:
-    media_type_yaml = MediaType(media_type="application/yaml", template="https://www.iana.org/assignments/media-types/application/yaml", spec_title="draft-ietf-httpapi-yaml-mediatypes", spec_href="https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-yaml-mediatypes")
-    media_type_1d_interleaved_parityfec = MediaType(media_type="application/1d-interleaved-parityfec", template="https://www.iana.org/assignments/media-types/application/1d-interleaved-parityfec", spec_title="RFC6015", spec_href="https://tools.ietf.org/html/rfc6015")
-    media_type_batch_smtp = MediaType(media_type="application/batch-SMTP", template="https://www.iana.org/assignments/media-types/application/batch-SMTP", spec_title="RFC2442", spec_href="https://tools.ietf.org/html/rfc2442")
-    media_type_call_completion = MediaType(media_type="application/call-completion", template="https://www.iana.org/assignments/media-types/application/call-completion", spec_title="RFC6910", spec_href="https://tools.ietf.org/html/rfc6910")
-    media_type_cals_1840 = MediaType(media_type="application/CALS-1840", template="https://www.iana.org/assignments/media-types/application/CALS-1840", spec_title="RFC1895", spec_href="https://tools.ietf.org/html/rfc1895")
-    media_type_cbor = MediaType(media_type="application/cbor", template="https://www.iana.org/assignments/media-types/application/cbor", spec_title="RFC7049", spec_href="https://tools.ietf.org/html/rfc7049")
-    media_type_cdmi_capability = MediaType(media_type="application/cdmi-capability", template="https://www.iana.org/assignments/media-types/application/cdmi-capability", spec_title="RFC6208", spec_href="https://tools.ietf.org/html/rfc6208")
-    media_type_cdmi_container = MediaType(media_type="application/cdmi-container", template="https://www.iana.org/assignments/media-types/application/cdmi-container", spec_title="RFC6208", spec_href="https://tools.ietf.org/html/rfc6208")
-    media_type_cdmi_domain = MediaType(media_type="application/cdmi-domain", template="https://www.iana.org/assignments/media-types/application/cdmi-domain", spec_title="RFC6208", spec_href="https://tools.ietf.org/html/rfc6208")
-    media_type_cdmi_object = MediaType(media_type="application/cdmi-object", template="https://www.iana.org/assignments/media-types/application/cdmi-object", spec_title="RFC6208", spec_href="https://tools.ietf.org/html/rfc6208")
-    media_type_cdmi_queue = MediaType(media_type="application/cdmi-queue", template="https://www.iana.org/assignments/media-types/application/cdmi-queue", spec_title="RFC6208", spec_href="https://tools.ietf.org/html/rfc6208")
-    media_type_cdni = MediaType(media_type="application/cdni", template="https://www.iana.org/assignments/media-types/application/cdni", spec_title="RFC7736", spec_href="https://tools.ietf.org/html/rfc7736")
-    media_type_cfw = MediaType(media_type="application/cfw", template="https://www.iana.org/assignments/media-types/application/cfw", spec_title="RFC6230", spec_href="https://tools.ietf.org/html/rfc6230")
-    media_type_cms = MediaType(media_type="application/cms", template="https://www.iana.org/assignments/media-types/application/cms", spec_title="RFC7193", spec_href="https://tools.ietf.org/html/rfc7193")
-    media_type_csrattrs = MediaType(media_type="application/csrattrs", template="https://www.iana.org/assignments/media-types/application/csrattrs", spec_title="RFC7030", spec_href="https://tools.ietf.org/html/rfc7030")
-    media_type_dicom = MediaType(media_type="application/dicom", template="https://www.iana.org/assignments/media-types/application/dicom", spec_title="RFC3240", spec_href="https://tools.ietf.org/html/rfc3240")
-    media_type_dns = MediaType(media_type="application/dns", template="https://www.iana.org/assignments/media-types/application/dns", spec_title="RFC4027", spec_href="https://tools.ietf.org/html/rfc4027")
-    media_type_dvcs = MediaType(media_type="application/dvcs", template="https://www.iana.org/assignments/media-types/application/dvcs", spec_title="RFC3029", spec_href="https://tools.ietf.org/html/rfc3029")
-    media_type_ecmascript = MediaType(media_type="application/ecmascript", template="https://www.iana.org/assignments/media-types/application/ecmascript", spec_title="RFC4329", spec_href="https://tools.ietf.org/html/rfc4329")
-    media_type_edi_consent = MediaType(media_type="application/EDI-consent", template="https://www.iana.org/assignments/media-types/application/EDI-consent", spec_title="RFC1767", spec_href="https://tools.ietf.org/html/rfc1767")
-    media_type_edifact = MediaType(media_type="application/EDIFACT", template="https://www.iana.org/assignments/media-types/application/EDIFACT", spec_title="RFC1767", spec_href="https://tools.ietf.org/html/rfc1767")
-    media_type_edi_x12 = MediaType(media_type="application/EDI-X12", template="https://www.iana.org/assignments/media-types/application/EDI-X12", spec_title="RFC1767", spec_href="https://tools.ietf.org/html/rfc1767")
-    media_type_encaprtp = MediaType(media_type="application/encaprtp", template="https://www.iana.org/assignments/media-types/application/encaprtp", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_example = MediaType(media_type="application/example", template="https://www.iana.org/assignments/media-types/application/example", spec_title="RFC4735", spec_href="https://tools.ietf.org/html/rfc4735")
-    media_type_fits = MediaType(media_type="application/fits", template="https://www.iana.org/assignments/media-types/application/fits", spec_title="RFC4047", spec_href="https://tools.ietf.org/html/rfc4047")
-    media_type_font_tdpfr = MediaType(media_type="application/font-tdpfr", template="https://www.iana.org/assignments/media-types/application/font-tdpfr", spec_title="RFC3073", spec_href="https://tools.ietf.org/html/rfc3073")
-    media_type_gzip = MediaType(media_type="application/gzip", template="https://www.iana.org/assignments/media-types/application/gzip", spec_title="RFC6713", spec_href="https://tools.ietf.org/html/rfc6713")
-    media_type_h224 = MediaType(media_type="application/H224", template="https://www.iana.org/assignments/media-types/application/H224", spec_title="RFC4573", spec_href="https://tools.ietf.org/html/rfc4573")
-    media_type_http = MediaType(media_type="application/http", template="https://www.iana.org/assignments/media-types/application/http", spec_title="RFC7230", spec_href="https://tools.ietf.org/html/rfc7230")
-    media_type_ibe_pp_data = MediaType(media_type="application/ibe-pp-data", template="https://www.iana.org/assignments/media-types/application/ibe-pp-data", spec_title="RFC5408", spec_href="https://tools.ietf.org/html/rfc5408")
-    media_type_index = MediaType(media_type="application/index", template="https://www.iana.org/assignments/media-types/application/index", spec_title="RFC2652", spec_href="https://tools.ietf.org/html/rfc2652")
-    media_type_iotp = MediaType(media_type="application/iotp", template="https://www.iana.org/assignments/media-types/application/IOTP", spec_title="RFC2935", spec_href="https://tools.ietf.org/html/rfc2935")
-    media_type_ipfix = MediaType(media_type="application/ipfix", template="https://www.iana.org/assignments/media-types/application/ipfix", spec_title="RFC5655", spec_href="https://tools.ietf.org/html/rfc5655")
-    media_type_ipp = MediaType(media_type="application/ipp", template="https://www.iana.org/assignments/media-types/application/ipp", spec_title="RFC2910", spec_href="https://tools.ietf.org/html/rfc2910")
-    media_type_isup = MediaType(media_type="application/isup", template="https://www.iana.org/assignments/media-types/application/ISUP", spec_title="RFC3204", spec_href="https://tools.ietf.org/html/rfc3204")
-    media_type_javascript = MediaType(media_type="application/javascript", template="https://www.iana.org/assignments/media-types/application/javascript", spec_title="RFC4329", spec_href="https://tools.ietf.org/html/rfc4329")
-    media_type_jose = MediaType(media_type="application/jose", template="https://www.iana.org/assignments/media-types/application/jose", spec_title="RFC7515", spec_href="https://tools.ietf.org/html/rfc7515")
-    media_type_json = MediaType(media_type="application/json", template="https://www.iana.org/assignments/media-types/application/json", spec_title="RFC7158", spec_href="https://tools.ietf.org/html/rfc7158")
-    media_type_json_seq = MediaType(media_type="application/json-seq", template="https://www.iana.org/assignments/media-types/application/json-seq", spec_title="RFC7464", spec_href="https://tools.ietf.org/html/rfc7464")
-    media_type_jwt = MediaType(media_type="application/jwt", template="https://www.iana.org/assignments/media-types/application/jwt", spec_title="RFC7519", spec_href="https://tools.ietf.org/html/rfc7519")
-    media_type_link_format = MediaType(media_type="application/link-format", template="https://www.iana.org/assignments/media-types/application/link-format", spec_title="RFC6690", spec_href="https://tools.ietf.org/html/rfc6690")
-    media_type_marc = MediaType(media_type="application/marc", template="https://www.iana.org/assignments/media-types/application/marc", spec_title="RFC2220", spec_href="https://tools.ietf.org/html/rfc2220")
-    media_type_mbox = MediaType(media_type="application/mbox", template="https://www.iana.org/assignments/media-types/application/mbox", spec_title="RFC4155", spec_href="https://tools.ietf.org/html/rfc4155")
-    media_type_mikey = MediaType(media_type="application/mikey", template="https://www.iana.org/assignments/media-types/application/mikey", spec_title="RFC3830", spec_href="https://tools.ietf.org/html/rfc3830")
-    media_type_moss_keys = MediaType(media_type="application/moss-keys", template="https://www.iana.org/assignments/media-types/application/moss-keys", spec_title="RFC1848", spec_href="https://tools.ietf.org/html/rfc1848")
-    media_type_moss_signature = MediaType(media_type="application/moss-signature", template="https://www.iana.org/assignments/media-types/application/moss-signature", spec_title="RFC1848", spec_href="https://tools.ietf.org/html/rfc1848")
-    media_type_mosskey_data = MediaType(media_type="application/mosskey-data", template="https://www.iana.org/assignments/media-types/application/mosskey-data", spec_title="RFC1848", spec_href="https://tools.ietf.org/html/rfc1848")
-    media_type_mosskey_request = MediaType(media_type="application/mosskey-request", template="https://www.iana.org/assignments/media-types/application/mosskey-request", spec_title="RFC1848", spec_href="https://tools.ietf.org/html/rfc1848")
-    media_type_mp21 = MediaType(media_type="application/mp21", template="https://www.iana.org/assignments/media-types/application/mp21", spec_title="RFC6381", spec_href="https://tools.ietf.org/html/rfc6381")
-    media_type_mp4 = MediaType(media_type="application/mp4", template="https://www.iana.org/assignments/media-types/application/mp4", spec_title="RFC4337", spec_href="https://tools.ietf.org/html/rfc4337")
-    media_type_mpeg4_generic = MediaType(media_type="application/mpeg4-generic", template="https://www.iana.org/assignments/media-types/application/mpeg4-generic", spec_title="RFC3640", spec_href="https://tools.ietf.org/html/rfc3640")
-    media_type_mpeg4_iod = MediaType(media_type="application/mpeg4-iod", template="https://www.iana.org/assignments/media-types/application/mpeg4-iod", spec_title="RFC4337", spec_href="https://tools.ietf.org/html/rfc4337")
-    media_type_mpeg4_iod_xmt = MediaType(media_type="application/mpeg4-iod-xmt", template="https://www.iana.org/assignments/media-types/application/mpeg4-iod-xmt", spec_title="RFC4337", spec_href="https://tools.ietf.org/html/rfc4337")
-    media_type_mxf = MediaType(media_type="application/mxf", template="https://www.iana.org/assignments/media-types/application/mxf", spec_title="RFC4539", spec_href="https://tools.ietf.org/html/rfc4539")
-    media_type_nasdata = MediaType(media_type="application/nasdata", template="https://www.iana.org/assignments/media-types/application/nasdata", spec_title="RFC4707", spec_href="https://tools.ietf.org/html/rfc4707")
-    media_type_news_checkgroups = MediaType(media_type="application/news-checkgroups", template="https://www.iana.org/assignments/media-types/application/news-checkgroups", spec_title="RFC5537", spec_href="https://tools.ietf.org/html/rfc5537")
-    media_type_news_groupinfo = MediaType(media_type="application/news-groupinfo", template="https://www.iana.org/assignments/media-types/application/news-groupinfo", spec_title="RFC5537", spec_href="https://tools.ietf.org/html/rfc5537")
-    media_type_news_transmission = MediaType(media_type="application/news-transmission", template="https://www.iana.org/assignments/media-types/application/news-transmission", spec_title="RFC5537", spec_href="https://tools.ietf.org/html/rfc5537")
-    media_type_ocsp_request = MediaType(media_type="application/ocsp-request", template="https://www.iana.org/assignments/media-types/application/ocsp-request", spec_title="RFC6960", spec_href="https://tools.ietf.org/html/rfc6960")
-    media_type_ocsp_response = MediaType(media_type="application/ocsp-response", template="https://www.iana.org/assignments/media-types/application/ocsp-response", spec_title="RFC6960", spec_href="https://tools.ietf.org/html/rfc6960")
-    media_type_octet_stream = MediaType(media_type="application/octet-stream", template="https://www.iana.org/assignments/media-types/application/octet-stream", spec_title="RFC2045", spec_href="https://tools.ietf.org/html/rfc2045")
-    media_type_oda = MediaType(media_type="application/oda", template="https://www.iana.org/assignments/media-types/application/ODA", spec_title="RFC2045", spec_href="https://tools.ietf.org/html/rfc2045")
-    media_type_ogg = MediaType(media_type="application/ogg", template="https://www.iana.org/assignments/media-types/application/ogg", spec_title="RFC5334", spec_href="https://tools.ietf.org/html/rfc5334")
-    media_type_pdf = MediaType(media_type="application/pdf", template="https://www.iana.org/assignments/media-types/application/pdf", spec_title="RFC3778", spec_href="https://tools.ietf.org/html/rfc3778")
-    media_type_pgp_encrypted = MediaType(media_type="application/pgp-encrypted", template="https://www.iana.org/assignments/media-types/application/pgp-encrypted", spec_title="RFC3156", spec_href="https://tools.ietf.org/html/rfc3156")
-    media_type_pgp_signature = MediaType(media_type="application/pgp-signature", template="https://www.iana.org/assignments/media-types/application/pgp-signature", spec_title="RFC3156", spec_href="https://tools.ietf.org/html/rfc3156")
-    media_type_pkcs10 = MediaType(media_type="application/pkcs10", template="https://www.iana.org/assignments/media-types/application/pkcs10", spec_title="RFC5967", spec_href="https://tools.ietf.org/html/rfc5967")
-    media_type_pkcs7_mime = MediaType(media_type="application/pkcs7-mime", template="https://www.iana.org/assignments/media-types/application/pkcs7-mime", spec_title="RFC5751", spec_href="https://tools.ietf.org/html/rfc5751")
-    media_type_pkcs7_signature = MediaType(media_type="application/pkcs7-signature", template="https://www.iana.org/assignments/media-types/application/pkcs7-signature", spec_title="RFC5751", spec_href="https://tools.ietf.org/html/rfc5751")
-    media_type_pkcs8 = MediaType(media_type="application/pkcs8", template="https://www.iana.org/assignments/media-types/application/pkcs8", spec_title="RFC5958", spec_href="https://tools.ietf.org/html/rfc5958")
-    media_type_pkix_attr_cert = MediaType(media_type="application/pkix-attr-cert", template="https://www.iana.org/assignments/media-types/application/pkix-attr-cert", spec_title="RFC5877", spec_href="https://tools.ietf.org/html/rfc5877")
-    media_type_pkix_cert = MediaType(media_type="application/pkix-cert", template="https://www.iana.org/assignments/media-types/application/pkix-cert", spec_title="RFC2585", spec_href="https://tools.ietf.org/html/rfc2585")
-    media_type_pkix_crl = MediaType(media_type="application/pkix-crl", template="https://www.iana.org/assignments/media-types/application/pkix-crl", spec_title="RFC2585", spec_href="https://tools.ietf.org/html/rfc2585")
-    media_type_pkix_pkipath = MediaType(media_type="application/pkix-pkipath", template="https://www.iana.org/assignments/media-types/application/pkix-pkipath", spec_title="RFC6066", spec_href="https://tools.ietf.org/html/rfc6066")
-    media_type_pkixcmp = MediaType(media_type="application/pkixcmp", template="https://www.iana.org/assignments/media-types/application/pkixcmp", spec_title="RFC2510", spec_href="https://tools.ietf.org/html/rfc2510")
-    media_type_postscript = MediaType(media_type="application/postscript", template="https://www.iana.org/assignments/media-types/application/postscript", spec_title="RFC2045", spec_href="https://tools.ietf.org/html/rfc2045")
-    media_type_qsig = MediaType(media_type="application/qsig", template="https://www.iana.org/assignments/media-types/application/QSIG", spec_title="RFC3204", spec_href="https://tools.ietf.org/html/rfc3204")
-    media_type_raptorfec = MediaType(media_type="application/raptorfec", template="https://www.iana.org/assignments/media-types/application/raptorfec", spec_title="RFC6682", spec_href="https://tools.ietf.org/html/rfc6682")
-    media_type_remote_printing = MediaType(media_type="application/remote-printing", template="https://www.iana.org/assignments/media-types/application/remote-printing", spec_title="RFC1486", spec_href="https://tools.ietf.org/html/rfc1486")
-    media_type_rpki_ghostbusters = MediaType(media_type="application/rpki-ghostbusters", template="https://www.iana.org/assignments/media-types/application/rpki-ghostbusters", spec_title="RFC6493", spec_href="https://tools.ietf.org/html/rfc6493")
-    media_type_rpki_manifest = MediaType(media_type="application/rpki-manifest", template="https://www.iana.org/assignments/media-types/application/rpki-manifest", spec_title="RFC6481", spec_href="https://tools.ietf.org/html/rfc6481")
-    media_type_rpki_roa = MediaType(media_type="application/rpki-roa", template="https://www.iana.org/assignments/media-types/application/rpki-roa", spec_title="RFC6481", spec_href="https://tools.ietf.org/html/rfc6481")
-    media_type_rpki_updown = MediaType(media_type="application/rpki-updown", template="https://www.iana.org/assignments/media-types/application/rpki-updown", spec_title="RFC6492", spec_href="https://tools.ietf.org/html/rfc6492")
-    media_type_rtploopback = MediaType(media_type="application/rtploopback", template="https://www.iana.org/assignments/media-types/application/rtploopback", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_rtx = MediaType(media_type="application/rtx", template="https://www.iana.org/assignments/media-types/application/rtx", spec_title="RFC4588", spec_href="https://tools.ietf.org/html/rfc4588")
-    media_type_scvp_cv_request = MediaType(media_type="application/scvp-cv-request", template="https://www.iana.org/assignments/media-types/application/scvp-cv-request", spec_title="RFC5055", spec_href="https://tools.ietf.org/html/rfc5055")
-    media_type_scvp_cv_response = MediaType(media_type="application/scvp-cv-response", template="https://www.iana.org/assignments/media-types/application/scvp-cv-response", spec_title="RFC5055", spec_href="https://tools.ietf.org/html/rfc5055")
-    media_type_scvp_vp_request = MediaType(media_type="application/scvp-vp-request", template="https://www.iana.org/assignments/media-types/application/scvp-vp-request", spec_title="RFC5055", spec_href="https://tools.ietf.org/html/rfc5055")
-    media_type_scvp_vp_response = MediaType(media_type="application/scvp-vp-response", template="https://www.iana.org/assignments/media-types/application/scvp-vp-response", spec_title="RFC5055", spec_href="https://tools.ietf.org/html/rfc5055")
-    media_type_sdp = MediaType(media_type="application/sdp", template="https://www.iana.org/assignments/media-types/application/sdp", spec_title="RFC4566", spec_href="https://tools.ietf.org/html/rfc4566")
-    media_type_sgml = MediaType(media_type="application/sgml", template="https://www.iana.org/assignments/media-types/application/SGML", spec_title="RFC1874", spec_href="https://tools.ietf.org/html/rfc1874")
-    media_type_sieve = MediaType(media_type="application/sieve", template="https://www.iana.org/assignments/media-types/application/sieve", spec_title="RFC5228", spec_href="https://tools.ietf.org/html/rfc5228")
-    media_type_simple_message_summary = MediaType(media_type="application/simple-message-summary", template="https://www.iana.org/assignments/media-types/application/simple-message-summary", spec_title="RFC3842", spec_href="https://tools.ietf.org/html/rfc3842")
-    media_type_smpte336m = MediaType(media_type="application/smpte336m", template="https://www.iana.org/assignments/media-types/application/smpte336m", spec_title="RFC6597", spec_href="https://tools.ietf.org/html/rfc6597")
-    media_type_sql = MediaType(media_type="application/sql", template="https://www.iana.org/assignments/media-types/application/sql", spec_title="RFC6922", spec_href="https://tools.ietf.org/html/rfc6922")
-    media_type_srgs = MediaType(media_type="application/srgs", template="https://www.iana.org/assignments/media-types/application/srgs", spec_title="RFC4267", spec_href="https://tools.ietf.org/html/rfc4267")
-    media_type_tamp_apex_update = MediaType(media_type="application/tamp-apex-update", template="https://www.iana.org/assignments/media-types/application/tamp-apex-update", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_apex_update_confirm = MediaType(media_type="application/tamp-apex-update-confirm", template="https://www.iana.org/assignments/media-types/application/tamp-apex-update-confirm", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_community_update = MediaType(media_type="application/tamp-community-update", template="https://www.iana.org/assignments/media-types/application/tamp-community-update", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_community_update_confirm = MediaType(media_type="application/tamp-community-update-confirm", template="https://www.iana.org/assignments/media-types/application/tamp-community-update-confirm", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_error = MediaType(media_type="application/tamp-error", template="https://www.iana.org/assignments/media-types/application/tamp-error", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_sequence_adjust = MediaType(media_type="application/tamp-sequence-adjust", template="https://www.iana.org/assignments/media-types/application/tamp-sequence-adjust", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_sequence_adjust_confirm = MediaType(media_type="application/tamp-sequence-adjust-confirm", template="https://www.iana.org/assignments/media-types/application/tamp-sequence-adjust-confirm", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_status_query = MediaType(media_type="application/tamp-status-query", template="https://www.iana.org/assignments/media-types/application/tamp-status-query", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_status_response = MediaType(media_type="application/tamp-status-response", template="https://www.iana.org/assignments/media-types/application/tamp-status-response", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_update = MediaType(media_type="application/tamp-update", template="https://www.iana.org/assignments/media-types/application/tamp-update", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_tamp_update_confirm = MediaType(media_type="application/tamp-update-confirm", template="https://www.iana.org/assignments/media-types/application/tamp-update-confirm", spec_title="RFC5934", spec_href="https://tools.ietf.org/html/rfc5934")
-    media_type_timestamp_query = MediaType(media_type="application/timestamp-query", template="https://www.iana.org/assignments/media-types/application/timestamp-query", spec_title="RFC3161", spec_href="https://tools.ietf.org/html/rfc3161")
-    media_type_timestamp_reply = MediaType(media_type="application/timestamp-reply", template="https://www.iana.org/assignments/media-types/application/timestamp-reply", spec_title="RFC3161", spec_href="https://tools.ietf.org/html/rfc3161")
-    media_type_timestamped_data = MediaType(media_type="application/timestamped-data", template="https://www.iana.org/assignments/media-types/application/timestamped-data", spec_title="RFC5955", spec_href="https://tools.ietf.org/html/rfc5955")
-    media_type_ulpfec = MediaType(media_type="application/ulpfec", template="https://www.iana.org/assignments/media-types/application/ulpfec", spec_title="RFC5109", spec_href="https://tools.ietf.org/html/rfc5109")
-    media_type_vemmi = MediaType(media_type="application/vemmi", template="https://www.iana.org/assignments/media-types/application/vemmi", spec_title="RFC2122", spec_href="https://tools.ietf.org/html/rfc2122")
-    media_type_vq_rtcpxr = MediaType(media_type="application/vq-rtcpxr", template="https://www.iana.org/assignments/media-types/application/vq-rtcpxr", spec_title="RFC6035", spec_href="https://tools.ietf.org/html/rfc6035")
-    media_type_whoispp_query = MediaType(media_type="application/whoispp-query", template="https://www.iana.org/assignments/media-types/application/whoispp-query", spec_title="RFC2957", spec_href="https://tools.ietf.org/html/rfc2957")
-    media_type_whoispp_response = MediaType(media_type="application/whoispp-response", template="https://www.iana.org/assignments/media-types/application/whoispp-response", spec_title="RFC2958", spec_href="https://tools.ietf.org/html/rfc2958")
-    media_type_x400_bp = MediaType(media_type="application/x400-bp", template="https://www.iana.org/assignments/media-types/application/x400-bp", spec_title="RFC1494", spec_href="https://tools.ietf.org/html/rfc1494")
-    media_type_xml = MediaType(media_type="application/xml", template="https://www.iana.org/assignments/media-types/application/xml", spec_title="RFC7303", spec_href="https://tools.ietf.org/html/rfc7303")
-    media_type_xml_dtd = MediaType(media_type="application/xml-dtd", template="https://www.iana.org/assignments/media-types/application/xml-dtd", spec_title="RFC7303", spec_href="https://tools.ietf.org/html/rfc7303")
-    media_type_xml_external_parsed_entity = MediaType(media_type="application/xml-external-parsed-entity", template="https://www.iana.org/assignments/media-types/application/xml-external-parsed-entity", spec_title="RFC7303", spec_href="https://tools.ietf.org/html/rfc7303")
-    media_type_yang = MediaType(media_type="application/yang", template="https://www.iana.org/assignments/media-types/application/yang", spec_title="RFC6020", spec_href="https://tools.ietf.org/html/rfc6020")
-    media_type_zlib = MediaType(media_type="application/zlib", template="https://www.iana.org/assignments/media-types/application/zlib", spec_title="RFC6713", spec_href="https://tools.ietf.org/html/rfc6713")
-    media_type_1d_interleaved_parityfec = MediaType(media_type="audio/1d-interleaved-parityfec", template="https://www.iana.org/assignments/media-types/audio/1d-interleaved-parityfec", spec_title="RFC6015", spec_href="https://tools.ietf.org/html/rfc6015")
-    media_type_32kadpcm = MediaType(media_type="audio/32kadpcm", template="https://www.iana.org/assignments/media-types/audio/32kadpcm", spec_title="RFC3802", spec_href="https://tools.ietf.org/html/rfc3802")
-    media_type_3gpp = MediaType(media_type="audio/3gpp", template="https://www.iana.org/assignments/media-types/audio/3gpp", spec_title="RFC3839", spec_href="https://tools.ietf.org/html/rfc3839")
-    media_type_3gpp2 = MediaType(media_type="audio/3gpp2", template="https://www.iana.org/assignments/media-types/audio/3gpp2", spec_title="RFC4393", spec_href="https://tools.ietf.org/html/rfc4393")
-    media_type_ac3 = MediaType(media_type="audio/ac3", template="https://www.iana.org/assignments/media-types/audio/ac3", spec_title="RFC4184", spec_href="https://tools.ietf.org/html/rfc4184")
-    media_type_amr = MediaType(media_type="audio/AMR", template="https://www.iana.org/assignments/media-types/audio/AMR", spec_title="RFC4867", spec_href="https://tools.ietf.org/html/rfc4867")
-    media_type_amr_wb = MediaType(media_type="audio/AMR-WB", template="https://www.iana.org/assignments/media-types/audio/AMR-WB", spec_title="RFC4867", spec_href="https://tools.ietf.org/html/rfc4867")
-    media_type_aptx = MediaType(media_type="audio/aptx", template="https://www.iana.org/assignments/media-types/audio/aptx", spec_title="RFC7310", spec_href="https://tools.ietf.org/html/rfc7310")
-    media_type_asc = MediaType(media_type="audio/asc", template="https://www.iana.org/assignments/media-types/audio/asc", spec_title="RFC6295", spec_href="https://tools.ietf.org/html/rfc6295")
-    media_type_atrac_advanced_lossless = MediaType(media_type="audio/ATRAC-ADVANCED-LOSSLESS", template="https://www.iana.org/assignments/media-types/audio/ATRAC-ADVANCED-LOSSLESS", spec_title="RFC5584", spec_href="https://tools.ietf.org/html/rfc5584")
-    media_type_atrac_x = MediaType(media_type="audio/ATRAC-X", template="https://www.iana.org/assignments/media-types/audio/ATRAC-X", spec_title="RFC5584", spec_href="https://tools.ietf.org/html/rfc5584")
-    media_type_atrac3 = MediaType(media_type="audio/ATRAC3", template="https://www.iana.org/assignments/media-types/audio/ATRAC3", spec_title="RFC5584", spec_href="https://tools.ietf.org/html/rfc5584")
-    media_type_basic = MediaType(media_type="audio/basic", template="https://www.iana.org/assignments/media-types/audio/basic", spec_title="RFC2045", spec_href="https://tools.ietf.org/html/rfc2045")
-    media_type_bv16 = MediaType(media_type="audio/BV16", template="https://www.iana.org/assignments/media-types/audio/BV16", spec_title="RFC4298", spec_href="https://tools.ietf.org/html/rfc4298")
-    media_type_bv32 = MediaType(media_type="audio/BV32", template="https://www.iana.org/assignments/media-types/audio/BV32", spec_title="RFC4298", spec_href="https://tools.ietf.org/html/rfc4298")
-    media_type_clearmode = MediaType(media_type="audio/clearmode", template="https://www.iana.org/assignments/media-types/audio/clearmode", spec_title="RFC4040", spec_href="https://tools.ietf.org/html/rfc4040")
-    media_type_cn = MediaType(media_type="audio/CN", template="https://www.iana.org/assignments/media-types/audio/CN", spec_title="RFC3389", spec_href="https://tools.ietf.org/html/rfc3389")
-    media_type_dat12 = MediaType(media_type="audio/DAT12", template="https://www.iana.org/assignments/media-types/audio/DAT12", spec_title="RFC3190", spec_href="https://tools.ietf.org/html/rfc3190")
-    media_type_dls = MediaType(media_type="audio/dls", template="https://www.iana.org/assignments/media-types/audio/dls", spec_title="RFC4613", spec_href="https://tools.ietf.org/html/rfc4613")
-    media_type_dsr_es201108 = MediaType(media_type="audio/dsr-es201108", template="https://www.iana.org/assignments/media-types/audio/dsr-es201108", spec_title="RFC3557", spec_href="https://tools.ietf.org/html/rfc3557")
-    media_type_dsr_es202050 = MediaType(media_type="audio/dsr-es202050", template="https://www.iana.org/assignments/media-types/audio/dsr-es202050", spec_title="RFC4060", spec_href="https://tools.ietf.org/html/rfc4060")
-    media_type_dsr_es202211 = MediaType(media_type="audio/dsr-es202211", template="https://www.iana.org/assignments/media-types/audio/dsr-es202211", spec_title="RFC4060", spec_href="https://tools.ietf.org/html/rfc4060")
-    media_type_dsr_es202212 = MediaType(media_type="audio/dsr-es202212", template="https://www.iana.org/assignments/media-types/audio/dsr-es202212", spec_title="RFC4060", spec_href="https://tools.ietf.org/html/rfc4060")
-    media_type_dv = MediaType(media_type="audio/DV", template="https://www.iana.org/assignments/media-types/audio/DV", spec_title="RFC6469", spec_href="https://tools.ietf.org/html/rfc6469")
-    media_type_dvi4 = MediaType(media_type="audio/DVI4", template="https://www.iana.org/assignments/media-types/audio/DVI4", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_eac3 = MediaType(media_type="audio/eac3", template="https://www.iana.org/assignments/media-types/audio/eac3", spec_title="RFC4598", spec_href="https://tools.ietf.org/html/rfc4598")
-    media_type_encaprtp = MediaType(media_type="audio/encaprtp", template="https://www.iana.org/assignments/media-types/audio/encaprtp", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_evrc = MediaType(media_type="audio/EVRC", template="https://www.iana.org/assignments/media-types/audio/EVRC", spec_title="RFC4788", spec_href="https://tools.ietf.org/html/rfc4788")
-    media_type_evrc_qcp = MediaType(media_type="audio/EVRC-QCP", template="https://www.iana.org/assignments/media-types/audio/EVRC-QCP", spec_title="RFC3625", spec_href="https://tools.ietf.org/html/rfc3625")
-    media_type_evrc0 = MediaType(media_type="audio/EVRC0", template="https://www.iana.org/assignments/media-types/audio/EVRC0", spec_title="RFC4788", spec_href="https://tools.ietf.org/html/rfc4788")
-    media_type_evrc1 = MediaType(media_type="audio/EVRC1", template="https://www.iana.org/assignments/media-types/audio/EVRC1", spec_title="RFC4788", spec_href="https://tools.ietf.org/html/rfc4788")
-    media_type_evrcb = MediaType(media_type="audio/EVRCB", template="https://www.iana.org/assignments/media-types/audio/EVRCB", spec_title="RFC5188", spec_href="https://tools.ietf.org/html/rfc5188")
-    media_type_evrcb0 = MediaType(media_type="audio/EVRCB0", template="https://www.iana.org/assignments/media-types/audio/EVRCB0", spec_title="RFC5188", spec_href="https://tools.ietf.org/html/rfc5188")
-    media_type_evrcb1 = MediaType(media_type="audio/EVRCB1", template="https://www.iana.org/assignments/media-types/audio/EVRCB1", spec_title="RFC4788", spec_href="https://tools.ietf.org/html/rfc4788")
-    media_type_evrcnw = MediaType(media_type="audio/EVRCNW", template="https://www.iana.org/assignments/media-types/audio/EVRCNW", spec_title="RFC6884", spec_href="https://tools.ietf.org/html/rfc6884")
-    media_type_evrcnw0 = MediaType(media_type="audio/EVRCNW0", template="https://www.iana.org/assignments/media-types/audio/EVRCNW0", spec_title="RFC6884", spec_href="https://tools.ietf.org/html/rfc6884")
-    media_type_evrcnw1 = MediaType(media_type="audio/EVRCNW1", template="https://www.iana.org/assignments/media-types/audio/EVRCNW1", spec_title="RFC6884", spec_href="https://tools.ietf.org/html/rfc6884")
-    media_type_evrcwb = MediaType(media_type="audio/EVRCWB", template="https://www.iana.org/assignments/media-types/audio/EVRCWB", spec_title="RFC5188", spec_href="https://tools.ietf.org/html/rfc5188")
-    media_type_evrcwb0 = MediaType(media_type="audio/EVRCWB0", template="https://www.iana.org/assignments/media-types/audio/EVRCWB0", spec_title="RFC5188", spec_href="https://tools.ietf.org/html/rfc5188")
-    media_type_evrcwb1 = MediaType(media_type="audio/EVRCWB1", template="https://www.iana.org/assignments/media-types/audio/EVRCWB1", spec_title="RFC5188", spec_href="https://tools.ietf.org/html/rfc5188")
-    media_type_example = MediaType(media_type="audio/example", template="https://www.iana.org/assignments/media-types/audio/example", spec_title="RFC4735", spec_href="https://tools.ietf.org/html/rfc4735")
-    media_type_fwdred = MediaType(media_type="audio/fwdred", template="https://www.iana.org/assignments/media-types/audio/fwdred", spec_title="RFC6354", spec_href="https://tools.ietf.org/html/rfc6354")
-    media_type_g711_0 = MediaType(media_type="audio/G711-0", template="https://www.iana.org/assignments/media-types/audio/G711-0", spec_title="RFC7655", spec_href="https://tools.ietf.org/html/rfc7655")
-    media_type_g719 = MediaType(media_type="audio/G719", template="https://www.iana.org/assignments/media-types/audio/G719", spec_title="RFC Errata ", spec_href="https://tools.ietf.org/html/rfc errata ")
-    media_type_g7221 = MediaType(media_type="audio/G7221", template="https://www.iana.org/assignments/media-types/audio/G7221", spec_title="RFC5577", spec_href="https://tools.ietf.org/html/rfc5577")
-    media_type_g722 = MediaType(media_type="audio/G722", template="https://www.iana.org/assignments/media-types/audio/G722", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g723 = MediaType(media_type="audio/G723", template="https://www.iana.org/assignments/media-types/audio/G723", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g726_16 = MediaType(media_type="audio/G726-16", template="https://www.iana.org/assignments/media-types/audio/G726-16", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g726_24 = MediaType(media_type="audio/G726-24", template="https://www.iana.org/assignments/media-types/audio/G726-24", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g726_32 = MediaType(media_type="audio/G726-32", template="https://www.iana.org/assignments/media-types/audio/G726-32", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g726_40 = MediaType(media_type="audio/G726-40", template="https://www.iana.org/assignments/media-types/audio/G726-40", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g728 = MediaType(media_type="audio/G728", template="https://www.iana.org/assignments/media-types/audio/G728", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g729 = MediaType(media_type="audio/G729", template="https://www.iana.org/assignments/media-types/audio/G729", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g729d = MediaType(media_type="audio/G729D", template="https://www.iana.org/assignments/media-types/audio/G729D", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_g729e = MediaType(media_type="audio/G729E", template="https://www.iana.org/assignments/media-types/audio/G729E", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_gsm = MediaType(media_type="audio/GSM", template="https://www.iana.org/assignments/media-types/audio/GSM", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_gsm_efr = MediaType(media_type="audio/GSM-EFR", template="https://www.iana.org/assignments/media-types/audio/GSM-EFR", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_gsm_hr_08 = MediaType(media_type="audio/GSM-HR-08", template="https://www.iana.org/assignments/media-types/audio/GSM-HR-08", spec_title="RFC5993", spec_href="https://tools.ietf.org/html/rfc5993")
-    media_type_ilbc = MediaType(media_type="audio/iLBC", template="https://www.iana.org/assignments/media-types/audio/iLBC", spec_title="RFC3952", spec_href="https://tools.ietf.org/html/rfc3952")
-    media_type_l8 = MediaType(media_type="audio/L8", template="https://www.iana.org/assignments/media-types/audio/L8", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_l16 = MediaType(media_type="audio/L16", template="https://www.iana.org/assignments/media-types/audio/L16", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_l20 = MediaType(media_type="audio/L20", template="https://www.iana.org/assignments/media-types/audio/L20", spec_title="RFC3190", spec_href="https://tools.ietf.org/html/rfc3190")
-    media_type_l24 = MediaType(media_type="audio/L24", template="https://www.iana.org/assignments/media-types/audio/L24", spec_title="RFC3190", spec_href="https://tools.ietf.org/html/rfc3190")
-    media_type_lpc = MediaType(media_type="audio/LPC", template="https://www.iana.org/assignments/media-types/audio/LPC", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_mobile_xmf = MediaType(media_type="audio/mobile-xmf", template="https://www.iana.org/assignments/media-types/audio/mobile-xmf", spec_title="RFC4723", spec_href="https://tools.ietf.org/html/rfc4723")
-    media_type_mpa = MediaType(media_type="audio/MPA", template="https://www.iana.org/assignments/media-types/audio/MPA", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_mp4 = MediaType(media_type="audio/mp4", template="https://www.iana.org/assignments/media-types/audio/mp4", spec_title="RFC4337", spec_href="https://tools.ietf.org/html/rfc4337")
-    media_type_mp4a_latm = MediaType(media_type="audio/MP4A-LATM", template="https://www.iana.org/assignments/media-types/audio/MP4A-LATM", spec_title="RFC6416", spec_href="https://tools.ietf.org/html/rfc6416")
-    media_type_mpa_robust = MediaType(media_type="audio/mpa-robust", template="https://www.iana.org/assignments/media-types/audio/mpa-robust", spec_title="RFC5219", spec_href="https://tools.ietf.org/html/rfc5219")
-    media_type_mpeg = MediaType(media_type="audio/mpeg", template="https://www.iana.org/assignments/media-types/audio/mpeg", spec_title="RFC3003", spec_href="https://tools.ietf.org/html/rfc3003")
-    media_type_mpeg4_generic = MediaType(media_type="audio/mpeg4-generic", template="https://www.iana.org/assignments/media-types/audio/mpeg4-generic", spec_title="RFC3640", spec_href="https://tools.ietf.org/html/rfc3640")
-    media_type_ogg = MediaType(media_type="audio/ogg", template="https://www.iana.org/assignments/media-types/audio/ogg", spec_title="RFC5334", spec_href="https://tools.ietf.org/html/rfc5334")
-    media_type_opus = MediaType(media_type="audio/opus", template="https://www.iana.org/assignments/media-types/audio/opus", spec_title="RFC7587", spec_href="https://tools.ietf.org/html/rfc7587")
-    media_type_pcma = MediaType(media_type="audio/PCMA", template="https://www.iana.org/assignments/media-types/audio/PCMA", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_pcma_wb = MediaType(media_type="audio/PCMA-WB", template="https://www.iana.org/assignments/media-types/audio/PCMA-WB", spec_title="RFC5391", spec_href="https://tools.ietf.org/html/rfc5391")
-    media_type_pcmu = MediaType(media_type="audio/PCMU", template="https://www.iana.org/assignments/media-types/audio/PCMU", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_pcmu_wb = MediaType(media_type="audio/PCMU-WB", template="https://www.iana.org/assignments/media-types/audio/PCMU-WB", spec_title="RFC5391", spec_href="https://tools.ietf.org/html/rfc5391")
-    media_type_raptorfec = MediaType(media_type="audio/raptorfec", template="https://www.iana.org/assignments/media-types/audio/raptorfec", spec_title="RFC6682", spec_href="https://tools.ietf.org/html/rfc6682")
-    media_type_red = MediaType(media_type="audio/RED", template="https://www.iana.org/assignments/media-types/audio/RED", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_rtploopback = MediaType(media_type="audio/rtploopback", template="https://www.iana.org/assignments/media-types/audio/rtploopback", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_rtp_midi = MediaType(media_type="audio/rtp-midi", template="https://www.iana.org/assignments/media-types/audio/rtp-midi", spec_title="RFC6295", spec_href="https://tools.ietf.org/html/rfc6295")
-    media_type_rtx = MediaType(media_type="audio/rtx", template="https://www.iana.org/assignments/media-types/audio/rtx", spec_title="RFC4588", spec_href="https://tools.ietf.org/html/rfc4588")
-    media_type_smv = MediaType(media_type="audio/SMV", template="https://www.iana.org/assignments/media-types/audio/SMV", spec_title="RFC3558", spec_href="https://tools.ietf.org/html/rfc3558")
-    media_type_smv0 = MediaType(media_type="audio/SMV0", template="https://www.iana.org/assignments/media-types/audio/SMV0", spec_title="RFC3558", spec_href="https://tools.ietf.org/html/rfc3558")
-    media_type_smv_qcp = MediaType(media_type="audio/SMV-QCP", template="https://www.iana.org/assignments/media-types/audio/SMV-QCP", spec_title="RFC3625", spec_href="https://tools.ietf.org/html/rfc3625")
-    media_type_speex = MediaType(media_type="audio/speex", template="https://www.iana.org/assignments/media-types/audio/speex", spec_title="RFC5574", spec_href="https://tools.ietf.org/html/rfc5574")
-    media_type_t140c = MediaType(media_type="audio/t140c", template="https://www.iana.org/assignments/media-types/audio/t140c", spec_title="RFC4351", spec_href="https://tools.ietf.org/html/rfc4351")
-    media_type_t38 = MediaType(media_type="audio/t38", template="https://www.iana.org/assignments/media-types/audio/t38", spec_title="RFC4612", spec_href="https://tools.ietf.org/html/rfc4612")
-    media_type_telephone_event = MediaType(media_type="audio/telephone-event", template="https://www.iana.org/assignments/media-types/audio/telephone-event", spec_title="RFC4733", spec_href="https://tools.ietf.org/html/rfc4733")
-    media_type_tone = MediaType(media_type="audio/tone", template="https://www.iana.org/assignments/media-types/audio/tone", spec_title="RFC4733", spec_href="https://tools.ietf.org/html/rfc4733")
-    media_type_uemclip = MediaType(media_type="audio/UEMCLIP", template="https://www.iana.org/assignments/media-types/audio/UEMCLIP", spec_title="RFC5686", spec_href="https://tools.ietf.org/html/rfc5686")
-    media_type_ulpfec = MediaType(media_type="audio/ulpfec", template="https://www.iana.org/assignments/media-types/audio/ulpfec", spec_title="RFC5109", spec_href="https://tools.ietf.org/html/rfc5109")
-    media_type_vdvi = MediaType(media_type="audio/VDVI", template="https://www.iana.org/assignments/media-types/audio/VDVI", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_vmr_wb = MediaType(media_type="audio/VMR-WB", template="https://www.iana.org/assignments/media-types/audio/VMR-WB", spec_title="RFC4348", spec_href="https://tools.ietf.org/html/rfc4348")
-    media_type_vorbis = MediaType(media_type="audio/vorbis", template="https://www.iana.org/assignments/media-types/audio/vorbis", spec_title="RFC5215", spec_href="https://tools.ietf.org/html/rfc5215")
-    media_type_vorbis_config = MediaType(media_type="audio/vorbis-config", template="https://www.iana.org/assignments/media-types/audio/vorbis-config", spec_title="RFC5215", spec_href="https://tools.ietf.org/html/rfc5215")
-    media_type_cpim = MediaType(media_type="message/CPIM", template="https://www.iana.org/assignments/media-types/message/CPIM", spec_title="RFC3862", spec_href="https://tools.ietf.org/html/rfc3862")
-    media_type_delivery_status = MediaType(media_type="message/delivery-status", template="https://www.iana.org/assignments/media-types/message/delivery-status", spec_title="RFC1894", spec_href="https://tools.ietf.org/html/rfc1894")
-    media_type_disposition_notification = MediaType(media_type="message/disposition-notification", template="https://www.iana.org/assignments/media-types/message/disposition-notification", spec_title="RFC3798", spec_href="https://tools.ietf.org/html/rfc3798")
-    media_type_example = MediaType(media_type="message/example", template="https://www.iana.org/assignments/media-types/message/example", spec_title="RFC4735", spec_href="https://tools.ietf.org/html/rfc4735")
-    media_type_feedback_report = MediaType(media_type="message/feedback-report", template="https://www.iana.org/assignments/media-types/message/feedback-report", spec_title="RFC5965", spec_href="https://tools.ietf.org/html/rfc5965")
-    media_type_global = MediaType(media_type="message/global", template="https://www.iana.org/assignments/media-types/message/global", spec_title="RFC6532", spec_href="https://tools.ietf.org/html/rfc6532")
-    media_type_global_delivery_status = MediaType(media_type="message/global-delivery-status", template="https://www.iana.org/assignments/media-types/message/global-delivery-status", spec_title="RFC6533", spec_href="https://tools.ietf.org/html/rfc6533")
-    media_type_global_disposition_notification = MediaType(media_type="message/global-disposition-notification", template="https://www.iana.org/assignments/media-types/message/global-disposition-notification", spec_title="RFC6533", spec_href="https://tools.ietf.org/html/rfc6533")
-    media_type_global_headers = MediaType(media_type="message/global-headers", template="https://www.iana.org/assignments/media-types/message/global-headers", spec_title="RFC6533", spec_href="https://tools.ietf.org/html/rfc6533")
-    media_type_http = MediaType(media_type="message/http", template="https://www.iana.org/assignments/media-types/message/http", spec_title="RFC7230", spec_href="https://tools.ietf.org/html/rfc7230")
-    media_type_s_http = MediaType(media_type="message/s-http", template="https://www.iana.org/assignments/media-types/message/s-http", spec_title="RFC2660", spec_href="https://tools.ietf.org/html/rfc2660")
-    media_type_sip = MediaType(media_type="message/sip", template="https://www.iana.org/assignments/media-types/message/sip", spec_title="RFC3261", spec_href="https://tools.ietf.org/html/rfc3261")
-    media_type_sipfrag = MediaType(media_type="message/sipfrag", template="https://www.iana.org/assignments/media-types/message/sipfrag", spec_title="RFC3420", spec_href="https://tools.ietf.org/html/rfc3420")
-    media_type_tracking_status = MediaType(media_type="message/tracking-status", template="https://www.iana.org/assignments/media-types/message/tracking-status", spec_title="RFC3886", spec_href="https://tools.ietf.org/html/rfc3886")
-    media_type_example = MediaType(media_type="model/example", template="https://www.iana.org/assignments/media-types/model/example", spec_title="RFC4735", spec_href="https://tools.ietf.org/html/rfc4735")
-    media_type_byteranges = MediaType(media_type="multipart/byteranges", template="https://www.iana.org/assignments/media-types/multipart/byteranges", spec_title="RFC7233", spec_href="https://tools.ietf.org/html/rfc7233")
-    media_type_encrypted = MediaType(media_type="multipart/encrypted", template="https://www.iana.org/assignments/media-types/multipart/encrypted", spec_title="RFC1847", spec_href="https://tools.ietf.org/html/rfc1847")
-    media_type_example = MediaType(media_type="multipart/example", template="https://www.iana.org/assignments/media-types/multipart/example", spec_title="RFC4735", spec_href="https://tools.ietf.org/html/rfc4735")
-    media_type_form_data = MediaType(media_type="multipart/form-data", template="https://www.iana.org/assignments/media-types/multipart/form-data", spec_title="RFC7578", spec_href="https://tools.ietf.org/html/rfc7578")
-    media_type_related = MediaType(media_type="multipart/related", template="https://www.iana.org/assignments/media-types/multipart/related", spec_title="RFC2387", spec_href="https://tools.ietf.org/html/rfc2387")
-    media_type_report = MediaType(media_type="multipart/report", template="https://www.iana.org/assignments/media-types/multipart/report", spec_title="RFC6522", spec_href="https://tools.ietf.org/html/rfc6522")
-    media_type_signed = MediaType(media_type="multipart/signed", template="https://www.iana.org/assignments/media-types/multipart/signed", spec_title="RFC1847", spec_href="https://tools.ietf.org/html/rfc1847")
-    media_type_voice_message = MediaType(media_type="multipart/voice-message", template="https://www.iana.org/assignments/media-types/multipart/voice-message", spec_title="RFC2421", spec_href="https://tools.ietf.org/html/rfc2421")
-    media_type_1d_interleaved_parityfec = MediaType(media_type="text/1d-interleaved-parityfec", template="https://www.iana.org/assignments/media-types/text/1d-interleaved-parityfec", spec_title="RFC6015", spec_href="https://tools.ietf.org/html/rfc6015")
-    media_type_calendar = MediaType(media_type="text/calendar", template="https://www.iana.org/assignments/media-types/text/calendar", spec_title="RFC5545", spec_href="https://tools.ietf.org/html/rfc5545")
-    media_type_css = MediaType(media_type="text/css", template="https://www.iana.org/assignments/media-types/text/css", spec_title="RFC2318", spec_href="https://tools.ietf.org/html/rfc2318")
-    media_type_csv = MediaType(media_type="text/csv", template="https://www.iana.org/assignments/media-types/text/csv", spec_title="RFC4180", spec_href="https://tools.ietf.org/html/rfc4180")
-    media_type_dns = MediaType(media_type="text/dns", template="https://www.iana.org/assignments/media-types/text/dns", spec_title="RFC4027", spec_href="https://tools.ietf.org/html/rfc4027")
-    media_type_encaprtp = MediaType(media_type="text/encaprtp", template="https://www.iana.org/assignments/media-types/text/encaprtp", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_example = MediaType(media_type="text/example", template="https://www.iana.org/assignments/media-types/text/example", spec_title="RFC4735", spec_href="https://tools.ietf.org/html/rfc4735")
-    media_type_fwdred = MediaType(media_type="text/fwdred", template="https://www.iana.org/assignments/media-types/text/fwdred", spec_title="RFC6354", spec_href="https://tools.ietf.org/html/rfc6354")
-    media_type_grammar_ref_list = MediaType(media_type="text/grammar-ref-list", template="https://www.iana.org/assignments/media-types/text/grammar-ref-list", spec_title="RFC6787", spec_href="https://tools.ietf.org/html/rfc6787")
-    media_type_markdown = MediaType(media_type="text/markdown", template="https://www.iana.org/assignments/media-types/text/markdown", spec_title="RFC-ietf-appsawg-text-markdown-12", spec_href="https://tools.ietf.org/html/rfc-ietf-appsawg-text-markdown-12")
-    media_type_parameters = MediaType(media_type="text/parameters", template="https://www.iana.org/assignments/media-types/text/parameters", spec_title="RFC-ietf-mmusic-rfc2326bis-40", spec_href="https://tools.ietf.org/html/rfc-ietf-mmusic-rfc2326bis-40")
-    media_type_raptorfec = MediaType(media_type="text/raptorfec", template="https://www.iana.org/assignments/media-types/text/raptorfec", spec_title="RFC6682", spec_href="https://tools.ietf.org/html/rfc6682")
-    media_type_red = MediaType(media_type="text/RED", template="https://www.iana.org/assignments/media-types/text/RED", spec_title="RFC4102", spec_href="https://tools.ietf.org/html/rfc4102")
-    media_type_rfc822_headers = MediaType(media_type="text/rfc822-headers", template="https://www.iana.org/assignments/media-types/text/rfc822-headers", spec_title="RFC6522", spec_href="https://tools.ietf.org/html/rfc6522")
-    media_type_rtploopback = MediaType(media_type="text/rtploopback", template="https://www.iana.org/assignments/media-types/text/rtploopback", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_rtx = MediaType(media_type="text/rtx", template="https://www.iana.org/assignments/media-types/text/rtx", spec_title="RFC4588", spec_href="https://tools.ietf.org/html/rfc4588")
-    media_type_sgml = MediaType(media_type="text/sgml", template="https://www.iana.org/assignments/media-types/text/SGML", spec_title="RFC1874", spec_href="https://tools.ietf.org/html/rfc1874")
-    media_type_t140 = MediaType(media_type="text/t140", template="https://www.iana.org/assignments/media-types/text/t140", spec_title="RFC4103", spec_href="https://tools.ietf.org/html/rfc4103")
-    media_type_troff = MediaType(media_type="text/troff", template="https://www.iana.org/assignments/media-types/text/troff", spec_title="RFC4263", spec_href="https://tools.ietf.org/html/rfc4263")
-    media_type_ulpfec = MediaType(media_type="text/ulpfec", template="https://www.iana.org/assignments/media-types/text/ulpfec", spec_title="RFC5109", spec_href="https://tools.ietf.org/html/rfc5109")
-    media_type_uri_list = MediaType(media_type="text/uri-list", template="https://www.iana.org/assignments/media-types/text/uri-list", spec_title="RFC2483", spec_href="https://tools.ietf.org/html/rfc2483")
-    media_type_vcard = MediaType(media_type="text/vcard", template="https://www.iana.org/assignments/media-types/text/vcard", spec_title="RFC6350", spec_href="https://tools.ietf.org/html/rfc6350")
-    media_type_xml = MediaType(media_type="text/xml", template="https://www.iana.org/assignments/media-types/text/xml", spec_title="RFC7303", spec_href="https://tools.ietf.org/html/rfc7303")
-    media_type_xml_external_parsed_entity = MediaType(media_type="text/xml-external-parsed-entity", template="https://www.iana.org/assignments/media-types/text/xml-external-parsed-entity", spec_title="RFC7303", spec_href="https://tools.ietf.org/html/rfc7303")
-    media_type_1d_interleaved_parityfec = MediaType(media_type="video/1d-interleaved-parityfec", template="https://www.iana.org/assignments/media-types/video/1d-interleaved-parityfec", spec_title="RFC6015", spec_href="https://tools.ietf.org/html/rfc6015")
-    media_type_3gpp = MediaType(media_type="video/3gpp", template="https://www.iana.org/assignments/media-types/video/3gpp", spec_title="RFC3839", spec_href="https://tools.ietf.org/html/rfc3839")
-    media_type_3gpp2 = MediaType(media_type="video/3gpp2", template="https://www.iana.org/assignments/media-types/video/3gpp2", spec_title="RFC4393", spec_href="https://tools.ietf.org/html/rfc4393")
-    media_type_3gpp_tt = MediaType(media_type="video/3gpp-tt", template="https://www.iana.org/assignments/media-types/video/3gpp-tt", spec_title="RFC4396", spec_href="https://tools.ietf.org/html/rfc4396")
-    media_type_bmpeg = MediaType(media_type="video/BMPEG", template="https://www.iana.org/assignments/media-types/video/BMPEG", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_bt656 = MediaType(media_type="video/BT656", template="https://www.iana.org/assignments/media-types/video/BT656", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_celb = MediaType(media_type="video/CelB", template="https://www.iana.org/assignments/media-types/video/CelB", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_dv = MediaType(media_type="video/DV", template="https://www.iana.org/assignments/media-types/video/DV", spec_title="RFC6469", spec_href="https://tools.ietf.org/html/rfc6469")
-    media_type_encaprtp = MediaType(media_type="video/encaprtp", template="https://www.iana.org/assignments/media-types/video/encaprtp", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_example = MediaType(media_type="video/example", template="https://www.iana.org/assignments/media-types/video/example", spec_title="RFC4735", spec_href="https://tools.ietf.org/html/rfc4735")
-    media_type_h261 = MediaType(media_type="video/H261", template="https://www.iana.org/assignments/media-types/video/H261", spec_title="RFC4587", spec_href="https://tools.ietf.org/html/rfc4587")
-    media_type_h263 = MediaType(media_type="video/H263", template="https://www.iana.org/assignments/media-types/video/H263", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_h263_1998 = MediaType(media_type="video/H263-1998", template="https://www.iana.org/assignments/media-types/video/H263-1998", spec_title="RFC4629", spec_href="https://tools.ietf.org/html/rfc4629")
-    media_type_h263_2000 = MediaType(media_type="video/H263-2000", template="https://www.iana.org/assignments/media-types/video/H263-2000", spec_title="RFC4629", spec_href="https://tools.ietf.org/html/rfc4629")
-    media_type_h264 = MediaType(media_type="video/H264", template="https://www.iana.org/assignments/media-types/video/H264", spec_title="RFC6184", spec_href="https://tools.ietf.org/html/rfc6184")
-    media_type_h264_rcdo = MediaType(media_type="video/H264-RCDO", template="https://www.iana.org/assignments/media-types/video/H264-RCDO", spec_title="RFC6185", spec_href="https://tools.ietf.org/html/rfc6185")
-    media_type_h264_svc = MediaType(media_type="video/H264-SVC", template="https://www.iana.org/assignments/media-types/video/H264-SVC", spec_title="RFC6190", spec_href="https://tools.ietf.org/html/rfc6190")
-    media_type_h265 = MediaType(media_type="video/H265", template="https://www.iana.org/assignments/media-types/video/H265", spec_title="RFC-ietf-payload-rtp-h265-15", spec_href="https://tools.ietf.org/html/rfc-ietf-payload-rtp-h265-15")
-    media_type_jpeg = MediaType(media_type="video/JPEG", template="https://www.iana.org/assignments/media-types/video/JPEG", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_jpeg2000 = MediaType(media_type="video/jpeg2000", template="https://www.iana.org/assignments/media-types/video/jpeg2000", spec_title="RFC5371", spec_href="https://tools.ietf.org/html/rfc5371")
-    media_type_mj2 = MediaType(media_type="video/mj2", template="https://www.iana.org/assignments/media-types/video/mj2", spec_title="RFC3745", spec_href="https://tools.ietf.org/html/rfc3745")
-    media_type_mp1s = MediaType(media_type="video/MP1S", template="https://www.iana.org/assignments/media-types/video/MP1S", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_mp2p = MediaType(media_type="video/MP2P", template="https://www.iana.org/assignments/media-types/video/MP2P", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_mp2t = MediaType(media_type="video/MP2T", template="https://www.iana.org/assignments/media-types/video/MP2T", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_mp4 = MediaType(media_type="video/mp4", template="https://www.iana.org/assignments/media-types/video/mp4", spec_title="RFC4337", spec_href="https://tools.ietf.org/html/rfc4337")
-    media_type_mp4v_es = MediaType(media_type="video/MP4V-ES", template="https://www.iana.org/assignments/media-types/video/MP4V-ES", spec_title="RFC6416", spec_href="https://tools.ietf.org/html/rfc6416")
-    media_type_mpv = MediaType(media_type="video/MPV", template="https://www.iana.org/assignments/media-types/video/MPV", spec_title="RFC3555", spec_href="https://tools.ietf.org/html/rfc3555")
-    media_type_mpeg4_generic = MediaType(media_type="video/mpeg4-generic", template="https://www.iana.org/assignments/media-types/video/mpeg4-generic", spec_title="RFC3640", spec_href="https://tools.ietf.org/html/rfc3640")
-    media_type_nv = MediaType(media_type="video/nv", template="https://www.iana.org/assignments/media-types/video/nv", spec_title="RFC4856", spec_href="https://tools.ietf.org/html/rfc4856")
-    media_type_ogg = MediaType(media_type="video/ogg", template="https://www.iana.org/assignments/media-types/video/ogg", spec_title="RFC5334", spec_href="https://tools.ietf.org/html/rfc5334")
-    media_type_pointer = MediaType(media_type="video/pointer", template="https://www.iana.org/assignments/media-types/video/pointer", spec_title="RFC2862", spec_href="https://tools.ietf.org/html/rfc2862")
-    media_type_quicktime = MediaType(media_type="video/quicktime", template="https://www.iana.org/assignments/media-types/video/quicktime", spec_title="RFC6381", spec_href="https://tools.ietf.org/html/rfc6381")
-    media_type_raptorfec = MediaType(media_type="video/raptorfec", template="https://www.iana.org/assignments/media-types/video/raptorfec", spec_title="RFC6682", spec_href="https://tools.ietf.org/html/rfc6682")
-    media_type_rtploopback = MediaType(media_type="video/rtploopback", template="https://www.iana.org/assignments/media-types/video/rtploopback", spec_title="RFC6849", spec_href="https://tools.ietf.org/html/rfc6849")
-    media_type_rtx = MediaType(media_type="video/rtx", template="https://www.iana.org/assignments/media-types/video/rtx", spec_title="RFC4588", spec_href="https://tools.ietf.org/html/rfc4588")
-    media_type_smpte292m = MediaType(media_type="video/SMPTE292M", template="https://www.iana.org/assignments/media-types/video/SMPTE292M", spec_title="RFC3497", spec_href="https://tools.ietf.org/html/rfc3497")
-    media_type_ulpfec = MediaType(media_type="video/ulpfec", template="https://www.iana.org/assignments/media-types/video/ulpfec", spec_title="RFC5109", spec_href="https://tools.ietf.org/html/rfc5109")
-    media_type_vc1 = MediaType(media_type="video/vc1", template="https://www.iana.org/assignments/media-types/video/vc1", spec_title="RFC4425", spec_href="https://tools.ietf.org/html/rfc4425")
-    media_type_vp8 = MediaType(media_type="video/VP8", template="https://www.iana.org/assignments/media-types/video/VP8", spec_title="RFC-ietf-payload-vp8-17", spec_href="https://tools.ietf.org/html/rfc-ietf-payload-vp8-17")
+    SpecTitle:
+        RFC6015
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6015
+    """
+    __MEDIA_TYPE__: str = "application/1d-interleaved-parityfec"
+
+class ApplicationBatchSmtp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/batch-SMTP
+
+    SpecTitle:
+        RFC2442
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2442
+    """
+    __MEDIA_TYPE__: str = "application/batch-SMTP"
+
+class ApplicationCallCompletion(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/call-completion
+
+    SpecTitle:
+        RFC6910
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6910
+    """
+    __MEDIA_TYPE__: str = "application/call-completion"
+
+class ApplicationCals1840(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/CALS-1840
+
+    SpecTitle:
+        RFC1895
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1895
+    """
+    __MEDIA_TYPE__: str = "application/CALS-1840"
+
+class ApplicationCbor(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cbor
+
+    SpecTitle:
+        RFC7049
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7049
+    """
+    __MEDIA_TYPE__: str = "application/cbor"
+
+class ApplicationCdmiCapability(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cdmi-capability
+
+    SpecTitle:
+        RFC6208
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6208
+    """
+    __MEDIA_TYPE__: str = "application/cdmi-capability"
+
+class ApplicationCdmiContainer(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cdmi-container
+
+    SpecTitle:
+        RFC6208
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6208
+    """
+    __MEDIA_TYPE__: str = "application/cdmi-container"
+
+class ApplicationCdmiDomain(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cdmi-domain
+
+    SpecTitle:
+        RFC6208
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6208
+    """
+    __MEDIA_TYPE__: str = "application/cdmi-domain"
+
+class ApplicationCdmiObject(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cdmi-object
+
+    SpecTitle:
+        RFC6208
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6208
+    """
+    __MEDIA_TYPE__: str = "application/cdmi-object"
+
+class ApplicationCdmiQueue(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cdmi-queue
+
+    SpecTitle:
+        RFC6208
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6208
+    """
+    __MEDIA_TYPE__: str = "application/cdmi-queue"
+
+class ApplicationCdni(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cdni
+
+    SpecTitle:
+        RFC7736
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7736
+    """
+    __MEDIA_TYPE__: str = "application/cdni"
+
+class ApplicationCfw(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cfw
+
+    SpecTitle:
+        RFC6230
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6230
+    """
+    __MEDIA_TYPE__: str = "application/cfw"
+
+class ApplicationCms(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/cms
+
+    SpecTitle:
+        RFC7193
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7193
+    """
+    __MEDIA_TYPE__: str = "application/cms"
+
+class ApplicationCsrattrs(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/csrattrs
+
+    SpecTitle:
+        RFC7030
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7030
+    """
+    __MEDIA_TYPE__: str = "application/csrattrs"
+
+class ApplicationDicom(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/dicom
+
+    SpecTitle:
+        RFC3240
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3240
+    """
+    __MEDIA_TYPE__: str = "application/dicom"
+
+class ApplicationDns(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/dns
+
+    SpecTitle:
+        RFC4027
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4027
+    """
+    __MEDIA_TYPE__: str = "application/dns"
+
+class ApplicationDvcs(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/dvcs
+
+    SpecTitle:
+        RFC3029
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3029
+    """
+    __MEDIA_TYPE__: str = "application/dvcs"
+
+class ApplicationEcmascript(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ecmascript
+
+    SpecTitle:
+        RFC4329
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4329
+    """
+    __MEDIA_TYPE__: str = "application/ecmascript"
+
+class ApplicationEdiConsent(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/EDI-consent
+
+    SpecTitle:
+        RFC1767
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1767
+    """
+    __MEDIA_TYPE__: str = "application/EDI-consent"
+
+class ApplicationEdifact(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/EDIFACT
+
+    SpecTitle:
+        RFC1767
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1767
+    """
+    __MEDIA_TYPE__: str = "application/EDIFACT"
+
+class ApplicationEdiX12(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/EDI-X12
+
+    SpecTitle:
+        RFC1767
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1767
+    """
+    __MEDIA_TYPE__: str = "application/EDI-X12"
+
+class ApplicationEncaprtp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/encaprtp
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "application/encaprtp"
+
+class ApplicationExample(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/example
+
+    SpecTitle:
+        RFC4735
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4735
+    """
+    __MEDIA_TYPE__: str = "application/example"
+
+class ApplicationFits(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/fits
+
+    SpecTitle:
+        RFC4047
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4047
+    """
+    __MEDIA_TYPE__: str = "application/fits"
+
+class ApplicationFontTdpfr(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/font-tdpfr
+
+    SpecTitle:
+        RFC3073
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3073
+    """
+    __MEDIA_TYPE__: str = "application/font-tdpfr"
+
+class ApplicationGzip(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/gzip
+
+    SpecTitle:
+        RFC6713
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6713
+    """
+    __MEDIA_TYPE__: str = "application/gzip"
+
+class ApplicationH224(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/H224
+
+    SpecTitle:
+        RFC4573
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4573
+    """
+    __MEDIA_TYPE__: str = "application/H224"
+
+class ApplicationHttp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/http
+
+    SpecTitle:
+        RFC7230
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7230
+    """
+    __MEDIA_TYPE__: str = "application/http"
+
+class ApplicationIbePpData(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ibe-pp-data
+
+    SpecTitle:
+        RFC5408
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5408
+    """
+    __MEDIA_TYPE__: str = "application/ibe-pp-data"
+
+class ApplicationIndex(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/index
+
+    SpecTitle:
+        RFC2652
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2652
+    """
+    __MEDIA_TYPE__: str = "application/index"
+
+class ApplicationIotp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/IOTP
+
+    SpecTitle:
+        RFC2935
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2935
+    """
+    __MEDIA_TYPE__: str = "application/iotp"
+
+class ApplicationIpfix(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ipfix
+
+    SpecTitle:
+        RFC5655
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5655
+    """
+    __MEDIA_TYPE__: str = "application/ipfix"
+
+class ApplicationIpp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ipp
+
+    SpecTitle:
+        RFC2910
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2910
+    """
+    __MEDIA_TYPE__: str = "application/ipp"
+
+class ApplicationIsup(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ISUP
+
+    SpecTitle:
+        RFC3204
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3204
+    """
+    __MEDIA_TYPE__: str = "application/isup"
+
+class ApplicationJavascript(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/javascript
+
+    SpecTitle:
+        RFC4329
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4329
+    """
+    __MEDIA_TYPE__: str = "application/javascript"
+
+class ApplicationJose(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/jose
+
+    SpecTitle:
+        RFC7515
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7515
+    """
+    __MEDIA_TYPE__: str = "application/jose"
+
+class ApplicationJson(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/json
+
+    SpecTitle:
+        RFC7158
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7158
+    """
+    __MEDIA_TYPE__: str = "application/json"
+
+class ApplicationJsonSeq(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/json-seq
+
+    SpecTitle:
+        RFC7464
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7464
+    """
+    __MEDIA_TYPE__: str = "application/json-seq"
+
+class ApplicationJwt(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/jwt
+
+    SpecTitle:
+        RFC7519
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7519
+    """
+    __MEDIA_TYPE__: str = "application/jwt"
+
+class ApplicationLinkFormat(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/link-format
+
+    SpecTitle:
+        RFC6690
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6690
+    """
+    __MEDIA_TYPE__: str = "application/link-format"
+
+class ApplicationMarc(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/marc
+
+    SpecTitle:
+        RFC2220
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2220
+    """
+    __MEDIA_TYPE__: str = "application/marc"
+
+class ApplicationMbox(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mbox
+
+    SpecTitle:
+        RFC4155
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4155
+    """
+    __MEDIA_TYPE__: str = "application/mbox"
+
+class ApplicationMikey(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mikey
+
+    SpecTitle:
+        RFC3830
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3830
+    """
+    __MEDIA_TYPE__: str = "application/mikey"
+
+class ApplicationMossKeys(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/moss-keys
+
+    SpecTitle:
+        RFC1848
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1848
+    """
+    __MEDIA_TYPE__: str = "application/moss-keys"
+
+class ApplicationMossSignature(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/moss-signature
+
+    SpecTitle:
+        RFC1848
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1848
+    """
+    __MEDIA_TYPE__: str = "application/moss-signature"
+
+class ApplicationMosskeyData(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mosskey-data
+
+    SpecTitle:
+        RFC1848
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1848
+    """
+    __MEDIA_TYPE__: str = "application/mosskey-data"
+
+class ApplicationMosskeyRequest(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mosskey-request
+
+    SpecTitle:
+        RFC1848
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1848
+    """
+    __MEDIA_TYPE__: str = "application/mosskey-request"
+
+class ApplicationMp21(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mp21
+
+    SpecTitle:
+        RFC6381
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6381
+    """
+    __MEDIA_TYPE__: str = "application/mp21"
+
+class ApplicationMp4(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mp4
+
+    SpecTitle:
+        RFC4337
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4337
+    """
+    __MEDIA_TYPE__: str = "application/mp4"
+
+class ApplicationMpeg4Generic(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mpeg4-generic
+
+    SpecTitle:
+        RFC3640
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3640
+    """
+    __MEDIA_TYPE__: str = "application/mpeg4-generic"
+
+class ApplicationMpeg4Iod(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mpeg4-iod
+
+    SpecTitle:
+        RFC4337
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4337
+    """
+    __MEDIA_TYPE__: str = "application/mpeg4-iod"
+
+class ApplicationMpeg4IodXmt(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mpeg4-iod-xmt
+
+    SpecTitle:
+        RFC4337
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4337
+    """
+    __MEDIA_TYPE__: str = "application/mpeg4-iod-xmt"
+
+class ApplicationMxf(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/mxf
+
+    SpecTitle:
+        RFC4539
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4539
+    """
+    __MEDIA_TYPE__: str = "application/mxf"
+
+class ApplicationNasdata(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/nasdata
+
+    SpecTitle:
+        RFC4707
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4707
+    """
+    __MEDIA_TYPE__: str = "application/nasdata"
+
+class ApplicationNewsCheckgroups(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/news-checkgroups
+
+    SpecTitle:
+        RFC5537
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5537
+    """
+    __MEDIA_TYPE__: str = "application/news-checkgroups"
+
+class ApplicationNewsGroupinfo(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/news-groupinfo
+
+    SpecTitle:
+        RFC5537
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5537
+    """
+    __MEDIA_TYPE__: str = "application/news-groupinfo"
+
+class ApplicationNewsTransmission(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/news-transmission
+
+    SpecTitle:
+        RFC5537
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5537
+    """
+    __MEDIA_TYPE__: str = "application/news-transmission"
+
+class ApplicationOcspRequest(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ocsp-request
+
+    SpecTitle:
+        RFC6960
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6960
+    """
+    __MEDIA_TYPE__: str = "application/ocsp-request"
+
+class ApplicationOcspResponse(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ocsp-response
+
+    SpecTitle:
+        RFC6960
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6960
+    """
+    __MEDIA_TYPE__: str = "application/ocsp-response"
+
+class ApplicationOctetStream(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/octet-stream
+
+    SpecTitle:
+        RFC2045
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2045
+    """
+    __MEDIA_TYPE__: str = "application/octet-stream"
+
+class ApplicationOda(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ODA
+
+    SpecTitle:
+        RFC2045
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2045
+    """
+    __MEDIA_TYPE__: str = "application/oda"
+
+class ApplicationOgg(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ogg
+
+    SpecTitle:
+        RFC5334
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5334
+    """
+    __MEDIA_TYPE__: str = "application/ogg"
+
+class ApplicationPdf(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pdf
+
+    SpecTitle:
+        RFC3778
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3778
+    """
+    __MEDIA_TYPE__: str = "application/pdf"
+
+class ApplicationPgpEncrypted(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pgp-encrypted
+
+    SpecTitle:
+        RFC3156
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3156
+    """
+    __MEDIA_TYPE__: str = "application/pgp-encrypted"
+
+class ApplicationPgpSignature(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pgp-signature
+
+    SpecTitle:
+        RFC3156
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3156
+    """
+    __MEDIA_TYPE__: str = "application/pgp-signature"
+
+class ApplicationPkcs10(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkcs10
+
+    SpecTitle:
+        RFC5967
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5967
+    """
+    __MEDIA_TYPE__: str = "application/pkcs10"
+
+class ApplicationPkcs7Mime(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkcs7-mime
+
+    SpecTitle:
+        RFC5751
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5751
+    """
+    __MEDIA_TYPE__: str = "application/pkcs7-mime"
+
+class ApplicationPkcs7Signature(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkcs7-signature
+
+    SpecTitle:
+        RFC5751
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5751
+    """
+    __MEDIA_TYPE__: str = "application/pkcs7-signature"
+
+class ApplicationPkcs8(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkcs8
+
+    SpecTitle:
+        RFC5958
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5958
+    """
+    __MEDIA_TYPE__: str = "application/pkcs8"
+
+class ApplicationPkixAttrCert(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkix-attr-cert
+
+    SpecTitle:
+        RFC5877
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5877
+    """
+    __MEDIA_TYPE__: str = "application/pkix-attr-cert"
+
+class ApplicationPkixCert(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkix-cert
+
+    SpecTitle:
+        RFC2585
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2585
+    """
+    __MEDIA_TYPE__: str = "application/pkix-cert"
+
+class ApplicationPkixCrl(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkix-crl
+
+    SpecTitle:
+        RFC2585
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2585
+    """
+    __MEDIA_TYPE__: str = "application/pkix-crl"
+
+class ApplicationPkixPkipath(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkix-pkipath
+
+    SpecTitle:
+        RFC6066
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6066
+    """
+    __MEDIA_TYPE__: str = "application/pkix-pkipath"
+
+class ApplicationPkixcmp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/pkixcmp
+
+    SpecTitle:
+        RFC2510
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2510
+    """
+    __MEDIA_TYPE__: str = "application/pkixcmp"
+
+class ApplicationPostscript(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/postscript
+
+    SpecTitle:
+        RFC2045
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2045
+    """
+    __MEDIA_TYPE__: str = "application/postscript"
+
+class ApplicationQsig(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/QSIG
+
+    SpecTitle:
+        RFC3204
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3204
+    """
+    __MEDIA_TYPE__: str = "application/qsig"
+
+class ApplicationRaptorfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/raptorfec
+
+    SpecTitle:
+        RFC6682
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6682
+    """
+    __MEDIA_TYPE__: str = "application/raptorfec"
+
+class ApplicationRemotePrinting(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/remote-printing
+
+    SpecTitle:
+        RFC1486
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1486
+    """
+    __MEDIA_TYPE__: str = "application/remote-printing"
+
+class ApplicationRpkiGhostbusters(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/rpki-ghostbusters
+
+    SpecTitle:
+        RFC6493
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6493
+    """
+    __MEDIA_TYPE__: str = "application/rpki-ghostbusters"
+
+class ApplicationRpkiManifest(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/rpki-manifest
+
+    SpecTitle:
+        RFC6481
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6481
+    """
+    __MEDIA_TYPE__: str = "application/rpki-manifest"
+
+class ApplicationRpkiRoa(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/rpki-roa
+
+    SpecTitle:
+        RFC6481
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6481
+    """
+    __MEDIA_TYPE__: str = "application/rpki-roa"
+
+class ApplicationRpkiUpdown(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/rpki-updown
+
+    SpecTitle:
+        RFC6492
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6492
+    """
+    __MEDIA_TYPE__: str = "application/rpki-updown"
+
+class ApplicationRtploopback(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/rtploopback
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "application/rtploopback"
+
+class ApplicationRtx(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/rtx
+
+    SpecTitle:
+        RFC4588
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4588
+    """
+    __MEDIA_TYPE__: str = "application/rtx"
+
+class ApplicationScvpCvRequest(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/scvp-cv-request
+
+    SpecTitle:
+        RFC5055
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5055
+    """
+    __MEDIA_TYPE__: str = "application/scvp-cv-request"
+
+class ApplicationScvpCvResponse(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/scvp-cv-response
+
+    SpecTitle:
+        RFC5055
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5055
+    """
+    __MEDIA_TYPE__: str = "application/scvp-cv-response"
+
+class ApplicationScvpVpRequest(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/scvp-vp-request
+
+    SpecTitle:
+        RFC5055
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5055
+    """
+    __MEDIA_TYPE__: str = "application/scvp-vp-request"
+
+class ApplicationScvpVpResponse(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/scvp-vp-response
+
+    SpecTitle:
+        RFC5055
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5055
+    """
+    __MEDIA_TYPE__: str = "application/scvp-vp-response"
+
+class ApplicationSdp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/sdp
+
+    SpecTitle:
+        RFC4566
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4566
+    """
+    __MEDIA_TYPE__: str = "application/sdp"
+
+class ApplicationSgml(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/SGML
+
+    SpecTitle:
+        RFC1874
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1874
+    """
+    __MEDIA_TYPE__: str = "application/sgml"
+
+class ApplicationSieve(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/sieve
+
+    SpecTitle:
+        RFC5228
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5228
+    """
+    __MEDIA_TYPE__: str = "application/sieve"
+
+class ApplicationSimpleMessageSummary(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/simple-message-summary
+
+    SpecTitle:
+        RFC3842
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3842
+    """
+    __MEDIA_TYPE__: str = "application/simple-message-summary"
+
+class ApplicationSmpte336m(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/smpte336m
+
+    SpecTitle:
+        RFC6597
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6597
+    """
+    __MEDIA_TYPE__: str = "application/smpte336m"
+
+class ApplicationSql(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/sql
+
+    SpecTitle:
+        RFC6922
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6922
+    """
+    __MEDIA_TYPE__: str = "application/sql"
+
+class ApplicationSrgs(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/srgs
+
+    SpecTitle:
+        RFC4267
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4267
+    """
+    __MEDIA_TYPE__: str = "application/srgs"
+
+class ApplicationTampApexUpdate(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-apex-update
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-apex-update"
+
+class ApplicationTampApexUpdateConfirm(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-apex-update-confirm
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-apex-update-confirm"
+
+class ApplicationTampCommunityUpdate(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-community-update
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-community-update"
+
+class ApplicationTampCommunityUpdateConfirm(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-community-update-confirm
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-community-update-confirm"
+
+class ApplicationTampError(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-error
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-error"
+
+class ApplicationTampSequenceAdjust(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-sequence-adjust
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-sequence-adjust"
+
+class ApplicationTampSequenceAdjustConfirm(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-sequence-adjust-confirm
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-sequence-adjust-confirm"
+
+class ApplicationTampStatusQuery(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-status-query
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-status-query"
+
+class ApplicationTampStatusResponse(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-status-response
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-status-response"
+
+class ApplicationTampUpdate(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-update
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-update"
+
+class ApplicationTampUpdateConfirm(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/tamp-update-confirm
+
+    SpecTitle:
+        RFC5934
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5934
+    """
+    __MEDIA_TYPE__: str = "application/tamp-update-confirm"
+
+class ApplicationTimestampQuery(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/timestamp-query
+
+    SpecTitle:
+        RFC3161
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3161
+    """
+    __MEDIA_TYPE__: str = "application/timestamp-query"
+
+class ApplicationTimestampReply(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/timestamp-reply
+
+    SpecTitle:
+        RFC3161
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3161
+    """
+    __MEDIA_TYPE__: str = "application/timestamp-reply"
+
+class ApplicationTimestampedData(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/timestamped-data
+
+    SpecTitle:
+        RFC5955
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5955
+    """
+    __MEDIA_TYPE__: str = "application/timestamped-data"
+
+class ApplicationUlpfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/ulpfec
+
+    SpecTitle:
+        RFC5109
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5109
+    """
+    __MEDIA_TYPE__: str = "application/ulpfec"
+
+class ApplicationVemmi(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/vemmi
+
+    SpecTitle:
+        RFC2122
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2122
+    """
+    __MEDIA_TYPE__: str = "application/vemmi"
+
+class ApplicationVqRtcpxr(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/vq-rtcpxr
+
+    SpecTitle:
+        RFC6035
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6035
+    """
+    __MEDIA_TYPE__: str = "application/vq-rtcpxr"
+
+class ApplicationWhoisppQuery(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/whoispp-query
+
+    SpecTitle:
+        RFC2957
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2957
+    """
+    __MEDIA_TYPE__: str = "application/whoispp-query"
+
+class ApplicationWhoisppResponse(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/whoispp-response
+
+    SpecTitle:
+        RFC2958
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2958
+    """
+    __MEDIA_TYPE__: str = "application/whoispp-response"
+
+class ApplicationX400Bp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/x400-bp
+
+    SpecTitle:
+        RFC1494
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1494
+    """
+    __MEDIA_TYPE__: str = "application/x400-bp"
+
+class ApplicationXml(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/xml
+
+    SpecTitle:
+        RFC7303
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7303
+    """
+    __MEDIA_TYPE__: str = "application/xml"
+
+class ApplicationXmlDtd(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/xml-dtd
+
+    SpecTitle:
+        RFC7303
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7303
+    """
+    __MEDIA_TYPE__: str = "application/xml-dtd"
+
+class ApplicationXmlExternalParsedEntity(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/xml-external-parsed-entity
+
+    SpecTitle:
+        RFC7303
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7303
+    """
+    __MEDIA_TYPE__: str = "application/xml-external-parsed-entity"
+
+class ApplicationYang(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/yang
+
+    SpecTitle:
+        RFC6020
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6020
+    """
+    __MEDIA_TYPE__: str = "application/yang"
+
+class ApplicationZlib(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/application/zlib
+
+    SpecTitle:
+        RFC6713
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6713
+    """
+    __MEDIA_TYPE__: str = "application/zlib"
+
+class Audio1DInterleavedParityfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/1d-interleaved-parityfec
+
+    SpecTitle:
+        RFC6015
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6015
+    """
+    __MEDIA_TYPE__: str = "audio/1d-interleaved-parityfec"
+
+class Audio32Kadpcm(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/32kadpcm
+
+    SpecTitle:
+        RFC3802
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3802
+    """
+    __MEDIA_TYPE__: str = "audio/32kadpcm"
+
+class Audio3Gpp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/3gpp
+
+    SpecTitle:
+        RFC3839
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3839
+    """
+    __MEDIA_TYPE__: str = "audio/3gpp"
+
+class Audio3Gpp2(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/3gpp2
+
+    SpecTitle:
+        RFC4393
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4393
+    """
+    __MEDIA_TYPE__: str = "audio/3gpp2"
+
+class AudioAc3(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/ac3
+
+    SpecTitle:
+        RFC4184
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4184
+    """
+    __MEDIA_TYPE__: str = "audio/ac3"
+
+class AudioAmr(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/AMR
+
+    SpecTitle:
+        RFC4867
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4867
+    """
+    __MEDIA_TYPE__: str = "audio/AMR"
+
+class AudioAmrWb(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/AMR-WB
+
+    SpecTitle:
+        RFC4867
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4867
+    """
+    __MEDIA_TYPE__: str = "audio/AMR-WB"
+
+class AudioAptx(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/aptx
+
+    SpecTitle:
+        RFC7310
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7310
+    """
+    __MEDIA_TYPE__: str = "audio/aptx"
+
+class AudioAsc(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/asc
+
+    SpecTitle:
+        RFC6295
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6295
+    """
+    __MEDIA_TYPE__: str = "audio/asc"
+
+class AudioAtracAdvancedLossless(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/ATRAC-ADVANCED-LOSSLESS
+
+    SpecTitle:
+        RFC5584
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5584
+    """
+    __MEDIA_TYPE__: str = "audio/ATRAC-ADVANCED-LOSSLESS"
+
+class AudioAtracX(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/ATRAC-X
+
+    SpecTitle:
+        RFC5584
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5584
+    """
+    __MEDIA_TYPE__: str = "audio/ATRAC-X"
+
+class AudioAtrac3(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/ATRAC3
+
+    SpecTitle:
+        RFC5584
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5584
+    """
+    __MEDIA_TYPE__: str = "audio/ATRAC3"
+
+class AudioBasic(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/basic
+
+    SpecTitle:
+        RFC2045
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2045
+    """
+    __MEDIA_TYPE__: str = "audio/basic"
+
+class AudioBv16(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/BV16
+
+    SpecTitle:
+        RFC4298
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4298
+    """
+    __MEDIA_TYPE__: str = "audio/BV16"
+
+class AudioBv32(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/BV32
+
+    SpecTitle:
+        RFC4298
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4298
+    """
+    __MEDIA_TYPE__: str = "audio/BV32"
+
+class AudioClearmode(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/clearmode
+
+    SpecTitle:
+        RFC4040
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4040
+    """
+    __MEDIA_TYPE__: str = "audio/clearmode"
+
+class AudioCn(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/CN
+
+    SpecTitle:
+        RFC3389
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3389
+    """
+    __MEDIA_TYPE__: str = "audio/CN"
+
+class AudioDat12(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/DAT12
+
+    SpecTitle:
+        RFC3190
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3190
+    """
+    __MEDIA_TYPE__: str = "audio/DAT12"
+
+class AudioDls(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/dls
+
+    SpecTitle:
+        RFC4613
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4613
+    """
+    __MEDIA_TYPE__: str = "audio/dls"
+
+class AudioDsrEs201108(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/dsr-es201108
+
+    SpecTitle:
+        RFC3557
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3557
+    """
+    __MEDIA_TYPE__: str = "audio/dsr-es201108"
+
+class AudioDsrEs202050(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/dsr-es202050
+
+    SpecTitle:
+        RFC4060
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4060
+    """
+    __MEDIA_TYPE__: str = "audio/dsr-es202050"
+
+class AudioDsrEs202211(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/dsr-es202211
+
+    SpecTitle:
+        RFC4060
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4060
+    """
+    __MEDIA_TYPE__: str = "audio/dsr-es202211"
+
+class AudioDsrEs202212(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/dsr-es202212
+
+    SpecTitle:
+        RFC4060
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4060
+    """
+    __MEDIA_TYPE__: str = "audio/dsr-es202212"
+
+class AudioDv(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/DV
+
+    SpecTitle:
+        RFC6469
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6469
+    """
+    __MEDIA_TYPE__: str = "audio/DV"
+
+class AudioDvi4(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/DVI4
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/DVI4"
+
+class AudioEac3(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/eac3
+
+    SpecTitle:
+        RFC4598
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4598
+    """
+    __MEDIA_TYPE__: str = "audio/eac3"
+
+class AudioEncaprtp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/encaprtp
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "audio/encaprtp"
+
+class AudioEvrc(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRC
+
+    SpecTitle:
+        RFC4788
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4788
+    """
+    __MEDIA_TYPE__: str = "audio/EVRC"
+
+class AudioEvrcQcp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRC-QCP
+
+    SpecTitle:
+        RFC3625
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3625
+    """
+    __MEDIA_TYPE__: str = "audio/EVRC-QCP"
+
+class AudioEvrc0(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRC0
+
+    SpecTitle:
+        RFC4788
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4788
+    """
+    __MEDIA_TYPE__: str = "audio/EVRC0"
+
+class AudioEvrc1(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRC1
+
+    SpecTitle:
+        RFC4788
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4788
+    """
+    __MEDIA_TYPE__: str = "audio/EVRC1"
+
+class AudioEvrcb(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCB
+
+    SpecTitle:
+        RFC5188
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5188
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCB"
+
+class AudioEvrcb0(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCB0
+
+    SpecTitle:
+        RFC5188
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5188
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCB0"
+
+class AudioEvrcb1(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCB1
+
+    SpecTitle:
+        RFC4788
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4788
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCB1"
+
+class AudioEvrcnw(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCNW
+
+    SpecTitle:
+        RFC6884
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6884
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCNW"
+
+class AudioEvrcnw0(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCNW0
+
+    SpecTitle:
+        RFC6884
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6884
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCNW0"
+
+class AudioEvrcnw1(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCNW1
+
+    SpecTitle:
+        RFC6884
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6884
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCNW1"
+
+class AudioEvrcwb(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCWB
+
+    SpecTitle:
+        RFC5188
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5188
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCWB"
+
+class AudioEvrcwb0(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCWB0
+
+    SpecTitle:
+        RFC5188
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5188
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCWB0"
+
+class AudioEvrcwb1(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/EVRCWB1
+
+    SpecTitle:
+        RFC5188
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5188
+    """
+    __MEDIA_TYPE__: str = "audio/EVRCWB1"
+
+class AudioExample(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/example
+
+    SpecTitle:
+        RFC4735
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4735
+    """
+    __MEDIA_TYPE__: str = "audio/example"
+
+class AudioFwdred(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/fwdred
+
+    SpecTitle:
+        RFC6354
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6354
+    """
+    __MEDIA_TYPE__: str = "audio/fwdred"
+
+class AudioG7110(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G711-0
+
+    SpecTitle:
+        RFC7655
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7655
+    """
+    __MEDIA_TYPE__: str = "audio/G711-0"
+
+class AudioG719(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G719
+
+    SpecTitle:
+        RFC Errata 
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc errata 
+    """
+    __MEDIA_TYPE__: str = "audio/G719"
+
+class AudioG7221(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G7221
+
+    SpecTitle:
+        RFC5577
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5577
+    """
+    __MEDIA_TYPE__: str = "audio/G7221"
+
+class AudioG722(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G722
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G722"
+
+class AudioG723(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G723
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G723"
+
+class AudioG72616(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G726-16
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G726-16"
+
+class AudioG72624(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G726-24
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G726-24"
+
+class AudioG72632(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G726-32
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G726-32"
+
+class AudioG72640(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G726-40
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G726-40"
+
+class AudioG728(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G728
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G728"
+
+class AudioG729(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G729
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G729"
+
+class AudioG729d(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G729D
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G729D"
+
+class AudioG729e(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/G729E
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/G729E"
+
+class AudioGsm(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/GSM
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/GSM"
+
+class AudioGsmEfr(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/GSM-EFR
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/GSM-EFR"
+
+class AudioGsmHr08(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/GSM-HR-08
+
+    SpecTitle:
+        RFC5993
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5993
+    """
+    __MEDIA_TYPE__: str = "audio/GSM-HR-08"
+
+class AudioIlbc(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/iLBC
+
+    SpecTitle:
+        RFC3952
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3952
+    """
+    __MEDIA_TYPE__: str = "audio/iLBC"
+
+class AudioL8(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/L8
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/L8"
+
+class AudioL16(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/L16
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/L16"
+
+class AudioL20(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/L20
+
+    SpecTitle:
+        RFC3190
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3190
+    """
+    __MEDIA_TYPE__: str = "audio/L20"
+
+class AudioL24(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/L24
+
+    SpecTitle:
+        RFC3190
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3190
+    """
+    __MEDIA_TYPE__: str = "audio/L24"
+
+class AudioLpc(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/LPC
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/LPC"
+
+class AudioMobileXmf(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/mobile-xmf
+
+    SpecTitle:
+        RFC4723
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4723
+    """
+    __MEDIA_TYPE__: str = "audio/mobile-xmf"
+
+class AudioMpa(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/MPA
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "audio/MPA"
+
+class AudioMp4(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/mp4
+
+    SpecTitle:
+        RFC4337
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4337
+    """
+    __MEDIA_TYPE__: str = "audio/mp4"
+
+class AudioMp4aLatm(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/MP4A-LATM
+
+    SpecTitle:
+        RFC6416
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6416
+    """
+    __MEDIA_TYPE__: str = "audio/MP4A-LATM"
+
+class AudioMpaRobust(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/mpa-robust
+
+    SpecTitle:
+        RFC5219
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5219
+    """
+    __MEDIA_TYPE__: str = "audio/mpa-robust"
+
+class AudioMpeg(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/mpeg
+
+    SpecTitle:
+        RFC3003
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3003
+    """
+    __MEDIA_TYPE__: str = "audio/mpeg"
+
+class AudioMpeg4Generic(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/mpeg4-generic
+
+    SpecTitle:
+        RFC3640
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3640
+    """
+    __MEDIA_TYPE__: str = "audio/mpeg4-generic"
+
+class AudioOgg(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/ogg
+
+    SpecTitle:
+        RFC5334
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5334
+    """
+    __MEDIA_TYPE__: str = "audio/ogg"
+
+class AudioOpus(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/opus
+
+    SpecTitle:
+        RFC7587
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7587
+    """
+    __MEDIA_TYPE__: str = "audio/opus"
+
+class AudioPcma(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/PCMA
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/PCMA"
+
+class AudioPcmaWb(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/PCMA-WB
+
+    SpecTitle:
+        RFC5391
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5391
+    """
+    __MEDIA_TYPE__: str = "audio/PCMA-WB"
+
+class AudioPcmu(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/PCMU
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/PCMU"
+
+class AudioPcmuWb(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/PCMU-WB
+
+    SpecTitle:
+        RFC5391
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5391
+    """
+    __MEDIA_TYPE__: str = "audio/PCMU-WB"
+
+class AudioRaptorfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/raptorfec
+
+    SpecTitle:
+        RFC6682
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6682
+    """
+    __MEDIA_TYPE__: str = "audio/raptorfec"
+
+class AudioRed(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/RED
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "audio/RED"
+
+class AudioRtploopback(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/rtploopback
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "audio/rtploopback"
+
+class AudioRtpMidi(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/rtp-midi
+
+    SpecTitle:
+        RFC6295
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6295
+    """
+    __MEDIA_TYPE__: str = "audio/rtp-midi"
+
+class AudioRtx(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/rtx
+
+    SpecTitle:
+        RFC4588
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4588
+    """
+    __MEDIA_TYPE__: str = "audio/rtx"
+
+class AudioSmv(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/SMV
+
+    SpecTitle:
+        RFC3558
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3558
+    """
+    __MEDIA_TYPE__: str = "audio/SMV"
+
+class AudioSmv0(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/SMV0
+
+    SpecTitle:
+        RFC3558
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3558
+    """
+    __MEDIA_TYPE__: str = "audio/SMV0"
+
+class AudioSmvQcp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/SMV-QCP
+
+    SpecTitle:
+        RFC3625
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3625
+    """
+    __MEDIA_TYPE__: str = "audio/SMV-QCP"
+
+class AudioSpeex(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/speex
+
+    SpecTitle:
+        RFC5574
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5574
+    """
+    __MEDIA_TYPE__: str = "audio/speex"
+
+class AudioT140c(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/t140c
+
+    SpecTitle:
+        RFC4351
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4351
+    """
+    __MEDIA_TYPE__: str = "audio/t140c"
+
+class AudioT38(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/t38
+
+    SpecTitle:
+        RFC4612
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4612
+    """
+    __MEDIA_TYPE__: str = "audio/t38"
+
+class AudioTelephoneEvent(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/telephone-event
+
+    SpecTitle:
+        RFC4733
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4733
+    """
+    __MEDIA_TYPE__: str = "audio/telephone-event"
+
+class AudioTone(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/tone
+
+    SpecTitle:
+        RFC4733
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4733
+    """
+    __MEDIA_TYPE__: str = "audio/tone"
+
+class AudioUemclip(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/UEMCLIP
+
+    SpecTitle:
+        RFC5686
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5686
+    """
+    __MEDIA_TYPE__: str = "audio/UEMCLIP"
+
+class AudioUlpfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/ulpfec
+
+    SpecTitle:
+        RFC5109
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5109
+    """
+    __MEDIA_TYPE__: str = "audio/ulpfec"
+
+class AudioVdvi(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/VDVI
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "audio/VDVI"
+
+class AudioVmrWb(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/VMR-WB
+
+    SpecTitle:
+        RFC4348
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4348
+    """
+    __MEDIA_TYPE__: str = "audio/VMR-WB"
+
+class AudioVorbis(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/vorbis
+
+    SpecTitle:
+        RFC5215
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5215
+    """
+    __MEDIA_TYPE__: str = "audio/vorbis"
+
+class AudioVorbisConfig(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/audio/vorbis-config
+
+    SpecTitle:
+        RFC5215
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5215
+    """
+    __MEDIA_TYPE__: str = "audio/vorbis-config"
+
+class MessageCpim(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/CPIM
+
+    SpecTitle:
+        RFC3862
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3862
+    """
+    __MEDIA_TYPE__: str = "message/CPIM"
+
+class MessageDeliveryStatus(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/delivery-status
+
+    SpecTitle:
+        RFC1894
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1894
+    """
+    __MEDIA_TYPE__: str = "message/delivery-status"
+
+class MessageDispositionNotification(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/disposition-notification
+
+    SpecTitle:
+        RFC3798
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3798
+    """
+    __MEDIA_TYPE__: str = "message/disposition-notification"
+
+class MessageExample(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/example
+
+    SpecTitle:
+        RFC4735
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4735
+    """
+    __MEDIA_TYPE__: str = "message/example"
+
+class MessageFeedbackReport(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/feedback-report
+
+    SpecTitle:
+        RFC5965
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5965
+    """
+    __MEDIA_TYPE__: str = "message/feedback-report"
+
+class MessageGlobal(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/global
+
+    SpecTitle:
+        RFC6532
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6532
+    """
+    __MEDIA_TYPE__: str = "message/global"
+
+class MessageGlobalDeliveryStatus(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/global-delivery-status
+
+    SpecTitle:
+        RFC6533
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6533
+    """
+    __MEDIA_TYPE__: str = "message/global-delivery-status"
+
+class MessageGlobalDispositionNotification(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/global-disposition-notification
+
+    SpecTitle:
+        RFC6533
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6533
+    """
+    __MEDIA_TYPE__: str = "message/global-disposition-notification"
+
+class MessageGlobalHeaders(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/global-headers
+
+    SpecTitle:
+        RFC6533
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6533
+    """
+    __MEDIA_TYPE__: str = "message/global-headers"
+
+class MessageHttp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/http
+
+    SpecTitle:
+        RFC7230
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7230
+    """
+    __MEDIA_TYPE__: str = "message/http"
+
+class MessageSHttp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/s-http
+
+    SpecTitle:
+        RFC2660
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2660
+    """
+    __MEDIA_TYPE__: str = "message/s-http"
+
+class MessageSip(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/sip
+
+    SpecTitle:
+        RFC3261
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3261
+    """
+    __MEDIA_TYPE__: str = "message/sip"
+
+class MessageSipfrag(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/sipfrag
+
+    SpecTitle:
+        RFC3420
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3420
+    """
+    __MEDIA_TYPE__: str = "message/sipfrag"
+
+class MessageTrackingStatus(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/message/tracking-status
+
+    SpecTitle:
+        RFC3886
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3886
+    """
+    __MEDIA_TYPE__: str = "message/tracking-status"
+
+class ModelExample(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/model/example
+
+    SpecTitle:
+        RFC4735
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4735
+    """
+    __MEDIA_TYPE__: str = "model/example"
+
+class MultipartByteranges(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/byteranges
+
+    SpecTitle:
+        RFC7233
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7233
+    """
+    __MEDIA_TYPE__: str = "multipart/byteranges"
+
+class MultipartEncrypted(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/encrypted
+
+    SpecTitle:
+        RFC1847
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1847
+    """
+    __MEDIA_TYPE__: str = "multipart/encrypted"
+
+class MultipartExample(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/example
+
+    SpecTitle:
+        RFC4735
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4735
+    """
+    __MEDIA_TYPE__: str = "multipart/example"
+
+class MultipartFormData(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/form-data
+
+    SpecTitle:
+        RFC7578
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7578
+    """
+    __MEDIA_TYPE__: str = "multipart/form-data"
+
+class MultipartRelated(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/related
+
+    SpecTitle:
+        RFC2387
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2387
+    """
+    __MEDIA_TYPE__: str = "multipart/related"
+
+class MultipartReport(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/report
+
+    SpecTitle:
+        RFC6522
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6522
+    """
+    __MEDIA_TYPE__: str = "multipart/report"
+
+class MultipartSigned(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/signed
+
+    SpecTitle:
+        RFC1847
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1847
+    """
+    __MEDIA_TYPE__: str = "multipart/signed"
+
+class MultipartVoiceMessage(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/multipart/voice-message
+
+    SpecTitle:
+        RFC2421
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2421
+    """
+    __MEDIA_TYPE__: str = "multipart/voice-message"
+
+class Text1DInterleavedParityfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/1d-interleaved-parityfec
+
+    SpecTitle:
+        RFC6015
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6015
+    """
+    __MEDIA_TYPE__: str = "text/1d-interleaved-parityfec"
+
+class TextCalendar(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/calendar
+
+    SpecTitle:
+        RFC5545
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5545
+    """
+    __MEDIA_TYPE__: str = "text/calendar"
+
+class TextCss(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/css
+
+    SpecTitle:
+        RFC2318
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2318
+    """
+    __MEDIA_TYPE__: str = "text/css"
+
+class TextCsv(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/csv
+
+    SpecTitle:
+        RFC4180
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4180
+    """
+    __MEDIA_TYPE__: str = "text/csv"
+
+class TextDns(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/dns
+
+    SpecTitle:
+        RFC4027
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4027
+    """
+    __MEDIA_TYPE__: str = "text/dns"
+
+class TextEncaprtp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/encaprtp
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "text/encaprtp"
+
+class TextExample(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/example
+
+    SpecTitle:
+        RFC4735
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4735
+    """
+    __MEDIA_TYPE__: str = "text/example"
+
+class TextFwdred(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/fwdred
+
+    SpecTitle:
+        RFC6354
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6354
+    """
+    __MEDIA_TYPE__: str = "text/fwdred"
+
+class TextGrammarRefList(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/grammar-ref-list
+
+    SpecTitle:
+        RFC6787
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6787
+    """
+    __MEDIA_TYPE__: str = "text/grammar-ref-list"
+
+class TextMarkdown(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/markdown
+
+    SpecTitle:
+        RFC-ietf-appsawg-text-markdown-12
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc-ietf-appsawg-text-markdown-12
+    """
+    __MEDIA_TYPE__: str = "text/markdown"
+
+class TextParameters(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/parameters
+
+    SpecTitle:
+        RFC-ietf-mmusic-rfc2326bis-40
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc-ietf-mmusic-rfc2326bis-40
+    """
+    __MEDIA_TYPE__: str = "text/parameters"
+
+class TextRaptorfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/raptorfec
+
+    SpecTitle:
+        RFC6682
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6682
+    """
+    __MEDIA_TYPE__: str = "text/raptorfec"
+
+class TextRed(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/RED
+
+    SpecTitle:
+        RFC4102
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4102
+    """
+    __MEDIA_TYPE__: str = "text/RED"
+
+class TextRfc822Headers(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/rfc822-headers
+
+    SpecTitle:
+        RFC6522
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6522
+    """
+    __MEDIA_TYPE__: str = "text/rfc822-headers"
+
+class TextRtploopback(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/rtploopback
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "text/rtploopback"
+
+class TextRtx(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/rtx
+
+    SpecTitle:
+        RFC4588
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4588
+    """
+    __MEDIA_TYPE__: str = "text/rtx"
+
+class TextSgml(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/SGML
+
+    SpecTitle:
+        RFC1874
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc1874
+    """
+    __MEDIA_TYPE__: str = "text/sgml"
+
+class TextT140(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/t140
+
+    SpecTitle:
+        RFC4103
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4103
+    """
+    __MEDIA_TYPE__: str = "text/t140"
+
+class TextTroff(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/troff
+
+    SpecTitle:
+        RFC4263
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4263
+    """
+    __MEDIA_TYPE__: str = "text/troff"
+
+class TextUlpfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/ulpfec
+
+    SpecTitle:
+        RFC5109
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5109
+    """
+    __MEDIA_TYPE__: str = "text/ulpfec"
+
+class TextUriList(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/uri-list
+
+    SpecTitle:
+        RFC2483
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2483
+    """
+    __MEDIA_TYPE__: str = "text/uri-list"
+
+class TextVcard(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/vcard
+
+    SpecTitle:
+        RFC6350
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6350
+    """
+    __MEDIA_TYPE__: str = "text/vcard"
+
+class TextXml(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/xml
+
+    SpecTitle:
+        RFC7303
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7303
+    """
+    __MEDIA_TYPE__: str = "text/xml"
+
+class TextXmlExternalParsedEntity(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/text/xml-external-parsed-entity
+
+    SpecTitle:
+        RFC7303
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc7303
+    """
+    __MEDIA_TYPE__: str = "text/xml-external-parsed-entity"
+
+class Video1DInterleavedParityfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/1d-interleaved-parityfec
+
+    SpecTitle:
+        RFC6015
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6015
+    """
+    __MEDIA_TYPE__: str = "video/1d-interleaved-parityfec"
+
+class Video3Gpp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/3gpp
+
+    SpecTitle:
+        RFC3839
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3839
+    """
+    __MEDIA_TYPE__: str = "video/3gpp"
+
+class Video3Gpp2(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/3gpp2
+
+    SpecTitle:
+        RFC4393
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4393
+    """
+    __MEDIA_TYPE__: str = "video/3gpp2"
+
+class Video3GppTt(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/3gpp-tt
+
+    SpecTitle:
+        RFC4396
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4396
+    """
+    __MEDIA_TYPE__: str = "video/3gpp-tt"
+
+class VideoBmpeg(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/BMPEG
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/BMPEG"
+
+class VideoBt656(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/BT656
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/BT656"
+
+class VideoCelb(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/CelB
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/CelB"
+
+class VideoDv(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/DV
+
+    SpecTitle:
+        RFC6469
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6469
+    """
+    __MEDIA_TYPE__: str = "video/DV"
+
+class VideoEncaprtp(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/encaprtp
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "video/encaprtp"
+
+class VideoExample(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/example
+
+    SpecTitle:
+        RFC4735
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4735
+    """
+    __MEDIA_TYPE__: str = "video/example"
+
+class VideoH261(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H261
+
+    SpecTitle:
+        RFC4587
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4587
+    """
+    __MEDIA_TYPE__: str = "video/H261"
+
+class VideoH263(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H263
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/H263"
+
+class VideoH2631998(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H263-1998
+
+    SpecTitle:
+        RFC4629
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4629
+    """
+    __MEDIA_TYPE__: str = "video/H263-1998"
+
+class VideoH2632000(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H263-2000
+
+    SpecTitle:
+        RFC4629
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4629
+    """
+    __MEDIA_TYPE__: str = "video/H263-2000"
+
+class VideoH264(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H264
+
+    SpecTitle:
+        RFC6184
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6184
+    """
+    __MEDIA_TYPE__: str = "video/H264"
+
+class VideoH264Rcdo(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H264-RCDO
+
+    SpecTitle:
+        RFC6185
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6185
+    """
+    __MEDIA_TYPE__: str = "video/H264-RCDO"
+
+class VideoH264Svc(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H264-SVC
+
+    SpecTitle:
+        RFC6190
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6190
+    """
+    __MEDIA_TYPE__: str = "video/H264-SVC"
+
+class VideoH265(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/H265
+
+    SpecTitle:
+        RFC-ietf-payload-rtp-h265-15
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc-ietf-payload-rtp-h265-15
+    """
+    __MEDIA_TYPE__: str = "video/H265"
+
+class VideoJpeg(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/JPEG
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/JPEG"
+
+class VideoJpeg2000(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/jpeg2000
+
+    SpecTitle:
+        RFC5371
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5371
+    """
+    __MEDIA_TYPE__: str = "video/jpeg2000"
+
+class VideoMj2(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/mj2
+
+    SpecTitle:
+        RFC3745
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3745
+    """
+    __MEDIA_TYPE__: str = "video/mj2"
+
+class VideoMp1s(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/MP1S
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/MP1S"
+
+class VideoMp2p(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/MP2P
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/MP2P"
+
+class VideoMp2t(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/MP2T
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/MP2T"
+
+class VideoMp4(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/mp4
+
+    SpecTitle:
+        RFC4337
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4337
+    """
+    __MEDIA_TYPE__: str = "video/mp4"
+
+class VideoMp4vEs(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/MP4V-ES
+
+    SpecTitle:
+        RFC6416
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6416
+    """
+    __MEDIA_TYPE__: str = "video/MP4V-ES"
+
+class VideoMpv(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/MPV
+
+    SpecTitle:
+        RFC3555
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3555
+    """
+    __MEDIA_TYPE__: str = "video/MPV"
+
+class VideoMpeg4Generic(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/mpeg4-generic
+
+    SpecTitle:
+        RFC3640
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3640
+    """
+    __MEDIA_TYPE__: str = "video/mpeg4-generic"
+
+class VideoNv(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/nv
+
+    SpecTitle:
+        RFC4856
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4856
+    """
+    __MEDIA_TYPE__: str = "video/nv"
+
+class VideoOgg(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/ogg
+
+    SpecTitle:
+        RFC5334
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5334
+    """
+    __MEDIA_TYPE__: str = "video/ogg"
+
+class VideoPointer(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/pointer
+
+    SpecTitle:
+        RFC2862
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc2862
+    """
+    __MEDIA_TYPE__: str = "video/pointer"
+
+class VideoQuicktime(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/quicktime
+
+    SpecTitle:
+        RFC6381
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6381
+    """
+    __MEDIA_TYPE__: str = "video/quicktime"
+
+class VideoRaptorfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/raptorfec
+
+    SpecTitle:
+        RFC6682
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6682
+    """
+    __MEDIA_TYPE__: str = "video/raptorfec"
+
+class VideoRtploopback(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/rtploopback
+
+    SpecTitle:
+        RFC6849
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc6849
+    """
+    __MEDIA_TYPE__: str = "video/rtploopback"
+
+class VideoRtx(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/rtx
+
+    SpecTitle:
+        RFC4588
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4588
+    """
+    __MEDIA_TYPE__: str = "video/rtx"
+
+class VideoSmpte292m(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/SMPTE292M
+
+    SpecTitle:
+        RFC3497
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc3497
+    """
+    __MEDIA_TYPE__: str = "video/SMPTE292M"
+
+class VideoUlpfec(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/ulpfec
+
+    SpecTitle:
+        RFC5109
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc5109
+    """
+    __MEDIA_TYPE__: str = "video/ulpfec"
+
+class VideoVc1(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/vc1
+
+    SpecTitle:
+        RFC4425
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc4425
+    """
+    __MEDIA_TYPE__: str = "video/vc1"
+
+class VideoVp8(BaseMediaType):
+    """
+    Template:
+        https://www.iana.org/assignments/media-types/video/VP8
+
+    SpecTitle:
+        RFC-ietf-payload-vp8-17
+    
+    SpecReference:
+        https://tools.ietf.org/html/rfc-ietf-payload-vp8-17
+    """
+    __MEDIA_TYPE__: str = "video/VP8"
+
