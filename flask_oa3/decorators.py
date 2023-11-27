@@ -4,6 +4,8 @@ from typing import List, Union, Callable
 from .errors import ReservedSpecificationExtentionError, PayloadModelAlreadyExistsError
 from .model import Model
 from .view import View
+from .responses import BaseResponse, get_response_by_status_code
+from .media_types import BaseMediaType, ApplicationJson
 
 def specification_extensions_support(function):
     """A decorator to allow for extensions to the OpenAPI Schema. The value can be null, a primitive, an array or an object.
@@ -47,7 +49,6 @@ def view_docs(
     Returns:
         _type_: The decorated class
     """    
-    from .view import View
     def decorator(view):
         if not issubclass(view, View):
             raise TypeError('View_docs can only be used on a subclass of View')
@@ -91,6 +92,33 @@ def tag(tags: List[str]):
                 _add_tags_to_method(method, tags)
         else:
             _add_tags_to_method(obj, tags)
+        return obj
+    return decorator
+
+def response(description: str, model: Model, media_type: Union[str, BaseMediaType] = ApplicationJson, **kwargs):
+    def decorator(obj: Union[View, Callable]):
+        media_type_object = media_type(model)
+        if len(kwargs) == 1 and "status_code" in kwargs:
+            #only status code was defined, thus the intent is to look up a predefined status code
+            response_object = get_response_by_status_code(kwargs["status_code"])
+            if response_object is None:
+                raise LookupError(f"A response could not be found with the status code {kwargs['status_code']}. Please define the response phrase and description to use this status code.")
+            response_object = response_object(description)
+        elif "status_code" not in kwargs or "phrase" not in kwargs:
+            raise ValueError("To define a custom response the following arguments must be preset. status_code: int, phrase: str")
+        else:
+            class CustomResponse(BaseResponse):
+                __STATUS_CODE__: int = kwargs["status_code"]
+                __PHRASE__: str = kwargs["phrase"]
+            response_object = CustomResponse(description)
+        response_object.add_media_type(media_type_object)
+        if inspect.isclass(obj):
+            if not issubclass(obj, View):
+                raise TypeError('"response" can only be used on a subclass of View')
+            for _, method in obj._get_methods().items():
+                method._register_response(response_object)
+        else:
+            obj._register_response(response_object)
         return obj
     return decorator
 

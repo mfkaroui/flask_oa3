@@ -1,5 +1,5 @@
 import pytest
-from ..decorators import specification_extensions_support, view_docs, tag
+from ..decorators import specification_extensions_support, view_docs, tag, response
 from ..errors import ReservedSpecificationExtentionError
 
 class TestDecorators:
@@ -74,3 +74,22 @@ class TestDecorators:
         
         assert "tags" in TestView.get.__api_docs__ and TestView.get.__api_docs__["tags"] == tags
         assert "__api_docs__" not in TestView.delete.__dict__ or "tags" not in TestView.delete.__api_docs__ or len(TestView.delete.__api_docs__["tags"]) == 0
+
+    def test_view_response(self):
+        from ..view import View #Local import to not corrupt scope of test document, needed for the decorator
+        from ..model import Model
+        from ..fields import StringField, IntegerField
+
+        class TestModel(Model):
+            id = IntegerField(description="Test id field", required=True)
+            name = StringField(description="Test name field")
+        
+        @response("Test JSON Response", TestModel, status_code=200)
+        class TestView(View):
+            def get(self, **kwargs):
+                pass
+
+            def delete(self, **kwargs):
+                pass
+        
+        print("test")
