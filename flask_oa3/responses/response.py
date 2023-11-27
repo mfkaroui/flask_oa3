@@ -55,10 +55,10 @@ class BaseResponse:
             media_type (BaseMediaType): The media type object to be added.
 
         Raises:
-            TypeError: If the media_type argument is not a subclass of BaseMediaType
+            TypeError: If the media_type argument is not an instance of BaseMediaType
             ValueError: If a media type with the same name already exists in the collection.
         """        
-        if not issubclass(media_type, BaseMediaType):
+        if not isinstance(media_type, BaseMediaType):
             raise TypeError("Improper media type")
         media_type_name = media_type._get_name()
         if media_type_name in self.content:
