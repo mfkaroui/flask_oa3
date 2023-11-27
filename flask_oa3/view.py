@@ -1,3 +1,4 @@
+from __future__ import annotations
 import inspect
 from typing import Dict, List, Union, Callable
 from .model import Model
@@ -25,40 +26,42 @@ class View:
         """        
         if "__api_docs__" not in function.__dict__:
             function.__api_docs__ = {}
-        def method_schema() -> dict:
-            """Constructs the Open API 'Operation Object' according to specifications
+        if "__schema__" not in function.__dict__:
+            def method_schema() -> dict:
+                """Constructs the Open API 'Operation Object' according to specifications
 
-            Returns:
-                dict: The Open API schema
-            """            
-            schema = {
-                "operationId": function.__qualname__.replace(".", "::").replace("<", "__").replace(">", "__")
-            }
-            if "tags" in function.__api_docs__:
-                schema["tags"] = function.__api_docs__["tags"]
-            if "summary" in function.__api_docs__:
-                schema["summary"] = function.__api_docs__["summary"]
-            if "description" in function.__api_docs__:
-                schema["description"] = function.__api_docs__["description"]
-            if "external_docs" in function.__api_docs__:
-                schema["externalDocs"] = function.__api_docs__["external_docs"].schema()
-            if "deprecated" in function.__api_docs__:
-                schema["deprecated"] = function.__api_docs__["deprecated"]
-            return schema
-        function.__dict__["schema"] = method_schema
+                Returns:
+                    dict: The Open API schema
+                """            
+                schema = {
+                    "operationId": function.__qualname__.replace(".", "::").replace("<", "__").replace(">", "__")
+                }
+                if "tags" in function.__api_docs__:
+                    schema["tags"] = function.__api_docs__["tags"]
+                if "summary" in function.__api_docs__:
+                    schema["summary"] = function.__api_docs__["summary"]
+                if "description" in function.__api_docs__:
+                    schema["description"] = function.__api_docs__["description"]
+                if "external_docs" in function.__api_docs__:
+                    schema["externalDocs"] = function.__api_docs__["external_docs"].schema()
+                if "deprecated" in function.__api_docs__:
+                    schema["deprecated"] = function.__api_docs__["deprecated"]
+                return schema
+            function.__dict__["schema"] = method_schema
 
     @classmethod
     def _bind_register_response(cls, function: Callable):
         if "__responses__" not in function.__dict__:
             function.__responses__ = {}
-        def register_response(response: BaseResponse):
-            """Stores the response that a specfic method may return
+        if "_register_response" not in function.__dict__:
+            def register_response(response: BaseResponse):
+                """Stores the response that a specfic method may return
 
-            Args:
-                response (BaseResponse): The response object
-            """            
-            function.__responses__[f"{response.__STATUS_CODE__}"] = response
-        function.__dict__["_register_response"] = register_response
+                Args:
+                    response (BaseResponse): The response object
+                """            
+                function.__responses__[f"{response.__STATUS_CODE__}"] = response
+            function.__dict__["_register_response"] = register_response
 
     @classmethod
     def _get_methods(cls) -> Dict[str, Callable]:
@@ -70,10 +73,8 @@ class View:
         methods = {}
         for func_name, func in inspect.getmembers(cls, inspect.isfunction):
             if func_name.lower() in cls.ALLOWED_METHODS:
-                if "schema" not in func.__dict__:
-                    cls._bind_method_schema(func)
-                if "_register_response" not in func.__dict__:
-                    cls._bind_register_response(func)
+                cls._bind_method_schema(func)
+                cls._bind_register_response(func)
                 methods[func_name] = func
         return methods
     

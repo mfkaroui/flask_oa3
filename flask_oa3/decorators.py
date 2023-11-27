@@ -118,18 +118,8 @@ def response(description: str, model: Model, media_type: Union[str, BaseMediaTyp
             for _, method in obj._get_methods().items():
                 method._register_response(response_object)
         else:
+            View._bind_method_schema(obj)
+            View._bind_register_response(obj)
             obj._register_response(response_object)
         return obj
-    return decorator
-
-def view_method_expect_payload(model: Model):
-    """Adds a payload expectation to a method in a view"""
-    def decorator(method):
-        if "__api_docs__" not in method.__dict__:
-            method.__api_docs__ = {}
-        if "payload_model" not in method.__api_docs__:
-            method.__api_docs__["payload_model"] = model
-        else:
-            raise PayloadModelAlreadyExistsError(f"")
-        return method
     return decorator

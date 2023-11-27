@@ -91,5 +91,17 @@ class TestDecorators:
 
             def delete(self, **kwargs):
                 pass
+
+        assert "__responses__" in TestView.get.__dict__
+        assert "__responses__" in TestView.delete.__dict__
+
+        class TestView(View):
+            @response("Test JSON Response", TestModel, status_code=200)
+            def get(self, **kwargs):
+                pass
+            
+            def delete(self, **kwargs):
+                pass
         
-        print("test")
+        assert "__responses__" in TestView.get.__dict__
+        assert "__responses__" not in TestView.delete.__dict__
