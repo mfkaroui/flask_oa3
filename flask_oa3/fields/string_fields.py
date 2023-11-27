@@ -32,10 +32,6 @@ class Base64EncodedField(RawMixin, StringMixin, metaclass=FieldBase):
     def __init__(self, **kwargs):
         self.format = "byte"
 
-from .metaclass import FieldBase
-from .mixin import RawMixin, StringMixin
-from .field_types import FieldType
-
 class EmailField(RawMixin, StringMixin, metaclass=FieldBase):
     __FIELD_TYPE__ = FieldType.STRING
 
