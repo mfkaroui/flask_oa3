@@ -1,6 +1,6 @@
 from enum import IntEnum
 from typing import Any, Dict, Union
-from ..media_types import MediaType
+from ..media_types import BaseMediaType
 
 class ResponseType(IntEnum):
     """
@@ -42,9 +42,9 @@ class BaseResponse:
             data (Any): The data to be included in the response.
         """
         self.description = description
-        self.content: Dict[str, MediaType] = {}
+        self.content: Dict[str, BaseMediaType] = {}
     
-    def add_media_type(self, media_type: MediaType):
+    def add_media_type(self, media_type: BaseMediaType):
         """Adds a new media type to the content collection.
 
         This method inserts the given `media_type` into the collection,
@@ -52,11 +52,14 @@ class BaseResponse:
         are added to the collection.
 
         Args:
-            media_type (MediaType): The media type object to be added.
+            media_type (BaseMediaType): The media type object to be added.
 
         Raises:
+            TypeError: If the media_type argument is not a subclass of BaseMediaType
             ValueError: If a media type with the same name already exists in the collection.
         """        
+        if not issubclass(media_type, BaseMediaType):
+            raise TypeError("Improper media type")
         media_type_name = media_type._get_name()
         if media_type_name in self.content:
             raise ValueError("Media type already exists.")
