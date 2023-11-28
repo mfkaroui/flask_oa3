@@ -1,9 +1,10 @@
 from typing import Optional
-from pydantic import BaseModel, AnyUrl
+from typing_extensions import Annotated
+from pydantic import BaseModel, AnyUrl, Field
 
 class ExternalDocumentation(BaseModel):
-    description: Optional[str] = None
-    url: AnyUrl
+    url: Annotated[AnyUrl, Field(description="REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.")]
+    description: Annotated[Optional[str], Field(default=None, description="A description of the target documentation. CommonMark syntax MAY be used for rich text representation.")]
 
     @property
     def oa3_schema(self) -> dict:
