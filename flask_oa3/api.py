@@ -28,22 +28,24 @@ class API:
     def register_namespace(self, namespace: Namespace):
         self.namespaces.append(namespace)
     
-    @specification_extensions_support
     def set_tag_info(self, tag: Union[Tag, dict]):
-        """Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.
-
+        """This method accepts a tag, which can either be an instance of the `Tag` class or a dictionary representing a tag.
+        If a dictionary is provided, it is converted into a `Tag` instance. The method then stores the Open API schema
+        representation of this tag in the `tags` attribute, using the tag's name as the key.
+    
         Args:
-            name (str): 
-            description (Union[str, None], optional): 
-            external_documentation (Union[Dict[str, str], None], optional): Additional external documentation for this tag. Defaults to None.
-
-        Raises:
-            KeyError: When a tag has already been defined with the same name
-        """    
+            tag (Union[Tag, dict]): A `Tag` object or a dictionary representing a tag. The dictionary should contain keys
+            and values corresponding to the attributes of the `Tag` class.
+    
+        Note:
+            The `Tag` class is used to represent a tag in Open API specifications, with attributes like 'name',
+            'description', and 'external_documentation'. The method leverages the `oa3_schema` property of the `Tag`
+            class to store a standardized Open API schema version of the tag.
+        """        
         if isinstance(tag, dict):
             tag = Tag(**tag)
         self.tags[tag.name] = tag.oa3_schema
-        
+
     @specification_extensions_support
     def set_contact_info(self, name: Union[str, None] = None, url: Union[str, None] = None, email: Union[str, None] = None, **specification_extensions):
         """Contact information for the exposed API.
