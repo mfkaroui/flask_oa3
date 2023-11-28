@@ -9,6 +9,9 @@ class TestModel:
         assert model_component_name.startswith("#/components/schemas/")
 
     def test_schema___EXTENDS__(self, model_fixture):
+        """The OpenAPI Specification allows combining and extending model definitions using the allOf property of JSON Schema, in effect offering model composition.
+        allOf takes an array of object definitions that are validated independently but together compose a single object.
+        """
         from ..fields import StringField, IntegerField
         class TestModel2(Model):
             id = IntegerField(description="Test id field", required=True)
