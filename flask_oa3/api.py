@@ -1,126 +1,60 @@
-from typing import Dict, List, Union
+from typing import Dict, List, Union, ClassVar, Optional
+from typing_extensions import Annotated
+from pydantic import BaseModel, Field
 from flask import Flask
 
-from .decorators import specification_extensions_support
+from .info import Info
 from .namespace import Namespace
 from .view import View
-from .licenses import License
 from .tag import Tag
+from .external_documentation import ExternalDocumentation
 
-class API:
-    OPENAPI_VERSION = "3.1.0"
-
-    def __init__(self, title: str, version: Union[str, None] = None) -> None:
-        self.title: str = title
-        self.summary: Union[str, None] = None
-        self.description: Union[str, None] = None
-        self.terms_of_service: Union[str, None] = None
-        self.contact: Union[dict, None] = None
-        self.license: Union[dict, None] = None
-        self.tags: Union[Dict[str, dict], None] = None
-        self.version: str = "dev" if version is None else version
-        self.namespaces: List[Namespace] = []
-        self.views: List[View] = []
+class API(BaseModel):
+    OPENAPI_VERSION: ClassVar[str] = "3.1.0"
+    info: Annotated[Info, Field(description="REQUIRED. Provides metadata about the API. The metadata MAY be used by tooling as required.")]
+    tags: Annotated[Optional[List[Tag]], Field(default=[], description="A list of tags used by the document with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared MAY be organized randomly or based on the tools’ logic. Each tag name in the list MUST be unique.")] = []
+    namespaces: ClassVar[Dict[Namespace]] = {}
+    views: ClassVar[List[type[View]]] = []
+    external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation.")]
     
     def init_app(self) -> Flask:
         pass
 
     def register_namespace(self, namespace: Namespace):
-        self.namespaces.append(namespace)
-    
-    def set_tag_info(self, tag: Union[Tag, dict]):
-        """This method accepts a tag, which can either be an instance of the `Tag` class or a dictionary representing a tag.
-        If a dictionary is provided, it is converted into a `Tag` instance. The method then stores the Open API schema
-        representation of this tag in the `tags` attribute, using the tag's name as the key.
-    
-        Args:
-            tag (Union[Tag, dict]): A `Tag` object or a dictionary representing a tag. The dictionary should contain keys
-            and values corresponding to the attributes of the `Tag` class.
-    
-        Note:
-            The `Tag` class is used to represent a tag in Open API specifications, with attributes like 'name',
-            'description', and 'external_documentation'. The method leverages the `oa3_schema` property of the `Tag`
-            class to store a standardized Open API schema version of the tag.
-        """        
-        if isinstance(tag, dict):
-            tag = Tag(**tag)
-        self.tags[tag.name] = tag.oa3_schema
+        if namespace.name in self.namespaces:
+            raise KeyError(f"A namespace with the name {namespace.name} is already registered")
+        self.namespaces[namespace.name] = namespace
 
-    @specification_extensions_support
-    def set_contact_info(self, name: Union[str, None] = None, url: Union[str, None] = None, email: Union[str, None] = None, **specification_extensions):
-        """Contact information for the exposed API.
-
-        Args:
-            name (Union[str, None], optional): The identifying name of the contact person/organization. Defaults to None.
-            url (Union[str, None], optional): The URL pointing to the contact information. This MUST be in the form of a URL. Defaults to None.
-            email (Union[str, None], optional): The email address of the contact person/organization. This MUST be in the form of an email address. Defaults to None.
-        """        
-        if name is None and url is None and email is None:
-            self.contact = None
-        else:
-            self.contact = {}
-            if name is not None:
-                self.contact["name"] = name
-            if url is not None:
-                self.contact["url"] = url
-            if email is not None:
-                self.contact["email"] = email
-            self.license.update(specification_extensions)
-
-    @specification_extensions_support
-    def set_spdx_license_info(self, license: License, url: Union[str, None] = None, **specification_extensions):
-        """_summary_
-
-        Args:
-            license (License): An spdx defined license.
-            url (Union[str, None], optional): A URL to the license used for the API. This MUST be in the form of a URL. Defaults to None.
-        """        
-        self.license = license.schema
-        if url is not None:
-            self.license["url"] = url
-        self.license.update(specification_extensions)
-
-    @specification_extensions_support
-    def set_custom_license_info(self, name: Union[str, None], identifier: Union[str, None] = None, url: Union[str, None] = None, **specification_extensions):
-        """License information for the exposed API.
-
-        Args:
-            name (Union[str, None]): REQUIRED. The license name used for the API. If None all other parameters are ignored and the license is disabled.
-            identifier (Union[str, None], optional): An SPDX license expression for the API. The identifier field is mutually exclusive of the url field. Defaults to None.
-            url (Union[str, None], optional): A URL to the license used for the API. This MUST be in the form of a URL. The url field is mutually exclusive of the identifier field. Defaults to None.
-        """        
-        if name is None:
-            self.license = None
-        else:
-            self.license = {
-                "name": name
-            }
-            if identifier is not None:
-                self.license["identifier"] = identifier
-            if url is not None:
-                self.license["url"] = url
-            self.license.update(specification_extensions)
+    def register_view(self, view: View, route: str):
+        full_route = self._parse_route(route)
+        if full_route in self.views:
+            raise RouteInUseError(f"Route {full_route} already in use by {self.views[full_route].__class__.__name__}")
+        self.views[full_route] = view
 
     @property
-    def schema(self) -> dict:
+    def oa3_schema(self) -> dict:
+        """Constructs the Open API 'OpenAPI Object' according to specifications
+        
+        Spec:
+            https://spec.openapis.org/oas/v3.1.0#openapi-object
+        
+        Returns:
+            dict: The Open API schema
+        """        
         schema = {
             "openapi": self.OPENAPI_VERSION,
+            "info": self.info.oa3_schema(),
             "jsonSchemaDialect": "https://spec.openapis.org/oas/3.1/dialect/base",
-            "info": {
-                "title": self.title,
-                "version": self.version,
-            }
+            "tags": {}
         }
-        if self.summary is not None:
-            schema["info"]["summary"] = self.summary
-        if self.description is not None:
-            schema["info"]["description"] = self.description
-        if self.terms_of_service is not None:
-            schema["info"]["termsOfService"] = self.terms_of_service
-        if self.contact is not None:
-            schema["info"]["contact"] = self.contact
-        if self.license is not None:
-            schema["info"]["license"] = self.license
-        if self.tags is not None:
-            schema["tags"] = self.tags
+        if self.tags is not None and len(self.tags) > 0:
+            schema["tags"].update({tag.name: tag.oa3_schema() for tag in self.tags})
+        if self.namespaces is not None and len(self.namespaces) > 0:
+            schema["tags"].update({namespace.name: namespace._get_tag().oa3_schema() for namespace in self.namespaces})
+        if len(schema["tags"]) == 0:
+            schema.pop("tags") #not used remove it
+        else:
+            schema["tags"] = list(schema["tags"].values()) #ensures that all tags have unique names
+        if self.external_documentation is not None:
+            schema["externalDocs"] = self.external_documentation.oa3_schema()
         return schema
