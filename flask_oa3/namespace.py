@@ -1,17 +1,19 @@
 import os
-from typing import Dict, List
+from typing import Dict, List, Optional, ClassVar
 from urllib.parse import urljoin
-
+from pydantic import BaseModel
 from .model import Model
 from .view import View
 from .errors import RouteInUseError, ModelAlreadyRegisteredError
+from .tag import Tag
+from .external_documentation import ExternalDocumentation
 
-class Namespace:
-    def __init__(self, name: str, base_route: str):
-        self.name = name
-        self.base_route = Namespace._format_route(base_route)
-        self.views: Dict[str, View] = {}
-
+class Namespace(BaseModel):
+    name: str
+    description: Optional[str] = None
+    external_documentation: Optional[ExternalDocumentation] = None
+    views: ClassVar[List[View]] = []
+ 
     @classmethod
     def _format_route(cls, route: str):
         formatted_route = route.replace("\\", "/")
@@ -29,3 +31,10 @@ class Namespace:
         if full_route in self.views:
             raise RouteInUseError(f"Route {full_route} already in use by {self.views[full_route].__class__.__name__}")
         self.views[full_route] = view
+
+    def _get_tag(self) -> Tag:
+        return Tag(
+            name=self.name,
+            description=self.description,
+            external_documentation=self.external_documentation
+        )
