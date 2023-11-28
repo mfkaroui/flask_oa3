@@ -15,7 +15,7 @@ class Model:
     def _get_fields(cls) -> Dict[str, FieldBase]:
         fields = {}
         for field_name, field in inspect.getmembers(cls, lambda m: hasattr(m, "_meta")):
-            if field._meta.__name__ == FieldBase:
+            if field._meta == FieldBase:
                 fields[field_name] = field
         return fields
 
@@ -34,14 +34,16 @@ class Model:
         }
         if len(schema["required"]) == 0:
             schema.pop("required") #dont need it, remove it
-        if len(cls.__EXTENDS__) > 0:
+        extends = [base for base in cls.__EXTENDS__ if issubclass(base, Model) and base.__name__ != cls.__name__]
+        if len(extends) > 0:
             extends = {
                 "allOf": [
                     {
-                        "$ref": extend.__self._get_component_name()
+                        "$ref": base._get_component_name()
                     }
-                    for extend in cls.__EXTENDS__
+                    for base in extends
                 ]
             }
-            schema = [schema, *extends]
+            extends["allOf"].append(schema)
+            schema = extends
         return schema
