@@ -1,9 +1,12 @@
+from __future__ import annotations
 import inspect
-from typing import Dict
+from typing import Dict, List
 
 from .fields.metaclass import FieldBase
 
 class Model:
+    __EXTENDS__: List[Model] = []
+
     @classmethod
     def _get_component_name(cls) -> str:
         return f"#/components/schemas/{cls.__name__}"
@@ -31,4 +34,14 @@ class Model:
         }
         if len(schema["required"]) == 0:
             schema.pop("required") #dont need it, remove it
+        if len(cls.__EXTENDS__) > 0:
+            extends = {
+                "allOf": [
+                    {
+                        "$ref": extend.__self._get_component_name()
+                    }
+                    for extend in cls.__EXTENDS__
+                ]
+            }
+            schema = [schema, *extends]
         return schema
