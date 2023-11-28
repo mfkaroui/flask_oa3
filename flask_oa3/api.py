@@ -3,6 +3,7 @@ from flask import Flask
 
 from .decorators import specification_extensions_support
 from .namespace import Namespace
+from .view import View
 from .licenses import License
 
 class API:
@@ -15,14 +16,39 @@ class API:
         self.terms_of_service: Union[str, None] = None
         self.contact: Union[dict, None] = None
         self.license: Union[dict, None] = None
+        self.tags: Union[Dict[str, dict], None] = None
         self.version: str = "dev" if version is None else version
         self.namespaces: List[Namespace] = []
+        self.views: List[View] = []
     
     def init_app(self) -> Flask:
         pass
 
     def register_namespace(self, namespace: Namespace):
         self.namespaces.append(namespace)
+    
+    @specification_extensions_support
+    def set_tag_info(self, name: str, description: Union[str, None] = None, external_documentation: Union[Dict[str, str], None] = None, **specification_extensions):
+        """Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.
+
+        Args:
+            name (str): REQUIRED. The name of the tag.
+            description (Union[str, None], optional): A description for the tag. CommonMark syntax MAY be used for rich text representation. Defaults to None.
+            external_documentation (Union[Dict[str, str], None], optional): Additional external documentation for this tag. Defaults to None.
+
+        Raises:
+            KeyError: When a tag has already been defined with the same name
+        """        
+        if name in self.tags:
+            raise KeyError(f"A tag with the name {name} is already defined")
+        self.tags[name] = {
+            "name": name
+        }
+        if description is not None:
+            self.tags[name]["description"] = description
+        if external_documentation is not None:
+            self.tags[name]["externalDocs"] = external_documentation
+        self.tags[name].update(specification_extensions)
     
     @specification_extensions_support
     def set_contact_info(self, name: Union[str, None] = None, url: Union[str, None] = None, email: Union[str, None] = None, **specification_extensions):
@@ -43,6 +69,7 @@ class API:
                 self.contact["url"] = url
             if email is not None:
                 self.contact["email"] = email
+            self.license.update(specification_extensions)
 
     @specification_extensions_support
     def set_spdx_license_info(self, license: License, url: Union[str, None] = None, **specification_extensions):
@@ -98,4 +125,6 @@ class API:
             schema["info"]["contact"] = self.contact
         if self.license is not None:
             schema["info"]["license"] = self.license
+        if self.tags is not None:
+            schema["tags"] = self.tags
         return schema
