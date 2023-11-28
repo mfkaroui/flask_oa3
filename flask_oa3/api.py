@@ -5,6 +5,7 @@ from .decorators import specification_extensions_support
 from .namespace import Namespace
 from .view import View
 from .licenses import License
+from .tag import Tag
 
 class API:
     OPENAPI_VERSION = "3.1.0"
@@ -28,28 +29,21 @@ class API:
         self.namespaces.append(namespace)
     
     @specification_extensions_support
-    def set_tag_info(self, name: str, description: Union[str, None] = None, external_documentation: Union[Dict[str, str], None] = None, **specification_extensions):
+    def set_tag_info(self, tag: Union[Tag, dict]):
         """Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.
 
         Args:
-            name (str): REQUIRED. The name of the tag.
-            description (Union[str, None], optional): A description for the tag. CommonMark syntax MAY be used for rich text representation. Defaults to None.
+            name (str): 
+            description (Union[str, None], optional): 
             external_documentation (Union[Dict[str, str], None], optional): Additional external documentation for this tag. Defaults to None.
 
         Raises:
             KeyError: When a tag has already been defined with the same name
-        """        
-        if name in self.tags:
-            raise KeyError(f"A tag with the name {name} is already defined")
-        self.tags[name] = {
-            "name": name
-        }
-        if description is not None:
-            self.tags[name]["description"] = description
-        if external_documentation is not None:
-            self.tags[name]["externalDocs"] = external_documentation
-        self.tags[name].update(specification_extensions)
-    
+        """    
+        if isinstance(tag, dict):
+            tag = Tag(**tag)
+        self.tags[tag.name] = tag.oa3_schema
+        
     @specification_extensions_support
     def set_contact_info(self, name: Union[str, None] = None, url: Union[str, None] = None, email: Union[str, None] = None, **specification_extensions):
         """Contact information for the exposed API.
