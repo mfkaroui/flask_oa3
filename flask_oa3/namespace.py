@@ -11,7 +11,6 @@ class Namespace:
         self.name = name
         self.base_route = Namespace._format_route(base_route)
         self.views: Dict[str, View] = {}
-        self.models: Dict[str, Model] = {}
 
     @classmethod
     def _format_route(cls, route: str):
@@ -30,8 +29,3 @@ class Namespace:
         if full_route in self.views:
             raise RouteInUseError(f"Route {full_route} already in use by {self.views[full_route].__class__.__name__}")
         self.views[full_route] = view
-
-    def register_model(self, model: Model):
-        if model.name in self.models:
-            raise ModelAlreadyRegisteredError(f"Model {model.name} already registered")
-        self.models[model.name] = model
