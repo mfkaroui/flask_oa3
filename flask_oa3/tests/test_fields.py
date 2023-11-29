@@ -1,6 +1,6 @@
 import pytest
 from ..fields import *
-from ..fields.metaclass import FieldBase
+from ..fields.metaclass import FieldMeta
 from ..fields.mixin import *
 
 class TestFields:
@@ -23,7 +23,7 @@ class TestFields:
         (ArbitraryField, [RawMixin, NumberMixin])
     ])
     def test_field_mixin(self, field_class, expected_bases):
-        assert field_class.__class__ == FieldBase
+        assert field_class.__class__ == FieldMeta
         for expected_base in expected_bases:
             assert issubclass(field_class, expected_base)
 

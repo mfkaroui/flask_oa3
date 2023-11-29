@@ -2,7 +2,7 @@ from typing import Union, Any
 
 from .field_types import FieldType
 
-class BaseMixin:
+class BaseField:
     __FIELD_TYPE__: Union[FieldType, None] = None
 
     @classmethod
@@ -14,16 +14,9 @@ class BaseMixin:
         """        
         return {}
 
-    def validate(self, data: Any):
-        """Validates data against the expected type
-
-        Args:
-            data (Any): The data to validate
-
-        Raises:
-            NotImplementedError: This error flags that the derived class has not implemented a validator yet and should do so.
-        """        
-        raise NotImplementedError("Validation is not implemented in the BaseMixin class. The field class should override this method.")
+    @property
+    def _get_type(self) -> type:
+        raise NotImplementedError("Should be implemented by derived class")
 
     @property
     def schema(self) -> dict:
@@ -40,7 +33,7 @@ class BaseMixin:
                 schema[keyword] = self.__dict__[property_name]
         return schema
 
-class RawMixin(BaseMixin):
+class RawMixin(BaseField):
     """Contains keywords and options that are available to all field types"""    
     def __init__(self, description: Union[str, None] = None, required: bool = False, allow_null: Union[bool, None] = None):
         """Initializers for keywords related to all fields.
@@ -61,7 +54,7 @@ class RawMixin(BaseMixin):
             "allow_null": "nullable"
         }
 
-class NumberMixin(BaseMixin):
+class NumberMixin(BaseField):
     """Contains keywords and options that are available to number field types"""    
     def __init__(self, minimum: Union[int, None] = None, maximum: Union[int, None] = None, exclusive_minimum: Union[bool, None] = None, exclusive_maximum: Union[bool, None] = None, multiple_of: Union[int, None] = None):
         """Initializers for keywords related to number type fields.
@@ -89,7 +82,7 @@ class NumberMixin(BaseMixin):
             "multiple_of": "multipleOf"
         }
 
-class StringMixin(BaseMixin):
+class StringMixin(BaseField):
     """Contains keywords and options that are available to string field types"""    
 
     def __init__(self, min_length: Union[int, None] = None, max_length: Union[int, None] = None, pattern: Union[str, None] = None, format: Union[str, None] = None):

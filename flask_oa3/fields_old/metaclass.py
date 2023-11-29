@@ -1,5 +1,5 @@
 
-class FieldBase(type):  
+class FieldMeta(type):  
     def __new__(cls, name, bases, attrs, **kwargs):
         super_new = super().__new__
         derived_constructor = None
