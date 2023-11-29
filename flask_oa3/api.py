@@ -13,7 +13,7 @@ class API(BaseModel):
     OPENAPI_VERSION: ClassVar[str] = "3.1.0"
     info: Annotated[Info, Field(description="REQUIRED. Provides metadata about the API. The metadata MAY be used by tooling as required.")]
     tags: Annotated[Optional[List[Tag]], Field(default=[], description="A list of tags used by the document with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared MAY be organized randomly or based on the tools’ logic. Each tag name in the list MUST be unique.")] = []
-    namespaces: ClassVar[Dict[Namespace]] = {}
+    namespaces: ClassVar[Dict[str, Namespace]] = {}
     views: ClassVar[List[type[View]]] = []
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation.")]
     
