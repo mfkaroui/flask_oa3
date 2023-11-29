@@ -16,9 +16,4 @@ class ExternalDocumentation(BaseModel):
         Returns:
             dict: The Open API schema
         """        
-        schema = {
-            "url": self.url
-        }
-        if self.description is not None:
-            schema["description"] = self.description
-        return schema
+        return self.model_dump(mode="json", by_alias=True)
