@@ -1,7 +1,7 @@
 from enum import IntEnum
 from typing import Any, Dict, Union, ClassVar, Optional
 from typing_extensions import Annotated
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, computed_field
 from ..media_types import BaseMediaType
 
 class ResponseType(IntEnum):
@@ -24,7 +24,7 @@ class ResponseType(IntEnum):
     CLIENT_ERROR = 400
     SERVER_ERROR = 500
 
-class BaseResponse:
+class Response(BaseModel):
     """
     A base class for creating responses with a status code and data.
 
@@ -36,9 +36,14 @@ class BaseResponse:
     __STATUS_CODE__: ClassVar[Union[int, None]] = None
     __PHRASE__: ClassVar[Union[str, None]] = None
 
-    description: Annotated[Optional[str], Field(default=None, description="")]
-    content: Annotated[Dict[str, BaseMediaType], Field(default={}, description="")]
-        
+    description: Annotated[Optional[str], Field(default=None, description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.")]
+    content: Annotated[Optional[Dict[str, BaseMediaType]], Field(default=None, description="A map containing descriptions of potential response payloads. The key is a media type or media type range and the value describes it. For responses that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*")]
+    
+    @computed_field(alias="x-phrase", description="The phrase of the response reprisenting a short description / long name")
+    @property
+    def phrase(self) -> str:
+        return self.__PHRASE__
+
     def add_media_type(self, media_type: BaseMediaType):
         """Adds a new media type to the content collection.
 
@@ -81,15 +86,11 @@ class BaseResponse:
     @property
     def oa3_schema(self) -> dict:
         """Constructs the Open API 'Response Object' according to specifications
+        
+        Spec:
+            https://spec.openapis.org/oas/v3.1.0#response-object
 
         Returns:
             dict: The Open API schema
         """     
-        schema = {
-            "x-phrase": self.__PHRASE__
-        }
-        if self.description is not None:
-            schema["description"] = self.description
-        if len(self.content) > 0:
-            schema["content"] = {media_type_name: media_type.schema for media_type_name, media_type in self.content.items()}
-        return schema
+        return self.model_dump(mode="json", by_alias=True, exclude_none=True)

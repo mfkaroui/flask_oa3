@@ -2,6 +2,25 @@ import os
 from json import loads
 from typing import List
 
+def to_pascal_case(input_str: str) -> str:
+    # Split the string by both '/' and '-'
+    parts = input_str.replace("/", "-").replace("_", "-").replace(" ", "-").split("-")
+
+    # Capitalize the first letter of each part. If a part starts with a digit,
+    # capitalize the first letter after the digit.
+    pascal_parts = []
+    for part in parts:
+        if part[0].isdigit():
+            # Find the index of the first non-digit character
+            for i, char in enumerate(part):
+                if not char.isdigit():
+                    break
+            # Capitalize the first non-digit character
+            pascal_part = part[:i] + part[i].upper() + part[i+1:]
+        else:
+            pascal_part = part.capitalize()
+        pascal_parts.append(pascal_part)
+    return ''.join(pascal_parts)
 
 if __name__ == "__main__":
     run_dir = os.path.dirname(os.path.realpath(__file__))
@@ -10,13 +29,17 @@ if __name__ == "__main__":
         status_codes_json = loads(file_handle.read())
     status_codes_class = f"""### AUTO-GENERATED ###
 from typing import Union
-from .response import BaseResponse, ResponseType
+from .response import Response, ResponseType
 
 """
     for status_code in status_codes_json:
-        status_codes_class = status_codes_class + f"""class {status_code['phrase'].replace(' ', '').replace('-', '')}Response(BaseResponse):
+        response_class_name = to_pascal_case(status_code["phrase"])
+        status_codes_class = status_codes_class + f"""class Response{response_class_name}(Response):
     \"\"\"
     {status_code['description']}
+
+    StatusCode:
+        {status_code['code']}
 
     SpecTitle:
         {status_code['spec_title']}
@@ -29,12 +52,24 @@ from .response import BaseResponse, ResponseType
 
 """
     status_codes_class = status_codes_class + """
-def get_response_by_status_code(status_code: int) -> Union[BaseResponse, None]:
+def get_response_by_status_code(status_code: int) -> Union[type[Response], None]:
+    \"\"\"
+    Retrieves a Response object corresponding to a given HTTP status code.
+
+    This function maps standard HTTP status codes to their respective Response class objects. It provides a convenient way to access Response objects based on the status code encountered in HTTP communication. 
+
+    Args:
+        status_code (int): The HTTP status code for which the corresponding Response object is required. 
+
+    Returns:
+        Union[type[Response], None]: Returns the Response class associated with the given status code. If the status code is not recognized, it returns None.
+    \"\"\"
+
     responses = {"""
     for status_code in status_codes_json:
-        status_code_name = f"{status_code['phrase'].replace(' ', '').replace('-', '')}Response"
+        response_class_name = to_pascal_case(status_code["phrase"])
         status_codes_class = status_codes_class + f"""
-            \"{status_code['code']}\": {status_code_name},"""
+        \"{status_code['code']}\": Response{response_class_name},"""
     status_codes_class = status_codes_class + """
     }
     return responses.get(str(status_code), None)
