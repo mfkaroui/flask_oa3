@@ -6,7 +6,7 @@ from .external_documentation import ExternalDocumentation
 class Tag(BaseModel):
     name: Annotated[str, Field(description="REQUIRED. The name of the tag.")]
     description: Annotated[Optional[str], Field(default=None, description="A description for the tag. CommonMark syntax MAY be used for rich text representation. Defaults to None.")]
-    external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this tag. Defaults to None.")]
+    external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, alias="externalDocs", description="Additional external documentation for this tag. Defaults to None.")]
 
     @property
     def oa3_schema(self) -> dict:
@@ -18,11 +18,4 @@ class Tag(BaseModel):
         Returns:
             dict: The Open API schema
         """        
-        schema = {
-            "name": self.url
-        }
-        if self.description is not None:
-            schema["description"] = self.description
-        if self.external_documentation is not None:
-            schema["externalDocs"] = self.external_documentation.oa3_schema
-        return schema
+        return self.model_dump(mode="json", by_alias=True, exclude_none=True)

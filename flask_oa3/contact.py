@@ -24,11 +24,4 @@ class Contact(BaseModel):
         Returns:
             dict: The Open API schema
         """        
-        schema = {}
-        if self.name is not None:
-            schema["name"] = self.name
-        if self.description is not None:
-            schema["description"] = self.description
-        if self.email is not None:
-            schema["email"] = self.email
-        return schema
+        return self.model_dump(mode="json", by_alias=True, exclude_none=True)

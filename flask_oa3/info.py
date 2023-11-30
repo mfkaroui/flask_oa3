@@ -1,17 +1,17 @@
 from typing import Optional
-from pydantic import BaseModel, AnyUrl, EmailStr
+from typing_extensions import Annotated
+from pydantic import BaseModel, AnyUrl, EmailStr, Field
 from .contact import Contact
 from .licenses import License
 
 class Info(BaseModel):
-    title: str
-    version: str = "dev"
-    summary: Optional[str] = None
-    description: Optional[str] = None
-    terms_of_service: Optional[AnyUrl] = None
-    contact: Optional[Contact] = None
-    license: Optional[License] = None
-    
+    title: Annotated[str, Field(description="REQUIRED. The title of the API.")]
+    summary: Annotated[Optional[str], Field(default=None, description="A short summary of the API.")]
+    description: Annotated[Optional[str], Field(default=None, description="A description of the API. CommonMark syntax MAY be used for rich text representation.")]
+    terms_of_service: Annotated[Optional[AnyUrl], Field(default=None, alias="termsOfService", description="A URL to the Terms of Service for the API. This MUST be in the form of a URL.")]
+    contact: Annotated[Optional[Contact], Field(default=None, description="The contact information for the exposed API.")]
+    license: Annotated[Optional[License], Field(default=None, description="The license information for the exposed API.")]
+    version: Annotated[str, Field(default="dev", description="REQUIRED. The version of the OpenAPI document (which is distinct from the OpenAPI Specification version or the API implementation version).")]
 
     @property
     def oa3_schema(self) -> dict:
@@ -23,18 +23,4 @@ class Info(BaseModel):
         Returns:
             dict: The Open API schema
         """        
-        schema = {
-            "title": self.title,
-            "version": self.version
-        }
-        if self.summary is not None:
-            schema["summary"] = self.summary
-        if self.description is not None:
-            schema["description"] = self.description
-        if self.terms_of_service is not None:
-            schema["termsOfService"] = self.terms_of_service
-        if self.contact is not None:
-            schema["contact"] = self.contact
-        if self.license is not None:
-            schema["license"] = self.license
-        return schema
+        return self.model_dump(mode="json", by_alias=True, exclude_none=True)

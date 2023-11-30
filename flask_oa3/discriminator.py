@@ -15,4 +15,4 @@ class Discriminator(BaseModel):
         Returns:
             dict: The Open API schema
         """        
-        return self.model_dump(mode="json", by_alias=True)
+        return self.model_dump(mode="json", by_alias=True, exclude_none=True)
