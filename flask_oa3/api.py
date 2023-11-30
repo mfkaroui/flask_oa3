@@ -1,8 +1,9 @@
 from typing import Dict, List, Union, ClassVar, Optional
 from typing_extensions import Annotated
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, computed_field
 from flask import Flask
 
+from .api_provider import APIProvider
 from .info import Info
 from .namespace import Namespace
 from .view import View
@@ -11,12 +12,25 @@ from .external_documentation import ExternalDocumentation
 
 class API(BaseModel):
     OPENAPI_VERSION: ClassVar[str] = "3.1.0"
+    JSON_SCHEMA_DIALECT: ClassVar[str] = "https://spec.openapis.org/oas/3.1/dialect/base"
+    api_provider: ClassVar[APIProvider] = APIProvider.FLASK
     info: Annotated[Info, Field(description="REQUIRED. Provides metadata about the API. The metadata MAY be used by tooling as required.")]
     tags: Annotated[Optional[List[Tag]], Field(default=[], description="A list of tags used by the document with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared MAY be organized randomly or based on the tools’ logic. Each tag name in the list MUST be unique.")] = []
     namespaces: ClassVar[Dict[str, Namespace]] = {}
     views: ClassVar[List[type[View]]] = []
-    external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation.")]
+    external_documentation: Annotated[Optional[ExternalDocumentation], Field(alias="externalDocs", default=None, description="Additional external documentation.")]
     
+    @computed_field(alias="openapi", description="REQUIRED. This string MUST be the version number of the OpenAPI Specification that the OpenAPI document uses. The openapi field SHOULD be used by tooling to interpret the OpenAPI document. This is not related to the API info.version string.")
+    @property
+    def openapi_version(self) -> str:
+        return self.OPENAPI_VERSION
+    
+    @computed_field(alias="jsonSchemaDialect", description="REQUIRED. This string MUST be the version number of the OpenAPI Specification that the OpenAPI document uses. The openapi field SHOULD be used by tooling to interpret the OpenAPI document. This is not related to the API info.version string.")
+    @property
+    def openapi_version(self) -> str:
+        return self.JSON_SCHEMA_DIALECT
+
+
     def init_app(self) -> Flask:
         pass
 
