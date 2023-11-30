@@ -1,21 +1,23 @@
 ### AUTO-GENERATED ###
-class License:
-    VERSION: str = "2502b90"
-    RELEASE_DATE: str = "2023-11-10"
+from pydantic import BaseModel
+from typing import ClassVar, List, Dict, Tuple, Union, Optional
+
+class License(BaseModel):
+    VERSION: ClassVar[str] = "2502b90"
+    RELEASE_DATE: ClassVar[str] = "2023-11-10"
     
-    def __init__(self, isFsfLibre = None, isDeprecatedLicenseId = None, detailsUrl = None, name = None, referenceNumber = None, reference = None, seeAlso = None, licenseId = None, isOsiApproved = None):
-        self.isFsfLibre = isFsfLibre
-        self.isDeprecatedLicenseId = isDeprecatedLicenseId
-        self.detailsUrl = detailsUrl
-        self.name = name
-        self.referenceNumber = referenceNumber
-        self.reference = reference
-        self.seeAlso = seeAlso
-        self.licenseId = licenseId
-        self.isOsiApproved = isOsiApproved
+    reference: Optional[str]
+    isDeprecatedLicenseId: Optional[bool]
+    detailsUrl: Optional[str]
+    referenceNumber: Optional[int]
+    name: Optional[str]
+    licenseId: Optional[str]
+    seeAlso: Optional[List[str]]
+    isOsiApproved: Optional[bool]
+    isFsfLibre: Optional[bool]
 
     @property
-    def schema(self):
+    def oa3_schema(self):
         return {
             'name': self.name,
             'identifier': self.licenseId,
