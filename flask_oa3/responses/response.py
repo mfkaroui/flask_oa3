@@ -1,5 +1,7 @@
 from enum import IntEnum
-from typing import Any, Dict, Union
+from typing import Any, Dict, Union, ClassVar, Optional
+from typing_extensions import Annotated
+from pydantic import BaseModel, Field
 from ..media_types import BaseMediaType
 
 class ResponseType(IntEnum):
@@ -30,20 +32,13 @@ class BaseResponse:
         __STATUS_CODE__ (Union[int, None]): A class-level attribute that defines the status code for the response.
         data (Any): The data to be included in the response.
     """
-    __api_docs__: Dict[str, str] = {}
-    __STATUS_CODE__: Union[int, None] = None
-    __PHRASE__: Union[str, None] = None
+    __api_docs__: ClassVar[Dict[str, str]] = {}
+    __STATUS_CODE__: ClassVar[Union[int, None]] = None
+    __PHRASE__: ClassVar[Union[str, None]] = None
 
-    def __init__(self, description: Union[str, None] = None):
-        """
-        Initializes a new instance of BaseResponse.
-
-        Args:
-            data (Any): The data to be included in the response.
-        """
-        self.description = description
-        self.content: Dict[str, BaseMediaType] = {}
-    
+    description: Annotated[Optional[str], Field(default=None, description="")]
+    content: Annotated[Dict[str, BaseMediaType], Field(default={}, description="")]
+        
     def add_media_type(self, media_type: BaseMediaType):
         """Adds a new media type to the content collection.
 
@@ -84,7 +79,7 @@ class BaseResponse:
             return ResponseType(int(f"{str(cls.__STATUS_CODE__)[0]}00"))
 
     @property
-    def schema(self) -> dict:
+    def oa3_schema(self) -> dict:
         """Constructs the Open API 'Response Object' according to specifications
 
         Returns:
