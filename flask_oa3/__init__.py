@@ -1,4 +1,5 @@
 from pydantic import Field
+from .api_provider import APIProvider
 from .api import API
 from .contact import Contact
 from .decorators import view_docs, tag
