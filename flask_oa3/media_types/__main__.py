@@ -27,12 +27,12 @@ if __name__ == "__main__":
         file_handle.seek(0)
         media_types_json = loads(file_handle.read())
     media_types_class = f"""### AUTO-GENERATED ###
-from .media_type import BaseMediaType
+from .media_type import MediaType
 
 """
     for media_type in media_types_json:
         media_type_name = to_pascal_case(media_type["media_type"])
-        media_types_class = media_types_class + f"""class {media_type_name}(BaseMediaType):
+        media_types_class = media_types_class + f"""class MediaType{media_type_name}(MediaType):
     \"\"\"
     Template:
         {media_type['template']}

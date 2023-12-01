@@ -1,7 +1,7 @@
 ### AUTO-GENERATED ###
-from .media_type import BaseMediaType
+from .media_type import MediaType
 
-class ApplicationYaml(BaseMediaType):
+class MediaTypeApplicationYaml(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/yaml
@@ -14,7 +14,7 @@ class ApplicationYaml(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/yaml"
 
-class Application1DInterleavedParityfec(BaseMediaType):
+class MediaTypeApplication1DInterleavedParityfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/1d-interleaved-parityfec
@@ -27,7 +27,7 @@ class Application1DInterleavedParityfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/1d-interleaved-parityfec"
 
-class ApplicationBatchSmtp(BaseMediaType):
+class MediaTypeApplicationBatchSmtp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/batch-SMTP
@@ -40,7 +40,7 @@ class ApplicationBatchSmtp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/batch-SMTP"
 
-class ApplicationCallCompletion(BaseMediaType):
+class MediaTypeApplicationCallCompletion(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/call-completion
@@ -53,7 +53,7 @@ class ApplicationCallCompletion(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/call-completion"
 
-class ApplicationCals1840(BaseMediaType):
+class MediaTypeApplicationCals1840(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/CALS-1840
@@ -66,7 +66,7 @@ class ApplicationCals1840(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/CALS-1840"
 
-class ApplicationCbor(BaseMediaType):
+class MediaTypeApplicationCbor(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cbor
@@ -79,7 +79,7 @@ class ApplicationCbor(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cbor"
 
-class ApplicationCdmiCapability(BaseMediaType):
+class MediaTypeApplicationCdmiCapability(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cdmi-capability
@@ -92,7 +92,7 @@ class ApplicationCdmiCapability(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cdmi-capability"
 
-class ApplicationCdmiContainer(BaseMediaType):
+class MediaTypeApplicationCdmiContainer(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cdmi-container
@@ -105,7 +105,7 @@ class ApplicationCdmiContainer(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cdmi-container"
 
-class ApplicationCdmiDomain(BaseMediaType):
+class MediaTypeApplicationCdmiDomain(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cdmi-domain
@@ -118,7 +118,7 @@ class ApplicationCdmiDomain(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cdmi-domain"
 
-class ApplicationCdmiObject(BaseMediaType):
+class MediaTypeApplicationCdmiObject(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cdmi-object
@@ -131,7 +131,7 @@ class ApplicationCdmiObject(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cdmi-object"
 
-class ApplicationCdmiQueue(BaseMediaType):
+class MediaTypeApplicationCdmiQueue(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cdmi-queue
@@ -144,7 +144,7 @@ class ApplicationCdmiQueue(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cdmi-queue"
 
-class ApplicationCdni(BaseMediaType):
+class MediaTypeApplicationCdni(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cdni
@@ -157,7 +157,7 @@ class ApplicationCdni(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cdni"
 
-class ApplicationCfw(BaseMediaType):
+class MediaTypeApplicationCfw(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cfw
@@ -170,7 +170,7 @@ class ApplicationCfw(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cfw"
 
-class ApplicationCms(BaseMediaType):
+class MediaTypeApplicationCms(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/cms
@@ -183,7 +183,7 @@ class ApplicationCms(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/cms"
 
-class ApplicationCsrattrs(BaseMediaType):
+class MediaTypeApplicationCsrattrs(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/csrattrs
@@ -196,7 +196,7 @@ class ApplicationCsrattrs(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/csrattrs"
 
-class ApplicationDicom(BaseMediaType):
+class MediaTypeApplicationDicom(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/dicom
@@ -209,7 +209,7 @@ class ApplicationDicom(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/dicom"
 
-class ApplicationDns(BaseMediaType):
+class MediaTypeApplicationDns(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/dns
@@ -222,7 +222,7 @@ class ApplicationDns(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/dns"
 
-class ApplicationDvcs(BaseMediaType):
+class MediaTypeApplicationDvcs(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/dvcs
@@ -235,7 +235,7 @@ class ApplicationDvcs(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/dvcs"
 
-class ApplicationEcmascript(BaseMediaType):
+class MediaTypeApplicationEcmascript(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ecmascript
@@ -248,7 +248,7 @@ class ApplicationEcmascript(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ecmascript"
 
-class ApplicationEdiConsent(BaseMediaType):
+class MediaTypeApplicationEdiConsent(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/EDI-consent
@@ -261,7 +261,7 @@ class ApplicationEdiConsent(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/EDI-consent"
 
-class ApplicationEdifact(BaseMediaType):
+class MediaTypeApplicationEdifact(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/EDIFACT
@@ -274,7 +274,7 @@ class ApplicationEdifact(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/EDIFACT"
 
-class ApplicationEdiX12(BaseMediaType):
+class MediaTypeApplicationEdiX12(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/EDI-X12
@@ -287,7 +287,7 @@ class ApplicationEdiX12(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/EDI-X12"
 
-class ApplicationEncaprtp(BaseMediaType):
+class MediaTypeApplicationEncaprtp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/encaprtp
@@ -300,7 +300,7 @@ class ApplicationEncaprtp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/encaprtp"
 
-class ApplicationExample(BaseMediaType):
+class MediaTypeApplicationExample(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/example
@@ -313,7 +313,7 @@ class ApplicationExample(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/example"
 
-class ApplicationFits(BaseMediaType):
+class MediaTypeApplicationFits(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/fits
@@ -326,7 +326,7 @@ class ApplicationFits(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/fits"
 
-class ApplicationFontTdpfr(BaseMediaType):
+class MediaTypeApplicationFontTdpfr(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/font-tdpfr
@@ -339,7 +339,7 @@ class ApplicationFontTdpfr(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/font-tdpfr"
 
-class ApplicationGzip(BaseMediaType):
+class MediaTypeApplicationGzip(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/gzip
@@ -352,7 +352,7 @@ class ApplicationGzip(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/gzip"
 
-class ApplicationH224(BaseMediaType):
+class MediaTypeApplicationH224(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/H224
@@ -365,7 +365,7 @@ class ApplicationH224(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/H224"
 
-class ApplicationHttp(BaseMediaType):
+class MediaTypeApplicationHttp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/http
@@ -378,7 +378,7 @@ class ApplicationHttp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/http"
 
-class ApplicationIbePpData(BaseMediaType):
+class MediaTypeApplicationIbePpData(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ibe-pp-data
@@ -391,7 +391,7 @@ class ApplicationIbePpData(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ibe-pp-data"
 
-class ApplicationIndex(BaseMediaType):
+class MediaTypeApplicationIndex(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/index
@@ -404,7 +404,7 @@ class ApplicationIndex(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/index"
 
-class ApplicationIotp(BaseMediaType):
+class MediaTypeApplicationIotp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/IOTP
@@ -417,7 +417,7 @@ class ApplicationIotp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/iotp"
 
-class ApplicationIpfix(BaseMediaType):
+class MediaTypeApplicationIpfix(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ipfix
@@ -430,7 +430,7 @@ class ApplicationIpfix(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ipfix"
 
-class ApplicationIpp(BaseMediaType):
+class MediaTypeApplicationIpp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ipp
@@ -443,7 +443,7 @@ class ApplicationIpp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ipp"
 
-class ApplicationIsup(BaseMediaType):
+class MediaTypeApplicationIsup(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ISUP
@@ -456,7 +456,7 @@ class ApplicationIsup(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/isup"
 
-class ApplicationJavascript(BaseMediaType):
+class MediaTypeApplicationJavascript(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/javascript
@@ -469,7 +469,7 @@ class ApplicationJavascript(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/javascript"
 
-class ApplicationJose(BaseMediaType):
+class MediaTypeApplicationJose(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/jose
@@ -482,7 +482,7 @@ class ApplicationJose(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/jose"
 
-class ApplicationJson(BaseMediaType):
+class MediaTypeApplicationJson(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/json
@@ -495,7 +495,7 @@ class ApplicationJson(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/json"
 
-class ApplicationJsonSeq(BaseMediaType):
+class MediaTypeApplicationJsonSeq(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/json-seq
@@ -508,7 +508,7 @@ class ApplicationJsonSeq(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/json-seq"
 
-class ApplicationJwt(BaseMediaType):
+class MediaTypeApplicationJwt(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/jwt
@@ -521,7 +521,7 @@ class ApplicationJwt(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/jwt"
 
-class ApplicationLinkFormat(BaseMediaType):
+class MediaTypeApplicationLinkFormat(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/link-format
@@ -534,7 +534,7 @@ class ApplicationLinkFormat(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/link-format"
 
-class ApplicationMarc(BaseMediaType):
+class MediaTypeApplicationMarc(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/marc
@@ -547,7 +547,7 @@ class ApplicationMarc(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/marc"
 
-class ApplicationMbox(BaseMediaType):
+class MediaTypeApplicationMbox(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mbox
@@ -560,7 +560,7 @@ class ApplicationMbox(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mbox"
 
-class ApplicationMikey(BaseMediaType):
+class MediaTypeApplicationMikey(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mikey
@@ -573,7 +573,7 @@ class ApplicationMikey(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mikey"
 
-class ApplicationMossKeys(BaseMediaType):
+class MediaTypeApplicationMossKeys(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/moss-keys
@@ -586,7 +586,7 @@ class ApplicationMossKeys(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/moss-keys"
 
-class ApplicationMossSignature(BaseMediaType):
+class MediaTypeApplicationMossSignature(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/moss-signature
@@ -599,7 +599,7 @@ class ApplicationMossSignature(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/moss-signature"
 
-class ApplicationMosskeyData(BaseMediaType):
+class MediaTypeApplicationMosskeyData(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mosskey-data
@@ -612,7 +612,7 @@ class ApplicationMosskeyData(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mosskey-data"
 
-class ApplicationMosskeyRequest(BaseMediaType):
+class MediaTypeApplicationMosskeyRequest(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mosskey-request
@@ -625,7 +625,7 @@ class ApplicationMosskeyRequest(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mosskey-request"
 
-class ApplicationMp21(BaseMediaType):
+class MediaTypeApplicationMp21(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mp21
@@ -638,7 +638,7 @@ class ApplicationMp21(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mp21"
 
-class ApplicationMp4(BaseMediaType):
+class MediaTypeApplicationMp4(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mp4
@@ -651,7 +651,7 @@ class ApplicationMp4(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mp4"
 
-class ApplicationMpeg4Generic(BaseMediaType):
+class MediaTypeApplicationMpeg4Generic(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mpeg4-generic
@@ -664,7 +664,7 @@ class ApplicationMpeg4Generic(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mpeg4-generic"
 
-class ApplicationMpeg4Iod(BaseMediaType):
+class MediaTypeApplicationMpeg4Iod(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mpeg4-iod
@@ -677,7 +677,7 @@ class ApplicationMpeg4Iod(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mpeg4-iod"
 
-class ApplicationMpeg4IodXmt(BaseMediaType):
+class MediaTypeApplicationMpeg4IodXmt(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mpeg4-iod-xmt
@@ -690,7 +690,7 @@ class ApplicationMpeg4IodXmt(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mpeg4-iod-xmt"
 
-class ApplicationMxf(BaseMediaType):
+class MediaTypeApplicationMxf(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/mxf
@@ -703,7 +703,7 @@ class ApplicationMxf(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/mxf"
 
-class ApplicationNasdata(BaseMediaType):
+class MediaTypeApplicationNasdata(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/nasdata
@@ -716,7 +716,7 @@ class ApplicationNasdata(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/nasdata"
 
-class ApplicationNewsCheckgroups(BaseMediaType):
+class MediaTypeApplicationNewsCheckgroups(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/news-checkgroups
@@ -729,7 +729,7 @@ class ApplicationNewsCheckgroups(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/news-checkgroups"
 
-class ApplicationNewsGroupinfo(BaseMediaType):
+class MediaTypeApplicationNewsGroupinfo(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/news-groupinfo
@@ -742,7 +742,7 @@ class ApplicationNewsGroupinfo(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/news-groupinfo"
 
-class ApplicationNewsTransmission(BaseMediaType):
+class MediaTypeApplicationNewsTransmission(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/news-transmission
@@ -755,7 +755,7 @@ class ApplicationNewsTransmission(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/news-transmission"
 
-class ApplicationOcspRequest(BaseMediaType):
+class MediaTypeApplicationOcspRequest(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ocsp-request
@@ -768,7 +768,7 @@ class ApplicationOcspRequest(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ocsp-request"
 
-class ApplicationOcspResponse(BaseMediaType):
+class MediaTypeApplicationOcspResponse(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ocsp-response
@@ -781,7 +781,7 @@ class ApplicationOcspResponse(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ocsp-response"
 
-class ApplicationOctetStream(BaseMediaType):
+class MediaTypeApplicationOctetStream(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/octet-stream
@@ -794,7 +794,7 @@ class ApplicationOctetStream(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/octet-stream"
 
-class ApplicationOda(BaseMediaType):
+class MediaTypeApplicationOda(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ODA
@@ -807,7 +807,7 @@ class ApplicationOda(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/oda"
 
-class ApplicationOgg(BaseMediaType):
+class MediaTypeApplicationOgg(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ogg
@@ -820,7 +820,7 @@ class ApplicationOgg(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ogg"
 
-class ApplicationPdf(BaseMediaType):
+class MediaTypeApplicationPdf(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pdf
@@ -833,7 +833,7 @@ class ApplicationPdf(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pdf"
 
-class ApplicationPgpEncrypted(BaseMediaType):
+class MediaTypeApplicationPgpEncrypted(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pgp-encrypted
@@ -846,7 +846,7 @@ class ApplicationPgpEncrypted(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pgp-encrypted"
 
-class ApplicationPgpSignature(BaseMediaType):
+class MediaTypeApplicationPgpSignature(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pgp-signature
@@ -859,7 +859,7 @@ class ApplicationPgpSignature(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pgp-signature"
 
-class ApplicationPkcs10(BaseMediaType):
+class MediaTypeApplicationPkcs10(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkcs10
@@ -872,7 +872,7 @@ class ApplicationPkcs10(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkcs10"
 
-class ApplicationPkcs7Mime(BaseMediaType):
+class MediaTypeApplicationPkcs7Mime(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkcs7-mime
@@ -885,7 +885,7 @@ class ApplicationPkcs7Mime(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkcs7-mime"
 
-class ApplicationPkcs7Signature(BaseMediaType):
+class MediaTypeApplicationPkcs7Signature(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkcs7-signature
@@ -898,7 +898,7 @@ class ApplicationPkcs7Signature(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkcs7-signature"
 
-class ApplicationPkcs8(BaseMediaType):
+class MediaTypeApplicationPkcs8(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkcs8
@@ -911,7 +911,7 @@ class ApplicationPkcs8(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkcs8"
 
-class ApplicationPkixAttrCert(BaseMediaType):
+class MediaTypeApplicationPkixAttrCert(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkix-attr-cert
@@ -924,7 +924,7 @@ class ApplicationPkixAttrCert(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkix-attr-cert"
 
-class ApplicationPkixCert(BaseMediaType):
+class MediaTypeApplicationPkixCert(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkix-cert
@@ -937,7 +937,7 @@ class ApplicationPkixCert(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkix-cert"
 
-class ApplicationPkixCrl(BaseMediaType):
+class MediaTypeApplicationPkixCrl(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkix-crl
@@ -950,7 +950,7 @@ class ApplicationPkixCrl(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkix-crl"
 
-class ApplicationPkixPkipath(BaseMediaType):
+class MediaTypeApplicationPkixPkipath(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkix-pkipath
@@ -963,7 +963,7 @@ class ApplicationPkixPkipath(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkix-pkipath"
 
-class ApplicationPkixcmp(BaseMediaType):
+class MediaTypeApplicationPkixcmp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/pkixcmp
@@ -976,7 +976,7 @@ class ApplicationPkixcmp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/pkixcmp"
 
-class ApplicationPostscript(BaseMediaType):
+class MediaTypeApplicationPostscript(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/postscript
@@ -989,7 +989,7 @@ class ApplicationPostscript(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/postscript"
 
-class ApplicationQsig(BaseMediaType):
+class MediaTypeApplicationQsig(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/QSIG
@@ -1002,7 +1002,7 @@ class ApplicationQsig(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/qsig"
 
-class ApplicationRaptorfec(BaseMediaType):
+class MediaTypeApplicationRaptorfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/raptorfec
@@ -1015,7 +1015,7 @@ class ApplicationRaptorfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/raptorfec"
 
-class ApplicationRemotePrinting(BaseMediaType):
+class MediaTypeApplicationRemotePrinting(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/remote-printing
@@ -1028,7 +1028,7 @@ class ApplicationRemotePrinting(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/remote-printing"
 
-class ApplicationRpkiGhostbusters(BaseMediaType):
+class MediaTypeApplicationRpkiGhostbusters(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/rpki-ghostbusters
@@ -1041,7 +1041,7 @@ class ApplicationRpkiGhostbusters(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/rpki-ghostbusters"
 
-class ApplicationRpkiManifest(BaseMediaType):
+class MediaTypeApplicationRpkiManifest(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/rpki-manifest
@@ -1054,7 +1054,7 @@ class ApplicationRpkiManifest(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/rpki-manifest"
 
-class ApplicationRpkiRoa(BaseMediaType):
+class MediaTypeApplicationRpkiRoa(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/rpki-roa
@@ -1067,7 +1067,7 @@ class ApplicationRpkiRoa(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/rpki-roa"
 
-class ApplicationRpkiUpdown(BaseMediaType):
+class MediaTypeApplicationRpkiUpdown(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/rpki-updown
@@ -1080,7 +1080,7 @@ class ApplicationRpkiUpdown(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/rpki-updown"
 
-class ApplicationRtploopback(BaseMediaType):
+class MediaTypeApplicationRtploopback(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/rtploopback
@@ -1093,7 +1093,7 @@ class ApplicationRtploopback(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/rtploopback"
 
-class ApplicationRtx(BaseMediaType):
+class MediaTypeApplicationRtx(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/rtx
@@ -1106,7 +1106,7 @@ class ApplicationRtx(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/rtx"
 
-class ApplicationScvpCvRequest(BaseMediaType):
+class MediaTypeApplicationScvpCvRequest(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/scvp-cv-request
@@ -1119,7 +1119,7 @@ class ApplicationScvpCvRequest(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/scvp-cv-request"
 
-class ApplicationScvpCvResponse(BaseMediaType):
+class MediaTypeApplicationScvpCvResponse(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/scvp-cv-response
@@ -1132,7 +1132,7 @@ class ApplicationScvpCvResponse(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/scvp-cv-response"
 
-class ApplicationScvpVpRequest(BaseMediaType):
+class MediaTypeApplicationScvpVpRequest(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/scvp-vp-request
@@ -1145,7 +1145,7 @@ class ApplicationScvpVpRequest(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/scvp-vp-request"
 
-class ApplicationScvpVpResponse(BaseMediaType):
+class MediaTypeApplicationScvpVpResponse(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/scvp-vp-response
@@ -1158,7 +1158,7 @@ class ApplicationScvpVpResponse(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/scvp-vp-response"
 
-class ApplicationSdp(BaseMediaType):
+class MediaTypeApplicationSdp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/sdp
@@ -1171,7 +1171,7 @@ class ApplicationSdp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/sdp"
 
-class ApplicationSgml(BaseMediaType):
+class MediaTypeApplicationSgml(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/SGML
@@ -1184,7 +1184,7 @@ class ApplicationSgml(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/sgml"
 
-class ApplicationSieve(BaseMediaType):
+class MediaTypeApplicationSieve(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/sieve
@@ -1197,7 +1197,7 @@ class ApplicationSieve(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/sieve"
 
-class ApplicationSimpleMessageSummary(BaseMediaType):
+class MediaTypeApplicationSimpleMessageSummary(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/simple-message-summary
@@ -1210,7 +1210,7 @@ class ApplicationSimpleMessageSummary(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/simple-message-summary"
 
-class ApplicationSmpte336m(BaseMediaType):
+class MediaTypeApplicationSmpte336m(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/smpte336m
@@ -1223,7 +1223,7 @@ class ApplicationSmpte336m(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/smpte336m"
 
-class ApplicationSql(BaseMediaType):
+class MediaTypeApplicationSql(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/sql
@@ -1236,7 +1236,7 @@ class ApplicationSql(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/sql"
 
-class ApplicationSrgs(BaseMediaType):
+class MediaTypeApplicationSrgs(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/srgs
@@ -1249,7 +1249,7 @@ class ApplicationSrgs(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/srgs"
 
-class ApplicationTampApexUpdate(BaseMediaType):
+class MediaTypeApplicationTampApexUpdate(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-apex-update
@@ -1262,7 +1262,7 @@ class ApplicationTampApexUpdate(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-apex-update"
 
-class ApplicationTampApexUpdateConfirm(BaseMediaType):
+class MediaTypeApplicationTampApexUpdateConfirm(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-apex-update-confirm
@@ -1275,7 +1275,7 @@ class ApplicationTampApexUpdateConfirm(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-apex-update-confirm"
 
-class ApplicationTampCommunityUpdate(BaseMediaType):
+class MediaTypeApplicationTampCommunityUpdate(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-community-update
@@ -1288,7 +1288,7 @@ class ApplicationTampCommunityUpdate(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-community-update"
 
-class ApplicationTampCommunityUpdateConfirm(BaseMediaType):
+class MediaTypeApplicationTampCommunityUpdateConfirm(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-community-update-confirm
@@ -1301,7 +1301,7 @@ class ApplicationTampCommunityUpdateConfirm(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-community-update-confirm"
 
-class ApplicationTampError(BaseMediaType):
+class MediaTypeApplicationTampError(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-error
@@ -1314,7 +1314,7 @@ class ApplicationTampError(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-error"
 
-class ApplicationTampSequenceAdjust(BaseMediaType):
+class MediaTypeApplicationTampSequenceAdjust(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-sequence-adjust
@@ -1327,7 +1327,7 @@ class ApplicationTampSequenceAdjust(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-sequence-adjust"
 
-class ApplicationTampSequenceAdjustConfirm(BaseMediaType):
+class MediaTypeApplicationTampSequenceAdjustConfirm(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-sequence-adjust-confirm
@@ -1340,7 +1340,7 @@ class ApplicationTampSequenceAdjustConfirm(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-sequence-adjust-confirm"
 
-class ApplicationTampStatusQuery(BaseMediaType):
+class MediaTypeApplicationTampStatusQuery(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-status-query
@@ -1353,7 +1353,7 @@ class ApplicationTampStatusQuery(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-status-query"
 
-class ApplicationTampStatusResponse(BaseMediaType):
+class MediaTypeApplicationTampStatusResponse(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-status-response
@@ -1366,7 +1366,7 @@ class ApplicationTampStatusResponse(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-status-response"
 
-class ApplicationTampUpdate(BaseMediaType):
+class MediaTypeApplicationTampUpdate(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-update
@@ -1379,7 +1379,7 @@ class ApplicationTampUpdate(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-update"
 
-class ApplicationTampUpdateConfirm(BaseMediaType):
+class MediaTypeApplicationTampUpdateConfirm(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/tamp-update-confirm
@@ -1392,7 +1392,7 @@ class ApplicationTampUpdateConfirm(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/tamp-update-confirm"
 
-class ApplicationTimestampQuery(BaseMediaType):
+class MediaTypeApplicationTimestampQuery(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/timestamp-query
@@ -1405,7 +1405,7 @@ class ApplicationTimestampQuery(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/timestamp-query"
 
-class ApplicationTimestampReply(BaseMediaType):
+class MediaTypeApplicationTimestampReply(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/timestamp-reply
@@ -1418,7 +1418,7 @@ class ApplicationTimestampReply(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/timestamp-reply"
 
-class ApplicationTimestampedData(BaseMediaType):
+class MediaTypeApplicationTimestampedData(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/timestamped-data
@@ -1431,7 +1431,7 @@ class ApplicationTimestampedData(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/timestamped-data"
 
-class ApplicationUlpfec(BaseMediaType):
+class MediaTypeApplicationUlpfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/ulpfec
@@ -1444,7 +1444,7 @@ class ApplicationUlpfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/ulpfec"
 
-class ApplicationVemmi(BaseMediaType):
+class MediaTypeApplicationVemmi(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/vemmi
@@ -1457,7 +1457,7 @@ class ApplicationVemmi(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/vemmi"
 
-class ApplicationVqRtcpxr(BaseMediaType):
+class MediaTypeApplicationVqRtcpxr(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/vq-rtcpxr
@@ -1470,7 +1470,7 @@ class ApplicationVqRtcpxr(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/vq-rtcpxr"
 
-class ApplicationWhoisppQuery(BaseMediaType):
+class MediaTypeApplicationWhoisppQuery(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/whoispp-query
@@ -1483,7 +1483,7 @@ class ApplicationWhoisppQuery(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/whoispp-query"
 
-class ApplicationWhoisppResponse(BaseMediaType):
+class MediaTypeApplicationWhoisppResponse(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/whoispp-response
@@ -1496,7 +1496,7 @@ class ApplicationWhoisppResponse(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/whoispp-response"
 
-class ApplicationX400Bp(BaseMediaType):
+class MediaTypeApplicationX400Bp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/x400-bp
@@ -1509,7 +1509,7 @@ class ApplicationX400Bp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/x400-bp"
 
-class ApplicationXml(BaseMediaType):
+class MediaTypeApplicationXml(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/xml
@@ -1522,7 +1522,7 @@ class ApplicationXml(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/xml"
 
-class ApplicationXmlDtd(BaseMediaType):
+class MediaTypeApplicationXmlDtd(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/xml-dtd
@@ -1535,7 +1535,7 @@ class ApplicationXmlDtd(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/xml-dtd"
 
-class ApplicationXmlExternalParsedEntity(BaseMediaType):
+class MediaTypeApplicationXmlExternalParsedEntity(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/xml-external-parsed-entity
@@ -1548,7 +1548,7 @@ class ApplicationXmlExternalParsedEntity(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/xml-external-parsed-entity"
 
-class ApplicationYang(BaseMediaType):
+class MediaTypeApplicationYang(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/yang
@@ -1561,7 +1561,7 @@ class ApplicationYang(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/yang"
 
-class ApplicationZlib(BaseMediaType):
+class MediaTypeApplicationZlib(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/application/zlib
@@ -1574,7 +1574,7 @@ class ApplicationZlib(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "application/zlib"
 
-class Audio1DInterleavedParityfec(BaseMediaType):
+class MediaTypeAudio1DInterleavedParityfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/1d-interleaved-parityfec
@@ -1587,7 +1587,7 @@ class Audio1DInterleavedParityfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/1d-interleaved-parityfec"
 
-class Audio32Kadpcm(BaseMediaType):
+class MediaTypeAudio32Kadpcm(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/32kadpcm
@@ -1600,7 +1600,7 @@ class Audio32Kadpcm(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/32kadpcm"
 
-class Audio3Gpp(BaseMediaType):
+class MediaTypeAudio3Gpp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/3gpp
@@ -1613,7 +1613,7 @@ class Audio3Gpp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/3gpp"
 
-class Audio3Gpp2(BaseMediaType):
+class MediaTypeAudio3Gpp2(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/3gpp2
@@ -1626,7 +1626,7 @@ class Audio3Gpp2(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/3gpp2"
 
-class AudioAc3(BaseMediaType):
+class MediaTypeAudioAc3(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/ac3
@@ -1639,7 +1639,7 @@ class AudioAc3(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/ac3"
 
-class AudioAmr(BaseMediaType):
+class MediaTypeAudioAmr(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/AMR
@@ -1652,7 +1652,7 @@ class AudioAmr(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/AMR"
 
-class AudioAmrWb(BaseMediaType):
+class MediaTypeAudioAmrWb(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/AMR-WB
@@ -1665,7 +1665,7 @@ class AudioAmrWb(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/AMR-WB"
 
-class AudioAptx(BaseMediaType):
+class MediaTypeAudioAptx(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/aptx
@@ -1678,7 +1678,7 @@ class AudioAptx(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/aptx"
 
-class AudioAsc(BaseMediaType):
+class MediaTypeAudioAsc(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/asc
@@ -1691,7 +1691,7 @@ class AudioAsc(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/asc"
 
-class AudioAtracAdvancedLossless(BaseMediaType):
+class MediaTypeAudioAtracAdvancedLossless(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/ATRAC-ADVANCED-LOSSLESS
@@ -1704,7 +1704,7 @@ class AudioAtracAdvancedLossless(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/ATRAC-ADVANCED-LOSSLESS"
 
-class AudioAtracX(BaseMediaType):
+class MediaTypeAudioAtracX(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/ATRAC-X
@@ -1717,7 +1717,7 @@ class AudioAtracX(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/ATRAC-X"
 
-class AudioAtrac3(BaseMediaType):
+class MediaTypeAudioAtrac3(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/ATRAC3
@@ -1730,7 +1730,7 @@ class AudioAtrac3(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/ATRAC3"
 
-class AudioBasic(BaseMediaType):
+class MediaTypeAudioBasic(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/basic
@@ -1743,7 +1743,7 @@ class AudioBasic(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/basic"
 
-class AudioBv16(BaseMediaType):
+class MediaTypeAudioBv16(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/BV16
@@ -1756,7 +1756,7 @@ class AudioBv16(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/BV16"
 
-class AudioBv32(BaseMediaType):
+class MediaTypeAudioBv32(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/BV32
@@ -1769,7 +1769,7 @@ class AudioBv32(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/BV32"
 
-class AudioClearmode(BaseMediaType):
+class MediaTypeAudioClearmode(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/clearmode
@@ -1782,7 +1782,7 @@ class AudioClearmode(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/clearmode"
 
-class AudioCn(BaseMediaType):
+class MediaTypeAudioCn(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/CN
@@ -1795,7 +1795,7 @@ class AudioCn(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/CN"
 
-class AudioDat12(BaseMediaType):
+class MediaTypeAudioDat12(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/DAT12
@@ -1808,7 +1808,7 @@ class AudioDat12(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/DAT12"
 
-class AudioDls(BaseMediaType):
+class MediaTypeAudioDls(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/dls
@@ -1821,7 +1821,7 @@ class AudioDls(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/dls"
 
-class AudioDsrEs201108(BaseMediaType):
+class MediaTypeAudioDsrEs201108(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/dsr-es201108
@@ -1834,7 +1834,7 @@ class AudioDsrEs201108(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/dsr-es201108"
 
-class AudioDsrEs202050(BaseMediaType):
+class MediaTypeAudioDsrEs202050(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/dsr-es202050
@@ -1847,7 +1847,7 @@ class AudioDsrEs202050(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/dsr-es202050"
 
-class AudioDsrEs202211(BaseMediaType):
+class MediaTypeAudioDsrEs202211(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/dsr-es202211
@@ -1860,7 +1860,7 @@ class AudioDsrEs202211(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/dsr-es202211"
 
-class AudioDsrEs202212(BaseMediaType):
+class MediaTypeAudioDsrEs202212(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/dsr-es202212
@@ -1873,7 +1873,7 @@ class AudioDsrEs202212(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/dsr-es202212"
 
-class AudioDv(BaseMediaType):
+class MediaTypeAudioDv(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/DV
@@ -1886,7 +1886,7 @@ class AudioDv(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/DV"
 
-class AudioDvi4(BaseMediaType):
+class MediaTypeAudioDvi4(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/DVI4
@@ -1899,7 +1899,7 @@ class AudioDvi4(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/DVI4"
 
-class AudioEac3(BaseMediaType):
+class MediaTypeAudioEac3(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/eac3
@@ -1912,7 +1912,7 @@ class AudioEac3(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/eac3"
 
-class AudioEncaprtp(BaseMediaType):
+class MediaTypeAudioEncaprtp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/encaprtp
@@ -1925,7 +1925,7 @@ class AudioEncaprtp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/encaprtp"
 
-class AudioEvrc(BaseMediaType):
+class MediaTypeAudioEvrc(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRC
@@ -1938,7 +1938,7 @@ class AudioEvrc(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRC"
 
-class AudioEvrcQcp(BaseMediaType):
+class MediaTypeAudioEvrcQcp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRC-QCP
@@ -1951,7 +1951,7 @@ class AudioEvrcQcp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRC-QCP"
 
-class AudioEvrc0(BaseMediaType):
+class MediaTypeAudioEvrc0(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRC0
@@ -1964,7 +1964,7 @@ class AudioEvrc0(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRC0"
 
-class AudioEvrc1(BaseMediaType):
+class MediaTypeAudioEvrc1(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRC1
@@ -1977,7 +1977,7 @@ class AudioEvrc1(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRC1"
 
-class AudioEvrcb(BaseMediaType):
+class MediaTypeAudioEvrcb(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCB
@@ -1990,7 +1990,7 @@ class AudioEvrcb(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCB"
 
-class AudioEvrcb0(BaseMediaType):
+class MediaTypeAudioEvrcb0(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCB0
@@ -2003,7 +2003,7 @@ class AudioEvrcb0(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCB0"
 
-class AudioEvrcb1(BaseMediaType):
+class MediaTypeAudioEvrcb1(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCB1
@@ -2016,7 +2016,7 @@ class AudioEvrcb1(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCB1"
 
-class AudioEvrcnw(BaseMediaType):
+class MediaTypeAudioEvrcnw(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCNW
@@ -2029,7 +2029,7 @@ class AudioEvrcnw(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCNW"
 
-class AudioEvrcnw0(BaseMediaType):
+class MediaTypeAudioEvrcnw0(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCNW0
@@ -2042,7 +2042,7 @@ class AudioEvrcnw0(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCNW0"
 
-class AudioEvrcnw1(BaseMediaType):
+class MediaTypeAudioEvrcnw1(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCNW1
@@ -2055,7 +2055,7 @@ class AudioEvrcnw1(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCNW1"
 
-class AudioEvrcwb(BaseMediaType):
+class MediaTypeAudioEvrcwb(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCWB
@@ -2068,7 +2068,7 @@ class AudioEvrcwb(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCWB"
 
-class AudioEvrcwb0(BaseMediaType):
+class MediaTypeAudioEvrcwb0(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCWB0
@@ -2081,7 +2081,7 @@ class AudioEvrcwb0(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCWB0"
 
-class AudioEvrcwb1(BaseMediaType):
+class MediaTypeAudioEvrcwb1(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/EVRCWB1
@@ -2094,7 +2094,7 @@ class AudioEvrcwb1(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/EVRCWB1"
 
-class AudioExample(BaseMediaType):
+class MediaTypeAudioExample(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/example
@@ -2107,7 +2107,7 @@ class AudioExample(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/example"
 
-class AudioFwdred(BaseMediaType):
+class MediaTypeAudioFwdred(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/fwdred
@@ -2120,7 +2120,7 @@ class AudioFwdred(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/fwdred"
 
-class AudioG7110(BaseMediaType):
+class MediaTypeAudioG7110(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G711-0
@@ -2133,7 +2133,7 @@ class AudioG7110(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G711-0"
 
-class AudioG719(BaseMediaType):
+class MediaTypeAudioG719(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G719
@@ -2146,7 +2146,7 @@ class AudioG719(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G719"
 
-class AudioG7221(BaseMediaType):
+class MediaTypeAudioG7221(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G7221
@@ -2159,7 +2159,7 @@ class AudioG7221(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G7221"
 
-class AudioG722(BaseMediaType):
+class MediaTypeAudioG722(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G722
@@ -2172,7 +2172,7 @@ class AudioG722(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G722"
 
-class AudioG723(BaseMediaType):
+class MediaTypeAudioG723(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G723
@@ -2185,7 +2185,7 @@ class AudioG723(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G723"
 
-class AudioG72616(BaseMediaType):
+class MediaTypeAudioG72616(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G726-16
@@ -2198,7 +2198,7 @@ class AudioG72616(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G726-16"
 
-class AudioG72624(BaseMediaType):
+class MediaTypeAudioG72624(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G726-24
@@ -2211,7 +2211,7 @@ class AudioG72624(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G726-24"
 
-class AudioG72632(BaseMediaType):
+class MediaTypeAudioG72632(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G726-32
@@ -2224,7 +2224,7 @@ class AudioG72632(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G726-32"
 
-class AudioG72640(BaseMediaType):
+class MediaTypeAudioG72640(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G726-40
@@ -2237,7 +2237,7 @@ class AudioG72640(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G726-40"
 
-class AudioG728(BaseMediaType):
+class MediaTypeAudioG728(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G728
@@ -2250,7 +2250,7 @@ class AudioG728(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G728"
 
-class AudioG729(BaseMediaType):
+class MediaTypeAudioG729(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G729
@@ -2263,7 +2263,7 @@ class AudioG729(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G729"
 
-class AudioG729d(BaseMediaType):
+class MediaTypeAudioG729d(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G729D
@@ -2276,7 +2276,7 @@ class AudioG729d(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G729D"
 
-class AudioG729e(BaseMediaType):
+class MediaTypeAudioG729e(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/G729E
@@ -2289,7 +2289,7 @@ class AudioG729e(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/G729E"
 
-class AudioGsm(BaseMediaType):
+class MediaTypeAudioGsm(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/GSM
@@ -2302,7 +2302,7 @@ class AudioGsm(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/GSM"
 
-class AudioGsmEfr(BaseMediaType):
+class MediaTypeAudioGsmEfr(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/GSM-EFR
@@ -2315,7 +2315,7 @@ class AudioGsmEfr(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/GSM-EFR"
 
-class AudioGsmHr08(BaseMediaType):
+class MediaTypeAudioGsmHr08(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/GSM-HR-08
@@ -2328,7 +2328,7 @@ class AudioGsmHr08(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/GSM-HR-08"
 
-class AudioIlbc(BaseMediaType):
+class MediaTypeAudioIlbc(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/iLBC
@@ -2341,7 +2341,7 @@ class AudioIlbc(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/iLBC"
 
-class AudioL8(BaseMediaType):
+class MediaTypeAudioL8(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/L8
@@ -2354,7 +2354,7 @@ class AudioL8(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/L8"
 
-class AudioL16(BaseMediaType):
+class MediaTypeAudioL16(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/L16
@@ -2367,7 +2367,7 @@ class AudioL16(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/L16"
 
-class AudioL20(BaseMediaType):
+class MediaTypeAudioL20(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/L20
@@ -2380,7 +2380,7 @@ class AudioL20(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/L20"
 
-class AudioL24(BaseMediaType):
+class MediaTypeAudioL24(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/L24
@@ -2393,7 +2393,7 @@ class AudioL24(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/L24"
 
-class AudioLpc(BaseMediaType):
+class MediaTypeAudioLpc(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/LPC
@@ -2406,7 +2406,7 @@ class AudioLpc(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/LPC"
 
-class AudioMobileXmf(BaseMediaType):
+class MediaTypeAudioMobileXmf(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/mobile-xmf
@@ -2419,7 +2419,7 @@ class AudioMobileXmf(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/mobile-xmf"
 
-class AudioMpa(BaseMediaType):
+class MediaTypeAudioMpa(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/MPA
@@ -2432,7 +2432,7 @@ class AudioMpa(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/MPA"
 
-class AudioMp4(BaseMediaType):
+class MediaTypeAudioMp4(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/mp4
@@ -2445,7 +2445,7 @@ class AudioMp4(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/mp4"
 
-class AudioMp4aLatm(BaseMediaType):
+class MediaTypeAudioMp4aLatm(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/MP4A-LATM
@@ -2458,7 +2458,7 @@ class AudioMp4aLatm(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/MP4A-LATM"
 
-class AudioMpaRobust(BaseMediaType):
+class MediaTypeAudioMpaRobust(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/mpa-robust
@@ -2471,7 +2471,7 @@ class AudioMpaRobust(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/mpa-robust"
 
-class AudioMpeg(BaseMediaType):
+class MediaTypeAudioMpeg(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/mpeg
@@ -2484,7 +2484,7 @@ class AudioMpeg(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/mpeg"
 
-class AudioMpeg4Generic(BaseMediaType):
+class MediaTypeAudioMpeg4Generic(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/mpeg4-generic
@@ -2497,7 +2497,7 @@ class AudioMpeg4Generic(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/mpeg4-generic"
 
-class AudioOgg(BaseMediaType):
+class MediaTypeAudioOgg(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/ogg
@@ -2510,7 +2510,7 @@ class AudioOgg(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/ogg"
 
-class AudioOpus(BaseMediaType):
+class MediaTypeAudioOpus(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/opus
@@ -2523,7 +2523,7 @@ class AudioOpus(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/opus"
 
-class AudioPcma(BaseMediaType):
+class MediaTypeAudioPcma(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/PCMA
@@ -2536,7 +2536,7 @@ class AudioPcma(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/PCMA"
 
-class AudioPcmaWb(BaseMediaType):
+class MediaTypeAudioPcmaWb(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/PCMA-WB
@@ -2549,7 +2549,7 @@ class AudioPcmaWb(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/PCMA-WB"
 
-class AudioPcmu(BaseMediaType):
+class MediaTypeAudioPcmu(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/PCMU
@@ -2562,7 +2562,7 @@ class AudioPcmu(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/PCMU"
 
-class AudioPcmuWb(BaseMediaType):
+class MediaTypeAudioPcmuWb(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/PCMU-WB
@@ -2575,7 +2575,7 @@ class AudioPcmuWb(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/PCMU-WB"
 
-class AudioRaptorfec(BaseMediaType):
+class MediaTypeAudioRaptorfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/raptorfec
@@ -2588,7 +2588,7 @@ class AudioRaptorfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/raptorfec"
 
-class AudioRed(BaseMediaType):
+class MediaTypeAudioRed(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/RED
@@ -2601,7 +2601,7 @@ class AudioRed(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/RED"
 
-class AudioRtploopback(BaseMediaType):
+class MediaTypeAudioRtploopback(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/rtploopback
@@ -2614,7 +2614,7 @@ class AudioRtploopback(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/rtploopback"
 
-class AudioRtpMidi(BaseMediaType):
+class MediaTypeAudioRtpMidi(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/rtp-midi
@@ -2627,7 +2627,7 @@ class AudioRtpMidi(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/rtp-midi"
 
-class AudioRtx(BaseMediaType):
+class MediaTypeAudioRtx(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/rtx
@@ -2640,7 +2640,7 @@ class AudioRtx(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/rtx"
 
-class AudioSmv(BaseMediaType):
+class MediaTypeAudioSmv(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/SMV
@@ -2653,7 +2653,7 @@ class AudioSmv(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/SMV"
 
-class AudioSmv0(BaseMediaType):
+class MediaTypeAudioSmv0(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/SMV0
@@ -2666,7 +2666,7 @@ class AudioSmv0(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/SMV0"
 
-class AudioSmvQcp(BaseMediaType):
+class MediaTypeAudioSmvQcp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/SMV-QCP
@@ -2679,7 +2679,7 @@ class AudioSmvQcp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/SMV-QCP"
 
-class AudioSpeex(BaseMediaType):
+class MediaTypeAudioSpeex(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/speex
@@ -2692,7 +2692,7 @@ class AudioSpeex(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/speex"
 
-class AudioT140c(BaseMediaType):
+class MediaTypeAudioT140c(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/t140c
@@ -2705,7 +2705,7 @@ class AudioT140c(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/t140c"
 
-class AudioT38(BaseMediaType):
+class MediaTypeAudioT38(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/t38
@@ -2718,7 +2718,7 @@ class AudioT38(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/t38"
 
-class AudioTelephoneEvent(BaseMediaType):
+class MediaTypeAudioTelephoneEvent(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/telephone-event
@@ -2731,7 +2731,7 @@ class AudioTelephoneEvent(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/telephone-event"
 
-class AudioTone(BaseMediaType):
+class MediaTypeAudioTone(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/tone
@@ -2744,7 +2744,7 @@ class AudioTone(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/tone"
 
-class AudioUemclip(BaseMediaType):
+class MediaTypeAudioUemclip(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/UEMCLIP
@@ -2757,7 +2757,7 @@ class AudioUemclip(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/UEMCLIP"
 
-class AudioUlpfec(BaseMediaType):
+class MediaTypeAudioUlpfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/ulpfec
@@ -2770,7 +2770,7 @@ class AudioUlpfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/ulpfec"
 
-class AudioVdvi(BaseMediaType):
+class MediaTypeAudioVdvi(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/VDVI
@@ -2783,7 +2783,7 @@ class AudioVdvi(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/VDVI"
 
-class AudioVmrWb(BaseMediaType):
+class MediaTypeAudioVmrWb(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/VMR-WB
@@ -2796,7 +2796,7 @@ class AudioVmrWb(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/VMR-WB"
 
-class AudioVorbis(BaseMediaType):
+class MediaTypeAudioVorbis(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/vorbis
@@ -2809,7 +2809,7 @@ class AudioVorbis(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/vorbis"
 
-class AudioVorbisConfig(BaseMediaType):
+class MediaTypeAudioVorbisConfig(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/audio/vorbis-config
@@ -2822,7 +2822,7 @@ class AudioVorbisConfig(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "audio/vorbis-config"
 
-class MessageCpim(BaseMediaType):
+class MediaTypeMessageCpim(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/CPIM
@@ -2835,7 +2835,7 @@ class MessageCpim(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/CPIM"
 
-class MessageDeliveryStatus(BaseMediaType):
+class MediaTypeMessageDeliveryStatus(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/delivery-status
@@ -2848,7 +2848,7 @@ class MessageDeliveryStatus(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/delivery-status"
 
-class MessageDispositionNotification(BaseMediaType):
+class MediaTypeMessageDispositionNotification(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/disposition-notification
@@ -2861,7 +2861,7 @@ class MessageDispositionNotification(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/disposition-notification"
 
-class MessageExample(BaseMediaType):
+class MediaTypeMessageExample(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/example
@@ -2874,7 +2874,7 @@ class MessageExample(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/example"
 
-class MessageFeedbackReport(BaseMediaType):
+class MediaTypeMessageFeedbackReport(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/feedback-report
@@ -2887,7 +2887,7 @@ class MessageFeedbackReport(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/feedback-report"
 
-class MessageGlobal(BaseMediaType):
+class MediaTypeMessageGlobal(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/global
@@ -2900,7 +2900,7 @@ class MessageGlobal(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/global"
 
-class MessageGlobalDeliveryStatus(BaseMediaType):
+class MediaTypeMessageGlobalDeliveryStatus(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/global-delivery-status
@@ -2913,7 +2913,7 @@ class MessageGlobalDeliveryStatus(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/global-delivery-status"
 
-class MessageGlobalDispositionNotification(BaseMediaType):
+class MediaTypeMessageGlobalDispositionNotification(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/global-disposition-notification
@@ -2926,7 +2926,7 @@ class MessageGlobalDispositionNotification(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/global-disposition-notification"
 
-class MessageGlobalHeaders(BaseMediaType):
+class MediaTypeMessageGlobalHeaders(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/global-headers
@@ -2939,7 +2939,7 @@ class MessageGlobalHeaders(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/global-headers"
 
-class MessageHttp(BaseMediaType):
+class MediaTypeMessageHttp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/http
@@ -2952,7 +2952,7 @@ class MessageHttp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/http"
 
-class MessageSHttp(BaseMediaType):
+class MediaTypeMessageSHttp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/s-http
@@ -2965,7 +2965,7 @@ class MessageSHttp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/s-http"
 
-class MessageSip(BaseMediaType):
+class MediaTypeMessageSip(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/sip
@@ -2978,7 +2978,7 @@ class MessageSip(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/sip"
 
-class MessageSipfrag(BaseMediaType):
+class MediaTypeMessageSipfrag(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/sipfrag
@@ -2991,7 +2991,7 @@ class MessageSipfrag(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/sipfrag"
 
-class MessageTrackingStatus(BaseMediaType):
+class MediaTypeMessageTrackingStatus(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/message/tracking-status
@@ -3004,7 +3004,7 @@ class MessageTrackingStatus(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "message/tracking-status"
 
-class ModelExample(BaseMediaType):
+class MediaTypeModelExample(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/model/example
@@ -3017,7 +3017,7 @@ class ModelExample(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "model/example"
 
-class MultipartByteranges(BaseMediaType):
+class MediaTypeMultipartByteranges(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/byteranges
@@ -3030,7 +3030,7 @@ class MultipartByteranges(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/byteranges"
 
-class MultipartEncrypted(BaseMediaType):
+class MediaTypeMultipartEncrypted(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/encrypted
@@ -3043,7 +3043,7 @@ class MultipartEncrypted(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/encrypted"
 
-class MultipartExample(BaseMediaType):
+class MediaTypeMultipartExample(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/example
@@ -3056,7 +3056,7 @@ class MultipartExample(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/example"
 
-class MultipartFormData(BaseMediaType):
+class MediaTypeMultipartFormData(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/form-data
@@ -3069,7 +3069,7 @@ class MultipartFormData(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/form-data"
 
-class MultipartRelated(BaseMediaType):
+class MediaTypeMultipartRelated(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/related
@@ -3082,7 +3082,7 @@ class MultipartRelated(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/related"
 
-class MultipartReport(BaseMediaType):
+class MediaTypeMultipartReport(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/report
@@ -3095,7 +3095,7 @@ class MultipartReport(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/report"
 
-class MultipartSigned(BaseMediaType):
+class MediaTypeMultipartSigned(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/signed
@@ -3108,7 +3108,7 @@ class MultipartSigned(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/signed"
 
-class MultipartVoiceMessage(BaseMediaType):
+class MediaTypeMultipartVoiceMessage(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/multipart/voice-message
@@ -3121,7 +3121,7 @@ class MultipartVoiceMessage(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "multipart/voice-message"
 
-class Text1DInterleavedParityfec(BaseMediaType):
+class MediaTypeText1DInterleavedParityfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/1d-interleaved-parityfec
@@ -3134,7 +3134,7 @@ class Text1DInterleavedParityfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/1d-interleaved-parityfec"
 
-class TextCalendar(BaseMediaType):
+class MediaTypeTextCalendar(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/calendar
@@ -3147,7 +3147,7 @@ class TextCalendar(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/calendar"
 
-class TextCss(BaseMediaType):
+class MediaTypeTextCss(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/css
@@ -3160,7 +3160,7 @@ class TextCss(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/css"
 
-class TextCsv(BaseMediaType):
+class MediaTypeTextCsv(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/csv
@@ -3173,7 +3173,7 @@ class TextCsv(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/csv"
 
-class TextDns(BaseMediaType):
+class MediaTypeTextDns(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/dns
@@ -3186,7 +3186,7 @@ class TextDns(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/dns"
 
-class TextEncaprtp(BaseMediaType):
+class MediaTypeTextEncaprtp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/encaprtp
@@ -3199,7 +3199,7 @@ class TextEncaprtp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/encaprtp"
 
-class TextExample(BaseMediaType):
+class MediaTypeTextExample(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/example
@@ -3212,7 +3212,7 @@ class TextExample(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/example"
 
-class TextFwdred(BaseMediaType):
+class MediaTypeTextFwdred(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/fwdred
@@ -3225,7 +3225,7 @@ class TextFwdred(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/fwdred"
 
-class TextGrammarRefList(BaseMediaType):
+class MediaTypeTextGrammarRefList(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/grammar-ref-list
@@ -3238,7 +3238,7 @@ class TextGrammarRefList(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/grammar-ref-list"
 
-class TextMarkdown(BaseMediaType):
+class MediaTypeTextMarkdown(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/markdown
@@ -3251,7 +3251,7 @@ class TextMarkdown(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/markdown"
 
-class TextParameters(BaseMediaType):
+class MediaTypeTextParameters(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/parameters
@@ -3264,7 +3264,7 @@ class TextParameters(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/parameters"
 
-class TextRaptorfec(BaseMediaType):
+class MediaTypeTextRaptorfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/raptorfec
@@ -3277,7 +3277,7 @@ class TextRaptorfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/raptorfec"
 
-class TextRed(BaseMediaType):
+class MediaTypeTextRed(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/RED
@@ -3290,7 +3290,7 @@ class TextRed(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/RED"
 
-class TextRfc822Headers(BaseMediaType):
+class MediaTypeTextRfc822Headers(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/rfc822-headers
@@ -3303,7 +3303,7 @@ class TextRfc822Headers(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/rfc822-headers"
 
-class TextRtploopback(BaseMediaType):
+class MediaTypeTextRtploopback(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/rtploopback
@@ -3316,7 +3316,7 @@ class TextRtploopback(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/rtploopback"
 
-class TextRtx(BaseMediaType):
+class MediaTypeTextRtx(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/rtx
@@ -3329,7 +3329,7 @@ class TextRtx(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/rtx"
 
-class TextSgml(BaseMediaType):
+class MediaTypeTextSgml(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/SGML
@@ -3342,7 +3342,7 @@ class TextSgml(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/sgml"
 
-class TextT140(BaseMediaType):
+class MediaTypeTextT140(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/t140
@@ -3355,7 +3355,7 @@ class TextT140(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/t140"
 
-class TextTroff(BaseMediaType):
+class MediaTypeTextTroff(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/troff
@@ -3368,7 +3368,7 @@ class TextTroff(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/troff"
 
-class TextUlpfec(BaseMediaType):
+class MediaTypeTextUlpfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/ulpfec
@@ -3381,7 +3381,7 @@ class TextUlpfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/ulpfec"
 
-class TextUriList(BaseMediaType):
+class MediaTypeTextUriList(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/uri-list
@@ -3394,7 +3394,7 @@ class TextUriList(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/uri-list"
 
-class TextVcard(BaseMediaType):
+class MediaTypeTextVcard(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/vcard
@@ -3407,7 +3407,7 @@ class TextVcard(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/vcard"
 
-class TextXml(BaseMediaType):
+class MediaTypeTextXml(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/xml
@@ -3420,7 +3420,7 @@ class TextXml(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/xml"
 
-class TextXmlExternalParsedEntity(BaseMediaType):
+class MediaTypeTextXmlExternalParsedEntity(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/text/xml-external-parsed-entity
@@ -3433,7 +3433,7 @@ class TextXmlExternalParsedEntity(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "text/xml-external-parsed-entity"
 
-class Video1DInterleavedParityfec(BaseMediaType):
+class MediaTypeVideo1DInterleavedParityfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/1d-interleaved-parityfec
@@ -3446,7 +3446,7 @@ class Video1DInterleavedParityfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/1d-interleaved-parityfec"
 
-class Video3Gpp(BaseMediaType):
+class MediaTypeVideo3Gpp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/3gpp
@@ -3459,7 +3459,7 @@ class Video3Gpp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/3gpp"
 
-class Video3Gpp2(BaseMediaType):
+class MediaTypeVideo3Gpp2(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/3gpp2
@@ -3472,7 +3472,7 @@ class Video3Gpp2(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/3gpp2"
 
-class Video3GppTt(BaseMediaType):
+class MediaTypeVideo3GppTt(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/3gpp-tt
@@ -3485,7 +3485,7 @@ class Video3GppTt(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/3gpp-tt"
 
-class VideoBmpeg(BaseMediaType):
+class MediaTypeVideoBmpeg(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/BMPEG
@@ -3498,7 +3498,7 @@ class VideoBmpeg(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/BMPEG"
 
-class VideoBt656(BaseMediaType):
+class MediaTypeVideoBt656(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/BT656
@@ -3511,7 +3511,7 @@ class VideoBt656(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/BT656"
 
-class VideoCelb(BaseMediaType):
+class MediaTypeVideoCelb(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/CelB
@@ -3524,7 +3524,7 @@ class VideoCelb(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/CelB"
 
-class VideoDv(BaseMediaType):
+class MediaTypeVideoDv(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/DV
@@ -3537,7 +3537,7 @@ class VideoDv(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/DV"
 
-class VideoEncaprtp(BaseMediaType):
+class MediaTypeVideoEncaprtp(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/encaprtp
@@ -3550,7 +3550,7 @@ class VideoEncaprtp(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/encaprtp"
 
-class VideoExample(BaseMediaType):
+class MediaTypeVideoExample(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/example
@@ -3563,7 +3563,7 @@ class VideoExample(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/example"
 
-class VideoH261(BaseMediaType):
+class MediaTypeVideoH261(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H261
@@ -3576,7 +3576,7 @@ class VideoH261(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H261"
 
-class VideoH263(BaseMediaType):
+class MediaTypeVideoH263(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H263
@@ -3589,7 +3589,7 @@ class VideoH263(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H263"
 
-class VideoH2631998(BaseMediaType):
+class MediaTypeVideoH2631998(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H263-1998
@@ -3602,7 +3602,7 @@ class VideoH2631998(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H263-1998"
 
-class VideoH2632000(BaseMediaType):
+class MediaTypeVideoH2632000(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H263-2000
@@ -3615,7 +3615,7 @@ class VideoH2632000(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H263-2000"
 
-class VideoH264(BaseMediaType):
+class MediaTypeVideoH264(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H264
@@ -3628,7 +3628,7 @@ class VideoH264(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H264"
 
-class VideoH264Rcdo(BaseMediaType):
+class MediaTypeVideoH264Rcdo(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H264-RCDO
@@ -3641,7 +3641,7 @@ class VideoH264Rcdo(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H264-RCDO"
 
-class VideoH264Svc(BaseMediaType):
+class MediaTypeVideoH264Svc(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H264-SVC
@@ -3654,7 +3654,7 @@ class VideoH264Svc(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H264-SVC"
 
-class VideoH265(BaseMediaType):
+class MediaTypeVideoH265(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/H265
@@ -3667,7 +3667,7 @@ class VideoH265(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/H265"
 
-class VideoJpeg(BaseMediaType):
+class MediaTypeVideoJpeg(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/JPEG
@@ -3680,7 +3680,7 @@ class VideoJpeg(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/JPEG"
 
-class VideoJpeg2000(BaseMediaType):
+class MediaTypeVideoJpeg2000(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/jpeg2000
@@ -3693,7 +3693,7 @@ class VideoJpeg2000(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/jpeg2000"
 
-class VideoMj2(BaseMediaType):
+class MediaTypeVideoMj2(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/mj2
@@ -3706,7 +3706,7 @@ class VideoMj2(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/mj2"
 
-class VideoMp1s(BaseMediaType):
+class MediaTypeVideoMp1s(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/MP1S
@@ -3719,7 +3719,7 @@ class VideoMp1s(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/MP1S"
 
-class VideoMp2p(BaseMediaType):
+class MediaTypeVideoMp2p(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/MP2P
@@ -3732,7 +3732,7 @@ class VideoMp2p(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/MP2P"
 
-class VideoMp2t(BaseMediaType):
+class MediaTypeVideoMp2t(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/MP2T
@@ -3745,7 +3745,7 @@ class VideoMp2t(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/MP2T"
 
-class VideoMp4(BaseMediaType):
+class MediaTypeVideoMp4(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/mp4
@@ -3758,7 +3758,7 @@ class VideoMp4(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/mp4"
 
-class VideoMp4vEs(BaseMediaType):
+class MediaTypeVideoMp4vEs(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/MP4V-ES
@@ -3771,7 +3771,7 @@ class VideoMp4vEs(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/MP4V-ES"
 
-class VideoMpv(BaseMediaType):
+class MediaTypeVideoMpv(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/MPV
@@ -3784,7 +3784,7 @@ class VideoMpv(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/MPV"
 
-class VideoMpeg4Generic(BaseMediaType):
+class MediaTypeVideoMpeg4Generic(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/mpeg4-generic
@@ -3797,7 +3797,7 @@ class VideoMpeg4Generic(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/mpeg4-generic"
 
-class VideoNv(BaseMediaType):
+class MediaTypeVideoNv(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/nv
@@ -3810,7 +3810,7 @@ class VideoNv(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/nv"
 
-class VideoOgg(BaseMediaType):
+class MediaTypeVideoOgg(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/ogg
@@ -3823,7 +3823,7 @@ class VideoOgg(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/ogg"
 
-class VideoPointer(BaseMediaType):
+class MediaTypeVideoPointer(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/pointer
@@ -3836,7 +3836,7 @@ class VideoPointer(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/pointer"
 
-class VideoQuicktime(BaseMediaType):
+class MediaTypeVideoQuicktime(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/quicktime
@@ -3849,7 +3849,7 @@ class VideoQuicktime(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/quicktime"
 
-class VideoRaptorfec(BaseMediaType):
+class MediaTypeVideoRaptorfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/raptorfec
@@ -3862,7 +3862,7 @@ class VideoRaptorfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/raptorfec"
 
-class VideoRtploopback(BaseMediaType):
+class MediaTypeVideoRtploopback(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/rtploopback
@@ -3875,7 +3875,7 @@ class VideoRtploopback(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/rtploopback"
 
-class VideoRtx(BaseMediaType):
+class MediaTypeVideoRtx(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/rtx
@@ -3888,7 +3888,7 @@ class VideoRtx(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/rtx"
 
-class VideoSmpte292m(BaseMediaType):
+class MediaTypeVideoSmpte292m(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/SMPTE292M
@@ -3901,7 +3901,7 @@ class VideoSmpte292m(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/SMPTE292M"
 
-class VideoUlpfec(BaseMediaType):
+class MediaTypeVideoUlpfec(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/ulpfec
@@ -3914,7 +3914,7 @@ class VideoUlpfec(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/ulpfec"
 
-class VideoVc1(BaseMediaType):
+class MediaTypeVideoVc1(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/vc1
@@ -3927,7 +3927,7 @@ class VideoVc1(BaseMediaType):
     """
     __MEDIA_TYPE__: str = "video/vc1"
 
-class VideoVp8(BaseMediaType):
+class MediaTypeVideoVp8(MediaType):
     """
     Template:
         https://www.iana.org/assignments/media-types/video/VP8
