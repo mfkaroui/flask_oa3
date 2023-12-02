@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Annotated, Any, Dict, Optional, ClassVar
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, AnyUrl
 from copy import deepcopy
 
 from .discriminator import Discriminator
@@ -11,6 +11,7 @@ class Schema(BaseModel):
     discriminator: Annotated[Optional[Discriminator], Field(defualt=None, description="Adds support for polymorphism. The discriminator is an object name that is used to differentiate between other schemas which may satisfy the payload description. See Composition and Inheritance for more details.")] 
     xml: Annotated[Optional[XML], Field(default=None, description="This MAY be used only on properties schemas. It has no effect on root schemas. Adds additional metadata to describe the XML representation of this property.")]
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]
+    json_schema_dialect: Annotated[Optional[AnyUrl], Field(default=None, alias="$schema", description="The $schema keyword MAY be present in any root Schema Object, and if present MUST be used to determine which dialect should be used when processing the schema. This allows use of Schema Objects which comply with other drafts of JSON Schema than the default Draft 2020-12 support. Tooling MUST support the OAS dialect schema id, and MAY support additional values of $schema.")]
 
     @property
     def oa3_schema(self):
