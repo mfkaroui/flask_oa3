@@ -3,11 +3,14 @@ from typing import Annotated, Any, Dict, Optional, ClassVar
 from pydantic import BaseModel, Field, AnyUrl
 from copy import deepcopy
 
+from .component import Component, ComponentType
 from .discriminator import Discriminator
 from .external_documentation import ExternalDocumentation
 from .xml import XML
 
-class Schema(BaseModel):
+class Schema(Component):
+    component_type: ClassVar[ComponentType] = ComponentType.SCHEMA
+
     discriminator: Annotated[Optional[Discriminator], Field(defualt=None, description="Adds support for polymorphism. The discriminator is an object name that is used to differentiate between other schemas which may satisfy the payload description. See Composition and Inheritance for more details.")] 
     xml: Annotated[Optional[XML], Field(default=None, description="This MAY be used only on properties schemas. It has no effect on root schemas. Adds additional metadata to describe the XML representation of this property.")]
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]

@@ -1,7 +1,10 @@
-from typing import Optional, Annotated, Dict, Any
+from typing import Optional, Annotated, Dict, Any, ClassVar
 from pydantic import BaseModel, Field, AnyUrl
+from .component import Component, ComponentType
 
-class Example(BaseModel):
+class Example(Component):
+    component_type: ClassVar[ComponentType] = ComponentType.EXAMPLE
+
     summary: Annotated[Optional[str], Field(default=None, description="Short description for the example.")]
     description: Annotated[Optional[str], Field(default=None, description="Long description for the example. CommonMark syntax MAY be used for rich text representation.")]
     value: Annotated[Optional[Any], Field(default=None, description="Embedded literal example. The value field and externalValue field are mutually exclusive. To represent examples of media types that cannot naturally represented in JSON or YAML, use a string value to contain the example, escaping where necessary.")]

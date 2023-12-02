@@ -2,7 +2,8 @@ from enum import IntEnum
 from typing import Any, Dict, Union, ClassVar, Optional
 from typing_extensions import Annotated
 from pydantic import BaseModel, Field, computed_field
-from ..media_types import BaseMediaType
+from ..media_types import MediaType
+from ..component import Component, ComponentType
 
 class ResponseType(IntEnum):
     """
@@ -24,7 +25,7 @@ class ResponseType(IntEnum):
     CLIENT_ERROR = 400
     SERVER_ERROR = 500
 
-class Response(BaseModel):
+class Response(Component):
     """
     A base class for creating responses with a status code and data.
 
@@ -32,19 +33,21 @@ class Response(BaseModel):
         __STATUS_CODE__ (Union[int, None]): A class-level attribute that defines the status code for the response.
         data (Any): The data to be included in the response.
     """
+    component_type: ClassVar[ComponentType] = ComponentType.RESPONSE
+
     __api_docs__: ClassVar[Dict[str, str]] = {}
     __STATUS_CODE__: ClassVar[Union[int, None]] = None
     __PHRASE__: ClassVar[Union[str, None]] = None
 
     description: Annotated[Optional[str], Field(default=None, description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.")]
-    content: Annotated[Optional[Dict[str, BaseMediaType]], Field(default=None, description="A map containing descriptions of potential response payloads. The key is a media type or media type range and the value describes it. For responses that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*")]
+    content: Annotated[Optional[Dict[str, MediaType]], Field(default=None, description="A map containing descriptions of potential response payloads. The key is a media type or media type range and the value describes it. For responses that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*")]
     
     @computed_field(alias="x-phrase", description="The phrase of the response reprisenting a short description / long name")
     @property
     def phrase(self) -> str:
         return self.__PHRASE__
 
-    def add_media_type(self, media_type: BaseMediaType):
+    def add_media_type(self, media_type: type[MediaType]):
         """Adds a new media type to the content collection.
 
         This method inserts the given `media_type` into the collection,
@@ -58,7 +61,7 @@ class Response(BaseModel):
             TypeError: If the media_type argument is not an instance of BaseMediaType
             ValueError: If a media type with the same name already exists in the collection.
         """        
-        if not isinstance(media_type, BaseMediaType):
+        if not issubclass(media_type, MediaType):
             raise TypeError("Improper media type")
         media_type_name = media_type._get_name()
         if media_type_name in self.content:

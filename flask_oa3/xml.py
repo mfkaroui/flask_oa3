@@ -22,8 +22,5 @@ class XML(BaseModel):
         
         Returns:
             dict: The Open API schema
-        
-        Notes:
-            if "$defs" is defined then they must be popped out and ensured that they exist in the components object
         """   
         return self.model_dump(mode="json", by_alias=True, exclude_none=True)
