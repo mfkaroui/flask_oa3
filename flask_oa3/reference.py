@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Optional, Annotated, Dict, Any
 from pydantic import BaseModel, Field
 from .external_documentation import ExternalDocumentation
@@ -20,5 +21,5 @@ class Reference(BaseModel):
         return self.model_dump(mode="json", by_alias=True, exclude_none=True)
     
     @classmethod
-    def from_component(cls, component: Any):
+    def from_component(cls, component: Any) -> Reference:
         pass
