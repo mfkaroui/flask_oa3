@@ -7,6 +7,7 @@ from .example import Example
 from .header import Header
 from .parameter import Parameter
 from .reference import Reference
+from .request_body import RequestBody
 
 class Components(BaseModel):
     schemas: Annotated[Optional[Dict[str, Union[Schema, Reference]]], Field(default=None, description="An object to hold reusable Schema Objects.")]
