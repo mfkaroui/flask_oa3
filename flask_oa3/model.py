@@ -3,13 +3,7 @@ from typing import Annotated, Any, Dict, Optional, ClassVar
 from pydantic import BaseModel, Field
 from copy import deepcopy
 
-from .discriminator import Discriminator
-from .external_documentation import ExternalDocumentation
-
 class Model(BaseModel):
-    discriminator: ClassVar[Optional[Discriminator]] = None
-    external_documentation: ClassVar[Optional[ExternalDocumentation]] = None
-
     @classmethod
     def _get_component_name(cls) -> str:
         return f"#/components/schemas/{cls.__name__}"
