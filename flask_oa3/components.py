@@ -5,6 +5,7 @@ from .schema import Schema
 from .responses import Response
 from .example import Example
 from .header import Header
+from .parameter import Parameter
 from .reference import Reference
 
 class Components(BaseModel):
