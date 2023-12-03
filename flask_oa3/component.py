@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 class ComponentType(StrEnum):
     SCHEMA = "schemas"
     RESPONSE = "responses"
-    PARAMETER = "parameters" #missing
+    PARAMETER = "parameters"
     EXAMPLE = "examples"
     REQUEST_BODY = "requestBodies" #missing
     HEADER = "headers"
