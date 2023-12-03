@@ -40,14 +40,19 @@ class Response(Component):
     __PHRASE__: ClassVar[Union[str, None]] = None
 
     description: Annotated[Optional[str], Field(default=None, description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.")]
-    content: Annotated[Optional[Dict[str, MediaType]], Field(default=None, description="A map containing descriptions of potential response payloads. The key is a media type or media type range and the value describes it. For responses that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*")]
+    _content: ClassVar[Dict[str, type[MediaType]]]
     
     @computed_field(alias="x-phrase", description="The phrase of the response reprisenting a short description / long name")
     @property
     def phrase(self) -> str:
         return self.__PHRASE__
+    
+    @computed_field(description="A map containing descriptions of potential response payloads. The key is a media type or media type range and the value describes it. For responses that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*")
+    @property
+    def content(self) -> Union[Dict[str, MediaType], None]:
+        return None if len(self._content) == 0 else self._content
 
-    def add_media_type(self, media_type: type[MediaType]):
+    def add_media_type(self, media_type: MediaType):
         """Adds a new media type to the content collection.
 
         This method inserts the given `media_type` into the collection,
@@ -55,18 +60,18 @@ class Response(Component):
         are added to the collection.
 
         Args:
-            media_type (BaseMediaType): The media type object to be added.
+            media_type (MediaType): The media type object to be added.
 
         Raises:
-            TypeError: If the media_type argument is not an instance of BaseMediaType
+            TypeError: If the media_type argument is not an instance of MediaType
             ValueError: If a media type with the same name already exists in the collection.
         """        
-        if not issubclass(media_type, MediaType):
+        if not isinstance(media_type, MediaType):
             raise TypeError("Improper media type")
         media_type_name = media_type._get_name()
-        if media_type_name in self.content:
+        if media_type_name in self._content:
             raise ValueError("Media type already exists.")
-        self.content[media_type_name] = media_type
+        self._content[media_type_name] = media_type
 
     @classmethod
     def _get_response_type(cls) -> ResponseType:

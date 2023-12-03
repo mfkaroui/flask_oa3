@@ -1,16 +1,15 @@
 from typing import Dict, Union, Optional, ClassVar, TYPE_CHECKING
 from typing_extensions import Annotated
-from pydantic import BaseModel, Field, computed_field
+from pydantic import BaseModel, Field, field_serializer
 from ..encoding import Encoding
 from ..example import Example
-
-if TYPE_CHECKING:
-    from ..model import Model
+from ..reference import Reference
+from ..schema import Schema
 
 class MediaType(BaseModel):
     __MEDIA_TYPE__: ClassVar[Optional[str]] = None
     
-    model: ClassVar[Optional[Model]] = None
+    schema_object: Annotated[Optional[Schema], Field(default=None, alias="schema", description="The schema defining the content of the request, response, or parameter.")]
     examples: Annotated[Optional[Dict[str, Example]], Field(default=None, description="Examples of the media type. Each example object SHOULD match the media type and specified schema if present. The examples field is mutually exclusive of the example field. Furthermore, if referencing a schema which contains an example, the examples value SHALL override the example provided by the schema.")]
     encoding: Annotated[Optional[Dict[str, Encoding]], Field(default=None, description="A map between a property name and its encoding information. The key, being the property name, MUST exist in the schema as a property. The encoding object SHALL only apply to requestBody objects when the media type is multipart or application/x-www-form-urlencoded.")]
     
@@ -20,14 +19,11 @@ class MediaType(BaseModel):
             raise ValueError(f"The media type was not set")
         return cls.__MEDIA_TYPE__
     
-    @computed_field(alias="schema", description="The schema defining the content of the request, response, or parameter.")
-    @property
-    def ref_model(self) -> Dict[str, str]:
-        if self.model is None:
-           raise ValueError("The model was not set") 
-        return {
-            "$ref": self.model._get_component_name()
-        }
+    @field_serializer("schema_object")
+    def schema_object_serializer(self) -> dict:
+        if self.schema_object is None:
+           raise ValueError("The schema_object was not set") 
+        return Reference.from_component(self.schema_object).oa3_schema()
 
     @property
     def oa3_schema(self) -> dict:
