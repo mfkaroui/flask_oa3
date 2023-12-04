@@ -31,5 +31,5 @@ class RuntimeExpression(BaseModel):
     @root_validator(pre=True)
     @classmethod
     def check_expression(cls, values):
-        node, start = Rule("expression").parse(values["expression"], 0)
+        node, start = cls.grammar[0].parse(values["expression"], 0)
         return values
