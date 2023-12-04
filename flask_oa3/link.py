@@ -20,10 +20,10 @@ class Link(BaseModel):
 
     @property
     def oa3_schema(self) -> dict:
-        """Constructs the Open API 'Tag Object' according to specifications
+        """Constructs the Open API 'Link Object' according to specifications
         
         Spec:
-            https://spec.openapis.org/oas/v3.1.0#tag-object
+            https://spec.openapis.org/oas/v3.1.0#link-object
         
         Returns:
             dict: The Open API schema
