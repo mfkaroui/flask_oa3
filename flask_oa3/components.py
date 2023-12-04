@@ -9,6 +9,7 @@ from .parameter import Parameter
 from .reference import Reference
 from .request_body import RequestBody
 from .security_scheme import SecurityScheme
+from .link import Link
 
 class Components(BaseModel):
     schemas: Annotated[Optional[Dict[str, Union[Schema, Reference]]], Field(default=None, description="An object to hold reusable Schema Objects.")]
