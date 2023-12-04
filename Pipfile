@@ -9,6 +9,7 @@ pydantic = "*"
 email-validator = "*"
 pydantic-extra-types = "*"
 phonenumbers = "*"
+abnf = "*"
 
 [dev-packages]
 pytest = "*"
