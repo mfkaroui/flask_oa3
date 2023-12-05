@@ -1,4 +1,4 @@
-from typing import Optional, Annotated, List, Union
+from typing import Optional, Annotated, List, Union, ClassVar
 from enum import StrEnum
 from pydantic import BaseModel, Field
 from .external_documentation import ExternalDocumentation
@@ -6,8 +6,11 @@ from .component import Component, ComponentType
 from .reference import Reference
 from .server import Server
 from .parameter import Parameter
+from .operation import Operation
 
 class PathItem(Component):
+    component_type: ClassVar[ComponentType] = ComponentType.PATH_ITEM
+
     ref: Annotated[Optional[str], Field(default=None, alias="$ref", description="Allows for a referenced definition of this path item. The referenced structure MUST be in the form of a Path Item Object. In case a Path Item Object field appears both in the defined object and the referenced object, the behavior is undefined. See the rules for resolving Relative References.")]
     summary: Annotated[Optional[str], Field(default=None, description="An optional, string summary, intended to apply to all operations in this path.")]
     description: Annotated[Optional[str], Field(default=None, description="An optional, string description, intended to apply to all operations in this path. CommonMark syntax MAY be used for rich text representation.")]

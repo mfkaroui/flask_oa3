@@ -1,7 +1,6 @@
 from __future__ import annotations
-from typing import Annotated, Any, Dict, Optional, ClassVar
-from pydantic import BaseModel, Field, AnyUrl
-from copy import deepcopy
+from typing import Annotated, Optional, ClassVar
+from pydantic import Field, AnyUrl
 
 from .component import Component, ComponentType
 from .discriminator import Discriminator

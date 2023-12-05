@@ -1,12 +1,9 @@
 from __future__ import annotations
-from typing import Annotated, Any, Dict, Optional, ClassVar
+from typing import Annotated, Optional, ClassVar
 from enum import StrEnum
-from pydantic import BaseModel, Field, AnyUrl
-from copy import deepcopy
+from pydantic import Field, AnyUrl
 
 from .component import Component, ComponentType
-from .discriminator import Discriminator
-from .external_documentation import ExternalDocumentation
 from .xml import XML
 from .oauth_flows import OAuthFlows
 
@@ -42,6 +39,8 @@ class HTTPAuthenticationScheme(StrEnum):
     VAPID = "vapid"
 
 class SecurityScheme(Component):
+    component_type: ClassVar[ComponentType] = ComponentType.SECURITY_SCHEME
+
     security_scheme_type: Annotated[SecuritySchemeType, Field(description="REQUIRED. The type of the security scheme. Valid values are \"apiKey\", \"http\", \"mutualTLS\", \"oauth2\", \"openIdConnect\".")]
     description: Annotated[Optional[str], Field(default=None, description="A description for security scheme. CommonMark syntax MAY be used for rich text representation.")]
     name: Annotated[Optional[str], Field(default=None, description="REQUIRED. The name of the header, query or cookie parameter to be used.")]

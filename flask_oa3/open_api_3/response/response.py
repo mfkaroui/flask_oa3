@@ -1,8 +1,8 @@
 from enum import IntEnum
-from typing import Any, Dict, Union, ClassVar, Optional
+from typing import Dict, Union, ClassVar, Optional
 from typing_extensions import Annotated
-from pydantic import BaseModel, Field, computed_field
-from ..media_types import MediaType
+from pydantic import Field, computed_field
+from ..media_type import MediaType
 from ..component import Component, ComponentType
 
 class ResponseType(IntEnum):

@@ -2,7 +2,7 @@ from typing import Optional, Annotated, Dict, Union
 from pydantic import BaseModel, Field
 
 from .schema import Schema
-from .responses import Response
+from .response import Response
 from .example import Example
 from .header import Header
 from .parameter import Parameter

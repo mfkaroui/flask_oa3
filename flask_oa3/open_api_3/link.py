@@ -1,10 +1,12 @@
-from typing import Optional, Annotated, Dict, Any, Union
+from typing import Optional, Annotated, Dict, Any, Union, ClassVar
 from pydantic import BaseModel, Field, field_serializer
-
+from .component import Component, ComponentType
 from .runtime_expression import RuntimeExpression
 from .server import Server
 
-class Link(BaseModel):
+class Link(Component):
+    component_type: ClassVar[ComponentType] = ComponentType.LINK
+
     operation_reference: Annotated[Optional[str], Field(default=None, alias="operationRef", description="A relative or absolute URI reference to an OAS operation. This field is mutually exclusive of the operationId field, and MUST point to an Operation Object. Relative operationRef values MAY be used to locate an existing Operation Object in the OpenAPI definition. See the rules for resolving Relative References.")]
     operation_id: Annotated[Optional[str], Field(default=None, alias="operationId", description="The name of an existing, resolvable OAS operation, as defined with a unique operationId. This field is mutually exclusive of the operationRef field.")]
     parameters: Annotated[Optional[Dict[str, Union[RuntimeExpression, Any]]], Field(default=None, description="A map representing parameters to pass to an operation as specified with operationId or identified via operationRef. The key is the parameter name to be used, whereas the value can be a constant or an expression to be evaluated and passed to the linked operation. The parameter name can be qualified using the parameter location [{in}.]{name} for operations that use the same parameter name in different locations (e.g. path.id).")]

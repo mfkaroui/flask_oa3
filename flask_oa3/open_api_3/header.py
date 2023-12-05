@@ -1,6 +1,5 @@
-from typing import Optional, Annotated, Dict, ClassVar
-from pydantic import BaseModel, Field
-from .external_documentation import ExternalDocumentation
+from typing import Optional, Annotated, ClassVar
+from pydantic import Field
 from .component import Component, ComponentType
 
 class Header(Component):

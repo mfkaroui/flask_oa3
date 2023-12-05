@@ -1,5 +1,5 @@
-from typing import Optional, Annotated, Dict, Any, ClassVar
-from pydantic import BaseModel, Field, AnyUrl
+from typing import Optional, Annotated, Any, ClassVar
+from pydantic import Field, AnyUrl
 from .component import Component, ComponentType
 
 class Example(Component):

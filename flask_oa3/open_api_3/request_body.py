@@ -1,11 +1,11 @@
 from typing import Optional, Annotated, Dict, ClassVar
-from enum import StrEnum
-from pydantic import BaseModel, Field, computed_field
-from .external_documentation import ExternalDocumentation
+from pydantic import Field, computed_field
 from .component import Component, ComponentType
-from .media_types import MediaType
+from .media_type import MediaType
 
 class RequestBody(Component):
+    component_type: ClassVar[ComponentType] = ComponentType.REQUEST_BODY
+
     description: Annotated[Optional[str], Field(defualt=None, description="A brief description of the request body. This could contain examples of use. CommonMark syntax MAY be used for rich text representation.")]
     required: Annotated[Optional[bool], Field(defualt=None, description="Determines if the request body is required in the request. Defaults to false.")]
     _content: ClassVar[Dict[str, MediaType]] = {}
