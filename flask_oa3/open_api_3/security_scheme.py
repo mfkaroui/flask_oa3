@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Annotated, Optional, ClassVar
 from enum import StrEnum
-from pydantic import Field, AnyUrl
+from pydantic import Field, AnyUrl, validator
 
 from .component import Component, ComponentType
 from .xml import XML
@@ -50,6 +50,59 @@ class SecurityScheme(Component):
     flows: Annotated[Optional[OAuthFlows], Field(default=None, description="REQUIRED. An object containing configuration information for the flow types supported.")]
     open_id_connect_url: Annotated[Optional[AnyUrl], Field(default=None, alias="openIdConnectUrl", description="REQUIRED. OpenId Connect URL to discover OAuth2 configuration values. This MUST be in the form of a URL. The OpenID Connect standard requires the use of TLS.")]
 
+    @validator('security_scheme_type', pre=True, always=True)
+    def check_type(cls, v):
+        if not isinstance(v, SecuritySchemeType):
+            raise ValueError('The type of the security scheme is required and must be an instance of SecuritySchemeType.')
+        return v
+
+    @validator('description')
+    def check_description(cls, v):
+        if v is not None and not isinstance(v, str):
+            raise ValueError('The description must be a string.')
+        return v
+
+    @validator('name', 'in_location', always=True)
+    def check_api_key(cls, v, values, **kwargs):
+        if 'security_scheme_type' in values and values['security_scheme_type'] == SecuritySchemeType.API_KEY:
+            if not v:
+                raise ValueError('The name and in_location fields are required when security_scheme_type is API_KEY.')
+        return v
+
+    @validator('scheme', always=True)
+    def check_http(cls, v, values, **kwargs):
+        if 'security_scheme_type' in values and values['security_scheme_type'] == SecuritySchemeType.HTTP:
+            if not v:
+                raise ValueError('The scheme field is required when security_scheme_type is HTTP.')
+        return v
+
+    @validator('bearer_format')
+    def check_bearer(cls, v, values, **kwargs):
+        if 'scheme' in values and values['scheme'] == 'Bearer':
+            if v is not None and not isinstance(v, str):
+                raise ValueError('The bearerFormat must be a string when scheme is Bearer.')
+        return v
+
+    @validator('flows', always=True)
+    def check_oauth2(cls, v, values, **kwargs):
+        if 'security_scheme_type' in values and values['security_scheme_type'] == SecuritySchemeType.OAUTH2:
+            if not isinstance(v, OAuthFlows):
+                raise ValueError('The flows field is required and must be an instance of OAuthFlows when security_scheme_type is OAUTH2.')
+        return v
+
+    @validator('open_id_connect_url', always=True)
+    def check_open_id_connect(cls, v, values, **kwargs):
+        if 'security_scheme_type' in values and values['security_scheme_type'] == SecuritySchemeType.OPEN_ID_CONNECT:
+            if not v:
+                raise ValueError('The openIdConnectUrl field is required when security_scheme_type is OPEN_ID_CONNECT.')
+        return v
+
+    @validator('open_id_connect_url', always=True)
+    def check_open_id_connect(cls, v, values, **kwargs):
+        if 'security_scheme_type' in values and values['security_scheme_type'] == SecuritySchemeType.OPEN_ID_CONNECT:
+            if not v:
+                raise ValueError('The openIdConnectUrl field is required when security_scheme_type is OPEN_ID_CONNECT.')
+        return v
 
     @property
     def oa3_schema(self):
