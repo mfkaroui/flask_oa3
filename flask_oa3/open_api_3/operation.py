@@ -1,4 +1,4 @@
-from typing import Optional, Annotated, List, Union
+from typing import Optional, Annotated, List, Union, Dict
 from enum import StrEnum
 from pydantic import BaseModel, Field
 from .external_documentation import ExternalDocumentation
@@ -8,6 +8,7 @@ from .parameter import Parameter
 from .tag import Tag
 from .request_body import RequestBody
 from .callback import Callback
+from .security_requirement import SecurityRequirement
 
 class Operation(BaseModel):
     tags: Annotated[Optional[List[Union[Tag, str]]], Field(default=None, description="A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier.")]
