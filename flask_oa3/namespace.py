@@ -5,8 +5,8 @@ from pydantic import BaseModel
 from .model import Model
 from .view import View
 from .errors import RouteInUseError, ModelAlreadyRegisteredError
-from .tag import Tag
-from .external_documentation import ExternalDocumentation
+from .open_api_3 import Tag
+from .open_api_3 import ExternalDocumentation
 
 class Namespace(BaseModel):
     name: str

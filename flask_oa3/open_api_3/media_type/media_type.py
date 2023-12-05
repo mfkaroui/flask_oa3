@@ -20,10 +20,10 @@ class MediaType(BaseModel):
         return cls.__MEDIA_TYPE__
     
     @field_serializer("schema_object")
-    def schema_object_serializer(self) -> dict:
-        if self.schema_object is None:
+    def schema_object_serializer(self, schema_object: Optional[Schema], _info) -> dict:
+        if schema_object is None:
            raise ValueError("The schema_object was not set") 
-        return Reference.from_component(self.schema_object).oa3_schema()
+        return Reference.from_component(schema_object).oa3_schema()
 
     @property
     def oa3_schema(self) -> dict:

@@ -1,11 +1,11 @@
 from typing import Dict, Union, Annotated
-from pydantic import BaseModel, Field
+from pydantic import RootModel, Field
 
 from .response import Response
 from .reference import Reference
 
-class Responses(BaseModel):
-    __root__: Annotated[Dict[str, Union[Response, Reference]], Field(description="The documentation of responses other than the ones declared for specific HTTP response codes. Use this field to cover undeclared responses.")]
+class Responses(RootModel):
+    root: Annotated[Dict[str, Union[Response, Reference]], Field(description="The documentation of responses other than the ones declared for specific HTTP response codes. Use this field to cover undeclared responses.")]
 
     @property
     def oa3_schema(self):

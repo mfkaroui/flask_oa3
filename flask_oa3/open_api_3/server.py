@@ -1,5 +1,5 @@
 from typing import Optional, Annotated, Dict
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 from .server_variable import ServerVariable
 
@@ -8,19 +8,19 @@ class Server(BaseModel):
     description: Annotated[Optional[str], Field(default=None, description="An optional string describing the host designated by the URL. CommonMark syntax MAY be used for rich text representation.")]
     variables: Annotated[Optional[Dict[str, ServerVariable]], Field(default=None, description="A map between a variable name and its value. The value is used for substitution in the server’s URL template.")]
 
-    @validator('url')
+    @field_validator('url')
     def check_url(cls, v):
         if not v:
             raise ValueError('The URL to the target host is required and cannot be empty.')
         return v
 
-    @validator('description')
+    @field_validator('description')
     def check_description(cls, v):
         if v is not None and not isinstance(v, str):
             raise ValueError('The description must be a string.')
         return v
 
-    @validator('variables')
+    @field_validator('variables')
     def check_variables(cls, v):
         if v is not None and not isinstance(v, dict):
             raise ValueError('The variables must be a dictionary.')

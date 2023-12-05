@@ -9,6 +9,7 @@ from .tag import Tag
 from .request_body import RequestBody
 from .callback import Callback
 from .security_requirement import SecurityRequirement
+from .responses import Responses
 
 class Operation(BaseModel):
     tags: Annotated[Optional[List[Union[Tag, str]]], Field(default=None, description="A list of tags for API documentation control. Tags can be used for logical grouping of operations by resources or any other qualifier.")]

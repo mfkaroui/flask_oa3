@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Annotated, Optional
-from pydantic import BaseModel, Field, AnyUrl, validator, UrlStrError
+from pydantic import BaseModel, Field, AnyUrl, field_validator
 
 class XML(BaseModel):
     name: Annotated[Optional[str], Field(default=None, description="Replaces the name of the element/attribute used for the described schema property. When defined within items, it will affect the name of the individual XML elements within the list. When defined alongside type being array (outside the items), it will affect the wrapping element and only if wrapped is true. If wrapped is false, it will be ignored.")]
@@ -9,22 +9,22 @@ class XML(BaseModel):
     attribute: Annotated[Optional[bool], Field(default=None, description="Declares whether the property definition translates to an attribute instead of an element. Default value is false.")]
     wrapped: Annotated[Optional[bool], Field(default=None, description="MAY be used only for an array definition. Signifies whether the array is wrapped (for example, <books><book/><book/></books>) or unwrapped (<book/><book/>). Default value is false. The definition takes effect only when defined alongside type being array (outside the items).")]
 
-    @validator('namespace')
+    @field_validator('namespace')
     def check_namespace(cls, v):
         if v is not None:
             try:
                 AnyUrl(v, schemes={'http', 'https'})
-            except UrlStrError:
+            except Exception:
                 raise ValueError('The URI of the namespace definition must be an absolute URI.')
         return v
 
-    @validator('attribute', 'wrapped')
+    @field_validator('attribute', 'wrapped')
     def check_boolean(cls, v):
         if v is not None and not isinstance(v, bool):
             raise ValueError('The value must be a boolean.')
         return v
 
-    @validator('wrapped')
+    @field_validator('wrapped')
     def check_wrapped(cls, v, values, **kwargs):
         if 'type' in values and values['type'] != 'array' and v is not None:
             raise ValueError('wrapped may be used only for an array definition.')

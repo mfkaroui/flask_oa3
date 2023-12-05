@@ -32,7 +32,7 @@
             "name": "Build Documentation",
             "type": "python",
             "request": "launch",
-            "program": "pdoc3",
+            "module": "pdoc",
             "args": ["--force", "--html", "-o", "./docs", "flask_oa3"],
             "console": "integratedTerminal",
             "justMyCode": true

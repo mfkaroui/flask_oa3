@@ -4,8 +4,8 @@ from typing import List, Union, Callable
 from .errors import ReservedSpecificationExtentionError, PayloadModelAlreadyExistsError
 from .model import Model
 from .view import View
-from .responses import BaseResponse, get_response_by_status_code
-from .media_types import BaseMediaType, ApplicationJson
+from .open_api_3.response import Response, get_response_by_status_code
+from .open_api_3.media_type import MediaType, MediaTypeApplicationJson
 
 def specification_extensions_support(function):
     """A decorator to allow for extensions to the OpenAPI Schema. The value can be null, a primitive, an array or an object.
@@ -95,7 +95,7 @@ def tag(tags: List[str]):
         return obj
     return decorator
 
-def response(description: str, model: Model, media_type: Union[str, BaseMediaType] = ApplicationJson, **kwargs):
+def response(description: str, model: Model, media_type: Union[str, MediaType] = MediaTypeApplicationJson, **kwargs):
     def decorator(obj: Union[View, Callable]):
         media_type_object = media_type(model)
         if len(kwargs) == 1 and "status_code" in kwargs:
@@ -107,7 +107,7 @@ def response(description: str, model: Model, media_type: Union[str, BaseMediaTyp
         elif "status_code" not in kwargs or "phrase" not in kwargs:
             raise ValueError("To define a custom response the following arguments must be preset. status_code: int, phrase: str")
         else:
-            class CustomResponse(BaseResponse):
+            class CustomResponse(Response):
                 __STATUS_CODE__: int = kwargs["status_code"]
                 __PHRASE__: str = kwargs["phrase"]
             response_object = CustomResponse(description)

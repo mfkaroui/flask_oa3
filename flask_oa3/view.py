@@ -2,7 +2,7 @@ from __future__ import annotations
 import inspect
 from typing import Dict, List, Union, Callable
 from .model import Model
-from .responses import BaseResponse
+from .open_api_3.response import Response
 from .errors import ModelAlreadyRegisteredError
 
 class View:
@@ -54,11 +54,11 @@ class View:
         if "__responses__" not in function.__dict__:
             function.__responses__ = {}
         if "_register_response" not in function.__dict__:
-            def register_response(response: BaseResponse):
+            def register_response(response: Response):
                 """Stores the response that a specfic method may return
 
                 Args:
-                    response (BaseResponse): The response object
+                    response (Response): The response object
                 """            
                 function.__responses__[f"{response.__STATUS_CODE__}"] = response
             function.__dict__["_register_response"] = register_response

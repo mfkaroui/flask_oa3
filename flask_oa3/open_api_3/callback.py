@@ -1,16 +1,18 @@
-from typing import Dict, Union
-from pydantic import BaseModel, root_validator
-from .path_item import PathItem
+from typing import Dict, Union, TYPE_CHECKING
+from pydantic import RootModel, root_validator
 from .runtime_expression import RuntimeExpression
 from .reference import Reference
 
-class Callback(BaseModel):
-    __root__: Dict[str, Union[PathItem, Reference]]
+if TYPE_CHECKING:
+    from .path_item import PathItem
+
+class Callback(RootModel):
+    root: Dict[str, Union['PathItem', Reference]]
 
     @root_validator(pre=True)
     @classmethod
     def check_keys(cls, values):
-        for key in values.get('__root__', {}):
+        for key in values.get('root', {}):
             RuntimeExpression(expression=key)
         return values
 
@@ -25,3 +27,4 @@ class Callback(BaseModel):
             dict: The Open API schema
         """        
         return self.model_dump(mode="json", by_alias=True, exclude_none=True)
+
