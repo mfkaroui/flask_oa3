@@ -8,6 +8,7 @@ from .external_documentation import ExternalDocumentation
 from .components import Components
 from .server import Server
 from .paths import Paths
+
 class OpenAPI(BaseModel):
     OPENAPI_VERSION: ClassVar[str] = "3.1.0"
     JSON_SCHEMA_DIALECT: ClassVar[AnyUrl] = "https://spec.openapis.org/oas/3.1/dialect/base"
