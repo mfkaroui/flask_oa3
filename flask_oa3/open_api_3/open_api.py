@@ -16,11 +16,14 @@ class OpenAPI(BaseModel):
     @property
     def openapi_version(self) -> str:
         return self.OPENAPI_VERSION
+    
     info: Annotated[Info, Field(description="REQUIRED. Provides metadata about the API. The metadata MAY be used by tooling as required.")]
+    
     @computed_field(alias="jsonSchemaDialect", return_type=AnyUrl, description="REQUIRED. This string MUST be the version number of the OpenAPI Specification that the OpenAPI document uses. The openapi field SHOULD be used by tooling to interpret the OpenAPI document. This is not related to the API info.version string.")
     @property
     def json_schema_dialect(self) -> AnyUrl:
         return self.JSON_SCHEMA_DIALECT
+    
     servers: Annotated[Optional[List[Server]], Field(default=None, description="An array of Server Objects, which provide connectivity information to a target server. If the servers property is not provided, or is an empty array, the default value would be a Server Object with a url value of /.")]
     paths: Annotated[Optional[Paths], Field(default=None, description="The available paths and operations for the API.")]
     components: Annotated[Optional[Components], Field(default=None, description="An element to hold various schemas for the document.")]
