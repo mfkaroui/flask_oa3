@@ -17,6 +17,7 @@ vistir = "< 0.7.0"
 pipenv-setup = {extras = ["black"], version = "*"}
 sphinx = "*"
 sphinx-rtd-theme = "*"
+sphinx-pydantic = "*"
 
 [requires]
 python_version = "3.11"
