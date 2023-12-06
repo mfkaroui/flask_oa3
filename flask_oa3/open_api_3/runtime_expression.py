@@ -1,5 +1,5 @@
 from typing import List, ClassVar, Annotated, Optional
-from pydantic import BaseModel, Field, root_validator
+from pydantic import BaseModel, Field, model_validator
 from abnf import Rule
 from abnf.grammars import rfc7230
 
@@ -28,7 +28,7 @@ class RuntimeExpression(BaseModel):
 
     expression: Annotated[str, Field(description="")]
 
-    @root_validator(pre=True)
+    @model_validator(mode="before")
     @classmethod
     def check_expression(cls, values):
         cls.grammar[0].parse(values["expression"], 0)

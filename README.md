@@ -25,6 +25,7 @@ Explain how to run the automated tests for this system.
 
 - [Pydantic](https://github.com/pydantic/pydantic)
 - [Flask](https://github.com/pallets/flask)
+- [FastAPI](https://github.com/tiangolo/fastapi)
 - [OpenAPI 3.1](https://spec.openapis.org/oas/v3.1.0#version-3-1-0)
 
 ## Contributing

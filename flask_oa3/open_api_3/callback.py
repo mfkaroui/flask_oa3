@@ -1,5 +1,5 @@
 from typing import Dict, Union, TYPE_CHECKING
-from pydantic import RootModel, root_validator
+from pydantic import RootModel, model_validator
 from .runtime_expression import RuntimeExpression
 from .reference import Reference
 
@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 class Callback(RootModel):
     root: Dict[str, Union['PathItem', Reference]]
 
-    @root_validator(pre=True)
+    @model_validator(mode="before")
     @classmethod
     def check_keys(cls, values):
         for key in values.get('root', {}):

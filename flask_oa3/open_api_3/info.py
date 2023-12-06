@@ -2,7 +2,7 @@ from typing import Optional
 from typing_extensions import Annotated
 from pydantic import BaseModel, AnyUrl, EmailStr, Field
 from .contact import Contact
-from .licenses import License
+from .license import License
 
 class Info(BaseModel):
     title: Annotated[str, Field(description="REQUIRED. The title of the API.")]

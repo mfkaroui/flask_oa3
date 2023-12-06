@@ -1,6 +1,6 @@
 from __future__ import annotations
 from flask_oa3 import Field, Model, View, ExternalDocumentation, License
-import flask_oa3.licenses as Licenses
+from flask_oa3.open_api_3 import license
 from pydantic import EmailStr
 from pydantic_extra_types.phone_numbers import PhoneNumber
 from typing import Optional, Union
@@ -33,7 +33,7 @@ class BaseRoute(View):
 
 from pydantic import create_model
 if __name__ == "__main__":
-    schema = Licenses.LicenseGpl3_0(url="https://google.com").oa3_schema
+    schema = license.LicenseGpl3_0(url="https://google.com").oa3_schema
     print("test")
     #app = flask.Flask(__name__)
     #api = flask_oa3.API(app)

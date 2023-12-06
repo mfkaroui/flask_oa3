@@ -15,15 +15,15 @@ class Link(Component):
     server: Annotated[Optional[Server], Field(default=None, description="A server object to be used by the target operation.")]
 
     @field_serializer("parameters")
-    def parameters_serializer(self) -> Union[Any, None]:
-        if self.schema_object is not None:
-            return {parameter_name: value.expression if isinstance(value, RuntimeExpression) else value for parameter_name, value in self.parameters.items()}
+    def parameters_serializer(self, parameters: Optional[Dict[str, Union[RuntimeExpression, Any]]], _info) -> Union[Any, None]:
+        if parameters is not None:
+            return {parameter_name: value.expression if isinstance(value, RuntimeExpression) else value for parameter_name, value in parameters.items()}
         return None
     
     @field_serializer("request_body")
-    def request_body_serializer(self) -> Union[Any, None]:
-        if self.request_body is not None:
-            return self.request_body.expression if isinstance(self.request_body, RuntimeExpression) else self.request_body
+    def request_body_serializer(self, request_body: Optional[Union[RuntimeExpression, Any]], _info) -> Union[Any, None]:
+        if request_body is not None:
+            return request_body.expression if isinstance(request_body, RuntimeExpression) else request_body
         return None
 
     @property
