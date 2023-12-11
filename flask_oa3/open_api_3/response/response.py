@@ -8,40 +8,27 @@ from ..component import Component, ComponentType
 class ResponseType(IntEnum):
     """
     An enumeration to categorize response types based on HTTP status codes.
-
-    Attributes:
-        X_CUSTOM (int): Represents a custom or undefined status code.
-        INFORMATIONAL (int): Represents informational responses (100–199).
-        SUCCESSFUL (int): Represents successful responses (200–299).
-        REDIRECT (int): Represents redirection messages (300–399).
-        CLIENT_ERROR (int): Represents client error responses (400–499).
-        SERVER_ERROR (int): Represents server error responses (500–599).
     """
 
-    X_CUSTOM = -1
-    INFORMATIONAL = 100
-    SUCCESSFUL = 200
-    REDIRECT = 300
-    CLIENT_ERROR = 400
-    SERVER_ERROR = 500
+    X_CUSTOM = -1 #Represents a custom or undefined status code.
+    INFORMATIONAL = 100 #Represents informational responses (100–199).
+    SUCCESSFUL = 200 #Represents successful responses (200–299).
+    REDIRECT = 300 #Represents redirection messages (300–399).
+    CLIENT_ERROR = 400 #Represents client error responses (400–499).
+    SERVER_ERROR = 500 #Represents server error responses (500–599).
 
 class Response(Component):
-    """
-    A base class for creating responses with a status code and data.
-
-    Attributes:
-        __STATUS_CODE__ (Union[int, None]): A class-level attribute that defines the status code for the response.
-        data (Any): The data to be included in the response.
-    """
     component_type: ClassVar[ComponentType] = ComponentType.RESPONSE
 
-    __api_docs__: ClassVar[Dict[str, str]] = {}
     __STATUS_CODE__: ClassVar[Union[int, None]] = None
     __PHRASE__: ClassVar[Union[str, None]] = None
 
     description: Annotated[Optional[str], Field(default=None, description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.")]
-    _content: ClassVar[Dict[str, type[MediaType]]]
+    _content: Dict[str, type[MediaType]] = {}
     
+    class Config:
+        exclude = {"_content"}
+
     @computed_field(alias="x-phrase", description="The phrase of the response reprisenting a short description / long name")
     @property
     def phrase(self) -> str:

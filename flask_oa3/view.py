@@ -1,93 +1,88 @@
 from __future__ import annotations
 import inspect
-from typing import Dict, List, Union, Callable
-from .model import Model
-from .open_api_3.response import Response
-from .errors import ModelAlreadyRegisteredError
+from typing import Dict, List, Union, Callable, get_type_hints
+from docstring_parser import parse
+
+from .open_api_3 import Responses, Operation, PathItem, ExternalDocumentation
+from .model import Model, ResponseModel
 
 class View:
     ALLOWED_METHODS: List[str] = [
         "get",
-        "post",
         "put",
-        "patch",
+        "post",
         "delete",
         "options",
-        "head"
+        "head",
+        "patch",
+        "trace"
     ]
-    __api_docs__: Dict[str, str] = {}
 
     @classmethod
-    def _bind_method_schema(cls, function: Callable):
-        """Generates a callable function that will be bound to a defined function. The bound method will produce the schema for the operation.
+    def _validate_method(cls, method: Callable):
+        """Validates that the method is allowed
 
         Args:
-            function (Callable): The allowed method to bind to.
+            method (Callable): The method to validate
+
+        Raises:
+            ValueError: If the method is not allowed
         """        
-        if "__api_docs__" not in function.__dict__:
-            function.__api_docs__ = {}
-        if "__schema__" not in function.__dict__:
-            def method_schema() -> dict:
-                """Constructs the Open API 'Operation Object' according to specifications
-
-                Returns:
-                    dict: The Open API schema
-                """            
-                schema = {
-                    "operationId": function.__qualname__.replace(".", "::").replace("<", "__").replace(">", "__")
-                }
-                if "tags" in function.__api_docs__:
-                    schema["tags"] = function.__api_docs__["tags"]
-                if "summary" in function.__api_docs__:
-                    schema["summary"] = function.__api_docs__["summary"]
-                if "description" in function.__api_docs__:
-                    schema["description"] = function.__api_docs__["description"]
-                if "external_docs" in function.__api_docs__:
-                    schema["externalDocs"] = function.__api_docs__["external_docs"].schema()
-                if "deprecated" in function.__api_docs__:
-                    schema["deprecated"] = function.__api_docs__["deprecated"]
-                return schema
-            function.__dict__["schema"] = method_schema
+        
+        type_hints = get_type_hints(method)
+        if "return" not in type_hints:
+            raise ValueError(f"Method {method.__name__} must have a return annotation")
+        if type_hints["return"].__name__ == "Union":
+            for union_type in type_hints["return"].__args__:
+                if not issubclass(union_type, ResponseModel):
+                    raise ValueError(f"Method {method.__name__} must have a return annotation of type ResponseModel")
+        elif not issubclass(type_hints["return"], ResponseModel):
+            raise ValueError(f"Method {method.__name__} must have a return annotation of type ResponseModel")
+        if "__api_docs__" not in method.__dict__:
+            method.__api_docs__ = {}
 
     @classmethod
-    def _bind_register_response(cls, function: Callable):
-        if "__responses__" not in function.__dict__:
-            function.__responses__ = {}
-        if "_register_response" not in function.__dict__:
-            def register_response(response: Response):
-                """Stores the response that a specfic method may return
-
-                Args:
-                    response (Response): The response object
-                """            
-                function.__responses__[f"{response.__STATUS_CODE__}"] = response
-            function.__dict__["_register_response"] = register_response
-
-    @classmethod
-    def _get_methods(cls) -> Dict[str, Callable]:
+    def produce_path_item(cls) -> PathItem:
         """Gets all methods defined that have a name listed in the allowed methods list
 
         Returns:
             Dict[str, Callable]: A dictionary that maps the name of a method to the method itself
         """        
-        methods = {}
+        path_item = {}
         for func_name, func in inspect.getmembers(cls, inspect.isfunction):
             if func_name.lower() in cls.ALLOWED_METHODS:
-                cls._bind_method_schema(func)
-                cls._bind_register_response(func)
-                methods[func_name] = func
-        return methods
+                cls._validate_method(func)
+                type_hints = get_type_hints(func)
+                operation = {
+                    "operationId": f"{cls.__name__}::{func_name}",
+                    "responses": Responses(root={
+                        str(response.__status_code__): response.produce_response()
+                        for response in type_hints["return"].__args__
+                    })
+                }
+                if func.__doc__ is not None:
+                    parsed_doc_strings = parse(func.__doc__)
+                    if parsed_doc_strings.short_description is not None:
+                        operation["summary"] = parsed_doc_strings.short_description
+                    if parsed_doc_strings.long_description is not None:
+                        operation["description"] = parsed_doc_strings.long_description
+                    if parsed_doc_strings.deprecation is not None:
+                        operation["deprecated"] = True
+                    external_documentation = {}
+                    for doc_string_meta in parsed_doc_strings.meta:
+                        if doc_string_meta.args[0].lower() == "external_documentation":
+                            if doc_string_meta.args[1].lower() == "url":
+                                external_documentation["url"] = doc_string_meta.description
+                            if doc_string_meta.args[1].lower() == "description":
+                                external_documentation["description"] = doc_string_meta.description
+                    if len(external_documentation) > 0:
+                        operation["external_documentation"] = ExternalDocumentation(**external_documentation)
+                path_item[func_name.lower()] = Operation(**operation)
+        if cls.__doc__ is not None:
+            parsed_doc_strings = parse(cls.__doc__)
+            if parsed_doc_strings.short_description is not None:
+                path_item["summary"] = parsed_doc_strings.short_description
+            if parsed_doc_strings.long_description is not None:
+                path_item["description"] = parsed_doc_strings.long_description
+        return PathItem(**path_item)
     
-    @classmethod
-    def schema(cls) -> dict:    
-        """Constructs the Open API 'Path Item Object' according to specifications
-
-        Returns:
-            dict: The Open API schema
-        """        
-        methods = cls._get_methods()
-        schema = {
-            method: methods[method].schema() for method in methods
-        }
-        schema.update(cls.__api_docs__)
-        return schema

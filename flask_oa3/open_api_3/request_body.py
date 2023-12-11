@@ -6,8 +6,8 @@ from .media_type import MediaType
 class RequestBody(Component):
     component_type: ClassVar[ComponentType] = ComponentType.REQUEST_BODY
 
-    description: Annotated[Optional[str], Field(defualt=None, description="A brief description of the request body. This could contain examples of use. CommonMark syntax MAY be used for rich text representation.")]
-    required: Annotated[Optional[bool], Field(defualt=None, description="Determines if the request body is required in the request. Defaults to false.")]
+    description: Annotated[Optional[str], Field(default=None, description="A brief description of the request body. This could contain examples of use. CommonMark syntax MAY be used for rich text representation.")]
+    required: Annotated[Optional[bool], Field(default=None, description="Determines if the request body is required in the request. Defaults to false.")]
     _content: ClassVar[Dict[str, MediaType]] = {}
 
     @computed_field(description="REQUIRED. The content of the request body. The key is a media type or media type range and the value describes it. For requests that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*")

@@ -1,6 +1,6 @@
 from typing import Optional, Annotated, List, Union, ClassVar
 from enum import StrEnum
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from .external_documentation import ExternalDocumentation
 from .component import Component, ComponentType
 from .reference import Reference
@@ -24,6 +24,17 @@ class PathItem(Component):
     trace: Annotated[Optional[Operation], Field(default=None, description="A definition of a TRACE operation on this path.")]
     servers: Annotated[Optional[List[Server]], Field(default=None, description="An alternative server array to service all operations in this path.")]
     parameters: Annotated[Optional[List[Union[Parameter, Reference]]], Field(default=None, description="A list of parameters that are applicable for all the operations described under this path. These parameters can be overridden at the operation level, but cannot be removed there. The list MUST NOT include duplicated parameters. A unique parameter is defined by a combination of a name and location. The list can use the Reference Object to link to parameters that are defined at the OpenAPI Object’s components/parameters.")]
+
+    @field_validator("parameters")
+    def validate_parameters(cls, parameters):
+        seen = set()
+        for param in parameters:
+            if isinstance(param, Parameter):
+                identifier = (param.name, param.location)
+                if identifier in seen:
+                    raise ValueError("Duplicate Parameter: A unique parameter is defined by a combination of a name and location")
+                seen.add(identifier)
+        return parameters
 
     @property
     def oa3_schema(self) -> dict:

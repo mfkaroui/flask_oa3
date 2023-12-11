@@ -16,9 +16,13 @@ class ComponentType(StrEnum):
 
 class Component(BaseModel):
     component_type: ClassVar[Optional[ComponentType]] = None
+    
+    @classmethod
+    def component_name(cls) -> str:
+        return cls.__name__
 
-    @property
+    @classmethod
     def component_path(cls) -> str:
         if cls.component_type is None:
             raise ValueError("A component type was not set")
-        return f"#/components/{cls.component_type.value}/{cls.__name__}"
+        return f"#/components/{cls.component_type.value}"
