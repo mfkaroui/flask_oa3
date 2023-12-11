@@ -8,7 +8,7 @@
             "name": "Build Licenses",
             "type": "python",
             "request": "launch",
-            "program": "./flask_oa3/licenses",
+            "program": "./flask_oa3/open_api_3/license",
             "console": "integratedTerminal",
             "justMyCode": true
         },
@@ -16,7 +16,7 @@
             "name": "Build Responses",
             "type": "python",
             "request": "launch",
-            "program": "./flask_oa3/responses",
+            "program": "./flask_oa3/open_api_3/response",
             "console": "integratedTerminal",
             "justMyCode": true
         },
@@ -24,7 +24,7 @@
             "name": "Build Media Types",
             "type": "python",
             "request": "launch",
-            "program": "./flask_oa3/media_types",
+            "program": "./flask_oa3/open_api_3/media_type",
             "console": "integratedTerminal",
             "justMyCode": true
         },
