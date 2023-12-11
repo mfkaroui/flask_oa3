@@ -1,43 +1,39 @@
 from __future__ import annotations
-from flask_oa3 import Field, Model, View, ExternalDocumentation, License
+from flask_oa3 import Model, View, ResponseModel
 from flask_oa3.open_api_3 import license
-from pydantic import EmailStr
+from pydantic import EmailStr, Field
 from pydantic_extra_types.phone_numbers import PhoneNumber
 from typing import Optional, Union
 
-class UserModel(Model):
-    external_documentation = ExternalDocumentation(
-        url = "https://www.google.com",
-        description = "External documentation for the user model"
-    )
-    first_name: str = Field(description="The first name of the user")
-    last_name: str = Field(description="The last name of the user")
-    email: Optional[EmailStr] = Field(default=None, description="The email of the user")
-    phone_number: Optional[PhoneNumber] = Field(default=None, description="The phone number of the user")
+class TestPayload(Model):
+    name: str = Field(description="The name of the test model.")
+    email: EmailStr = Field(description="The email of the test model.")
+    phone_number: PhoneNumber = Field(description="The phone number of the test model.")
 
-class ChildUserModel(UserModel):
-    has_lego: Union[bool, None]
-    will_become: TeenUserModel
+class TestResponse(ResponseModel):
+    __status_code__: int = 200
+    name: str = Field(description="The name of the response model.")
 
-class TeenUserModel(ChildUserModel):
-    has_car: bool
-    will_become: AdultUserModel
+class TestErrorResponse(ResponseModel):
+    __status_code__: int = 404
+    error: str = Field(description="The error of the response model.")
 
-class AdultUserModel(TeenUserModel):
-    has_booze: bool
-    will_become: None = None
+class TestView(View):
+    """This is a test view"""
 
-class BaseRoute(View):
-    def get(self, **kwargs):
-        pass
+    def get(self, payload: TestPayload) -> Union[TestResponse, TestErrorResponse]:
+        """
+        This is a test method
 
-from pydantic import create_model
+        An even more detailed description of the test method
+        
+        :external_documentation url: https://www.google.com
+        :external_documentation description: please go here for more information
+        
+        :deprecation: 1.0.0
+        """
+        return TestResponse(name=payload.name)
+
 if __name__ == "__main__":
-    schema = license.LicenseGpl3_0(url="https://google.com").oa3_schema
+    TestView.produce_path_item()
     print("test")
-    #app = flask.Flask(__name__)
-    #api = flask_oa3.API(app)
-    #api.set_spdx_license_info()
-    #namespace = flask_oa3.Namespace("base", "/")
-    #namespace.register_view(BaseRoute)
-    #api.register_namespace(namespace)
