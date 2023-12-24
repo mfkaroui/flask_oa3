@@ -1,6 +1,6 @@
 from __future__ import annotations
 import inspect
-from typing import Dict, List, Union, Callable, get_type_hints
+from typing import Any, Dict, List, Union, Callable, get_type_hints
 from docstring_parser import parse
 
 from .open_api_3 import Responses, Operation, PathItem, ExternalDocumentation
@@ -42,6 +42,18 @@ class View:
             method.__api_docs__ = {}
 
     @classmethod
+    def get_all_methods(cls) -> Dict[str, Dict[str, Union[Callable, Dict[str, Any]]]]:
+        methods = {}
+        for func_name, func in inspect.getmembers(cls, inspect.isfunction):
+            if func_name.lower() in cls.ALLOWED_METHODS:
+                cls._validate_method(func)
+                methods[func_name.lower()] = {
+                    "function": func,
+                    "type_hints": get_type_hints(func)
+                }
+        return methods
+
+    @classmethod
     def produce_path_item(cls) -> PathItem:
         """Gets all methods defined that have a name listed in the allowed methods list
 
@@ -71,10 +83,12 @@ class View:
                     external_documentation = {}
                     for doc_string_meta in parsed_doc_strings.meta:
                         if doc_string_meta.args[0].lower() == "external_documentation":
-                            if doc_string_meta.args[1].lower() == "url":
-                                external_documentation["url"] = doc_string_meta.description
-                            if doc_string_meta.args[1].lower() == "description":
-                                external_documentation["description"] = doc_string_meta.description
+                            external_documentation_args = parse(doc_string_meta.description)
+                            for external_documentation_meta in external_documentation_args.meta:
+                                if external_documentation_meta.args[0].lower() == "url":
+                                    external_documentation["url"] = external_documentation_meta.description
+                                if external_documentation_meta.args[0].lower() == "description":
+                                    external_documentation["description"] = external_documentation_meta.description
                     if len(external_documentation) > 0:
                         operation["external_documentation"] = ExternalDocumentation(**external_documentation)
                 path_item[func_name.lower()] = Operation(**operation)

@@ -1,17 +1,51 @@
 import os
-from typing import Dict, List, Optional, ClassVar
+from typing import Dict, List, Optional, Annotated
 from urllib.parse import urljoin
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from .view import View
 from .open_api_3 import Tag
 from .open_api_3 import ExternalDocumentation
 
 class Namespace(BaseModel):
     name: str
-    description: Optional[str] = None
-    external_documentation: Optional[ExternalDocumentation] = None
-    views: ClassVar[List[View]] = []
+    route: Annotated[str, Field(default="/", description="The route of the namespace.")]
+    description: Annotated[Optional[str], Field(default=None, description="A short description of the namespace. CommonMark syntax MAY be used for rich text representation. Defaults to None.")]
+    external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this namespace. Defaults to None.")]
+
+    views: Dict[str, type[View]] = {}
+
+    class Config:
+        exclude = [
+            "views"
+        ]
+
+    @property
+    def base_route(self) -> List[str]:
+        """
+        This property splits the route into a list of its parts. 
+        The route is a string representing a URL path, and this property 
+        returns a list where each element is a part of the path.
+
+        Returns:
+            List[str]: The parts of the route.
+        """
+        return self.route.split("/")
+
+    def get_route(self, *args) -> str:
+        routes = self.base_route
+        for part in args:
+            if isinstance(part, str):
+                routes.extend(part.split("/"))
+        route = "/".join(routes).replace("//", "/")
+        if not route.startswith("/"):
+            return f"/{route}"
+        return route
  
+    def register_view(self, route: str, view: type[View]):
+        if route in self.views:
+            raise ValueError(f"View with route '{route}' already registered")
+        self.views[route] = view
+
     def _get_tag(self) -> Tag:
         return Tag(
             name=self.name,

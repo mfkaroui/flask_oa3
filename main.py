@@ -1,5 +1,5 @@
 from __future__ import annotations
-from flask_oa3 import Model, View, ResponseModel
+from flask_oa3 import Model, View, ResponseModel, Namespace, FlaskApp
 from flask_oa3.open_api_3 import license
 from pydantic import EmailStr, Field
 from pydantic_extra_types.phone_numbers import PhoneNumber
@@ -27,13 +27,38 @@ class TestView(View):
 
         An even more detailed description of the test method
         
-        :external_documentation url: https://www.google.com
-        :external_documentation description: please go here for more information
+        :external_documentation:
+            :url: https://www.google.com
+            :description: please go here for more information
         
+        :example:
+            summary
+            
+            description
+
+            :value:
+                {
+                    "hello" : "world"
+                }
+            
+            :external_value:
+                https://google.com
         :deprecation: 1.0.0
         """
         return TestResponse(name=payload.name)
 
 if __name__ == "__main__":
-    TestView.produce_path_item()
+    namespace = Namespace(name="TestNameSpace", route="/namespace")
+    namespace.register_view("/TestView", TestView)
+    app = FlaskApp(
+        route="TestApplication",
+        title="Test Application",
+        description="This is a test application",
+        contact_name="Mohamed Karoui",
+        contact_email="mfkaroui@gmail.com",
+        license=license.License0BSD(url="https://opensource.org/licenses/0BSD"),
+        version="1.0.0",
+    )
+    app.register_namespace(namespace)
+    app.init_app().run()
     print("test")

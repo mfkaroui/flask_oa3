@@ -5,7 +5,7 @@ from .example import Example
 from .external_documentation import ExternalDocumentation
 from .header import Header
 from .info import Info
-from .license import License
+from .license import License, PredefinedLicense
 from .link import Link
 from .oauth_flow import OAuthFlow
 from .oauth_flows import OAuthFlows
