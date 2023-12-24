@@ -1,17 +1,15 @@
 ### AUTO-GENERATED ###
-from pydantic import Field, computed_field
+from pydantic import BaseModel, Field, computed_field, AnyUrl
 from typing import ClassVar, Optional, List, Tuple, Dict, Union
 from typing_extensions import Annotated
-
 from .license import License
 
-class PredefinedLicense(License):
+class PredefinedLicense(BaseModel):
     VERSION: ClassVar[str] = "2502b90"
     RELEASE_DATE: ClassVar[str] = "2023-11-10"
 
-    name: ClassVar[None] = None
-    identifier: ClassVar[None] = None
-    
+    url: Annotated[Optional[AnyUrl], Field(default=None, description="A URL to the license used for the API. This MUST be in the form of a URL. The url field is mutually exclusive of the identifier field.")]
+
     @computed_field(alias="name", description="REQUIRED. The license name used for the API.")
     @property
     def _name(self) -> str:
@@ -22,17 +20,25 @@ class PredefinedLicense(License):
     def _identifier(self) -> str:
         return self.licenseId
 
-
+    @computed_field(alias="x-reference", description="x-reference.")
     @property
-    def oa3_schema(self):
-        schema = super().oa3_schema
-        schema.update({
-            "x-reference": self.reference,
-            "x-reference-number": self.referenceNumber,
-            "x-is-deprecated": self.isDeprecatedLicenseId,
-            "x-is-osi-approved": self.isOsiApproved,
-        })
-        return schema
+    def _reference(self) -> str:
+        return str(self.reference)
+
+    @computed_field(alias="x-reference-number", description="x-reference-number.")
+    @property
+    def _referenceNumber(self) -> str:
+        return str(self.referenceNumber)
+
+    @computed_field(alias="x-is-deprecated", description="x-is-deprecated.")
+    @property
+    def _isDeprecatedLicenseId(self) -> str:
+        return str(self.isDeprecatedLicenseId)
+
+    @computed_field(alias="x-is-osi-approved", description="x-is-osi-approved.")
+    @property
+    def _isOsiApproved(self) -> str:
+        return str(self.isOsiApproved)
 
 class License0BSD(PredefinedLicense):
     reference: ClassVar[str] = "https://spdx.org/licenses/0BSD.html"

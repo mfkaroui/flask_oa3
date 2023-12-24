@@ -1,8 +1,8 @@
-from typing import Optional
+from typing import Optional, Union
 from typing_extensions import Annotated
 from pydantic import BaseModel, AnyUrl, EmailStr, Field
 from .contact import Contact
-from .license import License
+from .license import License, PredefinedLicense
 
 class Info(BaseModel):
     title: Annotated[str, Field(description="REQUIRED. The title of the API.")]
@@ -10,7 +10,7 @@ class Info(BaseModel):
     description: Annotated[Optional[str], Field(default=None, description="A description of the API. CommonMark syntax MAY be used for rich text representation.")]
     terms_of_service: Annotated[Optional[AnyUrl], Field(default=None, alias="termsOfService", description="A URL to the Terms of Service for the API. This MUST be in the form of a URL.")]
     contact: Annotated[Optional[Contact], Field(default=None, description="The contact information for the exposed API.")]
-    license: Annotated[Optional[License], Field(default=None, description="The license information for the exposed API.")]
+    license: Annotated[Optional[Union[License, PredefinedLicense]], Field(default=None, description="The license information for the exposed API.")]
     version: Annotated[str, Field(default="dev", description="REQUIRED. The version of the OpenAPI document (which is distinct from the OpenAPI Specification version or the API implementation version).")]
 
     @property

@@ -56,19 +56,17 @@ if __name__ == "__main__":
             license_keys[key] = f"Union[{','.join(license_keys[key])}]"
         license_keys[key] = f"{license_keys[key]}"
     license_class = f"""### AUTO-GENERATED ###
-from pydantic import Field, computed_field
+from pydantic import BaseModel, Field, computed_field, AnyUrl
 from typing import ClassVar, Optional, List, Tuple, Dict, Union
 from typing_extensions import Annotated
-
 from .license import License
 
-class PredefinedLicense(License):
+class PredefinedLicense(BaseModel):
     VERSION: ClassVar[str] = "{licenses_json['licenseListVersion']}"
     RELEASE_DATE: ClassVar[str] = "{licenses_json['releaseDate']}"
 
-    name: ClassVar[None] = None
-    identifier: ClassVar[None] = None
-    
+    url: Annotated[Optional[AnyUrl], Field(default=None, description="A URL to the license used for the API. This MUST be in the form of a URL. The url field is mutually exclusive of the identifier field.")]
+
     @computed_field(alias=\"name\", description="REQUIRED. The license name used for the API.")
     @property
     def _name(self) -> str:
@@ -78,18 +76,13 @@ class PredefinedLicense(License):
     @property
     def _identifier(self) -> str:
         return self.{licenses_json['oa3_schema']['identifier']}
-
-""" + """
-    @property
-    def oa3_schema(self):
-        schema = super().oa3_schema
-        schema.update({"""
+""" 
     for key in licenses_json["oa3_schema_extentions"]:
         license_class = license_class + f"""
-            \"{licenses_json['oa3_schema_extentions'][key]}\": self.{key},"""
-    license_class = license_class + """
-        })
-        return schema
+    @computed_field(alias=\"{licenses_json['oa3_schema_extentions'][key]}\", description=\"{licenses_json['oa3_schema_extentions'][key]}.\")
+    @property
+    def _{key}(self) -> str:
+        return str(self.{key})
 """
 
     for l in licenses_json["licenses"]:
