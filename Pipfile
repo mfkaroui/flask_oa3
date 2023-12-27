@@ -22,6 +22,7 @@ pipenv-setup = {extras = ["black"], version = "*"}
 sphinx = "*"
 sphinx-rtd-theme = "*"
 autodoc-pydantic = "*"
+datamodel-code-generator = {extras = ["http"], version = "==0.25.2"}
 
 [requires]
 python_version = "3.11"
