@@ -16,10 +16,14 @@ class ComponentType(StrEnum):
 
 class Component(BaseModel):
     component_type: ClassVar[Optional[ComponentType]] = None
-    
-    @classmethod
-    def component_name(cls) -> str:
-        return cls.__name__
+    _component_name: str
+
+    class Config:
+        exclude = ["component_type", "_component_name"]
+
+    @property
+    def component_name(self) -> str:
+        return self._component_name
 
     @classmethod
     def component_path(cls) -> str:

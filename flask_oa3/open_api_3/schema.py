@@ -9,12 +9,7 @@ from .xml import XML
 
 class Schema(Component):
     component_type: ClassVar[ComponentType] = ComponentType.SCHEMA
-    __component_name__: ClassVar[str] = "Schema"
-
-    @classmethod
-    def component_name(cls) -> str:
-        return cls.__component_name__
-
+    
     discriminator: Annotated[Optional[Discriminator], Field(default=None, description="Adds support for polymorphism. The discriminator is an object name that is used to differentiate between other schemas which may satisfy the payload description. See Composition and Inheritance for more details.")] 
     xml: Annotated[Optional[XML], Field(default=None, description="This MAY be used only on properties schemas. It has no effect on root schemas. Adds additional metadata to describe the XML representation of this property.")]
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]

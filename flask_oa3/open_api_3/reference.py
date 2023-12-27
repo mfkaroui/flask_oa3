@@ -19,7 +19,7 @@ class Reference(BaseModel, Generic[ComponentType]):
 
     @computed_field(alias="$ref", description="REQUIRED. The reference identifier. This MUST be in the form of a URI.")
     def reference(self) -> str:
-        return f"{self.component.component_path()}/{self.component.component_name()}"
+        return f"{self.component.component_path()}/{self.component.component_name}"
 
     @property
     def oa3_schema(self) -> dict:
