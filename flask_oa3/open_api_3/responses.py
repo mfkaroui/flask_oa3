@@ -5,7 +5,7 @@ from .response import Response
 from .reference import Reference
 
 class Responses(RootModel):
-    root: Annotated[Dict[str, Union[Response, Reference]], Field(description="The documentation of responses other than the ones declared for specific HTTP response codes. Use this field to cover undeclared responses.")]
+    root: Annotated[Dict[str, Union[Response, Reference[Response]]], Field(description="The documentation of responses other than the ones declared for specific HTTP response codes. Use this field to cover undeclared responses.")]
 
     @property
     def oa3_schema(self):

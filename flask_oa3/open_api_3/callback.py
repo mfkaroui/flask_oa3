@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from .path_item import PathItem
 
 class Callback(RootModel):
-    root: Dict[str, Union['PathItem', Reference]]
+    root: Dict[str, Union['PathItem', Reference['PathItem']]]
 
     @model_validator(mode="before")
     @classmethod

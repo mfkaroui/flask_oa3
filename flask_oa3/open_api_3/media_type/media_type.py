@@ -10,7 +10,7 @@ class MediaType(BaseModel):
     __MEDIA_TYPE__: ClassVar[Optional[str]] = None
     
     schema_object: Annotated[Optional[Schema], Field(default=None, alias="schema", description="The schema defining the content of the request, response, or parameter.")]
-    examples: Annotated[Optional[Dict[str, Example]], Field(default=None, description="Examples of the media type. Each example object SHOULD match the media type and specified schema if present. The examples field is mutually exclusive of the example field. Furthermore, if referencing a schema which contains an example, the examples value SHALL override the example provided by the schema.")]
+    examples: Annotated[Optional[Dict[str, Union[Example, Reference[Example]]]], Field(default=None, description="Examples of the media type. Each example object SHOULD match the media type and specified schema if present. The examples field is mutually exclusive of the example field. Furthermore, if referencing a schema which contains an example, the examples value SHALL override the example provided by the schema.")]
     encoding: Annotated[Optional[Dict[str, Encoding]], Field(default=None, description="A map between a property name and its encoding information. The key, being the property name, MUST exist in the schema as a property. The encoding object SHALL only apply to requestBody objects when the media type is multipart or application/x-www-form-urlencoded.")]
     
     @classmethod
