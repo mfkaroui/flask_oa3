@@ -36,3 +36,14 @@ def tag_just_name_fixture() -> Tag:
     yield Tag(
         name="test"
     )
+
+@pytest.fixture
+def tag_specification_extentions_fixture(external_documentation_fixture) -> Tag:
+    yield Tag(
+        name="test",
+        description="test description",
+        external_documentation=external_documentation_fixture,
+        some_data_1="test",
+        some_data_2="test",
+        some_data_3="test"
+    )

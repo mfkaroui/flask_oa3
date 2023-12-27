@@ -7,3 +7,9 @@ def external_documentation_fixture() -> ExternalDocumentation:
         url="http://test.com",
         description="test description"
     )
+
+@pytest.fixture
+def external_documentation_no_description_fixture() -> ExternalDocumentation:
+    yield ExternalDocumentation(
+        url="http://test.com"
+    )
