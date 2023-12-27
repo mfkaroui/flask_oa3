@@ -1,5 +1,5 @@
 from typing import Optional, Annotated
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 
 from .external_documentation import ExternalDocumentation
 
@@ -8,11 +8,9 @@ class Tag(BaseModel):
     description: Annotated[Optional[str], Field(default=None, description="A description for the tag. CommonMark syntax MAY be used for rich text representation. Defaults to None.")]
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, alias="externalDocs", description="Additional external documentation for this tag. Defaults to None.")]
 
-    @field_validator('name')
-    def check_name(cls, v):
-        if not v:
-            raise ValueError('The name of the tag is required and cannot be empty.')
-        return v
+    model_config = ConfigDict(
+        populate_by_name=True,
+    )
 
     @property
     def oa3_schema(self) -> dict:
