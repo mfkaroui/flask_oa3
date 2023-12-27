@@ -1,4 +1,5 @@
 from .callback import Callback
+from .component import Component, ComponentType
 from .components import Components
 from .contact import Contact
 from .example import Example
