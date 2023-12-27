@@ -13,6 +13,7 @@ from .open_api import OpenAPI
 from .operation import Operation
 from .parameter import Parameter
 from .path_item import PathItem
+from .paths import Paths
 from .reference import Reference
 from .request_body import RequestBody
 from .response import Response, get_response_by_status_code
