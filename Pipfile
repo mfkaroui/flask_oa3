@@ -13,6 +13,7 @@ abnf = "*"
 fastapi = {extras = ["black"], version = "*"}
 docstring-parser = "*"
 black = "*"
+jsonref = "*"
 
 [dev-packages]
 pytest = "*"
