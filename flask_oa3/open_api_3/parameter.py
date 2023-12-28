@@ -1,18 +1,18 @@
 from typing import Optional, Annotated, ClassVar, Dict, Union
-from enum import StrEnum
+from enum import Enum
 from pydantic import Field
 from .component import Component, ComponentType
 from .example import Example
 from .reference import Reference
 from .schema import Schema
 
-class ParameterLocation(StrEnum):
+class ParameterLocation(Enum):
     PATH = "path" #Used together with Path Templating, where the parameter value is actually part of the operation’s URL. This does not include the host or base path of the API. For example, in /items/{itemId}, the path parameter is itemId.
     QUERY = "query" #Parameters that are appended to the URL. For example, in /items?id=###, the query parameter is id.
     HEADER = "header" #Custom headers that are expected as part of the request. Note that [RFC7230] states header names are case insensitive.
     COOKIE = "cookie" #Used to pass a specific cookie value to the API.
 
-class ParameterStyle(StrEnum):
+class ParameterStyle(Enum):
     MATRIX = "matrix" #Path-style parameters defined by [RFC6570], that is, using ; rather than /. This option replaces collectionFormat with a csv (when explode is false) or multi (when explode is true) value from OpenAPI 2.0.
     LABEL = "label" #Label style parameters defined by [RFC6570], that is, using .labelname. This option replaces collectionFormat with a csv (when explode is false) or multi (when explode is true) value from OpenAPI 2.0.
     FORM = "form" #Form style parameters defined by [RFC6570], that is, using & and a semicolon-separated list of keys. This option replaces collectionFormat with a csv (when explode is false) or multi (when explode is true) value from OpenAPI 2.0.

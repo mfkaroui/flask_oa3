@@ -1,25 +1,25 @@
 from __future__ import annotations
 from typing import Annotated, Optional, ClassVar
-from enum import StrEnum
+from enum import Enum
 from pydantic import Field, AnyUrl, field_validator
 
 from .component import Component, ComponentType
 from .xml import XML
 from .oauth_flows import OAuthFlows
 
-class SecuritySchemeType(StrEnum):
+class SecuritySchemeType(Enum):
     HTTP = "http"
     API_KEY = "apiKey"
     MUTUAL_TLS = "mutualTLS"
     OAUTH2 = "oauth2"
     OPEN_ID_CONNECT = "openIdConnect"
 
-class SecuritySchemeLocation(StrEnum):
+class SecuritySchemeLocation(Enum):
     QUERY = "query" #Parameters that are appended to the URL. For example, in /items?id=###, the query parameter is id.
     HEADER = "header" #Custom headers that are expected as part of the request. Note that [RFC7230] states header names are case insensitive.
     COOKIE = "cookie" #Used to pass a specific cookie value to the API.
 
-class HTTPAuthenticationScheme(StrEnum):
+class HTTPAuthenticationScheme(Enum):
     """
     Spec:
 

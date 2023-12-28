@@ -1,8 +1,8 @@
-from enum import StrEnum
+from enum import Enum
 from typing import ClassVar, Optional
 from pydantic import BaseModel, Field
 
-class ComponentType(StrEnum):
+class ComponentType(Enum):
     SCHEMA = "schemas"
     RESPONSE = "responses"
     PARAMETER = "parameters"
