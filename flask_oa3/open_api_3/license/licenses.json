@@ -4,7 +4,7 @@
       "name": "longName",
       "identifier": "licenseId"
     },
-    "oa3_schema_extentions": {
+    "oa3_schema_extensions": {
       "reference": "x-reference",
       "referenceNumber": "x-reference-number",
       "isDeprecatedLicenseId": "x-is-deprecated",
