@@ -37,3 +37,31 @@ class TestServer:
             }
         }
         assert server_with_description_server_variables_fixture.oa3_schema == expected_schema
+
+    @pytest.mark.parametrize(("url",), [
+        ("http://test.com/{test}/",),
+        ("http://{username}:{password}@{test}.com/",),
+        ("http://{test}.com/",),
+        ("http://test.com/{test}/{test2}/",),
+        ("{protocol}://test.com/{test}/{test2}/",),
+        ("http://{host_name}:{port-number}.com/{test}/{test2}/",)
+    ])
+    def test_server_no_variables_match_fail(self, url):
+        with pytest.raises(NameError) as validation_error:
+            Server(url=url)
+
+    @pytest.mark.parametrize(("url",), [
+        ("http://test.com/{test}/",),
+        ("http://{username}:{password}@{test}.com/",),
+        ("http://{test}.com/",),
+        ("http://test.com/{test}/{test2}/",),
+        ("{protocol}://test.com/{test}/{test2}/",),
+        ("http://{host_name}:{port-number}.com/{test}/{test2}/",)
+    ])
+    def test_server_variables_match_fail(self, url):
+        with pytest.raises(NameError) as validation_error:
+            Server(url=url, variables={
+                "test_unused": {
+                    "default": "test"
+                }
+            })
