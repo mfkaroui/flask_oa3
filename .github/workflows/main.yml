@@ -22,4 +22,10 @@ jobs:
       - name: Run Tests
         run: |
           pipenv install --dev
-          pipenv run pytest
+          pipenv run pytest --doctest-modules --junitxml=junit/test-results-${{ matrix.python-version }}.xml
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: junit/test-results-${{ matrix.python-version }}.xml
+        if: ${{ always() }}
