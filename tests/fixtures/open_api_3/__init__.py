@@ -1,3 +1,5 @@
 from .fixtures_external_documentation import *
+from .fixtures_server_variable import *
+from .fixtures_server import *
 from .fixtures_tag import *
 from .fixtures_xml import *
