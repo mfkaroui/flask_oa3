@@ -77,9 +77,9 @@ class PredefinedLicense(BaseModel):
     def _identifier(self) -> str:
         return self.{licenses_json['oa3_schema']['identifier']}
 """ 
-    for key in licenses_json["oa3_schema_extentions"]:
+    for key in licenses_json["oa3_schema_extensions"]:
         license_class = license_class + f"""
-    @computed_field(alias=\"{licenses_json['oa3_schema_extentions'][key]}\", description=\"{licenses_json['oa3_schema_extentions'][key]}.\")
+    @computed_field(alias=\"{licenses_json['oa3_schema_extensions'][key]}\", description=\"{licenses_json['oa3_schema_extensions'][key]}.\")
     @property
     def _{key}(self) -> str:
         return str(self.{key})

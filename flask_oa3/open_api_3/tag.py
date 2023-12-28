@@ -1,9 +1,9 @@
 from typing import Optional, Annotated, Dict, Any
 from pydantic import BaseModel, Field, model_validator, ConfigDict
-from .decorators import specification_extentions_support
+from .decorators import specification_extensions_support
 from .external_documentation import ExternalDocumentation
 
-@specification_extentions_support
+@specification_extensions_support
 class Tag(BaseModel):
     name: Annotated[str, Field(description="REQUIRED. The name of the tag.")]
     description: Annotated[Optional[str], Field(default=None, description="A description for the tag. CommonMark syntax MAY be used for rich text representation. Defaults to None.")]

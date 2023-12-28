@@ -1,8 +1,8 @@
 from typing import Optional, Annotated, Dict, Any
 from pydantic import BaseModel, AnyUrl, Field, ConfigDict, model_validator
-from .decorators import specification_extentions_support
+from .decorators import specification_extensions_support
 
-@specification_extentions_support
+@specification_extensions_support
 class ExternalDocumentation(BaseModel):
     url: Annotated[AnyUrl, Field(description="REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.")]
     description: Annotated[Optional[str], Field(default=None, description="A description of the target documentation. CommonMark syntax MAY be used for rich text representation.")]
