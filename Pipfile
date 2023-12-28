@@ -10,19 +10,15 @@ email-validator = "*"
 pydantic-extra-types = "*"
 phonenumbers = "*"
 abnf = "*"
-fastapi = {extras = ["black"], version = "*"}
 docstring-parser = "*"
-black = "*"
 jsonref = "*"
 
 [dev-packages]
 pytest = "*"
 vistir = "< 0.7.0"
-pipenv-setup = {extras = ["black"], version = "*"}
 sphinx = "*"
 sphinx-rtd-theme = "*"
 autodoc-pydantic = "*"
-datamodel-code-generator = {extras = ["http"], version = "==0.25.2"}
 
 [requires]
 python_version = "3.11"
