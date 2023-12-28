@@ -65,3 +65,37 @@ class TestServer:
                     "default": "test"
                 }
             })
+
+    @pytest.mark.parametrize(("url",), [
+        ("http://test.com/",),
+        ("http://test.com/{test}/",),
+        ("http://{username}:{password}@{test}.com/",),
+        ("http://{test}.com/",),
+        ("http://test.com/{test}/{test2}/",),
+        ("{protocol}://test.com/{test}/{test2}/",),
+        ("http://{host_name}:{port-number}.com/{test}/{test2}/",)
+    ])
+    def test_server_variables_match_pass(self, url):
+        Server(url=url, variables={
+            "test": {
+                "default": "test"
+            },
+            "test2": {
+                "default": "test"
+            },
+            "username": {
+                "default": "test"
+            },
+            "password": {
+                "default": "test"
+            },
+            "protocol": {
+                "default": "test"
+            },
+            "host_name": {
+                "default": "test"
+            },
+            "port-number": {
+                "default": "test"
+            }
+        })
