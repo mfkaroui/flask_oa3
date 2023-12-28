@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["pypy3.9", "pypy3.10", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
@@ -20,3 +20,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
       - name: Install Dependencies
         run: python -m pip install --upgrade pip setuptools wheel pipenv
+      - name: Install Environment
+        run: pipenv install --dev
+      - name: Run Tests
+        run: pipenv run pytest
