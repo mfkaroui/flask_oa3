@@ -18,7 +18,7 @@ class TestTag:
         assert tag_errors[0]["type"] == "missing"
         assert tag_errors[0]["loc"] == ("name",)
 
-    def test_tag_specification_extentions(self, tag_specification_extentions_fixture):
+    def test_tag_specification_extensions(self, tag_specification_extensions_fixture):
         """
         Test case for verifying the specification extensions in the Tag model.
         """
@@ -33,7 +33,7 @@ class TestTag:
             "x-some-data-2": "test",
             "x-some-data-3": "test"
         }
-        assert tag_specification_extentions_fixture.oa3_schema == expected_schema
+        assert tag_specification_extensions_fixture.oa3_schema == expected_schema
         
     def test_tag_oa3_schema(self, tag_by_field_name_fixture, tag_by_alias_fixture):
         """

@@ -11,18 +11,19 @@ class TestExternalDocumentation:
         assert external_documentation_errors[0]["type"] == "missing"
         assert external_documentation_errors[0]["loc"] == ("url",)
 
-    def test_tag_specification_extentions(self, tag_specification_extentions_fixture):
+    def test_external_documentation_specification_extensions(self, external_documentation_specification_extensions_fixture):
         expected_schema: dict = {
-            "name": "test",
+            "url": "http://test.com/",
             "description": "test description",
-            "externalDocs": {
-                "url": "http://test.com/",
-                "description": "test description"
-            },
             "x-some-data-1": "test",
             "x-some-data-2": "test",
             "x-some-data-3": "test"
         }
-        assert tag_specification_extentions_fixture.oa3_schema == expected_schema
-        
-   
+        assert external_documentation_specification_extensions_fixture.oa3_schema == expected_schema
+
+    def test_external_documentation_optional_parameters_oa3_schema(self, external_documentation_no_description_fixture):
+        expected_schema_no_description: dict = {
+            "url": "http://test.com/"
+        }
+        assert external_documentation_no_description_fixture.oa3_schema == expected_schema_no_description
+    
