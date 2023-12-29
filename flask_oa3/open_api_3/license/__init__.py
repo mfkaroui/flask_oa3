@@ -1,9 +1,11 @@
 ### AUTO-GENERATED ###
 from pydantic import BaseModel, Field, computed_field, AnyUrl
-from typing import ClassVar, Optional, List, Tuple, Dict, Union
+from typing import ClassVar, Optional, List
 from typing_extensions import Annotated
 from .license import License
+from ..decorators import specification_extensions_support
 
+@specification_extensions_support
 class PredefinedLicense(BaseModel):
     VERSION: ClassVar[str] = "2502b90"
     RELEASE_DATE: ClassVar[str] = "2023-11-10"

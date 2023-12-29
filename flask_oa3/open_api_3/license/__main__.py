@@ -57,10 +57,12 @@ if __name__ == "__main__":
         license_keys[key] = f"{license_keys[key]}"
     license_class = f"""### AUTO-GENERATED ###
 from pydantic import BaseModel, Field, computed_field, AnyUrl
-from typing import ClassVar, Optional, List, Tuple, Dict, Union
+from typing import ClassVar, Optional, List
 from typing_extensions import Annotated
 from .license import License
+from ..decorators import specification_extensions_support
 
+@specification_extensions_support
 class PredefinedLicense(BaseModel):
     VERSION: ClassVar[str] = "{licenses_json['licenseListVersion']}"
     RELEASE_DATE: ClassVar[str] = "{licenses_json['releaseDate']}"

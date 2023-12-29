@@ -1,7 +1,9 @@
 from pydantic import BaseModel, Field, AnyUrl
 from typing import Optional
 from typing_extensions import Annotated
+from ..decorators import specification_extensions_support
 
+@specification_extensions_support
 class License(BaseModel):
     name: Annotated[str, Field(description="REQUIRED. The license name used for the API.")]
     identifier: Annotated[Optional[str], Field(default=None, description="An SPDX license expression for the API. The identifier field is mutually exclusive of the url field.")]
