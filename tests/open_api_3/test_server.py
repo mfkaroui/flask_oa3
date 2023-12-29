@@ -11,7 +11,7 @@ class TestServer:
         assert server_errors[0]["type"] == "missing"
         assert server_errors[0]["loc"] == ("url",)
 
-    def test_xml_specification_extensions(self, server_specification_extensions_fixture):
+    def test_server_specification_extensions(self, server_specification_extensions_fixture):
         expected_schema: dict = {
             "url": "http://test.com/",
             "x-some-data-1": "test",
