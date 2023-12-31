@@ -4,7 +4,7 @@ from enum import Enum
 from pydantic import Field, AnyUrl, model_validator, ConfigDict
 
 from .component import Component, ComponentType
-from .xml import XML
+from .decorators import specification_extensions_support
 from .oauth_flows import OAuthFlows
 
 class SecuritySchemeType(Enum):
@@ -38,6 +38,7 @@ class HTTPAuthenticationScheme(Enum):
     SCRAM_SHA_256 = "SCRAM-SHA-256"
     VAPID = "vapid"
 
+@specification_extensions_support
 class SecurityScheme(Component):
     component_type: ClassVar[ComponentType] = ComponentType.SECURITY_SCHEME
 
