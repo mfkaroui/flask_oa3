@@ -1,5 +1,5 @@
 import pytest
-from flask_oa3.open_api_3.security_scheme import SecurityScheme, SecuritySchemeType, SecuritySchemeLocation
+from flask_oa3.open_api_3.security_scheme import SecurityScheme, SecuritySchemeType, SecuritySchemeLocation, HTTPAuthenticationScheme
 from flask_oa3.open_api_3.component import ComponentType
 from pydantic_core import ValidationError
 
@@ -29,4 +29,34 @@ class TestSecurityScheme:
             security_scheme_type=SecuritySchemeType.API_KEY,
             name="test",
             in_location=SecuritySchemeLocation.HEADER
+        )
+
+    def test_security_scheme_variable_required_field_http(self):
+        with pytest.raises(ValueError):
+            SecurityScheme(
+                security_scheme_type=SecuritySchemeType.HTTP
+            )
+        SecurityScheme(
+            security_scheme_type=SecuritySchemeType.HTTP,
+            scheme=HTTPAuthenticationScheme.BEARER
+        )
+
+    def test_security_scheme_variable_required_field_oauth2(self):
+        with pytest.raises(ValueError):
+            SecurityScheme(
+                security_scheme_type=SecuritySchemeType.OAUTH2
+            )
+        SecurityScheme(
+            security_scheme_type=SecuritySchemeType.OAUTH2,
+            flows={}
+        )
+
+    def test_security_scheme_variable_required_field_open_id_connect(self):
+        with pytest.raises(ValueError):
+            SecurityScheme(
+                security_scheme_type=SecuritySchemeType.OPEN_ID_CONNECT
+            )
+        SecurityScheme(
+            security_scheme_type=SecuritySchemeType.OPEN_ID_CONNECT,
+            open_id_connect_url="https://example.com"
         )
