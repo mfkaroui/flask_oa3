@@ -1,5 +1,6 @@
 from __future__ import annotations
-from typing import Annotated, Optional, ClassVar
+from typing import Optional, ClassVar
+from typing_extensions import Annotated
 from enum import Enum
 from pydantic import Field, AnyUrl, model_validator, ConfigDict
 
