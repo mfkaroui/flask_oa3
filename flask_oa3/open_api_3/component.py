@@ -1,6 +1,6 @@
 from enum import Enum
 from typing import ClassVar, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, model_serializer
 
 class ComponentType(Enum):
     SCHEMA = "schemas"
@@ -18,8 +18,12 @@ class Component(BaseModel):
     component_type: ClassVar[Optional[ComponentType]] = None
     _component_name: str
 
-    class Config:
+    @model_serializer(mode="wrap")
+    def serialize_component(self, handler):
         exclude = ["component_type", "_component_name"]
+        d = handler(self)
+        d = {k:v for k, v in d.items() if k not in exclude}
+        return d
 
     @property
     def component_name(self) -> str:

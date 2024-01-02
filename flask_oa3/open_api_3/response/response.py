@@ -1,7 +1,7 @@
 from enum import IntEnum
 from typing import Dict, Union, ClassVar, Optional, Type
 from typing_extensions import Annotated
-from pydantic import Field, computed_field
+from pydantic import Field, computed_field, model_serializer
 from ..media_type import MediaType
 from ..component import Component, ComponentType
 
@@ -26,8 +26,12 @@ class Response(Component):
     description: Annotated[Optional[str], Field(default=None, description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.")]
     _content: Dict[str, Type[MediaType]] = {}
     
-    class Config:
-        exclude = {"_content"}
+    @model_serializer(mode="wrap")
+    def serialize_component(self, handler):
+        exclude = ["_content"]
+        d = handler(self)
+        d = {k:v for k, v in d.items() if k not in exclude}
+        return d
 
     @computed_field(alias="x-phrase", description="The phrase of the response reprisenting a short description / long name")
     @property

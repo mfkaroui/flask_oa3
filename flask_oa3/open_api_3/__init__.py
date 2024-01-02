@@ -20,7 +20,7 @@ from .request_body import RequestBody
 from .response import Response, get_response_by_status_code
 from .responses import Responses
 from .media_type import MediaType, get_media_type_by_name
-from .schema import Schema
+from .schema import Schema, Discriminator
 from .security_requirement import SecurityRequirement
 from .security_scheme import SecurityScheme
 from .server import Server

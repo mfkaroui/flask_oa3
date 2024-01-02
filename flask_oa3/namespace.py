@@ -2,7 +2,7 @@ import os
 from typing import Dict, List, Optional, Type
 from typing_extensions import Annotated
 from urllib.parse import urljoin
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_serializer
 from .view import View
 from .open_api_3 import Tag
 from .open_api_3 import ExternalDocumentation
@@ -15,11 +15,13 @@ class Namespace(BaseModel):
 
     views: Dict[str, Type[View]] = {}
 
-    class Config:
-        exclude = [
-            "views"
-        ]
-
+    @model_serializer(mode="wrap")
+    def serialize_component(self, handler):
+        exclude = ["views"]
+        d = handler(self)
+        d = {k:v for k, v in d.items() if k not in exclude}
+        return d
+    
     @property
     def base_route(self) -> List[str]:
         """

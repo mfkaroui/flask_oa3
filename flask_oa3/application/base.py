@@ -1,6 +1,6 @@
 from typing import List, Optional, ClassVar, Dict, Union, Type
 from typing_extensions import Annotated
-from pydantic import BaseModel, AnyUrl, EmailStr, Field
+from pydantic import BaseModel, AnyUrl, EmailStr, Field, model_serializer
 from ..open_api_3 import OpenAPI, License, PredefinedLicense, Paths
 from ..namespace import Namespace
 from ..view import View
@@ -20,11 +20,12 @@ class App(BaseModel):
     namespaces: Dict[str, Namespace] = {}
     views: Dict[str, Type[View]] = {}
 
-    class Config:
-        exclude = [
-            "namespaces",
-            "views"
-        ]
+    @model_serializer(mode="wrap")
+    def serialize_component(self, handler):
+        exclude = ["namespaces", "views"]
+        d = handler(self)
+        d = {k:v for k, v in d.items() if k not in exclude}
+        return d
 
     @property
     def base_route(self) -> List[str]:

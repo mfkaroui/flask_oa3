@@ -1,6 +1,7 @@
 from .fixtures_external_documentation import *
 from .fixtures_oauth_flow import *
 from .fixtures_oauth_flows import *
+from .fixtures_security_requirement import *
 from .fixtures_security_scheme import *
 from .fixtures_server_variable import *
 from .fixtures_server import *

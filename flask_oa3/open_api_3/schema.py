@@ -1,11 +1,11 @@
 from __future__ import annotations
-from typing import Optional, ClassVar, Type
+from typing import Optional, ClassVar, Type, Dict, Union
 from typing_extensions import Annotated
 from pydantic import Field, AnyUrl, BaseModel, field_serializer
 
 from .component import Component, ComponentType
-from .discriminator import Discriminator
 from .external_documentation import ExternalDocumentation
+from .reference import Reference
 from .xml import XML
 
 class Schema(Component):
@@ -40,3 +40,19 @@ class Schema(Component):
         fields_schema = schema.pop("schema_fields", {})
         schema.update(fields_schema)
         return schema
+
+class Discriminator(BaseModel):
+    property_name: Annotated[str, Field(alias="propertyName", description="REQUIRED. The name of the property in the payload that will hold the discriminator value.")]
+    mapping: Annotated[Optional[Dict[str, Union[str, Reference[Schema]]]], Field(default=None, description="An object to hold mappings between payload values and schema names or references.")]
+
+    @property
+    def oa3_schema(self) -> dict:
+        """Constructs the Open API 'Discriminator Object' according to specifications
+        
+        Spec:
+            https://spec.openapis.org/oas/v3.1.0#discriminatorObject
+        
+        Returns:
+            dict: The Open API schema
+        """        
+        return self.model_dump(mode="json", by_alias=True, exclude_none=True)
