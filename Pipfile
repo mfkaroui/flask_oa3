@@ -24,7 +24,7 @@ sphinx = "*"
 sphinx-rtd-theme = "*"
 autodoc-pydantic = "*"
 pytest-cov = "*"
-pluggy = "*"
+pytest-metadata = "*"
 
 [requires]
 python_version = "3"
