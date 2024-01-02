@@ -5,9 +5,11 @@ from pydantic import Field, AnyUrl, BaseModel, field_serializer
 
 from .component import Component, ComponentType
 from .external_documentation import ExternalDocumentation
+from .decorators import specification_extensions_support
 from .reference import Reference
 from .xml import XML
 
+@specification_extensions_support
 class Schema(Component):
     component_type: ClassVar[ComponentType] = ComponentType.SCHEMA
     
@@ -41,6 +43,7 @@ class Schema(Component):
         schema.update(fields_schema)
         return schema
 
+@specification_extensions_support
 class Discriminator(BaseModel):
     property_name: Annotated[str, Field(alias="propertyName", description="REQUIRED. The name of the property in the payload that will hold the discriminator value.")]
     mapping: Annotated[Optional[Dict[str, Union[str, Reference[Schema]]]], Field(default=None, description="An object to hold mappings between payload values and schema names or references.")]
