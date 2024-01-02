@@ -1,7 +1,18 @@
 [run]
-branch = True
+branch = False
 [report]
 skip_empty = True
+exclude_lines =
+    pragma: no cover
+    import
+    from
+    def __repr__
+    if self.debug:
+    if settings.DEBUG
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if __name__ == .__main__.:
 [json]
 pretty_print = True
 show_contexts = True
