@@ -19,6 +19,7 @@ vistir = "< 0.7.0"
 sphinx = "*"
 sphinx-rtd-theme = "*"
 autodoc-pydantic = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3"
