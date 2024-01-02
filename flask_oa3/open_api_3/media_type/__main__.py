@@ -27,7 +27,7 @@ if __name__ == "__main__":
         file_handle.seek(0)
         media_types_json = loads(file_handle.read())
     media_types_class = f"""### AUTO-GENERATED ###
-from typing import Union
+from typing import Union, Type
 from .media_type import MediaType
 
 """
@@ -48,7 +48,7 @@ from .media_type import MediaType
 
 """
     media_types_class = media_types_class + """
-def get_media_type_by_name(name: str) -> Union[type[MediaType], None]:
+def get_media_type_by_name(name: str) -> Union[Type[MediaType], None]:
     \"\"\"
     Retrieves a MediaType object corresponding to a given name.
 
@@ -56,7 +56,7 @@ def get_media_type_by_name(name: str) -> Union[type[MediaType], None]:
         name (str): The media type name for which the corresponding MediaType object is required. 
 
     Returns:
-        Union[type[MediaType], None]: Returns the MediaType class associated with the given name. If the name is not recognized, it returns None.
+        Union[Type[MediaType], None]: Returns the MediaType class associated with the given name. If the name is not recognized, it returns None.
     \"\"\"
 
     media_types = {"""

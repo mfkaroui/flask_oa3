@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import Dict, Union, ClassVar, Optional
+from typing import Dict, Union, ClassVar, Optional, Type
 from typing_extensions import Annotated
 from pydantic import Field, computed_field
 from ..media_type import MediaType
@@ -24,7 +24,7 @@ class Response(Component):
     __PHRASE__: ClassVar[Union[str, None]] = None
 
     description: Annotated[Optional[str], Field(default=None, description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.")]
-    _content: Dict[str, type[MediaType]] = {}
+    _content: Dict[str, Type[MediaType]] = {}
     
     class Config:
         exclude = {"_content"}

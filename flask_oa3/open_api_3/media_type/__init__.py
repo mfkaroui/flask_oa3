@@ -1,5 +1,5 @@
 ### AUTO-GENERATED ###
-from typing import Union
+from typing import Union, Type
 from .media_type import MediaType
 
 class MediaTypeApplicationYaml(MediaType):
@@ -3942,7 +3942,7 @@ class MediaTypeVideoVp8(MediaType):
     __MEDIA_TYPE__: str = "video/VP8"
 
 
-def get_media_type_by_name(name: str) -> Union[type[MediaType], None]:
+def get_media_type_by_name(name: str) -> Union[Type[MediaType], None]:
     """
     Retrieves a MediaType object corresponding to a given name.
 
@@ -3950,7 +3950,7 @@ def get_media_type_by_name(name: str) -> Union[type[MediaType], None]:
         name (str): The media type name for which the corresponding MediaType object is required. 
 
     Returns:
-        Union[type[MediaType], None]: Returns the MediaType class associated with the given name. If the name is not recognized, it returns None.
+        Union[Type[MediaType], None]: Returns the MediaType class associated with the given name. If the name is not recognized, it returns None.
     """
 
     media_types = {

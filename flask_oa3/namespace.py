@@ -1,5 +1,5 @@
 import os
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Type
 from typing_extensions import Annotated
 from urllib.parse import urljoin
 from pydantic import BaseModel, Field
@@ -13,7 +13,7 @@ class Namespace(BaseModel):
     description: Annotated[Optional[str], Field(default=None, description="A short description of the namespace. CommonMark syntax MAY be used for rich text representation. Defaults to None.")]
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this namespace. Defaults to None.")]
 
-    views: Dict[str, type[View]] = {}
+    views: Dict[str, Type[View]] = {}
 
     class Config:
         exclude = [
@@ -42,7 +42,7 @@ class Namespace(BaseModel):
             return f"/{route}"
         return route
  
-    def register_view(self, route: str, view: type[View]):
+    def register_view(self, route: str, view: Type[View]):
         if route in self.views:
             raise ValueError(f"View with route '{route}' already registered")
         self.views[route] = view

@@ -1,7 +1,7 @@
-from typing import Dict, Any, Union
+from typing import Dict, Any, Union, Type
 from pydantic import RootModel, BaseModel, model_validator, ConfigDict, create_model
 
-def specification_extensions_support(cls: type[Union[RootModel, BaseModel]]):
+def specification_extensions_support(cls: Type[Union[RootModel, BaseModel]]):
     """Support for specification extensions
     
     This function adds support for specification extensions to a pydantic model.

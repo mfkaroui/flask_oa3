@@ -1,5 +1,5 @@
 ### AUTO-GENERATED ###
-from typing import Union
+from typing import Union, Type
 from .response import Response, ResponseType
 
 class ResponseContinue(Response):
@@ -883,7 +883,7 @@ class ResponseNetworkAuthenticationRequired(Response):
     __PHRASE__: str = "Network Authentication Required"
 
 
-def get_response_by_status_code(status_code: int) -> Union[type[Response], None]:
+def get_response_by_status_code(status_code: int) -> Union[Type[Response], None]:
     """
     Retrieves a Response object corresponding to a given HTTP status code.
 
@@ -893,7 +893,7 @@ def get_response_by_status_code(status_code: int) -> Union[type[Response], None]
         status_code (int): The HTTP status code for which the corresponding Response object is required. 
 
     Returns:
-        Union[type[Response], None]: Returns the Response class associated with the given status code. If the status code is not recognized, it returns None.
+        Union[Type[Response], None]: Returns the Response class associated with the given status code. If the status code is not recognized, it returns None.
     """
 
     responses = {

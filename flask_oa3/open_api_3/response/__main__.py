@@ -28,7 +28,7 @@ if __name__ == "__main__":
         file_handle.seek(0)
         status_codes_json = loads(file_handle.read())
     status_codes_class = f"""### AUTO-GENERATED ###
-from typing import Union
+from typing import Union, Type
 from .response import Response, ResponseType
 
 """
@@ -52,7 +52,7 @@ from .response import Response, ResponseType
 
 """
     status_codes_class = status_codes_class + """
-def get_response_by_status_code(status_code: int) -> Union[type[Response], None]:
+def get_response_by_status_code(status_code: int) -> Union[Type[Response], None]:
     \"\"\"
     Retrieves a Response object corresponding to a given HTTP status code.
 
@@ -62,7 +62,7 @@ def get_response_by_status_code(status_code: int) -> Union[type[Response], None]
         status_code (int): The HTTP status code for which the corresponding Response object is required. 
 
     Returns:
-        Union[type[Response], None]: Returns the Response class associated with the given status code. If the status code is not recognized, it returns None.
+        Union[Type[Response], None]: Returns the Response class associated with the given status code. If the status code is not recognized, it returns None.
     \"\"\"
 
     responses = {"""

@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Optional, ClassVar
+from typing import Optional, ClassVar, Type
 from typing_extensions import Annotated
 from pydantic import Field, AnyUrl, BaseModel, field_serializer
 
@@ -15,10 +15,10 @@ class Schema(Component):
     xml: Annotated[Optional[XML], Field(default=None, description="This MAY be used only on properties schemas. It has no effect on root schemas. Adds additional metadata to describe the XML representation of this property.")]
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]
     json_schema_dialect: Annotated[Optional[AnyUrl], Field(default=None, alias="$schema", description="The $schema keyword MAY be present in any root Schema Object, and if present MUST be used to determine which dialect should be used when processing the schema. This allows use of Schema Objects which comply with other drafts of JSON Schema than the default Draft 2020-12 support. Tooling MUST support the OAS dialect schema id, and MAY support additional values of $schema.")]
-    schema_fields: Annotated[type[BaseModel], Field(description="A pydantic model type that contains the fields needed for the schema")]
+    schema_fields: Annotated[Type[BaseModel], Field(description="A pydantic model type that contains the fields needed for the schema")]
 
     @field_serializer("schema_fields")
-    def schema_fields_serializer(self, schema_fields: type[BaseModel], _info) -> dict:
+    def schema_fields_serializer(self, schema_fields: Type[BaseModel], _info) -> dict:
         schema_fields_schema = schema_fields.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
         schema_fields_schema.pop("$defs", None)
         return schema_fields_schema

@@ -1,4 +1,4 @@
-from typing import List, Optional, ClassVar, Dict, Union
+from typing import List, Optional, ClassVar, Dict, Union, Type
 from typing_extensions import Annotated
 from pydantic import BaseModel, AnyUrl, EmailStr, Field
 from ..open_api_3 import OpenAPI, License, PredefinedLicense, Paths
@@ -18,7 +18,7 @@ class App(BaseModel):
     version: Annotated[str, Field(default="dev", description="REQUIRED. The version of the OpenAPI document (which is distinct from the OpenAPI Specification version or the API implementation version).")]
     
     namespaces: Dict[str, Namespace] = {}
-    views: Dict[str, type[View]] = {}
+    views: Dict[str, Type[View]] = {}
 
     class Config:
         exclude = [
@@ -56,7 +56,7 @@ class App(BaseModel):
             raise ValueError(f"Namespace with route '{namespace.route}' already registered")
         self.namespaces[namespace.route] = namespace
 
-    def register_view(self, route: str, view: type[View]):
+    def register_view(self, route: str, view: Type[View]):
         if route in self.views:
             raise ValueError(f"View with route '{route}' already registered")
         self.views[route] = view
