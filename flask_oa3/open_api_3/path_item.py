@@ -1,7 +1,5 @@
 from typing import Optional, Annotated, List, Union, ClassVar
-from enum import Enum
-from pydantic import BaseModel, Field, field_validator
-from .external_documentation import ExternalDocumentation
+from pydantic import Field, field_validator
 from .component import Component, ComponentType
 from .reference import Reference
 from .server import Server

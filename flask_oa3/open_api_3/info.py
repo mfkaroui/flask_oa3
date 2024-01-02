@@ -1,6 +1,6 @@
 from typing import Optional, Union
 from typing_extensions import Annotated
-from pydantic import BaseModel, AnyUrl, EmailStr, Field
+from pydantic import BaseModel, AnyUrl, Field
 from .contact import Contact
 from .license import License, PredefinedLicense
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Annotated, Optional
-from pydantic import BaseModel, Field, AnyUrl, field_validator
+from pydantic import BaseModel, Field, AnyUrl
 from .decorators import specification_extensions_support
 
 @specification_extensions_support

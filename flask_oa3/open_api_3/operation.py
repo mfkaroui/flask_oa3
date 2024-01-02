@@ -1,5 +1,4 @@
 from typing import Optional, Annotated, List, Union, Dict
-from enum import Enum
 from pydantic import BaseModel, Field
 from .external_documentation import ExternalDocumentation
 from .reference import Reference

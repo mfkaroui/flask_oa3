@@ -1,7 +1,6 @@
-from typing import List, ClassVar, Annotated, Optional
+from typing import List, ClassVar, Annotated
 from pydantic import BaseModel, Field, model_validator
 from abnf import Rule
-from abnf.grammars import rfc7230
 
 class RuntimeExpression(BaseModel):
     """Runtime expressions allow defining values based on information that will only be available within the HTTP message in 

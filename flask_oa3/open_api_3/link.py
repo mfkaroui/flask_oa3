@@ -1,5 +1,5 @@
 from typing import Optional, Annotated, Dict, Any, Union, ClassVar
-from pydantic import BaseModel, Field, field_serializer
+from pydantic import Field, field_serializer
 from .component import Component, ComponentType
 from .runtime_expression import RuntimeExpression
 from .server import Server

@@ -1,5 +1,5 @@
-from typing import Optional, Annotated, Dict, Any
-from pydantic import BaseModel, Field, model_validator, ConfigDict
+from typing import Optional, Annotated
+from pydantic import BaseModel, Field, ConfigDict
 from .decorators import specification_extensions_support
 from .external_documentation import ExternalDocumentation
 
