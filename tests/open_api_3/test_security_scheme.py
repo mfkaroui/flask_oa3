@@ -50,14 +50,14 @@ class TestSecurityScheme:
             scheme=HTTPAuthenticationScheme.BEARER
         )
 
-    def test_security_scheme_variable_required_field_oauth2(self):
+    def test_security_scheme_variable_required_field_oauth2(self, oauth_flows_specification_extensions_fixture):
         with pytest.raises(ValueError):
             SecurityScheme(
                 security_scheme_type=SecuritySchemeType.OAUTH2
             )
         SecurityScheme(
             security_scheme_type=SecuritySchemeType.OAUTH2,
-            flows={}
+            flows=oauth_flows_specification_extensions_fixture
         )
 
     def test_security_scheme_variable_required_field_open_id_connect(self):
