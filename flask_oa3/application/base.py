@@ -1,6 +1,7 @@
-from typing import List, Optional, Annotated, ClassVar, Dict, Union
+from typing import List, Optional, ClassVar, Dict, Union
+from typing_extensions import Annotated
 from pydantic import BaseModel, AnyUrl, EmailStr, Field
-from ..open_api_3 import OpenAPI, License, PredefinedLicense
+from ..open_api_3 import OpenAPI, License, PredefinedLicense, Paths
 from ..namespace import Namespace
 from ..view import View
 
@@ -62,7 +63,7 @@ class App(BaseModel):
 
     @property
     def oa3_spec(self) -> OpenAPI:
-        return OpenAPI(**{
+        open_api = OpenAPI(**{
             "info": {
                 "title": self.title,
                 "summary": self.summary,
@@ -90,4 +91,10 @@ class App(BaseModel):
                 namespace._get_tag()
                 for namespace in self.namespaces.values()
             ]
-        }).oa3_schema
+        })
+        paths = {}
+        for route, namespace in self.namespaces.items():
+            for route, view in namespace.views.items():
+                paths[self.get_route(namespace.get_route(route))] = view.produce_path_item()
+        open_api.paths = Paths(root = paths)
+        return open_api.oa3_schema

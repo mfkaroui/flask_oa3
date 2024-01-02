@@ -3,7 +3,7 @@ import inspect
 from typing import Any, Dict, List, Union, Callable, get_type_hints
 from docstring_parser import parse
 
-from .open_api_3 import Responses, Operation, PathItem, ExternalDocumentation
+from .open_api_3 import Responses, Operation, PathItem, ExternalDocumentation, Components
 from .model import Model, ResponseModel
 
 class View:
@@ -52,6 +52,13 @@ class View:
                     "type_hints": get_type_hints(func)
                 }
         return methods
+    
+    @classmethod
+    def produce_components(cls) -> Components:
+        for method_name, method_data in cls.get_all_methods().items():
+            if method_data["type_hints"]["return"].__name__ == "Union":
+                for union_type in method_data["type_hints"]["return"].__args__:
+                    pass
 
     @classmethod
     def produce_path_item(cls) -> PathItem:

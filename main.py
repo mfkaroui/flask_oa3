@@ -18,6 +18,18 @@ class TestErrorResponse(ResponseModel):
     __status_code__: int = 404
     error: str = Field(description="The error of the response model.")
 
+    @classmethod
+    def example_1(cls) -> dict:
+        return {
+            "error": "This is an error"
+        }
+    
+    @classmethod
+    def example_2(cls) -> dict: 
+        return {
+            "error": "This is an error"
+        }
+
 class TestView(View):
     """This is a test view"""
 
@@ -31,18 +43,6 @@ class TestView(View):
             :url: https://www.google.com
             :description: please go here for more information
         
-        :example:
-            summary
-            
-            description
-
-            :value:
-                {
-                    "hello" : "world"
-                }
-            
-            :external_value:
-                https://google.com
         :deprecation: 1.0.0
         """
         return TestResponse(name=payload.name)

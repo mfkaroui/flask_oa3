@@ -1,5 +1,6 @@
 import os
-from typing import Dict, List, Optional, Annotated
+from typing import Dict, List, Optional
+from typing_extensions import Annotated
 from urllib.parse import urljoin
 from pydantic import BaseModel, Field
 from .view import View
