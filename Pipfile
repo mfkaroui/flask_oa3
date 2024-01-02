@@ -13,6 +13,9 @@ abnf = "*"
 docstring-parser = "*"
 jsonref = "*"
 exceptiongroup = "*"
+annotated-types = "*"
+typing-extensions = "*"
+pydantic-core = "*"
 
 [dev-packages]
 pytest = "*"
