@@ -1,18 +1,15 @@
 [run]
-branch = False
+branch = True
+timid = True
+dynamic_context = test_function
 [report]
 skip_empty = True
+include_namespace_packages = True
+show_missing = True
+sort = Cover
 exclude_lines =
     pragma: no cover
     import
     from
-    def __repr__
-    if self.debug:
-    if settings.DEBUG
-    raise AssertionError
-    raise NotImplementedError
-    if 0:
-    if __name__ == .__main__.:
 [json]
 pretty_print = True
-show_contexts = True
