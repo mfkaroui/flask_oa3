@@ -12,6 +12,7 @@ phonenumbers = "*"
 abnf = "*"
 docstring-parser = "*"
 jsonref = "*"
+exceptiongroup = "*"
 
 [dev-packages]
 pytest = "*"
