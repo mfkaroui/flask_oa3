@@ -15,6 +15,15 @@ class TestSecurityScheme:
         assert securtiy_scheme_errors[0]["type"] == "missing"
         assert securtiy_scheme_errors[0]["loc"] == ("type",)
 
+    def test_security_scheme_specification_extensions(self, security_scheme_specification_extensions_fixture):
+        expected_schema: dict = {
+            "type": "mutualTLS",
+            "x-some-data-1": "test",
+            "x-some-data-2": "test",
+            "x-some-data-3": "test"
+        }
+        assert security_scheme_specification_extensions_fixture.oa3_schema == expected_schema
+
     def test_security_scheme_variable_required_field_api_key(self):
         with pytest.raises(ValueError):
             SecurityScheme(
