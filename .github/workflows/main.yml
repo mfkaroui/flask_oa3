@@ -22,7 +22,8 @@ jobs:
       - name: Run Tests
         run: |
           pipenv install --dev --python=$PYTHON_BIN_PATH
-          pipenv --python=$PYTHON_BIN_PATH run pytest --doctest-modules --junitxml=junit/results-${{ matrix.python-version }}.xml --cov=flask_oa3 --cov-config=.coveragerc --cov-report json:coverage/results-${{ matrix.python-version }}.json
+          pipenv shell
+          python -m pytest --doctest-modules --junitxml=junit/results-${{ matrix.python-version }}.xml --cov=flask_oa3 --cov-config=.coveragerc --cov-report json:coverage/results-${{ matrix.python-version }}.json
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
