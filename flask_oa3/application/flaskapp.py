@@ -54,9 +54,4 @@ class FlaskApp(App):
                         request_view = view()
                         request.data
                         response = methods[request.method.lower()]["function"](request_view, {})
-                        match type(methods[request.method.lower()]["type_hints"]["return"]).__name__:
-                            case "_UnionGenericAlias":
-                                pass
-                            case _:
-                                pass
         return app
