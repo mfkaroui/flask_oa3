@@ -1,0 +1,7 @@
+[run]
+branch = True
+[report]
+skip_empty = True
+[json]
+pretty_print = True
+show_contexts = True
