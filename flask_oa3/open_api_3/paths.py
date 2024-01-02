@@ -1,4 +1,5 @@
-from typing import Dict, Annotated
+from typing import Dict
+from typing_extensions import Annotated
 from pydantic import RootModel, Field, field_validator
 from .path_item import PathItem
 

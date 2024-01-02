@@ -1,4 +1,5 @@
-from typing import Optional, Annotated, List, Union, ClassVar
+from typing import Optional, List, Union, ClassVar
+from typing_extensions import Annotated
 from pydantic import Field, field_validator
 from .component import Component, ComponentType
 from .reference import Reference

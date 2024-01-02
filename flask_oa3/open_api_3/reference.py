@@ -1,5 +1,6 @@
 from __future__ import annotations
-from typing import Optional, Annotated, Generic, TypeVar
+from typing import Optional, Generic, TypeVar
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field, computed_field
 from .component import Component
 

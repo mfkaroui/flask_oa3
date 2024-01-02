@@ -1,4 +1,5 @@
-from typing import Optional, Annotated, List, Dict, Any
+from typing import Optional, List, Dict, Any
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field, model_validator
 from .decorators import specification_extensions_support
 

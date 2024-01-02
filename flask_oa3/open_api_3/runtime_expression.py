@@ -1,4 +1,5 @@
-from typing import List, ClassVar, Annotated
+from typing import List, ClassVar
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field, model_validator
 from abnf import Rule
 

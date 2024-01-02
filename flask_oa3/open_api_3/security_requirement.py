@@ -1,4 +1,5 @@
-from typing import Dict, List, Annotated
+from typing import Dict, List
+from typing_extensions import Annotated
 from pydantic import RootModel, Field
 
 class SecurityRequirement(RootModel):

@@ -1,4 +1,5 @@
-from typing import Optional, Annotated, Dict, Any, Union, ClassVar
+from typing import Optional, Dict, Any, Union, ClassVar
+from typing_extensions import Annotated
 from pydantic import Field, field_serializer
 from .component import Component, ComponentType
 from .runtime_expression import RuntimeExpression

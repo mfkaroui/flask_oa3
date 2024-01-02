@@ -1,4 +1,5 @@
-from typing import Optional, Annotated, Any, ClassVar
+from typing import Optional, Any, ClassVar
+from typing_extensions import Annotated
 from pydantic import Field, AnyUrl
 from .component import Component, ComponentType
 

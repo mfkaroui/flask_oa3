@@ -1,4 +1,5 @@
-from typing import Optional, Annotated, Dict, Union
+from typing import Optional, Dict, Union
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 
 from .schema import Schema

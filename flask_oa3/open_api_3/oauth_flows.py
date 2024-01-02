@@ -1,5 +1,6 @@
 from __future__ import annotations
-from typing import Optional, Annotated
+from typing import Optional
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field, model_validator, ConfigDict
 
 from .oauth_flow import OAuthFlow

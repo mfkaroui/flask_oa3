@@ -1,4 +1,5 @@
-from typing import Optional, Annotated, Dict
+from typing import Optional, Dict
+from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 
 class Discriminator(BaseModel):

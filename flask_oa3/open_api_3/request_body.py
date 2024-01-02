@@ -1,4 +1,5 @@
-from typing import Optional, Annotated, Dict, ClassVar
+from typing import Optional, Dict, ClassVar
+from typing_extensions import Annotated
 from pydantic import Field, computed_field
 from .component import Component, ComponentType
 from .media_type import MediaType
