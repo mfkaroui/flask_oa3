@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+        run: python -c "import sys; print(sys.version); print(sys.executable)"
       - name: Install Dependencies
         run: python -m pip install --upgrade pip setuptools wheel pipenv
       - name: Run Tests
