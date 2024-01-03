@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Optional, ClassVar, Type, Dict, Union, List, Tuple, Any
 from typing_extensions import Annotated
-from pydantic import Field, AnyUrl, BaseModel, ConfigDict, model_serializer, field_serializer, field_validator, SerializationInfo, ValidationInfo
+from pydantic import Field, AnyUrl, BaseModel, RootModel, ConfigDict, model_serializer, field_serializer, field_validator, SerializationInfo, ValidationInfo
 
 from .component import Component, ComponentType
 from .external_documentation import ExternalDocumentation
@@ -18,9 +18,9 @@ class Schema(Component):
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]
     json_schema_dialect: Annotated[Optional[AnyUrl], Field(default=None, alias="$schema", description="The $schema keyword MAY be present in any root Schema Object, and if present MUST be used to determine which dialect should be used when processing the schema. This allows use of Schema Objects which comply with other drafts of JSON Schema than the default Draft 2020-12 support. Tooling MUST support the OAS dialect schema id, and MAY support additional values of $schema.")]
     schema_model: Annotated[Union[
-        Type[BaseModel],
+        Union[Type[BaseModel], Type[RootModel]],
         Reference[Schema],
-        List[Union[Type[BaseModel], Reference[Schema]]],
+        List[Union[Union[Type[BaseModel], Type[RootModel]], Reference[Schema]]],
     ], Field(description="A pydantic model type that contains the fields needed for the schema")]
     
     model_config = ConfigDict(
@@ -38,21 +38,21 @@ class Schema(Component):
                     components.append(f"ref.{model.component.component_name}")
                 else:
                     components.append(f"{model.__name__}")
-            return f"union[{', '.join(components)}]"
+            return f"all_of[{', '.join(components)}]"
         return self.schema_model.__name__
 
     @field_validator("schema_model", mode="plain", check_fields=False)
     @classmethod
     def validate_schema_model(cls, value: Any, info: ValidationInfo) -> Union[
-        Type[BaseModel],
+        Union[Type[BaseModel], Type[RootModel]],
         Reference[Schema],
-        List[Union[Type[BaseModel], Reference[Schema]]],
+        List[Union[Union[Type[BaseModel], Type[RootModel]], Reference[Schema]]],
     ]:
         if isinstance(value, list):
             for model in value:
-                if not isinstance(model, Reference[Schema]) and not issubclass(model, BaseModel):
+                if not isinstance(model, Reference[Schema]) and not issubclass(model, BaseModel) and not issubclass(value, RootModel):
                     raise TypeError("schema_model in list must be a pydantic model or a reference to a schema")
-        elif not isinstance(value, Reference[Schema]) and not issubclass(value, BaseModel):
+        elif not isinstance(value, Reference[Schema]) and not issubclass(value, BaseModel) and not issubclass(value, RootModel):
             raise TypeError("schema_model must be a pydantic model or a reference to a schema")
         return value
 
@@ -90,14 +90,6 @@ class Schema(Component):
         schema.pop("schema_model", None)
         schema.update(self.schema_model_json_schema[0])
         return schema
-
-    #@field_serializer("schema_model")
-    #def schema_model_serializer(self, schema_model: Union[
-    #    Union[Type[BaseModel], Reference[Schema]],
-    #    List[Union[Type[BaseModel], Reference[Schema]]],
-    #], _info) -> dict:
-    #    json_schema, _ = self.schema_model_json_schema
-    #    return json_schema
 
     @property
     def oa3_schema(self):
