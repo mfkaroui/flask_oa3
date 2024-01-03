@@ -75,6 +75,45 @@ class TestSchema:
         }
         assert schema_with_specification_extensions_fixture.oa3_schema == expected_schema
 
+    def test_schema_python_inheritance_oa3_schema(self, schema_class_python_inheritance_fixture):
+        expected_schema: dict = {
+            "properties": {
+                "int_field": {
+                    "description": "An integer field override",
+                    "title": "Int Field",
+                    "type": "integer"
+                },
+                "str_field": {
+                    "description": "A string field",
+                    "title": "Str Field",
+                    "type": "string"
+                },
+                "optional_field": {
+                    "anyOf": [
+                        {"type": "string"},
+                        {"type": "null"}
+                    ],
+                    "default": None,
+                    "description": "An optional field",
+                    "title": "Optional Field"
+                },
+                "bool_field": {
+                    "description": "A boolean field",
+                    "title": "Bool Field",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "int_field",
+                "str_field",
+                "bool_field"
+            ],
+            "title": "PythonInheritanceTestSchema",
+            "type": "object"
+        }
+        test_schema = Schema(schema_model=schema_class_python_inheritance_fixture)
+        assert test_schema.oa3_schema == expected_schema
+
 class TestDiscriminator:
     def test_discriminator_required_fields(self):
         with pytest.raises(ValidationError) as validation_error:

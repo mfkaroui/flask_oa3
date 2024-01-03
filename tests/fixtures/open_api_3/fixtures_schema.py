@@ -33,3 +33,10 @@ def schema_with_specification_extensions_fixture(schema_class_fixture) -> Schema
         some_data_2 = "test",
         some_data_3 = "test"
     )
+
+@pytest.fixture
+def schema_class_python_inheritance_fixture(schema_class_fixture) -> Type[BaseModel]:
+    class PythonInheritanceTestSchema(schema_class_fixture):
+        int_field: Annotated[int, Field(description="An integer field override")]
+        bool_field: Annotated[bool, Field(description="A boolean field")]
+    yield PythonInheritanceTestSchema
