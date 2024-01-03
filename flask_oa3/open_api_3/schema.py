@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Optional, ClassVar, Type, Dict, Union, List, Tuple, Any
 from typing_extensions import Annotated
-from pydantic import Field, AnyUrl, BaseModel, ConfigDict, model_serializer, field_serializer, FieldSerializationInfo
+from pydantic import Field, AnyUrl, BaseModel, ConfigDict, model_serializer, field_serializer, field_validator, SerializationInfo, ValidationInfo
 
 from .component import Component, ComponentType
 from .external_documentation import ExternalDocumentation
@@ -18,7 +18,8 @@ class Schema(Component):
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]
     json_schema_dialect: Annotated[Optional[AnyUrl], Field(default=None, alias="$schema", description="The $schema keyword MAY be present in any root Schema Object, and if present MUST be used to determine which dialect should be used when processing the schema. This allows use of Schema Objects which comply with other drafts of JSON Schema than the default Draft 2020-12 support. Tooling MUST support the OAS dialect schema id, and MAY support additional values of $schema.")]
     schema_model: Annotated[Union[
-        Union[Type[BaseModel], Reference[Schema]],
+        Type[BaseModel],
+        Reference[Schema],
         List[Union[Type[BaseModel], Reference[Schema]]],
     ], Field(description="A pydantic model type that contains the fields needed for the schema")]
     
@@ -40,9 +41,24 @@ class Schema(Component):
             return f"union[{', '.join(components)}]"
         return self.schema_model.__name__
 
+    @field_validator("schema_model", mode="plain", check_fields=False)
+    @classmethod
+    def validate_schema_model(cls, value: Any, info: ValidationInfo) -> Union[
+        Type[BaseModel],
+        Reference[Schema],
+        List[Union[Type[BaseModel], Reference[Schema]]],
+    ]:
+        if isinstance(value, list):
+            for model in value:
+                if not isinstance(model, Reference[Schema]) and not issubclass(model, BaseModel):
+                    raise TypeError("schema_model in list must be a pydantic model or a reference to a schema")
+        elif not isinstance(value, Reference[Schema]) and not issubclass(value, BaseModel):
+            raise TypeError("schema_model must be a pydantic model or a reference to a schema")
+        return value
+
     @field_serializer('schema_model', when_used="always", check_fields=False)
     @property
-    def ignore_schema_model(self, value: Any, info: FieldSerializationInfo) -> None:
+    def ignore_schema_model(self, value: Any, info: SerializationInfo) -> None:
         return None
 
     @property
@@ -104,7 +120,7 @@ class Schema(Component):
 @specification_extensions_support
 class Discriminator(BaseModel):
     property_name: Annotated[str, Field(alias="propertyName", description="REQUIRED. The name of the property in the payload that will hold the discriminator value.")]
-    mapping: Annotated[Optional[Dict[str, Union[str, ]]], Field(default=None, description="An object to hold mappings between payload values and schema names or references.")]
+    mapping: Annotated[Optional[Dict[str, Union[str, Reference[Schema]]]], Field(default=None, description="An object to hold mappings between payload values and schema names or references.")]
 
     model_config = ConfigDict(
         populate_by_name=True
