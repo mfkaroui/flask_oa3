@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Optional, ClassVar, Type, Dict, Union, List, Tuple, Any
 from typing_extensions import Annotated
-from pydantic import Field, AnyUrl, BaseModel, RootModel, ConfigDict, model_serializer, field_serializer, field_validator, SerializationInfo, ValidationInfo
+from pydantic import Field, AnyUrl, BaseModel, RootModel, ConfigDict, model_validator, model_serializer, field_serializer, field_validator, SerializationInfo, ValidationInfo
 
 from .component import Component, ComponentType
 from .external_documentation import ExternalDocumentation
@@ -18,10 +18,12 @@ class Schema(Component):
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]
     json_schema_dialect: Annotated[Optional[AnyUrl], Field(default=None, alias="$schema", description="The $schema keyword MAY be present in any root Schema Object, and if present MUST be used to determine which dialect should be used when processing the schema. This allows use of Schema Objects which comply with other drafts of JSON Schema than the default Draft 2020-12 support. Tooling MUST support the OAS dialect schema id, and MAY support additional values of $schema.")]
     schema_model: Annotated[Union[
-        Union[Type[BaseModel], Type[RootModel]],
+        Type[BaseModel],
+        Type[RootModel],
         Reference[Schema],
-        List[Union[Union[Type[BaseModel], Type[RootModel]], Reference[Schema]]],
-    ], Field(description="A pydantic model type that contains the fields needed for the schema")]
+        List[Union[Type[BaseModel], Type[RootModel], Reference[Schema]]],
+        Tuple[Union[Type[BaseModel], Type[RootModel], Reference[Schema]]]
+    ], Field(description="A pydantic model type that contains the fields needed for the schema. When using a list, the schemas are combined using allOf except for when a discriminator is defined, then oneOf is inferred. When using a tuple, the schemas are combined using oneOf regardless of whether a discriminiator is defined.")]
     
     model_config = ConfigDict(
         populate_by_name=True
@@ -31,30 +33,40 @@ class Schema(Component):
     def component_name(self) -> str:
         if isinstance(self.schema_model, Reference[Schema]):
             return f"ref.{self.schema_model.component.component_name}"
-        elif isinstance(self.schema_model, list):
+        elif isinstance(self.schema_model, list) or isinstance(self.schema_model, tuple):
             components = []
             for model in self.schema_model:
                 if isinstance(model, Reference[Schema]):
                     components.append(f"ref.{model.component.component_name}")
                 else:
                     components.append(f"{model.__name__}")
-            return f"{('all_of' if self.discriminator is None else 'one_of')}[{', '.join(components)}]"
+            is_one_of = (isinstance(self.schema_model, tuple) or self.discriminator is not None)
+            return f"{('one_of' if is_one_of else 'all_of')}[{', '.join(components)}]"
         return self.schema_model.__name__
 
     @field_validator("schema_model", mode="plain", check_fields=False)
     @classmethod
     def validate_schema_model(cls, value: Any, info: ValidationInfo) -> Union[
-        Union[Type[BaseModel], Type[RootModel]],
+        Type[BaseModel],
+        Type[RootModel],
         Reference[Schema],
-        List[Union[Union[Type[BaseModel], Type[RootModel]], Reference[Schema]]],
+        List[Union[Type[BaseModel], Type[RootModel], Reference[Schema]]],
+        Tuple[Union[Type[BaseModel], Type[RootModel], Reference[Schema]]]
     ]:
-        if isinstance(value, list):
+        if isinstance(value, list) or isinstance(value, tuple):
             for model in value:
                 if not isinstance(model, Reference[Schema]) and not issubclass(model, BaseModel) and not issubclass(value, RootModel):
                     raise TypeError("schema_model in list must be a pydantic model or a reference to a schema")
         elif not isinstance(value, Reference[Schema]) and not issubclass(value, BaseModel) and not issubclass(value, RootModel):
             raise TypeError("schema_model must be a pydantic model or a reference to a schema")
         return value
+
+    @model_validator(mode="after")
+    @classmethod
+    def validate_schema(cls, self: Schema) -> Schema:
+        if self.discriminator is not None and not (isinstance(self.schema_model, list) or isinstance(self.schema_model, tuple)):
+            raise ValueError("schema_model must be a list or tuple when a discriminator is defined")
+        return self
 
     @field_serializer('schema_model', when_used="always", check_fields=False)
     @property
