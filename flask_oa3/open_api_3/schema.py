@@ -29,12 +29,12 @@ class Schema(Component):
     @property
     def component_name(self) -> str:
         if isinstance(self.schema_model, Reference[Schema]):
-            return f"ref.{self.schema_model.component._component_name}"
+            return f"ref.{self.schema_model.component.component_name}"
         elif isinstance(self.schema_model, list):
             components = []
             for model in self.schema_model:
                 if isinstance(model, Reference[Schema]):
-                    components.append(f"ref.{model.component._component_name}")
+                    components.append(f"ref.{model.component.component_name}")
                 else:
                     components.append(f"{model.__name__}")
             return f"union[{', '.join(components)}]"
