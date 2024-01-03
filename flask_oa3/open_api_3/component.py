@@ -16,18 +16,17 @@ class ComponentType(Enum):
 
 class Component(BaseModel):
     component_type: ClassVar[Optional[ComponentType]] = None
-    _component_name: str
 
     @model_serializer(mode="wrap")
     def serialize_component(self, handler):
-        exclude = ["component_type", "_component_name"]
+        exclude = ["component_type", "component_name"]
         d = handler(self)
         d = {k:v for k, v in d.items() if k not in exclude}
         return d
 
     @property
     def component_name(self) -> str:
-        return self._component_name
+        raise NotImplementedError("A component name must be implemented")
 
     @classmethod
     def component_path(cls) -> str:

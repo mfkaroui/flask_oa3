@@ -1,7 +1,7 @@
 from __future__ import annotations
-from typing import Optional, ClassVar, Type, Dict, Union
+from typing import Optional, ClassVar, Type, Dict, Union, List, Tuple, Any
 from typing_extensions import Annotated
-from pydantic import Field, AnyUrl, BaseModel, field_serializer
+from pydantic import Field, AnyUrl, BaseModel, ConfigDict, model_serializer, field_serializer, FieldSerializationInfo
 
 from .component import Component, ComponentType
 from .external_documentation import ExternalDocumentation
@@ -17,13 +17,71 @@ class Schema(Component):
     xml: Annotated[Optional[XML], Field(default=None, description="This MAY be used only on properties schemas. It has no effect on root schemas. Adds additional metadata to describe the XML representation of this property.")]
     external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this schema.")]
     json_schema_dialect: Annotated[Optional[AnyUrl], Field(default=None, alias="$schema", description="The $schema keyword MAY be present in any root Schema Object, and if present MUST be used to determine which dialect should be used when processing the schema. This allows use of Schema Objects which comply with other drafts of JSON Schema than the default Draft 2020-12 support. Tooling MUST support the OAS dialect schema id, and MAY support additional values of $schema.")]
-    schema_fields: Annotated[Type[BaseModel], Field(description="A pydantic model type that contains the fields needed for the schema")]
+    schema_model: Annotated[Union[
+        Union[Type[BaseModel], Reference[Schema]],
+        List[Union[Type[BaseModel], Reference[Schema]]],
+    ], Field(description="A pydantic model type that contains the fields needed for the schema")]
+    
+    model_config = ConfigDict(
+        populate_by_name=True
+    )
 
-    @field_serializer("schema_fields")
-    def schema_fields_serializer(self, schema_fields: Type[BaseModel], _info) -> dict:
-        schema_fields_schema = schema_fields.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
-        schema_fields_schema.pop("$defs", None)
-        return schema_fields_schema
+    @property
+    def component_name(self) -> str:
+        if isinstance(self.schema_model, Reference[Schema]):
+            return f"ref.{self.schema_model.component._component_name}"
+        elif isinstance(self.schema_model, list):
+            components = []
+            for model in self.schema_model:
+                if isinstance(model, Reference[Schema]):
+                    components.append(f"ref.{model.component._component_name}")
+                else:
+                    components.append(f"{model.__name__}")
+            return f"union[{', '.join(components)}]"
+        return self.schema_model.__name__
+
+    @field_serializer('schema_model', when_used="always", check_fields=False)
+    @property
+    def ignore_schema_model(self, value: Any, info: FieldSerializationInfo) -> None:
+        return None
+
+    @property
+    def schema_model_json_schema(self) -> Tuple[dict, dict]:
+        defs = {}
+        if isinstance(self.schema_model, Reference[Schema]):
+            return self.schema_model.oa3_schema, defs
+        elif isinstance(self.schema_model, list):
+            all_of = []
+            for model in self.schema_model:
+                if isinstance(model, Reference[Schema]):
+                    all_of.append(model.oa3_schema)
+                else:
+                    json_schema = self.schema_model.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
+                    json_schema_defs = json_schema.pop("$defs", None)
+                    all_of.append(json_schema)
+                    if json_schema_defs is not None:
+                        defs.update(json_schema_defs)
+            return {"allOf": all_of}, defs
+        json_schema = self.schema_model.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
+        json_schema_defs = json_schema.pop("$defs", None)
+        if json_schema_defs is not None:
+            defs.update(json_schema_defs)
+        return json_schema, defs
+
+    @model_serializer(mode="wrap", when_used="always")
+    def schema_model_serializer(self, handler) -> dict:
+        schema = handler(self)
+        schema.pop("schema_model", None)
+        schema.update(self.schema_model_json_schema[0])
+        return schema
+
+    #@field_serializer("schema_model")
+    #def schema_model_serializer(self, schema_model: Union[
+    #    Union[Type[BaseModel], Reference[Schema]],
+    #    List[Union[Type[BaseModel], Reference[Schema]]],
+    #], _info) -> dict:
+    #    json_schema, _ = self.schema_model_json_schema
+    #    return json_schema
 
     @property
     def oa3_schema(self):
@@ -46,7 +104,11 @@ class Schema(Component):
 @specification_extensions_support
 class Discriminator(BaseModel):
     property_name: Annotated[str, Field(alias="propertyName", description="REQUIRED. The name of the property in the payload that will hold the discriminator value.")]
-    mapping: Annotated[Optional[Dict[str, Union[str, Reference[Schema]]]], Field(default=None, description="An object to hold mappings between payload values and schema names or references.")]
+    mapping: Annotated[Optional[Dict[str, Union[str, ]]], Field(default=None, description="An object to hold mappings between payload values and schema names or references.")]
+
+    model_config = ConfigDict(
+        populate_by_name=True
+    )
 
     @property
     def oa3_schema(self) -> dict:
