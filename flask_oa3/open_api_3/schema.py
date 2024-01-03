@@ -38,7 +38,7 @@ class Schema(Component):
                     components.append(f"ref.{model.component.component_name}")
                 else:
                     components.append(f"{model.__name__}")
-            return f"all_of[{', '.join(components)}]"
+            return f"{('all_of' if self.discriminator is None else 'one_of')}[{', '.join(components)}]"
         return self.schema_model.__name__
 
     @field_validator("schema_model", mode="plain", check_fields=False)
