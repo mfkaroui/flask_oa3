@@ -1,5 +1,5 @@
 import pytest
-from typing import Type, Optional
+from typing import Type, Optional, Dict
 from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 from flask_oa3.open_api_3.schema import Schema, Discriminator
@@ -40,3 +40,9 @@ def schema_class_python_inheritance_fixture(schema_class_fixture) -> Type[BaseMo
         int_field: Annotated[int, Field(description="An integer field override")]
         bool_field: Annotated[bool, Field(description="A boolean field")]
     yield PythonInheritanceTestSchema
+
+@pytest.fixture
+def schema_class_with_dict_fixture() -> Type[BaseModel]:
+    class DictTestSchema(BaseModel):
+        dict_field: Annotated[Dict[str, int], Field(description="A dict field")]
+    yield DictTestSchema
