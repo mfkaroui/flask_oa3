@@ -39,6 +39,10 @@ class TestSchema:
         }
         test_schema = Schema(schema_model=schema_class_fixture)
         assert test_schema.oa3_schema == expected_schema
+    
+    def test_schema_component_name(self, schema_class_fixture):
+        test_schema = Schema(schema_model=schema_class_fixture)
+        assert test_schema.component_name == "TestSchema"
 
     def test_schema_specification_extensions(self, schema_with_specification_extensions_fixture):
         expected_schema: dict = {
