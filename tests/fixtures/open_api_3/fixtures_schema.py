@@ -24,3 +24,12 @@ def schema_class_fixture() -> Type[BaseModel]:
         str_field: Annotated[str, Field(description="A string field")]
         optional_field: Annotated[Optional[str], Field(default=None, description="An optional field")]
     yield TestSchema
+
+@pytest.fixture
+def schema_with_specification_extensions_fixture(schema_class_fixture) -> Schema:
+    yield Schema(
+        schema_model=schema_class_fixture,
+        some_data_1 = "test",
+        some_data_2 = "test",
+        some_data_3 = "test"
+    )

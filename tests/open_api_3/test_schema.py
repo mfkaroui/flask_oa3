@@ -40,6 +40,41 @@ class TestSchema:
         test_schema = Schema(schema_model=schema_class_fixture)
         assert test_schema.oa3_schema == expected_schema
 
+    def test_schema_specification_extensions(self, schema_with_specification_extensions_fixture):
+        expected_schema: dict = {
+            "properties": {
+                "int_field": {
+                    "description": "An integer field",
+                    "title": "Int Field",
+                    "type": "integer"
+                },
+                "str_field": {
+                    "description": "A string field",
+                    "title": "Str Field",
+                    "type": "string"
+                },
+                "optional_field": {
+                    "anyOf": [
+                        {"type": "string"},
+                        {"type": "null"}
+                    ],
+                    "default": None,
+                    "description": "An optional field",
+                    "title": "Optional Field"
+                }
+            },
+            "required": [
+                "int_field",
+                "str_field"
+            ],
+            "title": "TestSchema",
+            "type": "object",
+            "x-some-data-1": "test",
+            "x-some-data-2": "test",
+            "x-some-data-3": "test"
+        }
+        assert schema_with_specification_extensions_fixture.oa3_schema == expected_schema
+
 class TestDiscriminator:
     def test_discriminator_required_fields(self):
         with pytest.raises(ValidationError) as validation_error:
