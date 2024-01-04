@@ -11,11 +11,13 @@ class TestSchema:
         with pytest.raises(TypeError):
             Schema(schema_model=schema_class_fixture, discriminator=discriminator_fixture)
 
-    def test_schema_with_discriminator_bad_property_name_fail(self, schema_class_fixture, schema_class_with_dict_fixture):
+    def test_schema_with_discriminator_bad_property_name_fail(self, schema_class_fixture, reference_schema_fixture, schema_class_with_dict_fixture):
         with pytest.raises(KeyError):
             Schema(schema_model=[schema_class_fixture, schema_class_with_dict_fixture], discriminator=Discriminator(property_name="bad_property"))
         with pytest.raises(KeyError):
             Schema(schema_model=(schema_class_fixture, schema_class_with_dict_fixture), discriminator=Discriminator(property_name="bad_property"))
+        with pytest.raises(KeyError):
+            Schema(schema_model=(reference_schema_fixture, schema_class_with_dict_fixture), discriminator=Discriminator(property_name="bad_property"))
 
     def test_schema_oa3_schema(self, schema_class_fixture):
         expected_schema: dict = {
