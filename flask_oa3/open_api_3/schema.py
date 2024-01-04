@@ -61,11 +61,30 @@ class Schema(Component):
             raise TypeError("schema_model must be a pydantic model or a reference to a schema")
         return value
 
+    def has_property(self, property_name: str) -> bool:
+        if isinstance(self.schema_model, Reference[Schema]):
+            return self.schema_model.component.has_property(property_name)
+        elif isinstance(self.schema_model, list) or isinstance(self.schema_model, tuple):
+            found_property = False
+            for model in self.schema_model:
+                if isinstance(model, Reference[Schema]):
+                    found_property = model.component.has_property(property_name)
+                else:
+                    found_property = property_name in model.model_fields
+                if found_property:
+                    break
+            return found_property
+        return property_name in self.schema_model.model_fields
+
     @model_validator(mode="after")
     @classmethod
     def validate_schema(cls, self: Schema) -> Schema:
-        if self.discriminator is not None and not (isinstance(self.schema_model, list) or isinstance(self.schema_model, tuple)):
-            raise ValueError("schema_model must be a list or tuple when a discriminator is defined")
+        if self.discriminator is not None:
+            if isinstance(self.schema_model, list) or isinstance(self.schema_model, tuple):
+                if not self.has_property(self.discriminator.property_name):
+                    raise KeyError("schema_model must have a property that matches the discriminator property name")
+            else:
+                raise TypeError("schema_model must be a list or tuple when a discriminator is defined")
         return self
 
     @field_serializer('schema_model', when_used="always", check_fields=False)
