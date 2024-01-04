@@ -7,6 +7,16 @@ class TestSchema:
     def test_schema_component_type(self):
         assert Schema.component_type == ComponentType.SCHEMA
     
+    def test_schema_with_discriminator_no_iterable_fail(self, schema_class_fixture, discriminator_fixture):
+        with pytest.raises(TypeError):
+            Schema(schema_model=schema_class_fixture, discriminator=discriminator_fixture)
+
+    def test_schema_with_discriminator_bad_property_name_fail(self, schema_class_fixture, schema_class_with_dict_fixture):
+        with pytest.raises(KeyError):
+            Schema(schema_model=[schema_class_fixture, schema_class_with_dict_fixture], discriminator=Discriminator(property_name="bad_property"))
+        with pytest.raises(KeyError):
+            Schema(schema_model=(schema_class_fixture, schema_class_with_dict_fixture), discriminator=Discriminator(property_name="bad_property"))
+
     def test_schema_oa3_schema(self, schema_class_fixture):
         expected_schema: dict = {
             "properties": {
