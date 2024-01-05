@@ -266,9 +266,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
                             "default": "dict",
+                            "enum": ["dict", "list"],
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "dict_field": {
                             "additionalProperties": {"type": "integer"},
@@ -298,9 +299,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
+                            "enum": ["dict", "list"],
                             "default": "dict",
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "dict_field": {
                             "additionalProperties": {"type": "integer"},
@@ -352,9 +354,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
+                            "enum": ["dict", "list"],
                             "default": "dict",
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "dict_field": {
                             "additionalProperties": {"type": "integer"},
@@ -384,9 +387,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
+                            "enum": ["dict", "list"],
                             "default": "dict",
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "dict_field": {
                             "additionalProperties": {"type": "integer"},
@@ -416,9 +420,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
+                            "enum": ["dict", "list"],
                             "default": "list",
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "list_field": {
                             "description": "A list field",
@@ -434,9 +439,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
+                            "enum": ["dict", "list"],
                             "default": "dict",
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "dict_field": {
                             "additionalProperties": {"type": "integer"},
@@ -478,9 +484,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
+                            "enum": ["dict", "list"],
                             "default": "list",
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "list_field": {
                             "description": "A list field",
@@ -559,9 +566,10 @@ class TestSchema:
                 {
                     "properties": {
                         "test_discriminator": {
-                            "anyOf": [{"const": "dict"}, {"const": "list"}],
+                            "enum": ["dict", "list"],
                             "default": "dict",
                             "title": "Test Discriminator",
+                            "type": "string",
                         },
                         "dict_field": {
                             "additionalProperties": {"type": "integer"},
