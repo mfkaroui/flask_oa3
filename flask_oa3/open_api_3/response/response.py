@@ -5,17 +5,19 @@ from pydantic import Field, computed_field, model_serializer
 from ..media_type import MediaType
 from ..component import Component, ComponentType
 
+
 class ResponseType(IntEnum):
     """
     An enumeration to categorize response types based on HTTP status codes.
     """
 
-    X_CUSTOM = -1 #Represents a custom or undefined status code.
-    INFORMATIONAL = 100 #Represents informational responses (100–199).
-    SUCCESSFUL = 200 #Represents successful responses (200–299).
-    REDIRECT = 300 #Represents redirection messages (300–399).
-    CLIENT_ERROR = 400 #Represents client error responses (400–499).
-    SERVER_ERROR = 500 #Represents server error responses (500–599).
+    X_CUSTOM = -1  # Represents a custom or undefined status code.
+    INFORMATIONAL = 100  # Represents informational responses (100–199).
+    SUCCESSFUL = 200  # Represents successful responses (200–299).
+    REDIRECT = 300  # Represents redirection messages (300–399).
+    CLIENT_ERROR = 400  # Represents client error responses (400–499).
+    SERVER_ERROR = 500  # Represents server error responses (500–599).
+
 
 class Response(Component):
     component_type: ClassVar[ComponentType] = ComponentType.RESPONSE
@@ -23,22 +25,33 @@ class Response(Component):
     __STATUS_CODE__: ClassVar[Union[int, None]] = None
     __PHRASE__: ClassVar[Union[str, None]] = None
 
-    description: Annotated[Optional[str], Field(default=None, description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.")]
+    description: Annotated[
+        Optional[str],
+        Field(
+            default=None,
+            description="REQUIRED. A description of the response. CommonMark syntax MAY be used for rich text representation.",
+        ),
+    ]
     _content: Dict[str, Type[MediaType]] = {}
-    
+
     @model_serializer(mode="wrap")
     def serialize_component(self, handler):
         exclude = ["_content"]
         d = handler(self)
-        d = {k:v for k, v in d.items() if k not in exclude}
+        d = {k: v for k, v in d.items() if k not in exclude}
         return d
 
-    @computed_field(alias="x-phrase", description="The phrase of the response reprisenting a short description / long name")
+    @computed_field(
+        alias="x-phrase",
+        description="The phrase of the response reprisenting a short description / long name",
+    )
     @property
     def phrase(self) -> str:
         return self.__PHRASE__
-    
-    @computed_field(description="A map containing descriptions of potential response payloads. The key is a media type or media type range and the value describes it. For responses that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*")
+
+    @computed_field(
+        description="A map containing descriptions of potential response payloads. The key is a media type or media type range and the value describes it. For responses that match multiple keys, only the most specific key is applicable. e.g. text/plain overrides text/*"
+    )
     @property
     def content(self) -> Union[Dict[str, MediaType], None]:
         return None if len(self._content) == 0 else self._content
@@ -56,7 +69,7 @@ class Response(Component):
         Raises:
             TypeError: If the media_type argument is not an instance of MediaType
             ValueError: If a media type with the same name already exists in the collection.
-        """        
+        """
         if not isinstance(media_type, MediaType):
             raise TypeError("Improper media type")
         media_type_name = media_type._get_name()
@@ -85,11 +98,11 @@ class Response(Component):
     @property
     def oa3_schema(self) -> dict:
         """Constructs the Open API 'Response Object' according to specifications
-        
+
         Spec:
             https://spec.openapis.org/oas/v3.1.0#response-object
 
         Returns:
             dict: The Open API schema
-        """     
+        """
         return self.model_dump(mode="json", by_alias=True, exclude_none=True)

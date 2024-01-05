@@ -2,17 +2,19 @@ from enum import Enum
 from typing import ClassVar, Optional
 from pydantic import BaseModel, ConfigDict, model_serializer
 
+
 class ComponentType(Enum):
     SCHEMA = "schemas"
     RESPONSE = "responses"
     PARAMETER = "parameters"
     EXAMPLE = "examples"
-    REQUEST_BODY = "requestBodies" #missing
+    REQUEST_BODY = "requestBodies"  # missing
     HEADER = "headers"
-    SECURITY_SCHEME = "securitySchemes" #missing
-    LINK = "links" #missing
-    CALLBACK = "callbacks" #missing
-    PATH_ITEM = "pathItems" #missing
+    SECURITY_SCHEME = "securitySchemes"  # missing
+    LINK = "links"  # missing
+    CALLBACK = "callbacks"  # missing
+    PATH_ITEM = "pathItems"  # missing
+
 
 class Component(BaseModel):
     component_type: ClassVar[Optional[ComponentType]] = None
@@ -21,7 +23,7 @@ class Component(BaseModel):
     def serialize_component(self, handler):
         exclude = ["component_type", "component_name"]
         d = handler(self)
-        d = {k:v for k, v in d.items() if k not in exclude}
+        d = {k: v for k, v in d.items() if k not in exclude}
         return d
 
     @property

@@ -2,6 +2,7 @@ import os
 from json import loads
 from typing import List
 
+
 def to_pascal_case(input_str: str) -> str:
     # Split the string by both '/' and '-'
     parts = input_str.replace("/", "-").replace("_", "-").replace(" ", "-").split("-")
@@ -16,15 +17,18 @@ def to_pascal_case(input_str: str) -> str:
                 if not char.isdigit():
                     break
             # Capitalize the first non-digit character
-            pascal_part = part[:i] + part[i].upper() + part[i+1:]
+            pascal_part = part[:i] + part[i].upper() + part[i + 1 :]
         else:
             pascal_part = part.capitalize()
         pascal_parts.append(pascal_part)
-    return ''.join(pascal_parts)
+    return "".join(pascal_parts)
+
 
 if __name__ == "__main__":
     run_dir = os.path.dirname(os.path.realpath(__file__))
-    with open(os.path.join(run_dir, "status_codes.json"), "r", encoding="utf8") as file_handle:
+    with open(
+        os.path.join(run_dir, "status_codes.json"), "r", encoding="utf8"
+    ) as file_handle:
         file_handle.seek(0)
         status_codes_json = loads(file_handle.read())
     status_codes_class = f"""### AUTO-GENERATED ###
@@ -34,7 +38,9 @@ from .response import Response, ResponseType
 """
     for status_code in status_codes_json:
         response_class_name = to_pascal_case(status_code["phrase"])
-        status_codes_class = status_codes_class + f"""class Response{response_class_name}(Response):
+        status_codes_class = (
+            status_codes_class
+            + f"""class Response{response_class_name}(Response):
     \"\"\"
     {status_code['description']}
 
@@ -51,7 +57,10 @@ from .response import Response, ResponseType
     __PHRASE__: str = "{status_code['phrase']}"
 
 """
-    status_codes_class = status_codes_class + """
+        )
+    status_codes_class = (
+        status_codes_class
+        + """
 def get_response_by_status_code(status_code: int) -> Union[Type[Response], None]:
     \"\"\"
     Retrieves a Response object corresponding to a given HTTP status code.
@@ -66,17 +75,26 @@ def get_response_by_status_code(status_code: int) -> Union[Type[Response], None]
     \"\"\"
 
     responses = {"""
+    )
     for status_code in status_codes_json:
         response_class_name = to_pascal_case(status_code["phrase"])
-        status_codes_class = status_codes_class + f"""
+        status_codes_class = (
+            status_codes_class
+            + f"""
         \"{status_code['code']}\": Response{response_class_name},"""
-    status_codes_class = status_codes_class + """
+        )
+    status_codes_class = (
+        status_codes_class
+        + """
     }
     return responses.get(str(status_code), None)
 """
-    with open(os.path.join(run_dir, "__init__.py"), "w", encoding="utf8") as file_handle:
+    )
+    with open(
+        os.path.join(run_dir, "__init__.py"), "w", encoding="utf8"
+    ) as file_handle:
         file_handle.truncate(0)
         file_handle.seek(0)
         file_handle.write(status_codes_class)
-    
+
     print("test")
