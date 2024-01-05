@@ -2,6 +2,7 @@ import pytest
 from flask_oa3.open_api_3.tag import Tag
 from pydantic_core import ValidationError
 
+
 class TestTag:
     """
     Test class for testing the Tag model.
@@ -27,14 +28,14 @@ class TestTag:
             "description": "test description",
             "externalDocs": {
                 "url": "http://test.com/",
-                "description": "test description"
+                "description": "test description",
             },
             "x-some-data-1": "test",
             "x-some-data-2": "test",
-            "x-some-data-3": "test"
+            "x-some-data-3": "test",
         }
         assert tag_specification_extensions_fixture.oa3_schema == expected_schema
-        
+
     def test_tag_oa3_schema(self, tag_by_field_name_fixture, tag_by_alias_fixture):
         """
         Test case for verifying the OpenAPI 3 schema of the Tag model by field name and by alias.
@@ -44,13 +45,18 @@ class TestTag:
             "description": "test description",
             "externalDocs": {
                 "url": "http://test.com/",
-                "description": "test description"
-            }
+                "description": "test description",
+            },
         }
         assert tag_by_field_name_fixture.oa3_schema == expected_schema
         assert tag_by_alias_fixture.oa3_schema == expected_schema
 
-    def test_tag_optional_parameters_oa3_schema(self, tag_no_description_fixture, tag_no_external_documentation_fixture, tag_just_name_fixture):
+    def test_tag_optional_parameters_oa3_schema(
+        self,
+        tag_no_description_fixture,
+        tag_no_external_documentation_fixture,
+        tag_just_name_fixture,
+    ):
         """
         Test case for verifying the OpenAPI 3 schema of the Tag model with optional parameters.
         """
@@ -58,16 +64,17 @@ class TestTag:
             "name": "test",
             "externalDocs": {
                 "url": "http://test.com/",
-                "description": "test description"
-            }
+                "description": "test description",
+            },
         }
         expected_schema_no_external_documentation: dict = {
             "name": "test",
-            "description": "test description"
+            "description": "test description",
         }
-        expected_schema_just_name: dict = {
-            "name": "test"
-        }
+        expected_schema_just_name: dict = {"name": "test"}
         assert tag_no_description_fixture.oa3_schema == expected_schema_no_description
-        assert tag_no_external_documentation_fixture.oa3_schema == expected_schema_no_external_documentation
+        assert (
+            tag_no_external_documentation_fixture.oa3_schema
+            == expected_schema_no_external_documentation
+        )
         assert tag_just_name_fixture.oa3_schema == expected_schema_just_name
