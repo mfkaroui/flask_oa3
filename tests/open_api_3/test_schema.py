@@ -2,6 +2,7 @@ import pytest
 from pydantic import ValidationError
 from flask_oa3.open_api_3.schema import Schema, Discriminator
 from flask_oa3.open_api_3.component import ComponentType
+from flask_oa3.open_api_3.reference import Reference
 
 class TestSchema:
     def test_schema_component_type(self):
@@ -19,6 +20,18 @@ class TestSchema:
         with pytest.raises(KeyError):
             Schema(schema_model=(reference_schema_fixture, schema_class_with_dict_fixture), discriminator=Discriminator(property_name="bad_property"))
     
+    def test_schema_with_bad_model_fail(self):
+        class BadModel:
+            str_field: str
+        class AnotherBadModel:
+            int_field: int
+        with pytest.raises(TypeError):
+            Schema(schema_model=BadModel)
+        with pytest.raises(TypeError):
+            Schema(schema_model=[BadModel, AnotherBadModel])
+        with pytest.raises(TypeError):
+            Schema(schema_model=(BadModel, AnotherBadModel))
+
     def test_schema_component_name(self, schema_class_fixture):
         test_schema = Schema(schema_model=schema_class_fixture)
         assert test_schema.component_name == "TestSchema"
@@ -235,6 +248,14 @@ class TestSchema:
                 },
                 {
                     "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "dict",
+                            "title": "Model Type"
+                        },
                         "dict_field": {
                             "additionalProperties": {
                                 "type": "integer"
@@ -265,6 +286,14 @@ class TestSchema:
                 },
                 {
                     "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "dict",
+                            "title": "Model Type"
+                        },
                         "dict_field": {
                             "additionalProperties": {
                                 "type": "integer"
@@ -320,6 +349,14 @@ class TestSchema:
                 },
                 {
                     "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "dict",
+                            "title": "Model Type"
+                        },
                         "dict_field": {
                             "additionalProperties": {
                                 "type": "integer"
@@ -350,6 +387,14 @@ class TestSchema:
                 },
                 {
                     "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "dict",
+                            "title": "Model Type"
+                        },
                         "dict_field": {
                             "additionalProperties": {
                                 "type": "integer"
@@ -370,6 +415,196 @@ class TestSchema:
         }
         test_schema = Schema(schema_model=(reference_schema_fixture, schema_class_with_dict_fixture))
         assert test_schema.oa3_schema == expected_schema
+
+    def test_schema_oa3_union_schema_with_discriminator_oa3_schema(self, schema_class_with_list_fixture, schema_class_with_dict_fixture):
+        expected_schema: dict = {
+            "discriminator": {
+                "propertyName": "model_type"
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "list",
+                            "title": "Model Type"
+                        },
+                        "list_field": {
+                            "description": "A list field",
+                            "items": {
+                                "type": "string"
+                            },
+                        "title": "List Field",
+                        "type": "array"
+                        }
+                    },
+                    "required": [
+                        "list_field"
+                    ],
+                    "title": "ListTestSchema",
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "dict",
+                            "title": "Model Type"
+                        },
+                        "dict_field": {
+                            "additionalProperties": {
+                                "type": "integer"
+                            },
+                            "description": "A dict field",
+                            "title": "Dict Field",
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "dict_field"
+                    ],
+                    "title": "DictTestSchema",
+                    "type": "object"
+                }
+            ],
+            "title": "one_of[ListTestSchema, DictTestSchema]"
+        }
+        test_schema = Schema(schema_model=(schema_class_with_list_fixture, schema_class_with_dict_fixture), discriminator=Discriminator(property_name="model_type"))
+        assert test_schema.oa3_schema == expected_schema
+        test_schema = Schema(schema_model=[schema_class_with_list_fixture, schema_class_with_dict_fixture], discriminator=Discriminator(property_name="model_type"))
+        assert test_schema.oa3_schema == expected_schema
+
+    def test_schema_oa3_union_schema_with_reference_discriminator_oa3_schema(self, schema_class_with_list_fixture, schema_class_with_dict_fixture):
+        expected_schema: dict = {
+            "discriminator": {
+                "propertyName": "model_type"
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "list",
+                            "title": "Model Type"
+                        },
+                        "list_field": {
+                            "description": "A list field",
+                            "items": {
+                                "type": "string"
+                            },
+                            "title": "List Field",
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "list_field"
+                    ],
+                    "title": "ListTestSchema",
+                    "type": "object"
+                },
+                {
+                    "$ref": "#/components/schemas/DictTestSchema",
+                    "title": "ref.DictTestSchema"
+                }
+            ],
+            "title": "one_of[ListTestSchema, ref.DictTestSchema]"
+        }
+        test_schema = Schema(schema_model=(schema_class_with_list_fixture, Reference[Schema](component=Schema(schema_model=schema_class_with_dict_fixture))), discriminator=Discriminator(property_name="model_type"))
+        assert test_schema.oa3_schema == expected_schema
+
+    def test_schema_with_reference_of_reference_has_property(self, reference_schema_fixture):
+        test_schema = Schema(schema_model=reference_schema_fixture)
+        assert test_schema.has_property("int_field")
+        assert test_schema.has_property("str_field")
+        assert test_schema.has_property("optional_field")
+
+    def test_schema_with_nested_field_oa3_schema(self, schema_class_with_nested_model):
+        expected_schema = {
+            "properties": {
+                "nested_field": {
+                    "$ref": "#/components/schemas/TestSchema"
+                },
+                "list_field": {
+                    "description": "A list field",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "List Field",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "nested_field",
+                "list_field"
+            ],
+            "title": "NestedTestSchema",
+            "type": "object"
+        }
+        test_schema = Schema(schema_model=schema_class_with_nested_model)
+        assert test_schema.oa3_schema == expected_schema
+
+    def test_schema_oa3_composition_with_nested_field_oa3_schema(self, schema_class_with_nested_model, schema_class_with_dict_fixture):
+        expected_schema = {
+            "allOf": [
+                {
+                    "properties": {
+                        "nested_field": {
+                            "$ref": "#/components/schemas/TestSchema"
+                        },
+                        "list_field": {
+                            "description": "A list field",
+                            "items": {"type": "string"},
+                            "title": "List Field",
+                            "type": "array"
+                        }
+                    },
+                    "required": [
+                        "nested_field",
+                        "list_field"
+                    ],
+                    "title": "NestedTestSchema",
+                    "type": "object"
+                },
+                {
+                    "properties": {
+                        "model_type": {
+                            "anyOf": [
+                                {"const": "dict"},
+                                {"const": "list"}
+                            ],
+                            "default": "dict",
+                            "title": "Model Type"
+                        },
+                        "dict_field": {
+                            "additionalProperties": {
+                                "type": "integer"
+                            },
+                            "description": "A dict field",
+                            "title": "Dict Field",
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "dict_field"
+                    ],
+                    "title": "DictTestSchema",
+                    "type": "object"
+                }
+            ],
+            "title": "all_of[NestedTestSchema, DictTestSchema]"
+        }
+        test_schema = Schema(schema_model=[schema_class_with_nested_model, schema_class_with_dict_fixture])
+        assert test_schema.oa3_schema == expected_schema
+
 
 class TestDiscriminator:
     def test_discriminator_required_fields(self):

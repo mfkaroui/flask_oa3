@@ -1,5 +1,5 @@
 import pytest
-from typing import Type, Optional, Dict
+from typing import Literal, Type, Optional, Dict, Union
 from typing_extensions import Annotated
 from pydantic import BaseModel, Field
 from flask_oa3.open_api_3.schema import Schema, Discriminator
@@ -44,5 +44,20 @@ def schema_class_python_inheritance_fixture(schema_class_fixture) -> Type[BaseMo
 @pytest.fixture
 def schema_class_with_dict_fixture() -> Type[BaseModel]:
     class DictTestSchema(BaseModel):
+        model_type: Union[Literal["dict"], Literal["list"]] = "dict"
         dict_field: Annotated[Dict[str, int], Field(description="A dict field")]
     yield DictTestSchema
+
+@pytest.fixture
+def schema_class_with_list_fixture() -> Type[BaseModel]:
+    class ListTestSchema(BaseModel):
+        model_type: Union[Literal["dict"], Literal["list"]] = "list"
+        list_field: Annotated[list[str], Field(description="A list field")]
+    yield ListTestSchema
+
+@pytest.fixture
+def schema_class_with_nested_model(schema_class_fixture) -> Type[BaseModel]:
+    class NestedTestSchema(BaseModel):
+        nested_field: schema_class_fixture
+        list_field: Annotated[list[str], Field(description="A list field")]
+    yield NestedTestSchema
