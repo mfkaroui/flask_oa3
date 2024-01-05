@@ -55,7 +55,7 @@ class Schema(Component):
     ]:
         if isinstance(value, list) or isinstance(value, tuple):
             for model in value:
-                if not isinstance(model, Reference[Schema]) and not issubclass(model, BaseModel) and not issubclass(value, RootModel):
+                if not isinstance(model, Reference[Schema]) and not issubclass(model, BaseModel) and not issubclass(model, RootModel):
                     raise TypeError("schema_model in list must be a pydantic model or a reference to a schema")
         elif not isinstance(value, Reference[Schema]) and not issubclass(value, BaseModel) and not issubclass(value, RootModel):
             raise TypeError("schema_model must be a pydantic model or a reference to a schema")
