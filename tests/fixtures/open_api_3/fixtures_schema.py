@@ -44,14 +44,14 @@ def schema_class_python_inheritance_fixture(schema_class_fixture) -> Type[BaseMo
 @pytest.fixture
 def schema_class_with_dict_fixture() -> Type[BaseModel]:
     class DictTestSchema(BaseModel):
-        model_type: Union[Literal["dict"], Literal["list"]] = "dict"
+        test_discriminator: Union[Literal["dict"], Literal["list"]] = "dict"
         dict_field: Annotated[Dict[str, int], Field(description="A dict field")]
     yield DictTestSchema
 
 @pytest.fixture
 def schema_class_with_list_fixture() -> Type[BaseModel]:
     class ListTestSchema(BaseModel):
-        model_type: Union[Literal["dict"], Literal["list"]] = "list"
+        test_discriminator: Union[Literal["dict"], Literal["list"]] = "list"
         list_field: Annotated[list[str], Field(description="A list field")]
     yield ListTestSchema
 
