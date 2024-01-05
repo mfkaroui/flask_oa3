@@ -96,23 +96,33 @@ class Schema(Component):
     def schema_model_json_schema(self) -> Tuple[dict, dict]:
         defs = {}
         if isinstance(self.schema_model, Reference[Schema]):
-            return self.schema_model.oa3_schema, defs
-        elif isinstance(self.schema_model, list):
-            all_of = []
+            defs = self.schema_model.component.schema_model_json_schema[1]
+            json_schema = self.schema_model.oa3_schema
+            json_schema["title"] = self.component_name
+        elif isinstance(self.schema_model, list) or isinstance(self.schema_model, tuple):
+            components = []
             for model in self.schema_model:
                 if isinstance(model, Reference[Schema]):
-                    all_of.append(model.oa3_schema)
+                    defs.update(model.component.schema_model_json_schema[1])
+                    json_schema = model.oa3_schema
+                    json_schema["title"] = f"ref.{model.component.component_name}"
+                    components.append(json_schema)
                 else:
-                    json_schema = self.schema_model.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
+                    json_schema = model.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
                     json_schema_defs = json_schema.pop("$defs", None)
-                    all_of.append(json_schema)
+                    components.append(json_schema)
                     if json_schema_defs is not None:
                         defs.update(json_schema_defs)
-            return {"allOf": all_of}, defs
-        json_schema = self.schema_model.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
-        json_schema_defs = json_schema.pop("$defs", None)
-        if json_schema_defs is not None:
-            defs.update(json_schema_defs)
+            is_one_of = (isinstance(self.schema_model, tuple) or self.discriminator is not None)
+            json_schema = {
+                "oneOf" if is_one_of else "allOf": components,
+                "title": self.component_name
+            }
+        else:
+            json_schema = self.schema_model.model_json_schema(by_alias=True, ref_template = self.component_path() + "/{model}")
+            json_schema_defs = json_schema.pop("$defs", None)
+            if json_schema_defs is not None:
+                defs.update(json_schema_defs)
         return json_schema, defs
 
     @model_serializer(mode="wrap", when_used="always")
