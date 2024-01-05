@@ -1,6 +1,6 @@
 import pytest
-from typing import Literal, Type, Optional, Dict, Union
-from typing_extensions import Annotated
+from typing import Type, Optional, Dict, Union
+from typing_extensions import Annotated, Literal
 from pydantic import BaseModel, Field
 from flask_oa3.open_api_3.schema import Schema, Discriminator
 
