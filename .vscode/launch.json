@@ -14,6 +14,15 @@
             "justMyCode": false
         },
         {
+            "name": "Python: Linting",
+            "type": "python",
+            "request": "launch",
+            "module": "pylint",
+            "args": ["flask_oa3"],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
             "name": "Build Licenses",
             "type": "python",
             "request": "launch",
