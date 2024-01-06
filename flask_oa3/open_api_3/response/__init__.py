@@ -2,6 +2,7 @@
 from typing import Union, Type
 from .response import Response, ResponseType
 
+
 class ResponseContinue(Response):
     """
     indicates that the initial part of a request has been received and has not yet been rejected by the server.
@@ -11,12 +12,18 @@ class ResponseContinue(Response):
 
     SpecTitle:
         RFC7231#6.2.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.2.1
     """
+
     __STATUS_CODE__: int = 100
     __PHRASE__: str = "Continue"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseContinue"
+
 
 class ResponseSwitchingProtocols(Response):
     """
@@ -27,12 +34,18 @@ class ResponseSwitchingProtocols(Response):
 
     SpecTitle:
         RFC7231#6.2.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.2.2
     """
+
     __STATUS_CODE__: int = 101
     __PHRASE__: str = "Switching Protocols"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseSwitchingProtocols"
+
 
 class ResponseOk(Response):
     """
@@ -43,12 +56,18 @@ class ResponseOk(Response):
 
     SpecTitle:
         RFC7231#6.3.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.3.1
     """
+
     __STATUS_CODE__: int = 200
     __PHRASE__: str = "OK"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseOk"
+
 
 class ResponseCreated(Response):
     """
@@ -59,12 +78,18 @@ class ResponseCreated(Response):
 
     SpecTitle:
         RFC7231#6.3.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.3.2
     """
+
     __STATUS_CODE__: int = 201
     __PHRASE__: str = "Created"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseCreated"
+
 
 class ResponseAccepted(Response):
     """
@@ -75,12 +100,18 @@ class ResponseAccepted(Response):
 
     SpecTitle:
         RFC7231#6.3.3
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.3.3
     """
+
     __STATUS_CODE__: int = 202
     __PHRASE__: str = "Accepted"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseAccepted"
+
 
 class ResponseNonAuthoritativeInformation(Response):
     """
@@ -91,12 +122,18 @@ class ResponseNonAuthoritativeInformation(Response):
 
     SpecTitle:
         RFC7231#6.3.4
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.3.4
     """
+
     __STATUS_CODE__: int = 203
     __PHRASE__: str = "Non-Authoritative Information"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseNonAuthoritativeInformation"
+
 
 class ResponseNoContent(Response):
     """
@@ -107,12 +144,18 @@ class ResponseNoContent(Response):
 
     SpecTitle:
         RFC7231#6.3.5
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.3.5
     """
+
     __STATUS_CODE__: int = 204
     __PHRASE__: str = "No Content"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseNoContent"
+
 
 class ResponseResetContent(Response):
     """
@@ -123,12 +166,18 @@ class ResponseResetContent(Response):
 
     SpecTitle:
         RFC7231#6.3.6
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.3.6
     """
+
     __STATUS_CODE__: int = 205
     __PHRASE__: str = "Reset Content"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseResetContent"
+
 
 class ResponsePartialContent(Response):
     """
@@ -139,12 +188,18 @@ class ResponsePartialContent(Response):
 
     SpecTitle:
         RFC7233#4.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7233#section-4.1
     """
+
     __STATUS_CODE__: int = 206
     __PHRASE__: str = "Partial Content"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponsePartialContent"
+
 
 class ResponseMultipleChoices(Response):
     """
@@ -155,12 +210,18 @@ class ResponseMultipleChoices(Response):
 
     SpecTitle:
         RFC7231#6.4.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.4.1
     """
+
     __STATUS_CODE__: int = 300
     __PHRASE__: str = "Multiple Choices"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseMultipleChoices"
+
 
 class ResponseMovedPermanently(Response):
     """
@@ -171,12 +232,18 @@ class ResponseMovedPermanently(Response):
 
     SpecTitle:
         RFC7231#6.4.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.4.2
     """
+
     __STATUS_CODE__: int = 301
     __PHRASE__: str = "Moved Permanently"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseMovedPermanently"
+
 
 class ResponseFound(Response):
     """
@@ -187,12 +254,18 @@ class ResponseFound(Response):
 
     SpecTitle:
         RFC7231#6.4.3
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.4.3
     """
+
     __STATUS_CODE__: int = 302
     __PHRASE__: str = "Found"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseFound"
+
 
 class ResponseSeeOther(Response):
     """
@@ -203,12 +276,18 @@ class ResponseSeeOther(Response):
 
     SpecTitle:
         RFC7231#6.4.4
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.4.4
     """
+
     __STATUS_CODE__: int = 303
     __PHRASE__: str = "See Other"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseSeeOther"
+
 
 class ResponseNotModified(Response):
     """
@@ -219,12 +298,18 @@ class ResponseNotModified(Response):
 
     SpecTitle:
         RFC7232#4.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7232#section-4.1
     """
+
     __STATUS_CODE__: int = 304
     __PHRASE__: str = "Not Modified"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseNotModified"
+
 
 class ResponseUseProxy(Response):
     """
@@ -235,12 +320,18 @@ class ResponseUseProxy(Response):
 
     SpecTitle:
         RFC7231#6.4.5
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.4.5
     """
+
     __STATUS_CODE__: int = 305
     __PHRASE__: str = "Use Proxy"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseUseProxy"
+
 
 class ResponseTemporaryRedirect(Response):
     """
@@ -251,12 +342,18 @@ class ResponseTemporaryRedirect(Response):
 
     SpecTitle:
         RFC7231#6.4.7
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.4.7
     """
+
     __STATUS_CODE__: int = 307
     __PHRASE__: str = "Temporary Redirect"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseTemporaryRedirect"
+
 
 class ResponseBadRequest(Response):
     """
@@ -267,12 +364,18 @@ class ResponseBadRequest(Response):
 
     SpecTitle:
         RFC7231#6.5.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.1
     """
+
     __STATUS_CODE__: int = 400
     __PHRASE__: str = "Bad Request"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseBadRequest"
+
 
 class ResponseUnauthorized(Response):
     """
@@ -283,12 +386,18 @@ class ResponseUnauthorized(Response):
 
     SpecTitle:
         RFC7235#6.3.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7235#section-3.1
     """
+
     __STATUS_CODE__: int = 401
     __PHRASE__: str = "Unauthorized"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseUnauthorized"
+
 
 class ResponsePaymentRequired(Response):
     """
@@ -299,12 +408,18 @@ class ResponsePaymentRequired(Response):
 
     SpecTitle:
         RFC7231#6.5.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.2
     """
+
     __STATUS_CODE__: int = 402
     __PHRASE__: str = "Payment Required"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponsePaymentRequired"
+
 
 class ResponseForbidden(Response):
     """
@@ -315,12 +430,18 @@ class ResponseForbidden(Response):
 
     SpecTitle:
         RFC7231#6.5.3
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.3
     """
+
     __STATUS_CODE__: int = 403
     __PHRASE__: str = "Forbidden"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseForbidden"
+
 
 class ResponseNotFound(Response):
     """
@@ -331,12 +452,18 @@ class ResponseNotFound(Response):
 
     SpecTitle:
         RFC7231#6.5.4
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.4
     """
+
     __STATUS_CODE__: int = 404
     __PHRASE__: str = "Not Found"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseNotFound"
+
 
 class ResponseMethodNotAllowed(Response):
     """
@@ -347,12 +474,18 @@ class ResponseMethodNotAllowed(Response):
 
     SpecTitle:
         RFC7231#6.5.5
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.5
     """
+
     __STATUS_CODE__: int = 405
     __PHRASE__: str = "Method Not Allowed"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseMethodNotAllowed"
+
 
 class ResponseNotAcceptable(Response):
     """
@@ -363,12 +496,18 @@ class ResponseNotAcceptable(Response):
 
     SpecTitle:
         RFC7231#6.5.6
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.6
     """
+
     __STATUS_CODE__: int = 406
     __PHRASE__: str = "Not Acceptable"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseNotAcceptable"
+
 
 class ResponseProxyAuthenticationRequired(Response):
     """
@@ -379,12 +518,18 @@ class ResponseProxyAuthenticationRequired(Response):
 
     SpecTitle:
         RFC7235#3.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7235#section-3.2
     """
+
     __STATUS_CODE__: int = 407
     __PHRASE__: str = "Proxy Authentication Required"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseProxyAuthenticationRequired"
+
 
 class ResponseRequestTimeout(Response):
     """
@@ -395,12 +540,18 @@ class ResponseRequestTimeout(Response):
 
     SpecTitle:
         RFC7231#6.5.7
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.7
     """
+
     __STATUS_CODE__: int = 408
     __PHRASE__: str = "Request Timeout"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseRequestTimeout"
+
 
 class ResponseConflict(Response):
     """
@@ -411,12 +562,18 @@ class ResponseConflict(Response):
 
     SpecTitle:
         RFC7231#6.5.8
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.8
     """
+
     __STATUS_CODE__: int = 409
     __PHRASE__: str = "Conflict"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseConflict"
+
 
 class ResponseGone(Response):
     """
@@ -427,12 +584,18 @@ class ResponseGone(Response):
 
     SpecTitle:
         RFC7231#6.5.9
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.9
     """
+
     __STATUS_CODE__: int = 410
     __PHRASE__: str = "Gone"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseGone"
+
 
 class ResponseLengthRequired(Response):
     """
@@ -443,12 +606,18 @@ class ResponseLengthRequired(Response):
 
     SpecTitle:
         RFC7231#6.5.10
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.10
     """
+
     __STATUS_CODE__: int = 411
     __PHRASE__: str = "Length Required"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseLengthRequired"
+
 
 class ResponsePreconditionFailed(Response):
     """
@@ -459,12 +628,18 @@ class ResponsePreconditionFailed(Response):
 
     SpecTitle:
         RFC7232#4.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7232#section-4.2
     """
+
     __STATUS_CODE__: int = 412
     __PHRASE__: str = "Precondition Failed"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponsePreconditionFailed"
+
 
 class ResponsePayloadTooLarge(Response):
     """
@@ -475,12 +650,18 @@ class ResponsePayloadTooLarge(Response):
 
     SpecTitle:
         RFC7231#6.5.11
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.11
     """
+
     __STATUS_CODE__: int = 413
     __PHRASE__: str = "Payload Too Large"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponsePayloadTooLarge"
+
 
 class ResponseUriTooLong(Response):
     """
@@ -491,12 +672,18 @@ class ResponseUriTooLong(Response):
 
     SpecTitle:
         RFC7231#6.5.12
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.12
     """
+
     __STATUS_CODE__: int = 414
     __PHRASE__: str = "URI Too Long"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseUriTooLong"
+
 
 class ResponseUnsupportedMediaType(Response):
     """
@@ -507,12 +694,18 @@ class ResponseUnsupportedMediaType(Response):
 
     SpecTitle:
         RFC7231#6.5.13
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.13
     """
+
     __STATUS_CODE__: int = 415
     __PHRASE__: str = "Unsupported Media Type"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseUnsupportedMediaType"
+
 
 class ResponseRangeNotSatisfiable(Response):
     """
@@ -523,12 +716,18 @@ class ResponseRangeNotSatisfiable(Response):
 
     SpecTitle:
         RFC7233#4.4
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7233#section-4.4
     """
+
     __STATUS_CODE__: int = 416
     __PHRASE__: str = "Range Not Satisfiable"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseRangeNotSatisfiable"
+
 
 class ResponseExpectationFailed(Response):
     """
@@ -539,12 +738,18 @@ class ResponseExpectationFailed(Response):
 
     SpecTitle:
         RFC7231#6.5.14
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.14
     """
+
     __STATUS_CODE__: int = 417
     __PHRASE__: str = "Expectation Failed"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseExpectationFailed"
+
 
 class ResponseUpgradeRequired(Response):
     """
@@ -555,12 +760,18 @@ class ResponseUpgradeRequired(Response):
 
     SpecTitle:
         RFC7231#6.5.15
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.5.15
     """
+
     __STATUS_CODE__: int = 426
     __PHRASE__: str = "Upgrade Required"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseUpgradeRequired"
+
 
 class ResponseInternalServerError(Response):
     """
@@ -571,12 +782,18 @@ class ResponseInternalServerError(Response):
 
     SpecTitle:
         RFC7231#6.6.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.6.1
     """
+
     __STATUS_CODE__: int = 500
     __PHRASE__: str = "Internal Server Error"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseInternalServerError"
+
 
 class ResponseNotImplemented(Response):
     """
@@ -587,12 +804,18 @@ class ResponseNotImplemented(Response):
 
     SpecTitle:
         RFC7231#6.6.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.6.2
     """
+
     __STATUS_CODE__: int = 501
     __PHRASE__: str = "Not Implemented"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseNotImplemented"
+
 
 class ResponseBadGateway(Response):
     """
@@ -603,12 +826,18 @@ class ResponseBadGateway(Response):
 
     SpecTitle:
         RFC7231#6.6.3
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.6.3
     """
+
     __STATUS_CODE__: int = 502
     __PHRASE__: str = "Bad Gateway"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseBadGateway"
+
 
 class ResponseServiceUnavailable(Response):
     """
@@ -619,12 +848,18 @@ class ResponseServiceUnavailable(Response):
 
     SpecTitle:
         RFC7231#6.6.4
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.6.4
     """
+
     __STATUS_CODE__: int = 503
     __PHRASE__: str = "Service Unavailable"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseServiceUnavailable"
+
 
 class ResponseGatewayTimeOut(Response):
     """
@@ -635,12 +870,18 @@ class ResponseGatewayTimeOut(Response):
 
     SpecTitle:
         RFC7231#6.6.5
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.6.5
     """
+
     __STATUS_CODE__: int = 504
     __PHRASE__: str = "Gateway Time-out"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseGatewayTimeOut"
+
 
 class ResponseHttpVersionNotSupported(Response):
     """
@@ -651,12 +892,18 @@ class ResponseHttpVersionNotSupported(Response):
 
     SpecTitle:
         RFC7231#6.6.6
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7231#section-6.6.6
     """
+
     __STATUS_CODE__: int = 505
     __PHRASE__: str = "HTTP Version Not Supported"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseHttpVersionNotSupported"
+
 
 class ResponseProcessing(Response):
     """
@@ -667,12 +914,18 @@ class ResponseProcessing(Response):
 
     SpecTitle:
         RFC5218#10.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2518#section-10.1
     """
+
     __STATUS_CODE__: int = 102
     __PHRASE__: str = "Processing"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseProcessing"
+
 
 class ResponseMultiStatus(Response):
     """
@@ -683,12 +936,18 @@ class ResponseMultiStatus(Response):
 
     SpecTitle:
         RFC5218#10.2
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2518#section-10.2
     """
+
     __STATUS_CODE__: int = 207
     __PHRASE__: str = "Multi-Status"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseMultiStatus"
+
 
 class ResponseImUsed(Response):
     """
@@ -699,12 +958,18 @@ class ResponseImUsed(Response):
 
     SpecTitle:
         RFC3229#10.4.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3229#section-10.4.1
     """
+
     __STATUS_CODE__: int = 226
     __PHRASE__: str = "IM Used"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseImUsed"
+
 
 class ResponsePermanentRedirect(Response):
     """
@@ -715,12 +980,18 @@ class ResponsePermanentRedirect(Response):
 
     SpecTitle:
         RFC7538
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7538
     """
+
     __STATUS_CODE__: int = 308
     __PHRASE__: str = "Permanent Redirect"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponsePermanentRedirect"
+
 
 class ResponseUnprocessableEntity(Response):
     """
@@ -731,12 +1002,18 @@ class ResponseUnprocessableEntity(Response):
 
     SpecTitle:
         RFC5218#10.3
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2518#section-10.3
     """
+
     __STATUS_CODE__: int = 422
     __PHRASE__: str = "Unprocessable Entity"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseUnprocessableEntity"
+
 
 class ResponseLocked(Response):
     """
@@ -747,12 +1024,18 @@ class ResponseLocked(Response):
 
     SpecTitle:
         RFC5218#10.4
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2518#section-10.4
     """
+
     __STATUS_CODE__: int = 423
     __PHRASE__: str = "Locked"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseLocked"
+
 
 class ResponseFailedDependency(Response):
     """
@@ -763,12 +1046,18 @@ class ResponseFailedDependency(Response):
 
     SpecTitle:
         RFC5218#10.5
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2518#section-10.5
     """
+
     __STATUS_CODE__: int = 424
     __PHRASE__: str = "Failed Dependency"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseFailedDependency"
+
 
 class ResponsePreconditionRequired(Response):
     """
@@ -779,12 +1068,18 @@ class ResponsePreconditionRequired(Response):
 
     SpecTitle:
         RFC6585#3
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6585#section-3
     """
+
     __STATUS_CODE__: int = 428
     __PHRASE__: str = "Precondition Required"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponsePreconditionRequired"
+
 
 class ResponseTooManyRequests(Response):
     """
@@ -795,12 +1090,18 @@ class ResponseTooManyRequests(Response):
 
     SpecTitle:
         RFC6585#4
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6585#section-4
     """
+
     __STATUS_CODE__: int = 429
     __PHRASE__: str = "Too Many Requests"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseTooManyRequests"
+
 
 class ResponseRequestHeaderFieldsTooLarge(Response):
     """
@@ -811,12 +1112,18 @@ class ResponseRequestHeaderFieldsTooLarge(Response):
 
     SpecTitle:
         RFC6585#5
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6585#section-5
     """
+
     __STATUS_CODE__: int = 431
     __PHRASE__: str = "Request Header Fields Too Large"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseRequestHeaderFieldsTooLarge"
+
 
 class ResponseUnavailableForLegalReasons(Response):
     """
@@ -827,12 +1134,18 @@ class ResponseUnavailableForLegalReasons(Response):
 
     SpecTitle:
         draft-ietf-httpbis-legally-restricted-status
-    
+
     SpecReference:
         https://tools.ietf.org/html/draft-ietf-httpbis-legally-restricted-status
     """
+
     __STATUS_CODE__: int = 451
     __PHRASE__: str = "Unavailable For Legal Reasons"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseUnavailableForLegalReasons"
+
 
 class ResponseVariantAlsoNegotiates(Response):
     """
@@ -843,12 +1156,18 @@ class ResponseVariantAlsoNegotiates(Response):
 
     SpecTitle:
         RFC2295#8.1
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2295#section-8.1
     """
+
     __STATUS_CODE__: int = 506
     __PHRASE__: str = "Variant Also Negotiates"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseVariantAlsoNegotiates"
+
 
 class ResponseInsufficientStorage(Response):
     """
@@ -859,12 +1178,18 @@ class ResponseInsufficientStorage(Response):
 
     SpecTitle:
         RFC5218#10.6
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2518#section-10.6
     """
+
     __STATUS_CODE__: int = 507
     __PHRASE__: str = "Insufficient Storage"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseInsufficientStorage"
+
 
 class ResponseNetworkAuthenticationRequired(Response):
     """
@@ -875,22 +1200,27 @@ class ResponseNetworkAuthenticationRequired(Response):
 
     SpecTitle:
         RFC6585#6
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6585#section-6
     """
+
     __STATUS_CODE__: int = 511
     __PHRASE__: str = "Network Authentication Required"
+
+    @property
+    def component_name(self) -> str:
+        return "ResponseNetworkAuthenticationRequired"
 
 
 def get_response_by_status_code(status_code: int) -> Union[Type[Response], None]:
     """
     Retrieves a Response object corresponding to a given HTTP status code.
 
-    This function maps standard HTTP status codes to their respective Response class objects. It provides a convenient way to access Response objects based on the status code encountered in HTTP communication. 
+    This function maps standard HTTP status codes to their respective Response class objects. It provides a convenient way to access Response objects based on the status code encountered in HTTP communication.
 
     Args:
-        status_code (int): The HTTP status code for which the corresponding Response object is required. 
+        status_code (int): The HTTP status code for which the corresponding Response object is required.
 
     Returns:
         Union[Type[Response], None]: Returns the Response class associated with the given status code. If the status code is not recognized, it returns None.

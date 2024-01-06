@@ -1,5 +1,6 @@
 import os
 from json import loads
+from black import format_str, FileMode
 
 
 def to_pascal_case(input_str: str) -> str:
@@ -89,6 +90,4 @@ def get_media_type_by_name(name: str) -> Union[Type[MediaType], None]:
     ) as file_handle:
         file_handle.truncate(0)
         file_handle.seek(0)
-        file_handle.write(media_types_class)
-
-    print("test")
+        file_handle.write(format_str(media_types_class, mode=FileMode()))

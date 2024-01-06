@@ -2,6 +2,7 @@
 from typing import Union, Type
 from .media_type import MediaType
 
+
 class MediaTypeApplicationYaml(MediaType):
     """
     Template:
@@ -9,11 +10,13 @@ class MediaTypeApplicationYaml(MediaType):
 
     SpecTitle:
         draft-ietf-httpapi-yaml-mediatypes
-    
+
     SpecReference:
         https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-yaml-mediatypes
     """
+
     __MEDIA_TYPE__: str = "application/yaml"
+
 
 class MediaTypeApplication1DInterleavedParityfec(MediaType):
     """
@@ -22,11 +25,13 @@ class MediaTypeApplication1DInterleavedParityfec(MediaType):
 
     SpecTitle:
         RFC6015
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6015
     """
+
     __MEDIA_TYPE__: str = "application/1d-interleaved-parityfec"
+
 
 class MediaTypeApplicationBatchSmtp(MediaType):
     """
@@ -35,11 +40,13 @@ class MediaTypeApplicationBatchSmtp(MediaType):
 
     SpecTitle:
         RFC2442
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2442
     """
+
     __MEDIA_TYPE__: str = "application/batch-SMTP"
+
 
 class MediaTypeApplicationCallCompletion(MediaType):
     """
@@ -48,11 +55,13 @@ class MediaTypeApplicationCallCompletion(MediaType):
 
     SpecTitle:
         RFC6910
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6910
     """
+
     __MEDIA_TYPE__: str = "application/call-completion"
+
 
 class MediaTypeApplicationCals1840(MediaType):
     """
@@ -61,11 +70,13 @@ class MediaTypeApplicationCals1840(MediaType):
 
     SpecTitle:
         RFC1895
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1895
     """
+
     __MEDIA_TYPE__: str = "application/CALS-1840"
+
 
 class MediaTypeApplicationCbor(MediaType):
     """
@@ -74,11 +85,13 @@ class MediaTypeApplicationCbor(MediaType):
 
     SpecTitle:
         RFC7049
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7049
     """
+
     __MEDIA_TYPE__: str = "application/cbor"
+
 
 class MediaTypeApplicationCdmiCapability(MediaType):
     """
@@ -87,11 +100,13 @@ class MediaTypeApplicationCdmiCapability(MediaType):
 
     SpecTitle:
         RFC6208
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6208
     """
+
     __MEDIA_TYPE__: str = "application/cdmi-capability"
+
 
 class MediaTypeApplicationCdmiContainer(MediaType):
     """
@@ -100,11 +115,13 @@ class MediaTypeApplicationCdmiContainer(MediaType):
 
     SpecTitle:
         RFC6208
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6208
     """
+
     __MEDIA_TYPE__: str = "application/cdmi-container"
+
 
 class MediaTypeApplicationCdmiDomain(MediaType):
     """
@@ -113,11 +130,13 @@ class MediaTypeApplicationCdmiDomain(MediaType):
 
     SpecTitle:
         RFC6208
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6208
     """
+
     __MEDIA_TYPE__: str = "application/cdmi-domain"
+
 
 class MediaTypeApplicationCdmiObject(MediaType):
     """
@@ -126,11 +145,13 @@ class MediaTypeApplicationCdmiObject(MediaType):
 
     SpecTitle:
         RFC6208
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6208
     """
+
     __MEDIA_TYPE__: str = "application/cdmi-object"
+
 
 class MediaTypeApplicationCdmiQueue(MediaType):
     """
@@ -139,11 +160,13 @@ class MediaTypeApplicationCdmiQueue(MediaType):
 
     SpecTitle:
         RFC6208
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6208
     """
+
     __MEDIA_TYPE__: str = "application/cdmi-queue"
+
 
 class MediaTypeApplicationCdni(MediaType):
     """
@@ -152,11 +175,13 @@ class MediaTypeApplicationCdni(MediaType):
 
     SpecTitle:
         RFC7736
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7736
     """
+
     __MEDIA_TYPE__: str = "application/cdni"
+
 
 class MediaTypeApplicationCfw(MediaType):
     """
@@ -165,11 +190,13 @@ class MediaTypeApplicationCfw(MediaType):
 
     SpecTitle:
         RFC6230
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6230
     """
+
     __MEDIA_TYPE__: str = "application/cfw"
+
 
 class MediaTypeApplicationCms(MediaType):
     """
@@ -178,11 +205,13 @@ class MediaTypeApplicationCms(MediaType):
 
     SpecTitle:
         RFC7193
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7193
     """
+
     __MEDIA_TYPE__: str = "application/cms"
+
 
 class MediaTypeApplicationCsrattrs(MediaType):
     """
@@ -191,11 +220,13 @@ class MediaTypeApplicationCsrattrs(MediaType):
 
     SpecTitle:
         RFC7030
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7030
     """
+
     __MEDIA_TYPE__: str = "application/csrattrs"
+
 
 class MediaTypeApplicationDicom(MediaType):
     """
@@ -204,11 +235,13 @@ class MediaTypeApplicationDicom(MediaType):
 
     SpecTitle:
         RFC3240
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3240
     """
+
     __MEDIA_TYPE__: str = "application/dicom"
+
 
 class MediaTypeApplicationDns(MediaType):
     """
@@ -217,11 +250,13 @@ class MediaTypeApplicationDns(MediaType):
 
     SpecTitle:
         RFC4027
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4027
     """
+
     __MEDIA_TYPE__: str = "application/dns"
+
 
 class MediaTypeApplicationDvcs(MediaType):
     """
@@ -230,11 +265,13 @@ class MediaTypeApplicationDvcs(MediaType):
 
     SpecTitle:
         RFC3029
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3029
     """
+
     __MEDIA_TYPE__: str = "application/dvcs"
+
 
 class MediaTypeApplicationEcmascript(MediaType):
     """
@@ -243,11 +280,13 @@ class MediaTypeApplicationEcmascript(MediaType):
 
     SpecTitle:
         RFC4329
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4329
     """
+
     __MEDIA_TYPE__: str = "application/ecmascript"
+
 
 class MediaTypeApplicationEdiConsent(MediaType):
     """
@@ -256,11 +295,13 @@ class MediaTypeApplicationEdiConsent(MediaType):
 
     SpecTitle:
         RFC1767
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1767
     """
+
     __MEDIA_TYPE__: str = "application/EDI-consent"
+
 
 class MediaTypeApplicationEdifact(MediaType):
     """
@@ -269,11 +310,13 @@ class MediaTypeApplicationEdifact(MediaType):
 
     SpecTitle:
         RFC1767
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1767
     """
+
     __MEDIA_TYPE__: str = "application/EDIFACT"
+
 
 class MediaTypeApplicationEdiX12(MediaType):
     """
@@ -282,11 +325,13 @@ class MediaTypeApplicationEdiX12(MediaType):
 
     SpecTitle:
         RFC1767
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1767
     """
+
     __MEDIA_TYPE__: str = "application/EDI-X12"
+
 
 class MediaTypeApplicationEncaprtp(MediaType):
     """
@@ -295,11 +340,13 @@ class MediaTypeApplicationEncaprtp(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "application/encaprtp"
+
 
 class MediaTypeApplicationExample(MediaType):
     """
@@ -308,11 +355,13 @@ class MediaTypeApplicationExample(MediaType):
 
     SpecTitle:
         RFC4735
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4735
     """
+
     __MEDIA_TYPE__: str = "application/example"
+
 
 class MediaTypeApplicationFits(MediaType):
     """
@@ -321,11 +370,13 @@ class MediaTypeApplicationFits(MediaType):
 
     SpecTitle:
         RFC4047
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4047
     """
+
     __MEDIA_TYPE__: str = "application/fits"
+
 
 class MediaTypeApplicationFontTdpfr(MediaType):
     """
@@ -334,11 +385,13 @@ class MediaTypeApplicationFontTdpfr(MediaType):
 
     SpecTitle:
         RFC3073
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3073
     """
+
     __MEDIA_TYPE__: str = "application/font-tdpfr"
+
 
 class MediaTypeApplicationGzip(MediaType):
     """
@@ -347,11 +400,13 @@ class MediaTypeApplicationGzip(MediaType):
 
     SpecTitle:
         RFC6713
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6713
     """
+
     __MEDIA_TYPE__: str = "application/gzip"
+
 
 class MediaTypeApplicationH224(MediaType):
     """
@@ -360,11 +415,13 @@ class MediaTypeApplicationH224(MediaType):
 
     SpecTitle:
         RFC4573
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4573
     """
+
     __MEDIA_TYPE__: str = "application/H224"
+
 
 class MediaTypeApplicationHttp(MediaType):
     """
@@ -373,11 +430,13 @@ class MediaTypeApplicationHttp(MediaType):
 
     SpecTitle:
         RFC7230
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7230
     """
+
     __MEDIA_TYPE__: str = "application/http"
+
 
 class MediaTypeApplicationIbePpData(MediaType):
     """
@@ -386,11 +445,13 @@ class MediaTypeApplicationIbePpData(MediaType):
 
     SpecTitle:
         RFC5408
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5408
     """
+
     __MEDIA_TYPE__: str = "application/ibe-pp-data"
+
 
 class MediaTypeApplicationIndex(MediaType):
     """
@@ -399,11 +460,13 @@ class MediaTypeApplicationIndex(MediaType):
 
     SpecTitle:
         RFC2652
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2652
     """
+
     __MEDIA_TYPE__: str = "application/index"
+
 
 class MediaTypeApplicationIotp(MediaType):
     """
@@ -412,11 +475,13 @@ class MediaTypeApplicationIotp(MediaType):
 
     SpecTitle:
         RFC2935
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2935
     """
+
     __MEDIA_TYPE__: str = "application/iotp"
+
 
 class MediaTypeApplicationIpfix(MediaType):
     """
@@ -425,11 +490,13 @@ class MediaTypeApplicationIpfix(MediaType):
 
     SpecTitle:
         RFC5655
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5655
     """
+
     __MEDIA_TYPE__: str = "application/ipfix"
+
 
 class MediaTypeApplicationIpp(MediaType):
     """
@@ -438,11 +505,13 @@ class MediaTypeApplicationIpp(MediaType):
 
     SpecTitle:
         RFC2910
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2910
     """
+
     __MEDIA_TYPE__: str = "application/ipp"
+
 
 class MediaTypeApplicationIsup(MediaType):
     """
@@ -451,11 +520,13 @@ class MediaTypeApplicationIsup(MediaType):
 
     SpecTitle:
         RFC3204
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3204
     """
+
     __MEDIA_TYPE__: str = "application/isup"
+
 
 class MediaTypeApplicationJavascript(MediaType):
     """
@@ -464,11 +535,13 @@ class MediaTypeApplicationJavascript(MediaType):
 
     SpecTitle:
         RFC4329
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4329
     """
+
     __MEDIA_TYPE__: str = "application/javascript"
+
 
 class MediaTypeApplicationJose(MediaType):
     """
@@ -477,11 +550,13 @@ class MediaTypeApplicationJose(MediaType):
 
     SpecTitle:
         RFC7515
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7515
     """
+
     __MEDIA_TYPE__: str = "application/jose"
+
 
 class MediaTypeApplicationJson(MediaType):
     """
@@ -490,11 +565,13 @@ class MediaTypeApplicationJson(MediaType):
 
     SpecTitle:
         RFC7158
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7158
     """
+
     __MEDIA_TYPE__: str = "application/json"
+
 
 class MediaTypeApplicationJsonSeq(MediaType):
     """
@@ -503,11 +580,13 @@ class MediaTypeApplicationJsonSeq(MediaType):
 
     SpecTitle:
         RFC7464
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7464
     """
+
     __MEDIA_TYPE__: str = "application/json-seq"
+
 
 class MediaTypeApplicationJwt(MediaType):
     """
@@ -516,11 +595,13 @@ class MediaTypeApplicationJwt(MediaType):
 
     SpecTitle:
         RFC7519
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7519
     """
+
     __MEDIA_TYPE__: str = "application/jwt"
+
 
 class MediaTypeApplicationLinkFormat(MediaType):
     """
@@ -529,11 +610,13 @@ class MediaTypeApplicationLinkFormat(MediaType):
 
     SpecTitle:
         RFC6690
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6690
     """
+
     __MEDIA_TYPE__: str = "application/link-format"
+
 
 class MediaTypeApplicationMarc(MediaType):
     """
@@ -542,11 +625,13 @@ class MediaTypeApplicationMarc(MediaType):
 
     SpecTitle:
         RFC2220
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2220
     """
+
     __MEDIA_TYPE__: str = "application/marc"
+
 
 class MediaTypeApplicationMbox(MediaType):
     """
@@ -555,11 +640,13 @@ class MediaTypeApplicationMbox(MediaType):
 
     SpecTitle:
         RFC4155
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4155
     """
+
     __MEDIA_TYPE__: str = "application/mbox"
+
 
 class MediaTypeApplicationMikey(MediaType):
     """
@@ -568,11 +655,13 @@ class MediaTypeApplicationMikey(MediaType):
 
     SpecTitle:
         RFC3830
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3830
     """
+
     __MEDIA_TYPE__: str = "application/mikey"
+
 
 class MediaTypeApplicationMossKeys(MediaType):
     """
@@ -581,11 +670,13 @@ class MediaTypeApplicationMossKeys(MediaType):
 
     SpecTitle:
         RFC1848
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1848
     """
+
     __MEDIA_TYPE__: str = "application/moss-keys"
+
 
 class MediaTypeApplicationMossSignature(MediaType):
     """
@@ -594,11 +685,13 @@ class MediaTypeApplicationMossSignature(MediaType):
 
     SpecTitle:
         RFC1848
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1848
     """
+
     __MEDIA_TYPE__: str = "application/moss-signature"
+
 
 class MediaTypeApplicationMosskeyData(MediaType):
     """
@@ -607,11 +700,13 @@ class MediaTypeApplicationMosskeyData(MediaType):
 
     SpecTitle:
         RFC1848
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1848
     """
+
     __MEDIA_TYPE__: str = "application/mosskey-data"
+
 
 class MediaTypeApplicationMosskeyRequest(MediaType):
     """
@@ -620,11 +715,13 @@ class MediaTypeApplicationMosskeyRequest(MediaType):
 
     SpecTitle:
         RFC1848
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1848
     """
+
     __MEDIA_TYPE__: str = "application/mosskey-request"
+
 
 class MediaTypeApplicationMp21(MediaType):
     """
@@ -633,11 +730,13 @@ class MediaTypeApplicationMp21(MediaType):
 
     SpecTitle:
         RFC6381
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6381
     """
+
     __MEDIA_TYPE__: str = "application/mp21"
+
 
 class MediaTypeApplicationMp4(MediaType):
     """
@@ -646,11 +745,13 @@ class MediaTypeApplicationMp4(MediaType):
 
     SpecTitle:
         RFC4337
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4337
     """
+
     __MEDIA_TYPE__: str = "application/mp4"
+
 
 class MediaTypeApplicationMpeg4Generic(MediaType):
     """
@@ -659,11 +760,13 @@ class MediaTypeApplicationMpeg4Generic(MediaType):
 
     SpecTitle:
         RFC3640
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3640
     """
+
     __MEDIA_TYPE__: str = "application/mpeg4-generic"
+
 
 class MediaTypeApplicationMpeg4Iod(MediaType):
     """
@@ -672,11 +775,13 @@ class MediaTypeApplicationMpeg4Iod(MediaType):
 
     SpecTitle:
         RFC4337
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4337
     """
+
     __MEDIA_TYPE__: str = "application/mpeg4-iod"
+
 
 class MediaTypeApplicationMpeg4IodXmt(MediaType):
     """
@@ -685,11 +790,13 @@ class MediaTypeApplicationMpeg4IodXmt(MediaType):
 
     SpecTitle:
         RFC4337
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4337
     """
+
     __MEDIA_TYPE__: str = "application/mpeg4-iod-xmt"
+
 
 class MediaTypeApplicationMxf(MediaType):
     """
@@ -698,11 +805,13 @@ class MediaTypeApplicationMxf(MediaType):
 
     SpecTitle:
         RFC4539
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4539
     """
+
     __MEDIA_TYPE__: str = "application/mxf"
+
 
 class MediaTypeApplicationNasdata(MediaType):
     """
@@ -711,11 +820,13 @@ class MediaTypeApplicationNasdata(MediaType):
 
     SpecTitle:
         RFC4707
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4707
     """
+
     __MEDIA_TYPE__: str = "application/nasdata"
+
 
 class MediaTypeApplicationNewsCheckgroups(MediaType):
     """
@@ -724,11 +835,13 @@ class MediaTypeApplicationNewsCheckgroups(MediaType):
 
     SpecTitle:
         RFC5537
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5537
     """
+
     __MEDIA_TYPE__: str = "application/news-checkgroups"
+
 
 class MediaTypeApplicationNewsGroupinfo(MediaType):
     """
@@ -737,11 +850,13 @@ class MediaTypeApplicationNewsGroupinfo(MediaType):
 
     SpecTitle:
         RFC5537
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5537
     """
+
     __MEDIA_TYPE__: str = "application/news-groupinfo"
+
 
 class MediaTypeApplicationNewsTransmission(MediaType):
     """
@@ -750,11 +865,13 @@ class MediaTypeApplicationNewsTransmission(MediaType):
 
     SpecTitle:
         RFC5537
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5537
     """
+
     __MEDIA_TYPE__: str = "application/news-transmission"
+
 
 class MediaTypeApplicationOcspRequest(MediaType):
     """
@@ -763,11 +880,13 @@ class MediaTypeApplicationOcspRequest(MediaType):
 
     SpecTitle:
         RFC6960
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6960
     """
+
     __MEDIA_TYPE__: str = "application/ocsp-request"
+
 
 class MediaTypeApplicationOcspResponse(MediaType):
     """
@@ -776,11 +895,13 @@ class MediaTypeApplicationOcspResponse(MediaType):
 
     SpecTitle:
         RFC6960
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6960
     """
+
     __MEDIA_TYPE__: str = "application/ocsp-response"
+
 
 class MediaTypeApplicationOctetStream(MediaType):
     """
@@ -789,11 +910,13 @@ class MediaTypeApplicationOctetStream(MediaType):
 
     SpecTitle:
         RFC2045
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2045
     """
+
     __MEDIA_TYPE__: str = "application/octet-stream"
+
 
 class MediaTypeApplicationOda(MediaType):
     """
@@ -802,11 +925,13 @@ class MediaTypeApplicationOda(MediaType):
 
     SpecTitle:
         RFC2045
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2045
     """
+
     __MEDIA_TYPE__: str = "application/oda"
+
 
 class MediaTypeApplicationOgg(MediaType):
     """
@@ -815,11 +940,13 @@ class MediaTypeApplicationOgg(MediaType):
 
     SpecTitle:
         RFC5334
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5334
     """
+
     __MEDIA_TYPE__: str = "application/ogg"
+
 
 class MediaTypeApplicationPdf(MediaType):
     """
@@ -828,11 +955,13 @@ class MediaTypeApplicationPdf(MediaType):
 
     SpecTitle:
         RFC3778
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3778
     """
+
     __MEDIA_TYPE__: str = "application/pdf"
+
 
 class MediaTypeApplicationPgpEncrypted(MediaType):
     """
@@ -841,11 +970,13 @@ class MediaTypeApplicationPgpEncrypted(MediaType):
 
     SpecTitle:
         RFC3156
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3156
     """
+
     __MEDIA_TYPE__: str = "application/pgp-encrypted"
+
 
 class MediaTypeApplicationPgpSignature(MediaType):
     """
@@ -854,11 +985,13 @@ class MediaTypeApplicationPgpSignature(MediaType):
 
     SpecTitle:
         RFC3156
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3156
     """
+
     __MEDIA_TYPE__: str = "application/pgp-signature"
+
 
 class MediaTypeApplicationPkcs10(MediaType):
     """
@@ -867,11 +1000,13 @@ class MediaTypeApplicationPkcs10(MediaType):
 
     SpecTitle:
         RFC5967
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5967
     """
+
     __MEDIA_TYPE__: str = "application/pkcs10"
+
 
 class MediaTypeApplicationPkcs7Mime(MediaType):
     """
@@ -880,11 +1015,13 @@ class MediaTypeApplicationPkcs7Mime(MediaType):
 
     SpecTitle:
         RFC5751
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5751
     """
+
     __MEDIA_TYPE__: str = "application/pkcs7-mime"
+
 
 class MediaTypeApplicationPkcs7Signature(MediaType):
     """
@@ -893,11 +1030,13 @@ class MediaTypeApplicationPkcs7Signature(MediaType):
 
     SpecTitle:
         RFC5751
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5751
     """
+
     __MEDIA_TYPE__: str = "application/pkcs7-signature"
+
 
 class MediaTypeApplicationPkcs8(MediaType):
     """
@@ -906,11 +1045,13 @@ class MediaTypeApplicationPkcs8(MediaType):
 
     SpecTitle:
         RFC5958
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5958
     """
+
     __MEDIA_TYPE__: str = "application/pkcs8"
+
 
 class MediaTypeApplicationPkixAttrCert(MediaType):
     """
@@ -919,11 +1060,13 @@ class MediaTypeApplicationPkixAttrCert(MediaType):
 
     SpecTitle:
         RFC5877
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5877
     """
+
     __MEDIA_TYPE__: str = "application/pkix-attr-cert"
+
 
 class MediaTypeApplicationPkixCert(MediaType):
     """
@@ -932,11 +1075,13 @@ class MediaTypeApplicationPkixCert(MediaType):
 
     SpecTitle:
         RFC2585
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2585
     """
+
     __MEDIA_TYPE__: str = "application/pkix-cert"
+
 
 class MediaTypeApplicationPkixCrl(MediaType):
     """
@@ -945,11 +1090,13 @@ class MediaTypeApplicationPkixCrl(MediaType):
 
     SpecTitle:
         RFC2585
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2585
     """
+
     __MEDIA_TYPE__: str = "application/pkix-crl"
+
 
 class MediaTypeApplicationPkixPkipath(MediaType):
     """
@@ -958,11 +1105,13 @@ class MediaTypeApplicationPkixPkipath(MediaType):
 
     SpecTitle:
         RFC6066
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6066
     """
+
     __MEDIA_TYPE__: str = "application/pkix-pkipath"
+
 
 class MediaTypeApplicationPkixcmp(MediaType):
     """
@@ -971,11 +1120,13 @@ class MediaTypeApplicationPkixcmp(MediaType):
 
     SpecTitle:
         RFC2510
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2510
     """
+
     __MEDIA_TYPE__: str = "application/pkixcmp"
+
 
 class MediaTypeApplicationPostscript(MediaType):
     """
@@ -984,11 +1135,13 @@ class MediaTypeApplicationPostscript(MediaType):
 
     SpecTitle:
         RFC2045
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2045
     """
+
     __MEDIA_TYPE__: str = "application/postscript"
+
 
 class MediaTypeApplicationQsig(MediaType):
     """
@@ -997,11 +1150,13 @@ class MediaTypeApplicationQsig(MediaType):
 
     SpecTitle:
         RFC3204
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3204
     """
+
     __MEDIA_TYPE__: str = "application/qsig"
+
 
 class MediaTypeApplicationRaptorfec(MediaType):
     """
@@ -1010,11 +1165,13 @@ class MediaTypeApplicationRaptorfec(MediaType):
 
     SpecTitle:
         RFC6682
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6682
     """
+
     __MEDIA_TYPE__: str = "application/raptorfec"
+
 
 class MediaTypeApplicationRemotePrinting(MediaType):
     """
@@ -1023,11 +1180,13 @@ class MediaTypeApplicationRemotePrinting(MediaType):
 
     SpecTitle:
         RFC1486
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1486
     """
+
     __MEDIA_TYPE__: str = "application/remote-printing"
+
 
 class MediaTypeApplicationRpkiGhostbusters(MediaType):
     """
@@ -1036,11 +1195,13 @@ class MediaTypeApplicationRpkiGhostbusters(MediaType):
 
     SpecTitle:
         RFC6493
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6493
     """
+
     __MEDIA_TYPE__: str = "application/rpki-ghostbusters"
+
 
 class MediaTypeApplicationRpkiManifest(MediaType):
     """
@@ -1049,11 +1210,13 @@ class MediaTypeApplicationRpkiManifest(MediaType):
 
     SpecTitle:
         RFC6481
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6481
     """
+
     __MEDIA_TYPE__: str = "application/rpki-manifest"
+
 
 class MediaTypeApplicationRpkiRoa(MediaType):
     """
@@ -1062,11 +1225,13 @@ class MediaTypeApplicationRpkiRoa(MediaType):
 
     SpecTitle:
         RFC6481
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6481
     """
+
     __MEDIA_TYPE__: str = "application/rpki-roa"
+
 
 class MediaTypeApplicationRpkiUpdown(MediaType):
     """
@@ -1075,11 +1240,13 @@ class MediaTypeApplicationRpkiUpdown(MediaType):
 
     SpecTitle:
         RFC6492
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6492
     """
+
     __MEDIA_TYPE__: str = "application/rpki-updown"
+
 
 class MediaTypeApplicationRtploopback(MediaType):
     """
@@ -1088,11 +1255,13 @@ class MediaTypeApplicationRtploopback(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "application/rtploopback"
+
 
 class MediaTypeApplicationRtx(MediaType):
     """
@@ -1101,11 +1270,13 @@ class MediaTypeApplicationRtx(MediaType):
 
     SpecTitle:
         RFC4588
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4588
     """
+
     __MEDIA_TYPE__: str = "application/rtx"
+
 
 class MediaTypeApplicationScvpCvRequest(MediaType):
     """
@@ -1114,11 +1285,13 @@ class MediaTypeApplicationScvpCvRequest(MediaType):
 
     SpecTitle:
         RFC5055
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5055
     """
+
     __MEDIA_TYPE__: str = "application/scvp-cv-request"
+
 
 class MediaTypeApplicationScvpCvResponse(MediaType):
     """
@@ -1127,11 +1300,13 @@ class MediaTypeApplicationScvpCvResponse(MediaType):
 
     SpecTitle:
         RFC5055
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5055
     """
+
     __MEDIA_TYPE__: str = "application/scvp-cv-response"
+
 
 class MediaTypeApplicationScvpVpRequest(MediaType):
     """
@@ -1140,11 +1315,13 @@ class MediaTypeApplicationScvpVpRequest(MediaType):
 
     SpecTitle:
         RFC5055
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5055
     """
+
     __MEDIA_TYPE__: str = "application/scvp-vp-request"
+
 
 class MediaTypeApplicationScvpVpResponse(MediaType):
     """
@@ -1153,11 +1330,13 @@ class MediaTypeApplicationScvpVpResponse(MediaType):
 
     SpecTitle:
         RFC5055
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5055
     """
+
     __MEDIA_TYPE__: str = "application/scvp-vp-response"
+
 
 class MediaTypeApplicationSdp(MediaType):
     """
@@ -1166,11 +1345,13 @@ class MediaTypeApplicationSdp(MediaType):
 
     SpecTitle:
         RFC4566
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4566
     """
+
     __MEDIA_TYPE__: str = "application/sdp"
+
 
 class MediaTypeApplicationSgml(MediaType):
     """
@@ -1179,11 +1360,13 @@ class MediaTypeApplicationSgml(MediaType):
 
     SpecTitle:
         RFC1874
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1874
     """
+
     __MEDIA_TYPE__: str = "application/sgml"
+
 
 class MediaTypeApplicationSieve(MediaType):
     """
@@ -1192,11 +1375,13 @@ class MediaTypeApplicationSieve(MediaType):
 
     SpecTitle:
         RFC5228
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5228
     """
+
     __MEDIA_TYPE__: str = "application/sieve"
+
 
 class MediaTypeApplicationSimpleMessageSummary(MediaType):
     """
@@ -1205,11 +1390,13 @@ class MediaTypeApplicationSimpleMessageSummary(MediaType):
 
     SpecTitle:
         RFC3842
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3842
     """
+
     __MEDIA_TYPE__: str = "application/simple-message-summary"
+
 
 class MediaTypeApplicationSmpte336m(MediaType):
     """
@@ -1218,11 +1405,13 @@ class MediaTypeApplicationSmpte336m(MediaType):
 
     SpecTitle:
         RFC6597
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6597
     """
+
     __MEDIA_TYPE__: str = "application/smpte336m"
+
 
 class MediaTypeApplicationSql(MediaType):
     """
@@ -1231,11 +1420,13 @@ class MediaTypeApplicationSql(MediaType):
 
     SpecTitle:
         RFC6922
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6922
     """
+
     __MEDIA_TYPE__: str = "application/sql"
+
 
 class MediaTypeApplicationSrgs(MediaType):
     """
@@ -1244,11 +1435,13 @@ class MediaTypeApplicationSrgs(MediaType):
 
     SpecTitle:
         RFC4267
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4267
     """
+
     __MEDIA_TYPE__: str = "application/srgs"
+
 
 class MediaTypeApplicationTampApexUpdate(MediaType):
     """
@@ -1257,11 +1450,13 @@ class MediaTypeApplicationTampApexUpdate(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-apex-update"
+
 
 class MediaTypeApplicationTampApexUpdateConfirm(MediaType):
     """
@@ -1270,11 +1465,13 @@ class MediaTypeApplicationTampApexUpdateConfirm(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-apex-update-confirm"
+
 
 class MediaTypeApplicationTampCommunityUpdate(MediaType):
     """
@@ -1283,11 +1480,13 @@ class MediaTypeApplicationTampCommunityUpdate(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-community-update"
+
 
 class MediaTypeApplicationTampCommunityUpdateConfirm(MediaType):
     """
@@ -1296,11 +1495,13 @@ class MediaTypeApplicationTampCommunityUpdateConfirm(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-community-update-confirm"
+
 
 class MediaTypeApplicationTampError(MediaType):
     """
@@ -1309,11 +1510,13 @@ class MediaTypeApplicationTampError(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-error"
+
 
 class MediaTypeApplicationTampSequenceAdjust(MediaType):
     """
@@ -1322,11 +1525,13 @@ class MediaTypeApplicationTampSequenceAdjust(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-sequence-adjust"
+
 
 class MediaTypeApplicationTampSequenceAdjustConfirm(MediaType):
     """
@@ -1335,11 +1540,13 @@ class MediaTypeApplicationTampSequenceAdjustConfirm(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-sequence-adjust-confirm"
+
 
 class MediaTypeApplicationTampStatusQuery(MediaType):
     """
@@ -1348,11 +1555,13 @@ class MediaTypeApplicationTampStatusQuery(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-status-query"
+
 
 class MediaTypeApplicationTampStatusResponse(MediaType):
     """
@@ -1361,11 +1570,13 @@ class MediaTypeApplicationTampStatusResponse(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-status-response"
+
 
 class MediaTypeApplicationTampUpdate(MediaType):
     """
@@ -1374,11 +1585,13 @@ class MediaTypeApplicationTampUpdate(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-update"
+
 
 class MediaTypeApplicationTampUpdateConfirm(MediaType):
     """
@@ -1387,11 +1600,13 @@ class MediaTypeApplicationTampUpdateConfirm(MediaType):
 
     SpecTitle:
         RFC5934
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5934
     """
+
     __MEDIA_TYPE__: str = "application/tamp-update-confirm"
+
 
 class MediaTypeApplicationTimestampQuery(MediaType):
     """
@@ -1400,11 +1615,13 @@ class MediaTypeApplicationTimestampQuery(MediaType):
 
     SpecTitle:
         RFC3161
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3161
     """
+
     __MEDIA_TYPE__: str = "application/timestamp-query"
+
 
 class MediaTypeApplicationTimestampReply(MediaType):
     """
@@ -1413,11 +1630,13 @@ class MediaTypeApplicationTimestampReply(MediaType):
 
     SpecTitle:
         RFC3161
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3161
     """
+
     __MEDIA_TYPE__: str = "application/timestamp-reply"
+
 
 class MediaTypeApplicationTimestampedData(MediaType):
     """
@@ -1426,11 +1645,13 @@ class MediaTypeApplicationTimestampedData(MediaType):
 
     SpecTitle:
         RFC5955
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5955
     """
+
     __MEDIA_TYPE__: str = "application/timestamped-data"
+
 
 class MediaTypeApplicationUlpfec(MediaType):
     """
@@ -1439,11 +1660,13 @@ class MediaTypeApplicationUlpfec(MediaType):
 
     SpecTitle:
         RFC5109
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5109
     """
+
     __MEDIA_TYPE__: str = "application/ulpfec"
+
 
 class MediaTypeApplicationVemmi(MediaType):
     """
@@ -1452,11 +1675,13 @@ class MediaTypeApplicationVemmi(MediaType):
 
     SpecTitle:
         RFC2122
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2122
     """
+
     __MEDIA_TYPE__: str = "application/vemmi"
+
 
 class MediaTypeApplicationVqRtcpxr(MediaType):
     """
@@ -1465,11 +1690,13 @@ class MediaTypeApplicationVqRtcpxr(MediaType):
 
     SpecTitle:
         RFC6035
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6035
     """
+
     __MEDIA_TYPE__: str = "application/vq-rtcpxr"
+
 
 class MediaTypeApplicationWhoisppQuery(MediaType):
     """
@@ -1478,11 +1705,13 @@ class MediaTypeApplicationWhoisppQuery(MediaType):
 
     SpecTitle:
         RFC2957
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2957
     """
+
     __MEDIA_TYPE__: str = "application/whoispp-query"
+
 
 class MediaTypeApplicationWhoisppResponse(MediaType):
     """
@@ -1491,11 +1720,13 @@ class MediaTypeApplicationWhoisppResponse(MediaType):
 
     SpecTitle:
         RFC2958
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2958
     """
+
     __MEDIA_TYPE__: str = "application/whoispp-response"
+
 
 class MediaTypeApplicationX400Bp(MediaType):
     """
@@ -1504,11 +1735,13 @@ class MediaTypeApplicationX400Bp(MediaType):
 
     SpecTitle:
         RFC1494
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1494
     """
+
     __MEDIA_TYPE__: str = "application/x400-bp"
+
 
 class MediaTypeApplicationXml(MediaType):
     """
@@ -1517,11 +1750,13 @@ class MediaTypeApplicationXml(MediaType):
 
     SpecTitle:
         RFC7303
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7303
     """
+
     __MEDIA_TYPE__: str = "application/xml"
+
 
 class MediaTypeApplicationXmlDtd(MediaType):
     """
@@ -1530,11 +1765,13 @@ class MediaTypeApplicationXmlDtd(MediaType):
 
     SpecTitle:
         RFC7303
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7303
     """
+
     __MEDIA_TYPE__: str = "application/xml-dtd"
+
 
 class MediaTypeApplicationXmlExternalParsedEntity(MediaType):
     """
@@ -1543,11 +1780,13 @@ class MediaTypeApplicationXmlExternalParsedEntity(MediaType):
 
     SpecTitle:
         RFC7303
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7303
     """
+
     __MEDIA_TYPE__: str = "application/xml-external-parsed-entity"
+
 
 class MediaTypeApplicationYang(MediaType):
     """
@@ -1556,11 +1795,13 @@ class MediaTypeApplicationYang(MediaType):
 
     SpecTitle:
         RFC6020
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6020
     """
+
     __MEDIA_TYPE__: str = "application/yang"
+
 
 class MediaTypeApplicationZlib(MediaType):
     """
@@ -1569,11 +1810,13 @@ class MediaTypeApplicationZlib(MediaType):
 
     SpecTitle:
         RFC6713
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6713
     """
+
     __MEDIA_TYPE__: str = "application/zlib"
+
 
 class MediaTypeAudio1DInterleavedParityfec(MediaType):
     """
@@ -1582,11 +1825,13 @@ class MediaTypeAudio1DInterleavedParityfec(MediaType):
 
     SpecTitle:
         RFC6015
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6015
     """
+
     __MEDIA_TYPE__: str = "audio/1d-interleaved-parityfec"
+
 
 class MediaTypeAudio32Kadpcm(MediaType):
     """
@@ -1595,11 +1840,13 @@ class MediaTypeAudio32Kadpcm(MediaType):
 
     SpecTitle:
         RFC3802
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3802
     """
+
     __MEDIA_TYPE__: str = "audio/32kadpcm"
+
 
 class MediaTypeAudio3Gpp(MediaType):
     """
@@ -1608,11 +1855,13 @@ class MediaTypeAudio3Gpp(MediaType):
 
     SpecTitle:
         RFC3839
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3839
     """
+
     __MEDIA_TYPE__: str = "audio/3gpp"
+
 
 class MediaTypeAudio3Gpp2(MediaType):
     """
@@ -1621,11 +1870,13 @@ class MediaTypeAudio3Gpp2(MediaType):
 
     SpecTitle:
         RFC4393
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4393
     """
+
     __MEDIA_TYPE__: str = "audio/3gpp2"
+
 
 class MediaTypeAudioAc3(MediaType):
     """
@@ -1634,11 +1885,13 @@ class MediaTypeAudioAc3(MediaType):
 
     SpecTitle:
         RFC4184
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4184
     """
+
     __MEDIA_TYPE__: str = "audio/ac3"
+
 
 class MediaTypeAudioAmr(MediaType):
     """
@@ -1647,11 +1900,13 @@ class MediaTypeAudioAmr(MediaType):
 
     SpecTitle:
         RFC4867
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4867
     """
+
     __MEDIA_TYPE__: str = "audio/AMR"
+
 
 class MediaTypeAudioAmrWb(MediaType):
     """
@@ -1660,11 +1915,13 @@ class MediaTypeAudioAmrWb(MediaType):
 
     SpecTitle:
         RFC4867
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4867
     """
+
     __MEDIA_TYPE__: str = "audio/AMR-WB"
+
 
 class MediaTypeAudioAptx(MediaType):
     """
@@ -1673,11 +1930,13 @@ class MediaTypeAudioAptx(MediaType):
 
     SpecTitle:
         RFC7310
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7310
     """
+
     __MEDIA_TYPE__: str = "audio/aptx"
+
 
 class MediaTypeAudioAsc(MediaType):
     """
@@ -1686,11 +1945,13 @@ class MediaTypeAudioAsc(MediaType):
 
     SpecTitle:
         RFC6295
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6295
     """
+
     __MEDIA_TYPE__: str = "audio/asc"
+
 
 class MediaTypeAudioAtracAdvancedLossless(MediaType):
     """
@@ -1699,11 +1960,13 @@ class MediaTypeAudioAtracAdvancedLossless(MediaType):
 
     SpecTitle:
         RFC5584
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5584
     """
+
     __MEDIA_TYPE__: str = "audio/ATRAC-ADVANCED-LOSSLESS"
+
 
 class MediaTypeAudioAtracX(MediaType):
     """
@@ -1712,11 +1975,13 @@ class MediaTypeAudioAtracX(MediaType):
 
     SpecTitle:
         RFC5584
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5584
     """
+
     __MEDIA_TYPE__: str = "audio/ATRAC-X"
+
 
 class MediaTypeAudioAtrac3(MediaType):
     """
@@ -1725,11 +1990,13 @@ class MediaTypeAudioAtrac3(MediaType):
 
     SpecTitle:
         RFC5584
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5584
     """
+
     __MEDIA_TYPE__: str = "audio/ATRAC3"
+
 
 class MediaTypeAudioBasic(MediaType):
     """
@@ -1738,11 +2005,13 @@ class MediaTypeAudioBasic(MediaType):
 
     SpecTitle:
         RFC2045
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2045
     """
+
     __MEDIA_TYPE__: str = "audio/basic"
+
 
 class MediaTypeAudioBv16(MediaType):
     """
@@ -1751,11 +2020,13 @@ class MediaTypeAudioBv16(MediaType):
 
     SpecTitle:
         RFC4298
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4298
     """
+
     __MEDIA_TYPE__: str = "audio/BV16"
+
 
 class MediaTypeAudioBv32(MediaType):
     """
@@ -1764,11 +2035,13 @@ class MediaTypeAudioBv32(MediaType):
 
     SpecTitle:
         RFC4298
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4298
     """
+
     __MEDIA_TYPE__: str = "audio/BV32"
+
 
 class MediaTypeAudioClearmode(MediaType):
     """
@@ -1777,11 +2050,13 @@ class MediaTypeAudioClearmode(MediaType):
 
     SpecTitle:
         RFC4040
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4040
     """
+
     __MEDIA_TYPE__: str = "audio/clearmode"
+
 
 class MediaTypeAudioCn(MediaType):
     """
@@ -1790,11 +2065,13 @@ class MediaTypeAudioCn(MediaType):
 
     SpecTitle:
         RFC3389
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3389
     """
+
     __MEDIA_TYPE__: str = "audio/CN"
+
 
 class MediaTypeAudioDat12(MediaType):
     """
@@ -1803,11 +2080,13 @@ class MediaTypeAudioDat12(MediaType):
 
     SpecTitle:
         RFC3190
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3190
     """
+
     __MEDIA_TYPE__: str = "audio/DAT12"
+
 
 class MediaTypeAudioDls(MediaType):
     """
@@ -1816,11 +2095,13 @@ class MediaTypeAudioDls(MediaType):
 
     SpecTitle:
         RFC4613
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4613
     """
+
     __MEDIA_TYPE__: str = "audio/dls"
+
 
 class MediaTypeAudioDsrEs201108(MediaType):
     """
@@ -1829,11 +2110,13 @@ class MediaTypeAudioDsrEs201108(MediaType):
 
     SpecTitle:
         RFC3557
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3557
     """
+
     __MEDIA_TYPE__: str = "audio/dsr-es201108"
+
 
 class MediaTypeAudioDsrEs202050(MediaType):
     """
@@ -1842,11 +2125,13 @@ class MediaTypeAudioDsrEs202050(MediaType):
 
     SpecTitle:
         RFC4060
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4060
     """
+
     __MEDIA_TYPE__: str = "audio/dsr-es202050"
+
 
 class MediaTypeAudioDsrEs202211(MediaType):
     """
@@ -1855,11 +2140,13 @@ class MediaTypeAudioDsrEs202211(MediaType):
 
     SpecTitle:
         RFC4060
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4060
     """
+
     __MEDIA_TYPE__: str = "audio/dsr-es202211"
+
 
 class MediaTypeAudioDsrEs202212(MediaType):
     """
@@ -1868,11 +2155,13 @@ class MediaTypeAudioDsrEs202212(MediaType):
 
     SpecTitle:
         RFC4060
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4060
     """
+
     __MEDIA_TYPE__: str = "audio/dsr-es202212"
+
 
 class MediaTypeAudioDv(MediaType):
     """
@@ -1881,11 +2170,13 @@ class MediaTypeAudioDv(MediaType):
 
     SpecTitle:
         RFC6469
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6469
     """
+
     __MEDIA_TYPE__: str = "audio/DV"
+
 
 class MediaTypeAudioDvi4(MediaType):
     """
@@ -1894,11 +2185,13 @@ class MediaTypeAudioDvi4(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/DVI4"
+
 
 class MediaTypeAudioEac3(MediaType):
     """
@@ -1907,11 +2200,13 @@ class MediaTypeAudioEac3(MediaType):
 
     SpecTitle:
         RFC4598
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4598
     """
+
     __MEDIA_TYPE__: str = "audio/eac3"
+
 
 class MediaTypeAudioEncaprtp(MediaType):
     """
@@ -1920,11 +2215,13 @@ class MediaTypeAudioEncaprtp(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "audio/encaprtp"
+
 
 class MediaTypeAudioEvrc(MediaType):
     """
@@ -1933,11 +2230,13 @@ class MediaTypeAudioEvrc(MediaType):
 
     SpecTitle:
         RFC4788
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4788
     """
+
     __MEDIA_TYPE__: str = "audio/EVRC"
+
 
 class MediaTypeAudioEvrcQcp(MediaType):
     """
@@ -1946,11 +2245,13 @@ class MediaTypeAudioEvrcQcp(MediaType):
 
     SpecTitle:
         RFC3625
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3625
     """
+
     __MEDIA_TYPE__: str = "audio/EVRC-QCP"
+
 
 class MediaTypeAudioEvrc0(MediaType):
     """
@@ -1959,11 +2260,13 @@ class MediaTypeAudioEvrc0(MediaType):
 
     SpecTitle:
         RFC4788
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4788
     """
+
     __MEDIA_TYPE__: str = "audio/EVRC0"
+
 
 class MediaTypeAudioEvrc1(MediaType):
     """
@@ -1972,11 +2275,13 @@ class MediaTypeAudioEvrc1(MediaType):
 
     SpecTitle:
         RFC4788
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4788
     """
+
     __MEDIA_TYPE__: str = "audio/EVRC1"
+
 
 class MediaTypeAudioEvrcb(MediaType):
     """
@@ -1985,11 +2290,13 @@ class MediaTypeAudioEvrcb(MediaType):
 
     SpecTitle:
         RFC5188
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5188
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCB"
+
 
 class MediaTypeAudioEvrcb0(MediaType):
     """
@@ -1998,11 +2305,13 @@ class MediaTypeAudioEvrcb0(MediaType):
 
     SpecTitle:
         RFC5188
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5188
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCB0"
+
 
 class MediaTypeAudioEvrcb1(MediaType):
     """
@@ -2011,11 +2320,13 @@ class MediaTypeAudioEvrcb1(MediaType):
 
     SpecTitle:
         RFC4788
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4788
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCB1"
+
 
 class MediaTypeAudioEvrcnw(MediaType):
     """
@@ -2024,11 +2335,13 @@ class MediaTypeAudioEvrcnw(MediaType):
 
     SpecTitle:
         RFC6884
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6884
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCNW"
+
 
 class MediaTypeAudioEvrcnw0(MediaType):
     """
@@ -2037,11 +2350,13 @@ class MediaTypeAudioEvrcnw0(MediaType):
 
     SpecTitle:
         RFC6884
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6884
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCNW0"
+
 
 class MediaTypeAudioEvrcnw1(MediaType):
     """
@@ -2050,11 +2365,13 @@ class MediaTypeAudioEvrcnw1(MediaType):
 
     SpecTitle:
         RFC6884
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6884
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCNW1"
+
 
 class MediaTypeAudioEvrcwb(MediaType):
     """
@@ -2063,11 +2380,13 @@ class MediaTypeAudioEvrcwb(MediaType):
 
     SpecTitle:
         RFC5188
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5188
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCWB"
+
 
 class MediaTypeAudioEvrcwb0(MediaType):
     """
@@ -2076,11 +2395,13 @@ class MediaTypeAudioEvrcwb0(MediaType):
 
     SpecTitle:
         RFC5188
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5188
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCWB0"
+
 
 class MediaTypeAudioEvrcwb1(MediaType):
     """
@@ -2089,11 +2410,13 @@ class MediaTypeAudioEvrcwb1(MediaType):
 
     SpecTitle:
         RFC5188
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5188
     """
+
     __MEDIA_TYPE__: str = "audio/EVRCWB1"
+
 
 class MediaTypeAudioExample(MediaType):
     """
@@ -2102,11 +2425,13 @@ class MediaTypeAudioExample(MediaType):
 
     SpecTitle:
         RFC4735
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4735
     """
+
     __MEDIA_TYPE__: str = "audio/example"
+
 
 class MediaTypeAudioFwdred(MediaType):
     """
@@ -2115,11 +2440,13 @@ class MediaTypeAudioFwdred(MediaType):
 
     SpecTitle:
         RFC6354
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6354
     """
+
     __MEDIA_TYPE__: str = "audio/fwdred"
+
 
 class MediaTypeAudioG7110(MediaType):
     """
@@ -2128,11 +2455,13 @@ class MediaTypeAudioG7110(MediaType):
 
     SpecTitle:
         RFC7655
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7655
     """
+
     __MEDIA_TYPE__: str = "audio/G711-0"
+
 
 class MediaTypeAudioG719(MediaType):
     """
@@ -2140,12 +2469,14 @@ class MediaTypeAudioG719(MediaType):
         https://www.iana.org/assignments/media-types/audio/G719
 
     SpecTitle:
-        RFC Errata 
-    
+        RFC Errata
+
     SpecReference:
-        https://tools.ietf.org/html/rfc errata 
+        https://tools.ietf.org/html/rfc errata
     """
+
     __MEDIA_TYPE__: str = "audio/G719"
+
 
 class MediaTypeAudioG7221(MediaType):
     """
@@ -2154,11 +2485,13 @@ class MediaTypeAudioG7221(MediaType):
 
     SpecTitle:
         RFC5577
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5577
     """
+
     __MEDIA_TYPE__: str = "audio/G7221"
+
 
 class MediaTypeAudioG722(MediaType):
     """
@@ -2167,11 +2500,13 @@ class MediaTypeAudioG722(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G722"
+
 
 class MediaTypeAudioG723(MediaType):
     """
@@ -2180,11 +2515,13 @@ class MediaTypeAudioG723(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G723"
+
 
 class MediaTypeAudioG72616(MediaType):
     """
@@ -2193,11 +2530,13 @@ class MediaTypeAudioG72616(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G726-16"
+
 
 class MediaTypeAudioG72624(MediaType):
     """
@@ -2206,11 +2545,13 @@ class MediaTypeAudioG72624(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G726-24"
+
 
 class MediaTypeAudioG72632(MediaType):
     """
@@ -2219,11 +2560,13 @@ class MediaTypeAudioG72632(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G726-32"
+
 
 class MediaTypeAudioG72640(MediaType):
     """
@@ -2232,11 +2575,13 @@ class MediaTypeAudioG72640(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G726-40"
+
 
 class MediaTypeAudioG728(MediaType):
     """
@@ -2245,11 +2590,13 @@ class MediaTypeAudioG728(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G728"
+
 
 class MediaTypeAudioG729(MediaType):
     """
@@ -2258,11 +2605,13 @@ class MediaTypeAudioG729(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G729"
+
 
 class MediaTypeAudioG729d(MediaType):
     """
@@ -2271,11 +2620,13 @@ class MediaTypeAudioG729d(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G729D"
+
 
 class MediaTypeAudioG729e(MediaType):
     """
@@ -2284,11 +2635,13 @@ class MediaTypeAudioG729e(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/G729E"
+
 
 class MediaTypeAudioGsm(MediaType):
     """
@@ -2297,11 +2650,13 @@ class MediaTypeAudioGsm(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/GSM"
+
 
 class MediaTypeAudioGsmEfr(MediaType):
     """
@@ -2310,11 +2665,13 @@ class MediaTypeAudioGsmEfr(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/GSM-EFR"
+
 
 class MediaTypeAudioGsmHr08(MediaType):
     """
@@ -2323,11 +2680,13 @@ class MediaTypeAudioGsmHr08(MediaType):
 
     SpecTitle:
         RFC5993
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5993
     """
+
     __MEDIA_TYPE__: str = "audio/GSM-HR-08"
+
 
 class MediaTypeAudioIlbc(MediaType):
     """
@@ -2336,11 +2695,13 @@ class MediaTypeAudioIlbc(MediaType):
 
     SpecTitle:
         RFC3952
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3952
     """
+
     __MEDIA_TYPE__: str = "audio/iLBC"
+
 
 class MediaTypeAudioL8(MediaType):
     """
@@ -2349,11 +2710,13 @@ class MediaTypeAudioL8(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/L8"
+
 
 class MediaTypeAudioL16(MediaType):
     """
@@ -2362,11 +2725,13 @@ class MediaTypeAudioL16(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/L16"
+
 
 class MediaTypeAudioL20(MediaType):
     """
@@ -2375,11 +2740,13 @@ class MediaTypeAudioL20(MediaType):
 
     SpecTitle:
         RFC3190
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3190
     """
+
     __MEDIA_TYPE__: str = "audio/L20"
+
 
 class MediaTypeAudioL24(MediaType):
     """
@@ -2388,11 +2755,13 @@ class MediaTypeAudioL24(MediaType):
 
     SpecTitle:
         RFC3190
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3190
     """
+
     __MEDIA_TYPE__: str = "audio/L24"
+
 
 class MediaTypeAudioLpc(MediaType):
     """
@@ -2401,11 +2770,13 @@ class MediaTypeAudioLpc(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/LPC"
+
 
 class MediaTypeAudioMobileXmf(MediaType):
     """
@@ -2414,11 +2785,13 @@ class MediaTypeAudioMobileXmf(MediaType):
 
     SpecTitle:
         RFC4723
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4723
     """
+
     __MEDIA_TYPE__: str = "audio/mobile-xmf"
+
 
 class MediaTypeAudioMpa(MediaType):
     """
@@ -2427,11 +2800,13 @@ class MediaTypeAudioMpa(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "audio/MPA"
+
 
 class MediaTypeAudioMp4(MediaType):
     """
@@ -2440,11 +2815,13 @@ class MediaTypeAudioMp4(MediaType):
 
     SpecTitle:
         RFC4337
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4337
     """
+
     __MEDIA_TYPE__: str = "audio/mp4"
+
 
 class MediaTypeAudioMp4aLatm(MediaType):
     """
@@ -2453,11 +2830,13 @@ class MediaTypeAudioMp4aLatm(MediaType):
 
     SpecTitle:
         RFC6416
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6416
     """
+
     __MEDIA_TYPE__: str = "audio/MP4A-LATM"
+
 
 class MediaTypeAudioMpaRobust(MediaType):
     """
@@ -2466,11 +2845,13 @@ class MediaTypeAudioMpaRobust(MediaType):
 
     SpecTitle:
         RFC5219
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5219
     """
+
     __MEDIA_TYPE__: str = "audio/mpa-robust"
+
 
 class MediaTypeAudioMpeg(MediaType):
     """
@@ -2479,11 +2860,13 @@ class MediaTypeAudioMpeg(MediaType):
 
     SpecTitle:
         RFC3003
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3003
     """
+
     __MEDIA_TYPE__: str = "audio/mpeg"
+
 
 class MediaTypeAudioMpeg4Generic(MediaType):
     """
@@ -2492,11 +2875,13 @@ class MediaTypeAudioMpeg4Generic(MediaType):
 
     SpecTitle:
         RFC3640
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3640
     """
+
     __MEDIA_TYPE__: str = "audio/mpeg4-generic"
+
 
 class MediaTypeAudioOgg(MediaType):
     """
@@ -2505,11 +2890,13 @@ class MediaTypeAudioOgg(MediaType):
 
     SpecTitle:
         RFC5334
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5334
     """
+
     __MEDIA_TYPE__: str = "audio/ogg"
+
 
 class MediaTypeAudioOpus(MediaType):
     """
@@ -2518,11 +2905,13 @@ class MediaTypeAudioOpus(MediaType):
 
     SpecTitle:
         RFC7587
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7587
     """
+
     __MEDIA_TYPE__: str = "audio/opus"
+
 
 class MediaTypeAudioPcma(MediaType):
     """
@@ -2531,11 +2920,13 @@ class MediaTypeAudioPcma(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/PCMA"
+
 
 class MediaTypeAudioPcmaWb(MediaType):
     """
@@ -2544,11 +2935,13 @@ class MediaTypeAudioPcmaWb(MediaType):
 
     SpecTitle:
         RFC5391
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5391
     """
+
     __MEDIA_TYPE__: str = "audio/PCMA-WB"
+
 
 class MediaTypeAudioPcmu(MediaType):
     """
@@ -2557,11 +2950,13 @@ class MediaTypeAudioPcmu(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/PCMU"
+
 
 class MediaTypeAudioPcmuWb(MediaType):
     """
@@ -2570,11 +2965,13 @@ class MediaTypeAudioPcmuWb(MediaType):
 
     SpecTitle:
         RFC5391
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5391
     """
+
     __MEDIA_TYPE__: str = "audio/PCMU-WB"
+
 
 class MediaTypeAudioRaptorfec(MediaType):
     """
@@ -2583,11 +2980,13 @@ class MediaTypeAudioRaptorfec(MediaType):
 
     SpecTitle:
         RFC6682
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6682
     """
+
     __MEDIA_TYPE__: str = "audio/raptorfec"
+
 
 class MediaTypeAudioRed(MediaType):
     """
@@ -2596,11 +2995,13 @@ class MediaTypeAudioRed(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "audio/RED"
+
 
 class MediaTypeAudioRtploopback(MediaType):
     """
@@ -2609,11 +3010,13 @@ class MediaTypeAudioRtploopback(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "audio/rtploopback"
+
 
 class MediaTypeAudioRtpMidi(MediaType):
     """
@@ -2622,11 +3025,13 @@ class MediaTypeAudioRtpMidi(MediaType):
 
     SpecTitle:
         RFC6295
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6295
     """
+
     __MEDIA_TYPE__: str = "audio/rtp-midi"
+
 
 class MediaTypeAudioRtx(MediaType):
     """
@@ -2635,11 +3040,13 @@ class MediaTypeAudioRtx(MediaType):
 
     SpecTitle:
         RFC4588
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4588
     """
+
     __MEDIA_TYPE__: str = "audio/rtx"
+
 
 class MediaTypeAudioSmv(MediaType):
     """
@@ -2648,11 +3055,13 @@ class MediaTypeAudioSmv(MediaType):
 
     SpecTitle:
         RFC3558
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3558
     """
+
     __MEDIA_TYPE__: str = "audio/SMV"
+
 
 class MediaTypeAudioSmv0(MediaType):
     """
@@ -2661,11 +3070,13 @@ class MediaTypeAudioSmv0(MediaType):
 
     SpecTitle:
         RFC3558
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3558
     """
+
     __MEDIA_TYPE__: str = "audio/SMV0"
+
 
 class MediaTypeAudioSmvQcp(MediaType):
     """
@@ -2674,11 +3085,13 @@ class MediaTypeAudioSmvQcp(MediaType):
 
     SpecTitle:
         RFC3625
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3625
     """
+
     __MEDIA_TYPE__: str = "audio/SMV-QCP"
+
 
 class MediaTypeAudioSpeex(MediaType):
     """
@@ -2687,11 +3100,13 @@ class MediaTypeAudioSpeex(MediaType):
 
     SpecTitle:
         RFC5574
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5574
     """
+
     __MEDIA_TYPE__: str = "audio/speex"
+
 
 class MediaTypeAudioT140c(MediaType):
     """
@@ -2700,11 +3115,13 @@ class MediaTypeAudioT140c(MediaType):
 
     SpecTitle:
         RFC4351
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4351
     """
+
     __MEDIA_TYPE__: str = "audio/t140c"
+
 
 class MediaTypeAudioT38(MediaType):
     """
@@ -2713,11 +3130,13 @@ class MediaTypeAudioT38(MediaType):
 
     SpecTitle:
         RFC4612
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4612
     """
+
     __MEDIA_TYPE__: str = "audio/t38"
+
 
 class MediaTypeAudioTelephoneEvent(MediaType):
     """
@@ -2726,11 +3145,13 @@ class MediaTypeAudioTelephoneEvent(MediaType):
 
     SpecTitle:
         RFC4733
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4733
     """
+
     __MEDIA_TYPE__: str = "audio/telephone-event"
+
 
 class MediaTypeAudioTone(MediaType):
     """
@@ -2739,11 +3160,13 @@ class MediaTypeAudioTone(MediaType):
 
     SpecTitle:
         RFC4733
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4733
     """
+
     __MEDIA_TYPE__: str = "audio/tone"
+
 
 class MediaTypeAudioUemclip(MediaType):
     """
@@ -2752,11 +3175,13 @@ class MediaTypeAudioUemclip(MediaType):
 
     SpecTitle:
         RFC5686
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5686
     """
+
     __MEDIA_TYPE__: str = "audio/UEMCLIP"
+
 
 class MediaTypeAudioUlpfec(MediaType):
     """
@@ -2765,11 +3190,13 @@ class MediaTypeAudioUlpfec(MediaType):
 
     SpecTitle:
         RFC5109
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5109
     """
+
     __MEDIA_TYPE__: str = "audio/ulpfec"
+
 
 class MediaTypeAudioVdvi(MediaType):
     """
@@ -2778,11 +3205,13 @@ class MediaTypeAudioVdvi(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "audio/VDVI"
+
 
 class MediaTypeAudioVmrWb(MediaType):
     """
@@ -2791,11 +3220,13 @@ class MediaTypeAudioVmrWb(MediaType):
 
     SpecTitle:
         RFC4348
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4348
     """
+
     __MEDIA_TYPE__: str = "audio/VMR-WB"
+
 
 class MediaTypeAudioVorbis(MediaType):
     """
@@ -2804,11 +3235,13 @@ class MediaTypeAudioVorbis(MediaType):
 
     SpecTitle:
         RFC5215
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5215
     """
+
     __MEDIA_TYPE__: str = "audio/vorbis"
+
 
 class MediaTypeAudioVorbisConfig(MediaType):
     """
@@ -2817,11 +3250,13 @@ class MediaTypeAudioVorbisConfig(MediaType):
 
     SpecTitle:
         RFC5215
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5215
     """
+
     __MEDIA_TYPE__: str = "audio/vorbis-config"
+
 
 class MediaTypeMessageCpim(MediaType):
     """
@@ -2830,11 +3265,13 @@ class MediaTypeMessageCpim(MediaType):
 
     SpecTitle:
         RFC3862
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3862
     """
+
     __MEDIA_TYPE__: str = "message/CPIM"
+
 
 class MediaTypeMessageDeliveryStatus(MediaType):
     """
@@ -2843,11 +3280,13 @@ class MediaTypeMessageDeliveryStatus(MediaType):
 
     SpecTitle:
         RFC1894
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1894
     """
+
     __MEDIA_TYPE__: str = "message/delivery-status"
+
 
 class MediaTypeMessageDispositionNotification(MediaType):
     """
@@ -2856,11 +3295,13 @@ class MediaTypeMessageDispositionNotification(MediaType):
 
     SpecTitle:
         RFC3798
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3798
     """
+
     __MEDIA_TYPE__: str = "message/disposition-notification"
+
 
 class MediaTypeMessageExample(MediaType):
     """
@@ -2869,11 +3310,13 @@ class MediaTypeMessageExample(MediaType):
 
     SpecTitle:
         RFC4735
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4735
     """
+
     __MEDIA_TYPE__: str = "message/example"
+
 
 class MediaTypeMessageFeedbackReport(MediaType):
     """
@@ -2882,11 +3325,13 @@ class MediaTypeMessageFeedbackReport(MediaType):
 
     SpecTitle:
         RFC5965
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5965
     """
+
     __MEDIA_TYPE__: str = "message/feedback-report"
+
 
 class MediaTypeMessageGlobal(MediaType):
     """
@@ -2895,11 +3340,13 @@ class MediaTypeMessageGlobal(MediaType):
 
     SpecTitle:
         RFC6532
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6532
     """
+
     __MEDIA_TYPE__: str = "message/global"
+
 
 class MediaTypeMessageGlobalDeliveryStatus(MediaType):
     """
@@ -2908,11 +3355,13 @@ class MediaTypeMessageGlobalDeliveryStatus(MediaType):
 
     SpecTitle:
         RFC6533
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6533
     """
+
     __MEDIA_TYPE__: str = "message/global-delivery-status"
+
 
 class MediaTypeMessageGlobalDispositionNotification(MediaType):
     """
@@ -2921,11 +3370,13 @@ class MediaTypeMessageGlobalDispositionNotification(MediaType):
 
     SpecTitle:
         RFC6533
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6533
     """
+
     __MEDIA_TYPE__: str = "message/global-disposition-notification"
+
 
 class MediaTypeMessageGlobalHeaders(MediaType):
     """
@@ -2934,11 +3385,13 @@ class MediaTypeMessageGlobalHeaders(MediaType):
 
     SpecTitle:
         RFC6533
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6533
     """
+
     __MEDIA_TYPE__: str = "message/global-headers"
+
 
 class MediaTypeMessageHttp(MediaType):
     """
@@ -2947,11 +3400,13 @@ class MediaTypeMessageHttp(MediaType):
 
     SpecTitle:
         RFC7230
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7230
     """
+
     __MEDIA_TYPE__: str = "message/http"
+
 
 class MediaTypeMessageSHttp(MediaType):
     """
@@ -2960,11 +3415,13 @@ class MediaTypeMessageSHttp(MediaType):
 
     SpecTitle:
         RFC2660
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2660
     """
+
     __MEDIA_TYPE__: str = "message/s-http"
+
 
 class MediaTypeMessageSip(MediaType):
     """
@@ -2973,11 +3430,13 @@ class MediaTypeMessageSip(MediaType):
 
     SpecTitle:
         RFC3261
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3261
     """
+
     __MEDIA_TYPE__: str = "message/sip"
+
 
 class MediaTypeMessageSipfrag(MediaType):
     """
@@ -2986,11 +3445,13 @@ class MediaTypeMessageSipfrag(MediaType):
 
     SpecTitle:
         RFC3420
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3420
     """
+
     __MEDIA_TYPE__: str = "message/sipfrag"
+
 
 class MediaTypeMessageTrackingStatus(MediaType):
     """
@@ -2999,11 +3460,13 @@ class MediaTypeMessageTrackingStatus(MediaType):
 
     SpecTitle:
         RFC3886
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3886
     """
+
     __MEDIA_TYPE__: str = "message/tracking-status"
+
 
 class MediaTypeModelExample(MediaType):
     """
@@ -3012,11 +3475,13 @@ class MediaTypeModelExample(MediaType):
 
     SpecTitle:
         RFC4735
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4735
     """
+
     __MEDIA_TYPE__: str = "model/example"
+
 
 class MediaTypeMultipartByteranges(MediaType):
     """
@@ -3025,11 +3490,13 @@ class MediaTypeMultipartByteranges(MediaType):
 
     SpecTitle:
         RFC7233
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7233
     """
+
     __MEDIA_TYPE__: str = "multipart/byteranges"
+
 
 class MediaTypeMultipartEncrypted(MediaType):
     """
@@ -3038,11 +3505,13 @@ class MediaTypeMultipartEncrypted(MediaType):
 
     SpecTitle:
         RFC1847
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1847
     """
+
     __MEDIA_TYPE__: str = "multipart/encrypted"
+
 
 class MediaTypeMultipartExample(MediaType):
     """
@@ -3051,11 +3520,13 @@ class MediaTypeMultipartExample(MediaType):
 
     SpecTitle:
         RFC4735
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4735
     """
+
     __MEDIA_TYPE__: str = "multipart/example"
+
 
 class MediaTypeMultipartFormData(MediaType):
     """
@@ -3064,11 +3535,13 @@ class MediaTypeMultipartFormData(MediaType):
 
     SpecTitle:
         RFC7578
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7578
     """
+
     __MEDIA_TYPE__: str = "multipart/form-data"
+
 
 class MediaTypeMultipartRelated(MediaType):
     """
@@ -3077,11 +3550,13 @@ class MediaTypeMultipartRelated(MediaType):
 
     SpecTitle:
         RFC2387
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2387
     """
+
     __MEDIA_TYPE__: str = "multipart/related"
+
 
 class MediaTypeMultipartReport(MediaType):
     """
@@ -3090,11 +3565,13 @@ class MediaTypeMultipartReport(MediaType):
 
     SpecTitle:
         RFC6522
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6522
     """
+
     __MEDIA_TYPE__: str = "multipart/report"
+
 
 class MediaTypeMultipartSigned(MediaType):
     """
@@ -3103,11 +3580,13 @@ class MediaTypeMultipartSigned(MediaType):
 
     SpecTitle:
         RFC1847
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1847
     """
+
     __MEDIA_TYPE__: str = "multipart/signed"
+
 
 class MediaTypeMultipartVoiceMessage(MediaType):
     """
@@ -3116,11 +3595,13 @@ class MediaTypeMultipartVoiceMessage(MediaType):
 
     SpecTitle:
         RFC2421
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2421
     """
+
     __MEDIA_TYPE__: str = "multipart/voice-message"
+
 
 class MediaTypeText1DInterleavedParityfec(MediaType):
     """
@@ -3129,11 +3610,13 @@ class MediaTypeText1DInterleavedParityfec(MediaType):
 
     SpecTitle:
         RFC6015
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6015
     """
+
     __MEDIA_TYPE__: str = "text/1d-interleaved-parityfec"
+
 
 class MediaTypeTextCalendar(MediaType):
     """
@@ -3142,11 +3625,13 @@ class MediaTypeTextCalendar(MediaType):
 
     SpecTitle:
         RFC5545
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5545
     """
+
     __MEDIA_TYPE__: str = "text/calendar"
+
 
 class MediaTypeTextCss(MediaType):
     """
@@ -3155,11 +3640,13 @@ class MediaTypeTextCss(MediaType):
 
     SpecTitle:
         RFC2318
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2318
     """
+
     __MEDIA_TYPE__: str = "text/css"
+
 
 class MediaTypeTextCsv(MediaType):
     """
@@ -3168,11 +3655,13 @@ class MediaTypeTextCsv(MediaType):
 
     SpecTitle:
         RFC4180
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4180
     """
+
     __MEDIA_TYPE__: str = "text/csv"
+
 
 class MediaTypeTextDns(MediaType):
     """
@@ -3181,11 +3670,13 @@ class MediaTypeTextDns(MediaType):
 
     SpecTitle:
         RFC4027
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4027
     """
+
     __MEDIA_TYPE__: str = "text/dns"
+
 
 class MediaTypeTextEncaprtp(MediaType):
     """
@@ -3194,11 +3685,13 @@ class MediaTypeTextEncaprtp(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "text/encaprtp"
+
 
 class MediaTypeTextExample(MediaType):
     """
@@ -3207,11 +3700,13 @@ class MediaTypeTextExample(MediaType):
 
     SpecTitle:
         RFC4735
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4735
     """
+
     __MEDIA_TYPE__: str = "text/example"
+
 
 class MediaTypeTextFwdred(MediaType):
     """
@@ -3220,11 +3715,13 @@ class MediaTypeTextFwdred(MediaType):
 
     SpecTitle:
         RFC6354
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6354
     """
+
     __MEDIA_TYPE__: str = "text/fwdred"
+
 
 class MediaTypeTextGrammarRefList(MediaType):
     """
@@ -3233,11 +3730,13 @@ class MediaTypeTextGrammarRefList(MediaType):
 
     SpecTitle:
         RFC6787
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6787
     """
+
     __MEDIA_TYPE__: str = "text/grammar-ref-list"
+
 
 class MediaTypeTextMarkdown(MediaType):
     """
@@ -3246,11 +3745,13 @@ class MediaTypeTextMarkdown(MediaType):
 
     SpecTitle:
         RFC-ietf-appsawg-text-markdown-12
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc-ietf-appsawg-text-markdown-12
     """
+
     __MEDIA_TYPE__: str = "text/markdown"
+
 
 class MediaTypeTextParameters(MediaType):
     """
@@ -3259,11 +3760,13 @@ class MediaTypeTextParameters(MediaType):
 
     SpecTitle:
         RFC-ietf-mmusic-rfc2326bis-40
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc-ietf-mmusic-rfc2326bis-40
     """
+
     __MEDIA_TYPE__: str = "text/parameters"
+
 
 class MediaTypeTextRaptorfec(MediaType):
     """
@@ -3272,11 +3775,13 @@ class MediaTypeTextRaptorfec(MediaType):
 
     SpecTitle:
         RFC6682
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6682
     """
+
     __MEDIA_TYPE__: str = "text/raptorfec"
+
 
 class MediaTypeTextRed(MediaType):
     """
@@ -3285,11 +3790,13 @@ class MediaTypeTextRed(MediaType):
 
     SpecTitle:
         RFC4102
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4102
     """
+
     __MEDIA_TYPE__: str = "text/RED"
+
 
 class MediaTypeTextRfc822Headers(MediaType):
     """
@@ -3298,11 +3805,13 @@ class MediaTypeTextRfc822Headers(MediaType):
 
     SpecTitle:
         RFC6522
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6522
     """
+
     __MEDIA_TYPE__: str = "text/rfc822-headers"
+
 
 class MediaTypeTextRtploopback(MediaType):
     """
@@ -3311,11 +3820,13 @@ class MediaTypeTextRtploopback(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "text/rtploopback"
+
 
 class MediaTypeTextRtx(MediaType):
     """
@@ -3324,11 +3835,13 @@ class MediaTypeTextRtx(MediaType):
 
     SpecTitle:
         RFC4588
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4588
     """
+
     __MEDIA_TYPE__: str = "text/rtx"
+
 
 class MediaTypeTextSgml(MediaType):
     """
@@ -3337,11 +3850,13 @@ class MediaTypeTextSgml(MediaType):
 
     SpecTitle:
         RFC1874
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc1874
     """
+
     __MEDIA_TYPE__: str = "text/sgml"
+
 
 class MediaTypeTextT140(MediaType):
     """
@@ -3350,11 +3865,13 @@ class MediaTypeTextT140(MediaType):
 
     SpecTitle:
         RFC4103
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4103
     """
+
     __MEDIA_TYPE__: str = "text/t140"
+
 
 class MediaTypeTextTroff(MediaType):
     """
@@ -3363,11 +3880,13 @@ class MediaTypeTextTroff(MediaType):
 
     SpecTitle:
         RFC4263
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4263
     """
+
     __MEDIA_TYPE__: str = "text/troff"
+
 
 class MediaTypeTextUlpfec(MediaType):
     """
@@ -3376,11 +3895,13 @@ class MediaTypeTextUlpfec(MediaType):
 
     SpecTitle:
         RFC5109
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5109
     """
+
     __MEDIA_TYPE__: str = "text/ulpfec"
+
 
 class MediaTypeTextUriList(MediaType):
     """
@@ -3389,11 +3910,13 @@ class MediaTypeTextUriList(MediaType):
 
     SpecTitle:
         RFC2483
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2483
     """
+
     __MEDIA_TYPE__: str = "text/uri-list"
+
 
 class MediaTypeTextVcard(MediaType):
     """
@@ -3402,11 +3925,13 @@ class MediaTypeTextVcard(MediaType):
 
     SpecTitle:
         RFC6350
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6350
     """
+
     __MEDIA_TYPE__: str = "text/vcard"
+
 
 class MediaTypeTextXml(MediaType):
     """
@@ -3415,11 +3940,13 @@ class MediaTypeTextXml(MediaType):
 
     SpecTitle:
         RFC7303
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7303
     """
+
     __MEDIA_TYPE__: str = "text/xml"
+
 
 class MediaTypeTextXmlExternalParsedEntity(MediaType):
     """
@@ -3428,11 +3955,13 @@ class MediaTypeTextXmlExternalParsedEntity(MediaType):
 
     SpecTitle:
         RFC7303
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc7303
     """
+
     __MEDIA_TYPE__: str = "text/xml-external-parsed-entity"
+
 
 class MediaTypeVideo1DInterleavedParityfec(MediaType):
     """
@@ -3441,11 +3970,13 @@ class MediaTypeVideo1DInterleavedParityfec(MediaType):
 
     SpecTitle:
         RFC6015
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6015
     """
+
     __MEDIA_TYPE__: str = "video/1d-interleaved-parityfec"
+
 
 class MediaTypeVideo3Gpp(MediaType):
     """
@@ -3454,11 +3985,13 @@ class MediaTypeVideo3Gpp(MediaType):
 
     SpecTitle:
         RFC3839
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3839
     """
+
     __MEDIA_TYPE__: str = "video/3gpp"
+
 
 class MediaTypeVideo3Gpp2(MediaType):
     """
@@ -3467,11 +4000,13 @@ class MediaTypeVideo3Gpp2(MediaType):
 
     SpecTitle:
         RFC4393
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4393
     """
+
     __MEDIA_TYPE__: str = "video/3gpp2"
+
 
 class MediaTypeVideo3GppTt(MediaType):
     """
@@ -3480,11 +4015,13 @@ class MediaTypeVideo3GppTt(MediaType):
 
     SpecTitle:
         RFC4396
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4396
     """
+
     __MEDIA_TYPE__: str = "video/3gpp-tt"
+
 
 class MediaTypeVideoBmpeg(MediaType):
     """
@@ -3493,11 +4030,13 @@ class MediaTypeVideoBmpeg(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/BMPEG"
+
 
 class MediaTypeVideoBt656(MediaType):
     """
@@ -3506,11 +4045,13 @@ class MediaTypeVideoBt656(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/BT656"
+
 
 class MediaTypeVideoCelb(MediaType):
     """
@@ -3519,11 +4060,13 @@ class MediaTypeVideoCelb(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/CelB"
+
 
 class MediaTypeVideoDv(MediaType):
     """
@@ -3532,11 +4075,13 @@ class MediaTypeVideoDv(MediaType):
 
     SpecTitle:
         RFC6469
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6469
     """
+
     __MEDIA_TYPE__: str = "video/DV"
+
 
 class MediaTypeVideoEncaprtp(MediaType):
     """
@@ -3545,11 +4090,13 @@ class MediaTypeVideoEncaprtp(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "video/encaprtp"
+
 
 class MediaTypeVideoExample(MediaType):
     """
@@ -3558,11 +4105,13 @@ class MediaTypeVideoExample(MediaType):
 
     SpecTitle:
         RFC4735
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4735
     """
+
     __MEDIA_TYPE__: str = "video/example"
+
 
 class MediaTypeVideoH261(MediaType):
     """
@@ -3571,11 +4120,13 @@ class MediaTypeVideoH261(MediaType):
 
     SpecTitle:
         RFC4587
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4587
     """
+
     __MEDIA_TYPE__: str = "video/H261"
+
 
 class MediaTypeVideoH263(MediaType):
     """
@@ -3584,11 +4135,13 @@ class MediaTypeVideoH263(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/H263"
+
 
 class MediaTypeVideoH2631998(MediaType):
     """
@@ -3597,11 +4150,13 @@ class MediaTypeVideoH2631998(MediaType):
 
     SpecTitle:
         RFC4629
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4629
     """
+
     __MEDIA_TYPE__: str = "video/H263-1998"
+
 
 class MediaTypeVideoH2632000(MediaType):
     """
@@ -3610,11 +4165,13 @@ class MediaTypeVideoH2632000(MediaType):
 
     SpecTitle:
         RFC4629
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4629
     """
+
     __MEDIA_TYPE__: str = "video/H263-2000"
+
 
 class MediaTypeVideoH264(MediaType):
     """
@@ -3623,11 +4180,13 @@ class MediaTypeVideoH264(MediaType):
 
     SpecTitle:
         RFC6184
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6184
     """
+
     __MEDIA_TYPE__: str = "video/H264"
+
 
 class MediaTypeVideoH264Rcdo(MediaType):
     """
@@ -3636,11 +4195,13 @@ class MediaTypeVideoH264Rcdo(MediaType):
 
     SpecTitle:
         RFC6185
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6185
     """
+
     __MEDIA_TYPE__: str = "video/H264-RCDO"
+
 
 class MediaTypeVideoH264Svc(MediaType):
     """
@@ -3649,11 +4210,13 @@ class MediaTypeVideoH264Svc(MediaType):
 
     SpecTitle:
         RFC6190
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6190
     """
+
     __MEDIA_TYPE__: str = "video/H264-SVC"
+
 
 class MediaTypeVideoH265(MediaType):
     """
@@ -3662,11 +4225,13 @@ class MediaTypeVideoH265(MediaType):
 
     SpecTitle:
         RFC-ietf-payload-rtp-h265-15
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc-ietf-payload-rtp-h265-15
     """
+
     __MEDIA_TYPE__: str = "video/H265"
+
 
 class MediaTypeVideoJpeg(MediaType):
     """
@@ -3675,11 +4240,13 @@ class MediaTypeVideoJpeg(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/JPEG"
+
 
 class MediaTypeVideoJpeg2000(MediaType):
     """
@@ -3688,11 +4255,13 @@ class MediaTypeVideoJpeg2000(MediaType):
 
     SpecTitle:
         RFC5371
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5371
     """
+
     __MEDIA_TYPE__: str = "video/jpeg2000"
+
 
 class MediaTypeVideoMj2(MediaType):
     """
@@ -3701,11 +4270,13 @@ class MediaTypeVideoMj2(MediaType):
 
     SpecTitle:
         RFC3745
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3745
     """
+
     __MEDIA_TYPE__: str = "video/mj2"
+
 
 class MediaTypeVideoMp1s(MediaType):
     """
@@ -3714,11 +4285,13 @@ class MediaTypeVideoMp1s(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/MP1S"
+
 
 class MediaTypeVideoMp2p(MediaType):
     """
@@ -3727,11 +4300,13 @@ class MediaTypeVideoMp2p(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/MP2P"
+
 
 class MediaTypeVideoMp2t(MediaType):
     """
@@ -3740,11 +4315,13 @@ class MediaTypeVideoMp2t(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/MP2T"
+
 
 class MediaTypeVideoMp4(MediaType):
     """
@@ -3753,11 +4330,13 @@ class MediaTypeVideoMp4(MediaType):
 
     SpecTitle:
         RFC4337
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4337
     """
+
     __MEDIA_TYPE__: str = "video/mp4"
+
 
 class MediaTypeVideoMp4vEs(MediaType):
     """
@@ -3766,11 +4345,13 @@ class MediaTypeVideoMp4vEs(MediaType):
 
     SpecTitle:
         RFC6416
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6416
     """
+
     __MEDIA_TYPE__: str = "video/MP4V-ES"
+
 
 class MediaTypeVideoMpv(MediaType):
     """
@@ -3779,11 +4360,13 @@ class MediaTypeVideoMpv(MediaType):
 
     SpecTitle:
         RFC3555
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3555
     """
+
     __MEDIA_TYPE__: str = "video/MPV"
+
 
 class MediaTypeVideoMpeg4Generic(MediaType):
     """
@@ -3792,11 +4375,13 @@ class MediaTypeVideoMpeg4Generic(MediaType):
 
     SpecTitle:
         RFC3640
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3640
     """
+
     __MEDIA_TYPE__: str = "video/mpeg4-generic"
+
 
 class MediaTypeVideoNv(MediaType):
     """
@@ -3805,11 +4390,13 @@ class MediaTypeVideoNv(MediaType):
 
     SpecTitle:
         RFC4856
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4856
     """
+
     __MEDIA_TYPE__: str = "video/nv"
+
 
 class MediaTypeVideoOgg(MediaType):
     """
@@ -3818,11 +4405,13 @@ class MediaTypeVideoOgg(MediaType):
 
     SpecTitle:
         RFC5334
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5334
     """
+
     __MEDIA_TYPE__: str = "video/ogg"
+
 
 class MediaTypeVideoPointer(MediaType):
     """
@@ -3831,11 +4420,13 @@ class MediaTypeVideoPointer(MediaType):
 
     SpecTitle:
         RFC2862
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc2862
     """
+
     __MEDIA_TYPE__: str = "video/pointer"
+
 
 class MediaTypeVideoQuicktime(MediaType):
     """
@@ -3844,11 +4435,13 @@ class MediaTypeVideoQuicktime(MediaType):
 
     SpecTitle:
         RFC6381
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6381
     """
+
     __MEDIA_TYPE__: str = "video/quicktime"
+
 
 class MediaTypeVideoRaptorfec(MediaType):
     """
@@ -3857,11 +4450,13 @@ class MediaTypeVideoRaptorfec(MediaType):
 
     SpecTitle:
         RFC6682
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6682
     """
+
     __MEDIA_TYPE__: str = "video/raptorfec"
+
 
 class MediaTypeVideoRtploopback(MediaType):
     """
@@ -3870,11 +4465,13 @@ class MediaTypeVideoRtploopback(MediaType):
 
     SpecTitle:
         RFC6849
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc6849
     """
+
     __MEDIA_TYPE__: str = "video/rtploopback"
+
 
 class MediaTypeVideoRtx(MediaType):
     """
@@ -3883,11 +4480,13 @@ class MediaTypeVideoRtx(MediaType):
 
     SpecTitle:
         RFC4588
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4588
     """
+
     __MEDIA_TYPE__: str = "video/rtx"
+
 
 class MediaTypeVideoSmpte292m(MediaType):
     """
@@ -3896,11 +4495,13 @@ class MediaTypeVideoSmpte292m(MediaType):
 
     SpecTitle:
         RFC3497
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc3497
     """
+
     __MEDIA_TYPE__: str = "video/SMPTE292M"
+
 
 class MediaTypeVideoUlpfec(MediaType):
     """
@@ -3909,11 +4510,13 @@ class MediaTypeVideoUlpfec(MediaType):
 
     SpecTitle:
         RFC5109
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc5109
     """
+
     __MEDIA_TYPE__: str = "video/ulpfec"
+
 
 class MediaTypeVideoVc1(MediaType):
     """
@@ -3922,11 +4525,13 @@ class MediaTypeVideoVc1(MediaType):
 
     SpecTitle:
         RFC4425
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc4425
     """
+
     __MEDIA_TYPE__: str = "video/vc1"
+
 
 class MediaTypeVideoVp8(MediaType):
     """
@@ -3935,10 +4540,11 @@ class MediaTypeVideoVp8(MediaType):
 
     SpecTitle:
         RFC-ietf-payload-vp8-17
-    
+
     SpecReference:
         https://tools.ietf.org/html/rfc-ietf-payload-vp8-17
     """
+
     __MEDIA_TYPE__: str = "video/VP8"
 
 
@@ -3947,7 +4553,7 @@ def get_media_type_by_name(name: str) -> Union[Type[MediaType], None]:
     Retrieves a MediaType object corresponding to a given name.
 
     Args:
-        name (str): The media type name for which the corresponding MediaType object is required. 
+        name (str): The media type name for which the corresponding MediaType object is required.
 
     Returns:
         Union[Type[MediaType], None]: Returns the MediaType class associated with the given name. If the name is not recognized, it returns None.

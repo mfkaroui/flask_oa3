@@ -1,6 +1,6 @@
 import os
 from json import loads
-from typing import List
+from black import format_str, FileMode
 
 
 def to_pascal_case(input_str: str) -> str:
@@ -56,6 +56,10 @@ from .response import Response, ResponseType
     __STATUS_CODE__: int = {status_code['code']}
     __PHRASE__: str = "{status_code['phrase']}"
 
+    @property
+    def component_name(self) -> str:
+        return "Response{response_class_name}"
+
 """
         )
     status_codes_class = (
@@ -95,6 +99,4 @@ def get_response_by_status_code(status_code: int) -> Union[Type[Response], None]
     ) as file_handle:
         file_handle.truncate(0)
         file_handle.seek(0)
-        file_handle.write(status_codes_class)
-
-    print("test")
+        file_handle.write(format_str(status_codes_class, mode=FileMode()))

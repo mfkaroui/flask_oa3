@@ -7,11 +7,24 @@ from .view import View
 from .open_api_3 import Tag
 from .open_api_3 import ExternalDocumentation
 
+
 class Namespace(BaseModel):
     name: str
     route: Annotated[str, Field(default="/", description="The route of the namespace.")]
-    description: Annotated[Optional[str], Field(default=None, description="A short description of the namespace. CommonMark syntax MAY be used for rich text representation. Defaults to None.")]
-    external_documentation: Annotated[Optional[ExternalDocumentation], Field(default=None, description="Additional external documentation for this namespace. Defaults to None.")]
+    description: Annotated[
+        Optional[str],
+        Field(
+            default=None,
+            description="A short description of the namespace. CommonMark syntax MAY be used for rich text representation. Defaults to None.",
+        ),
+    ]
+    external_documentation: Annotated[
+        Optional[ExternalDocumentation],
+        Field(
+            default=None,
+            description="Additional external documentation for this namespace. Defaults to None.",
+        ),
+    ]
 
     views: Dict[str, Type[View]] = {}
 
@@ -19,14 +32,14 @@ class Namespace(BaseModel):
     def serialize_component(self, handler):
         exclude = ["views"]
         d = handler(self)
-        d = {k:v for k, v in d.items() if k not in exclude}
+        d = {k: v for k, v in d.items() if k not in exclude}
         return d
-    
+
     @property
     def base_route(self) -> List[str]:
         """
-        This property splits the route into a list of its parts. 
-        The route is a string representing a URL path, and this property 
+        This property splits the route into a list of its parts.
+        The route is a string representing a URL path, and this property
         returns a list where each element is a part of the path.
 
         Returns:
@@ -43,7 +56,7 @@ class Namespace(BaseModel):
         if not route.startswith("/"):
             return f"/{route}"
         return route
- 
+
     def register_view(self, route: str, view: Type[View]):
         if route in self.views:
             raise ValueError(f"View with route '{route}' already registered")
@@ -53,5 +66,5 @@ class Namespace(BaseModel):
         return Tag(
             name=self.name,
             description=self.description,
-            external_documentation=self.external_documentation
+            external_documentation=self.external_documentation,
         )
