@@ -3,7 +3,7 @@ name: Python package
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,6 +24,11 @@ jobs:
           pipenv update --dev --python=$PYTHON_BIN_PATH
           pipenv install --dev --python=$PYTHON_BIN_PATH
           pipenv run --python=$PYTHON_BIN_PATH pytest --doctest-modules --junitxml=junit/results-${{ matrix.python-version }}.xml --cov=flask_oa3 --cov-config=.coveragerc --cov-report json:coverage/results-${{ matrix.python-version }}.json
+      - name: Run Lint
+        run: |
+          pipenv update --dev --python=$PYTHON_BIN_PATH
+          pipenv install --dev --python=$PYTHON_BIN_PATH
+          pipenv run --python=$PYTHON_BIN_PATH pylint flask_oa3
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
