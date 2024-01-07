@@ -27,7 +27,7 @@ jobs:
           pipenv run --python=$PYTHON_BIN_PATH pytest --doctest-modules --junitxml=junit/results-${{ matrix.python-version }}.xml --cov=flask_oa3 --cov-config=.coveragerc --cov-report json:coverage/results-${{ matrix.python-version }}.json
       - name: Run Lint
         run: |
-          pipenv run --python=$PYTHON_BIN_PATH flake8 --statistics --benchmark --exit-zero --output-file lint/results-${{ matrix.python-version }}.txt flask_oa3
+          pipenv run --python=$PYTHON_BIN_PATH pylint --rcfile .pylintrc --exit-zero --output lint/results-${{ matrix.python-version }}.txt flask_oa3
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:

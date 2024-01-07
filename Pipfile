@@ -27,7 +27,7 @@ pytest-cov = "*"
 pytest-metadata = "*"
 pluggy = "*"
 black = "*"
-flake8 = ">=7.0.0"
+pylint = "*"
 
 [requires]
 python_version = "3"
