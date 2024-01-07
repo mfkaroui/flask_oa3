@@ -17,8 +17,8 @@
             "name": "Python: Linting",
             "type": "python",
             "request": "launch",
-            "module": "pylint",
-            "args": ["flask_oa3"],
+            "module": "flake8",
+            "args": ["--statistics", "--benchmark", "--quiet", "--exit-zero", "flask_oa3"],
             "console": "integratedTerminal",
             "justMyCode": false
         },

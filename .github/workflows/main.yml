@@ -28,7 +28,7 @@ jobs:
         run: |
           pipenv update --dev --python=$PYTHON_BIN_PATH
           pipenv install --dev --python=$PYTHON_BIN_PATH
-          pipenv run --python=$PYTHON_BIN_PATH pylint flask_oa3
+          pipenv run --python=$PYTHON_BIN_PATH flake8 --statistics --benchmark --quiet --exit-zero --output-file lint/results-${{ matrix.python-version }}.txt flask_oa3
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
@@ -40,4 +40,10 @@ jobs:
         with:
           name: coverage-results-${{ matrix.python-version }}
           path: coverage/results-${{ matrix.python-version }}.json
+        if: ${{ always() }}
+      - name: Upload lint results
+        uses: actions/upload-artifact@v3
+        with:
+          name: lint-results-${{ matrix.python-version }}
+          path: lint/results-${{ matrix.python-version }}.txt
         if: ${{ always() }}

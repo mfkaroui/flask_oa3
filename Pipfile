@@ -26,8 +26,8 @@ autodoc-pydantic = "*"
 pytest-cov = "*"
 pytest-metadata = "*"
 pluggy = "*"
-pylint = {extras = ["spelling"], version = "*"}
 black = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3"
