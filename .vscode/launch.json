@@ -18,7 +18,7 @@
             "type": "python",
             "request": "launch",
             "module": "flake8",
-            "args": ["--statistics", "--benchmark", "--quiet", "--exit-zero", "flask_oa3"],
+            "args": ["--statistics", "--benchmark", "--exit-zero", "flask_oa3"],
             "console": "integratedTerminal",
             "justMyCode": false
         },
