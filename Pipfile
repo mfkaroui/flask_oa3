@@ -28,6 +28,7 @@ pytest-metadata = "*"
 pluggy = "*"
 black = "*"
 flake8 = "*"
+importlib-metadata = "<5.0"
 
 [requires]
 python_version = "3"
