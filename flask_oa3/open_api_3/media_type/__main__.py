@@ -15,9 +15,9 @@ def to_pascal_case(input_str: str) -> str:
             # Find the index of the first non-digit character
             for i, char in enumerate(part):
                 if not char.isdigit():
+                    # Capitalize the first non-digit character
+                    pascal_part = part[:i] + part[i].upper() + part[i + 1 :]
                     break
-            # Capitalize the first non-digit character
-            pascal_part = part[:i] + part[i].upper() + part[i + 1 :]
         else:
             pascal_part = part.capitalize()
         pascal_parts.append(pascal_part)

@@ -1,6 +1,7 @@
-from pydantic import BaseModel, Field, AnyUrl
 from typing import Optional
 from typing_extensions import Annotated
+from pydantic import BaseModel, Field, AnyUrl
+
 from ..decorators import specification_extensions_support
 
 
