@@ -5,8 +5,9 @@ from ..encoding import Encoding
 from ..example import Example
 from ..reference import Reference
 from ..schema import Schema
+from ..decorators import specification_extensions_support
 
-
+@specification_extensions_support
 class MediaType(BaseModel):
     __MEDIA_TYPE__: ClassVar[Optional[str]] = None
 

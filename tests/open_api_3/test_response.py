@@ -3,7 +3,6 @@ from typing import List
 import pytest
 from json import load
 from flask_oa3.open_api_3.response import Response, get_response_by_status_code
-import flask_oa3.open_api_3.response as responses
 from flask_oa3.open_api_3.component import Component, ComponentType
 
 
@@ -33,3 +32,4 @@ class TestResponse:
         assert issubclass(response, Response)
         assert response.__STATUS_CODE__ == int(predefined_response["code"])
         assert response.__PHRASE__ == predefined_response["phrase"]
+        assert response().component_name == response.__name__
