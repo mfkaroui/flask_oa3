@@ -68,7 +68,7 @@ if __name__ == "__main__":
         license_keys[key] = f"{license_keys[key]}"
     license_class = f"""### AUTO-GENERATED ###
 from pydantic import BaseModel, Field, computed_field, AnyUrl
-from typing import ClassVar, Optional, List
+from typing import ClassVar, Optional, List, Union, Type
 from typing_extensions import Annotated
 from .license import License
 from ..decorators import specification_extensions_support
@@ -96,8 +96,8 @@ class PredefinedLicense(BaseModel):
             + f"""
     @computed_field(alias=\"{licenses_json['oa3_schema_extensions'][key]}\", description=\"{licenses_json['oa3_schema_extensions'][key]}.\")
     @property
-    def _{key}(self) -> str:
-        return str(self.{key})
+    def _{key}(self) -> {license_keys[key]}:
+        return self.{key}
 """
         )
 
@@ -115,7 +115,7 @@ class {class_name}(PredefinedLicense):
         )
         for key in l:
             if isinstance(l[key], str):
-                value = l[key].replace('"', "'")
+                value = l[key].replace('"', '\\"')
                 license_class = (
                     license_class
                     + f"""    {key}: ClassVar[{license_keys[key]}] = \"{value}\"
@@ -127,16 +127,36 @@ class {class_name}(PredefinedLicense):
                     + f"""    {key}: ClassVar[{license_keys[key]}] = {l[key]}
 """
                 )
+    license_class = (
+        license_class
+        + """
+def get_license_by_id(license_id: str) -> Union[Type[PredefinedLicense], None]:
+    \"\"\"
+    Retrieves a PredefinedLicense object corresponding to a given license id.
 
-    #        license_class = license_class + f"""    license_{l['licenseId'].lower().replace('-', '_').replace('.', '_').replace('+', 'plus')} = License("""
-    #        for key in l:
-    #            if isinstance(l[key], str):
-    #                value = l[key].replace('"', "'")
-    #                license_class = license_class + f"{key}=\"{value}\", "
-    #            else:
-    #                license_class = license_class + f"{key}={l[key]}, "
-    #        license_class = license_class[:-2] + """)
-    # """
+    Args:
+        license_id (str): The license id for which the corresponding PredefinedLicense object is required. 
+
+    Returns:
+        Union[Type[PredefinedLicense], None]: Returns the PredefinedLicense class associated with the given license id. If the license id is not recognized, it returns None.
+    \"\"\"
+
+    predefined_licenses = {"""
+    )
+    for license in licenses_json["licenses"]:
+        class_name = to_pascal_case(f"License_{license['licenseId']}")
+        license_class = (
+            license_class
+            + f"""
+        \"{license['licenseId']}\": {class_name},"""
+        )
+    license_class = (
+        license_class
+        + """
+    }
+    return predefined_licenses.get(license_id, None)
+"""
+    )
     with open(
         os.path.join(run_dir, "__init__.py"), "w", encoding="utf8"
     ) as file_handle:

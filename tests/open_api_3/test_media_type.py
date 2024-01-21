@@ -18,6 +18,6 @@ def get_predefined_media_types() -> List[dict]:
 class TestResponse:
     @pytest.mark.parametrize("predefined_media_type", get_predefined_media_types())
     def test_get_media_type_by_name(self, predefined_media_type: dict):
-        response = get_media_type_by_name(predefined_media_type["media_type"])
-        assert issubclass(response, MediaType)
-        assert response.__MEDIA_TYPE__ == predefined_media_type["media_type"]
+        media_type = get_media_type_by_name(predefined_media_type["media_type"])
+        assert issubclass(media_type, MediaType)
+        assert media_type.__MEDIA_TYPE__ == predefined_media_type["media_type"]
