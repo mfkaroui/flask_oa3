@@ -32,7 +32,7 @@ if __name__ == "__main__":
         file_handle.seek(0)
         status_codes_json = loads(file_handle.read())
     status_codes_class = f"""### AUTO-GENERATED ###
-from typing import Union, Type
+from typing import Union, Type, ClassVar
 from .response import Response, ResponseType
 
 """
@@ -53,8 +53,8 @@ from .response import Response, ResponseType
     SpecReference:
         {status_code['spec_href']}
     \"\"\"
-    __STATUS_CODE__: int = {status_code['code']}
-    __PHRASE__: str = "{status_code['phrase']}"
+    __STATUS_CODE__: ClassVar[int] = {status_code['code']}
+    __PHRASE__: ClassVar[str] = "{status_code['phrase']}"
 
     @property
     def component_name(self) -> str:

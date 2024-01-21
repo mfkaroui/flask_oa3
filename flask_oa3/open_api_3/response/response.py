@@ -4,7 +4,7 @@ from typing_extensions import Annotated
 from pydantic import Field, computed_field, model_serializer
 from ..media_type import MediaType
 from ..component import Component, ComponentType
-
+from ..decorators import specification_extensions_support
 
 class ResponseType(IntEnum):
     """
@@ -18,7 +18,7 @@ class ResponseType(IntEnum):
     CLIENT_ERROR = 400  # Represents client error responses (400–499).
     SERVER_ERROR = 500  # Represents server error responses (500–599).
 
-
+@specification_extensions_support
 class Response(Component):
     component_type: ClassVar[ComponentType] = ComponentType.RESPONSE
 

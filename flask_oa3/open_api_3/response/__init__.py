@@ -1,5 +1,5 @@
 ### AUTO-GENERATED ###
-from typing import Union, Type
+from typing import Union, Type, ClassVar
 from .response import Response, ResponseType
 
 
@@ -17,8 +17,8 @@ class ResponseContinue(Response):
         https://tools.ietf.org/html/rfc7231#section-6.2.1
     """
 
-    __STATUS_CODE__: int = 100
-    __PHRASE__: str = "Continue"
+    __STATUS_CODE__: ClassVar[int] = 100
+    __PHRASE__: ClassVar[str] = "Continue"
 
     @property
     def component_name(self) -> str:
@@ -39,8 +39,8 @@ class ResponseSwitchingProtocols(Response):
         https://tools.ietf.org/html/rfc7231#section-6.2.2
     """
 
-    __STATUS_CODE__: int = 101
-    __PHRASE__: str = "Switching Protocols"
+    __STATUS_CODE__: ClassVar[int] = 101
+    __PHRASE__: ClassVar[str] = "Switching Protocols"
 
     @property
     def component_name(self) -> str:
@@ -61,8 +61,8 @@ class ResponseOk(Response):
         https://tools.ietf.org/html/rfc7231#section-6.3.1
     """
 
-    __STATUS_CODE__: int = 200
-    __PHRASE__: str = "OK"
+    __STATUS_CODE__: ClassVar[int] = 200
+    __PHRASE__: ClassVar[str] = "OK"
 
     @property
     def component_name(self) -> str:
@@ -83,8 +83,8 @@ class ResponseCreated(Response):
         https://tools.ietf.org/html/rfc7231#section-6.3.2
     """
 
-    __STATUS_CODE__: int = 201
-    __PHRASE__: str = "Created"
+    __STATUS_CODE__: ClassVar[int] = 201
+    __PHRASE__: ClassVar[str] = "Created"
 
     @property
     def component_name(self) -> str:
@@ -105,8 +105,8 @@ class ResponseAccepted(Response):
         https://tools.ietf.org/html/rfc7231#section-6.3.3
     """
 
-    __STATUS_CODE__: int = 202
-    __PHRASE__: str = "Accepted"
+    __STATUS_CODE__: ClassVar[int] = 202
+    __PHRASE__: ClassVar[str] = "Accepted"
 
     @property
     def component_name(self) -> str:
@@ -127,8 +127,8 @@ class ResponseNonAuthoritativeInformation(Response):
         https://tools.ietf.org/html/rfc7231#section-6.3.4
     """
 
-    __STATUS_CODE__: int = 203
-    __PHRASE__: str = "Non-Authoritative Information"
+    __STATUS_CODE__: ClassVar[int] = 203
+    __PHRASE__: ClassVar[str] = "Non-Authoritative Information"
 
     @property
     def component_name(self) -> str:
@@ -149,8 +149,8 @@ class ResponseNoContent(Response):
         https://tools.ietf.org/html/rfc7231#section-6.3.5
     """
 
-    __STATUS_CODE__: int = 204
-    __PHRASE__: str = "No Content"
+    __STATUS_CODE__: ClassVar[int] = 204
+    __PHRASE__: ClassVar[str] = "No Content"
 
     @property
     def component_name(self) -> str:
@@ -171,8 +171,8 @@ class ResponseResetContent(Response):
         https://tools.ietf.org/html/rfc7231#section-6.3.6
     """
 
-    __STATUS_CODE__: int = 205
-    __PHRASE__: str = "Reset Content"
+    __STATUS_CODE__: ClassVar[int] = 205
+    __PHRASE__: ClassVar[str] = "Reset Content"
 
     @property
     def component_name(self) -> str:
@@ -193,8 +193,8 @@ class ResponsePartialContent(Response):
         https://tools.ietf.org/html/rfc7233#section-4.1
     """
 
-    __STATUS_CODE__: int = 206
-    __PHRASE__: str = "Partial Content"
+    __STATUS_CODE__: ClassVar[int] = 206
+    __PHRASE__: ClassVar[str] = "Partial Content"
 
     @property
     def component_name(self) -> str:
@@ -215,8 +215,8 @@ class ResponseMultipleChoices(Response):
         https://tools.ietf.org/html/rfc7231#section-6.4.1
     """
 
-    __STATUS_CODE__: int = 300
-    __PHRASE__: str = "Multiple Choices"
+    __STATUS_CODE__: ClassVar[int] = 300
+    __PHRASE__: ClassVar[str] = "Multiple Choices"
 
     @property
     def component_name(self) -> str:
@@ -237,8 +237,8 @@ class ResponseMovedPermanently(Response):
         https://tools.ietf.org/html/rfc7231#section-6.4.2
     """
 
-    __STATUS_CODE__: int = 301
-    __PHRASE__: str = "Moved Permanently"
+    __STATUS_CODE__: ClassVar[int] = 301
+    __PHRASE__: ClassVar[str] = "Moved Permanently"
 
     @property
     def component_name(self) -> str:
@@ -259,8 +259,8 @@ class ResponseFound(Response):
         https://tools.ietf.org/html/rfc7231#section-6.4.3
     """
 
-    __STATUS_CODE__: int = 302
-    __PHRASE__: str = "Found"
+    __STATUS_CODE__: ClassVar[int] = 302
+    __PHRASE__: ClassVar[str] = "Found"
 
     @property
     def component_name(self) -> str:
@@ -281,8 +281,8 @@ class ResponseSeeOther(Response):
         https://tools.ietf.org/html/rfc7231#section-6.4.4
     """
 
-    __STATUS_CODE__: int = 303
-    __PHRASE__: str = "See Other"
+    __STATUS_CODE__: ClassVar[int] = 303
+    __PHRASE__: ClassVar[str] = "See Other"
 
     @property
     def component_name(self) -> str:
@@ -303,8 +303,8 @@ class ResponseNotModified(Response):
         https://tools.ietf.org/html/rfc7232#section-4.1
     """
 
-    __STATUS_CODE__: int = 304
-    __PHRASE__: str = "Not Modified"
+    __STATUS_CODE__: ClassVar[int] = 304
+    __PHRASE__: ClassVar[str] = "Not Modified"
 
     @property
     def component_name(self) -> str:
@@ -325,8 +325,8 @@ class ResponseUseProxy(Response):
         https://tools.ietf.org/html/rfc7231#section-6.4.5
     """
 
-    __STATUS_CODE__: int = 305
-    __PHRASE__: str = "Use Proxy"
+    __STATUS_CODE__: ClassVar[int] = 305
+    __PHRASE__: ClassVar[str] = "Use Proxy"
 
     @property
     def component_name(self) -> str:
@@ -347,8 +347,8 @@ class ResponseTemporaryRedirect(Response):
         https://tools.ietf.org/html/rfc7231#section-6.4.7
     """
 
-    __STATUS_CODE__: int = 307
-    __PHRASE__: str = "Temporary Redirect"
+    __STATUS_CODE__: ClassVar[int] = 307
+    __PHRASE__: ClassVar[str] = "Temporary Redirect"
 
     @property
     def component_name(self) -> str:
@@ -369,8 +369,8 @@ class ResponseBadRequest(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.1
     """
 
-    __STATUS_CODE__: int = 400
-    __PHRASE__: str = "Bad Request"
+    __STATUS_CODE__: ClassVar[int] = 400
+    __PHRASE__: ClassVar[str] = "Bad Request"
 
     @property
     def component_name(self) -> str:
@@ -391,8 +391,8 @@ class ResponseUnauthorized(Response):
         https://tools.ietf.org/html/rfc7235#section-3.1
     """
 
-    __STATUS_CODE__: int = 401
-    __PHRASE__: str = "Unauthorized"
+    __STATUS_CODE__: ClassVar[int] = 401
+    __PHRASE__: ClassVar[str] = "Unauthorized"
 
     @property
     def component_name(self) -> str:
@@ -413,8 +413,8 @@ class ResponsePaymentRequired(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.2
     """
 
-    __STATUS_CODE__: int = 402
-    __PHRASE__: str = "Payment Required"
+    __STATUS_CODE__: ClassVar[int] = 402
+    __PHRASE__: ClassVar[str] = "Payment Required"
 
     @property
     def component_name(self) -> str:
@@ -435,8 +435,8 @@ class ResponseForbidden(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.3
     """
 
-    __STATUS_CODE__: int = 403
-    __PHRASE__: str = "Forbidden"
+    __STATUS_CODE__: ClassVar[int] = 403
+    __PHRASE__: ClassVar[str] = "Forbidden"
 
     @property
     def component_name(self) -> str:
@@ -457,8 +457,8 @@ class ResponseNotFound(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.4
     """
 
-    __STATUS_CODE__: int = 404
-    __PHRASE__: str = "Not Found"
+    __STATUS_CODE__: ClassVar[int] = 404
+    __PHRASE__: ClassVar[str] = "Not Found"
 
     @property
     def component_name(self) -> str:
@@ -479,8 +479,8 @@ class ResponseMethodNotAllowed(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.5
     """
 
-    __STATUS_CODE__: int = 405
-    __PHRASE__: str = "Method Not Allowed"
+    __STATUS_CODE__: ClassVar[int] = 405
+    __PHRASE__: ClassVar[str] = "Method Not Allowed"
 
     @property
     def component_name(self) -> str:
@@ -501,8 +501,8 @@ class ResponseNotAcceptable(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.6
     """
 
-    __STATUS_CODE__: int = 406
-    __PHRASE__: str = "Not Acceptable"
+    __STATUS_CODE__: ClassVar[int] = 406
+    __PHRASE__: ClassVar[str] = "Not Acceptable"
 
     @property
     def component_name(self) -> str:
@@ -523,8 +523,8 @@ class ResponseProxyAuthenticationRequired(Response):
         https://tools.ietf.org/html/rfc7235#section-3.2
     """
 
-    __STATUS_CODE__: int = 407
-    __PHRASE__: str = "Proxy Authentication Required"
+    __STATUS_CODE__: ClassVar[int] = 407
+    __PHRASE__: ClassVar[str] = "Proxy Authentication Required"
 
     @property
     def component_name(self) -> str:
@@ -545,8 +545,8 @@ class ResponseRequestTimeout(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.7
     """
 
-    __STATUS_CODE__: int = 408
-    __PHRASE__: str = "Request Timeout"
+    __STATUS_CODE__: ClassVar[int] = 408
+    __PHRASE__: ClassVar[str] = "Request Timeout"
 
     @property
     def component_name(self) -> str:
@@ -567,8 +567,8 @@ class ResponseConflict(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.8
     """
 
-    __STATUS_CODE__: int = 409
-    __PHRASE__: str = "Conflict"
+    __STATUS_CODE__: ClassVar[int] = 409
+    __PHRASE__: ClassVar[str] = "Conflict"
 
     @property
     def component_name(self) -> str:
@@ -589,8 +589,8 @@ class ResponseGone(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.9
     """
 
-    __STATUS_CODE__: int = 410
-    __PHRASE__: str = "Gone"
+    __STATUS_CODE__: ClassVar[int] = 410
+    __PHRASE__: ClassVar[str] = "Gone"
 
     @property
     def component_name(self) -> str:
@@ -611,8 +611,8 @@ class ResponseLengthRequired(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.10
     """
 
-    __STATUS_CODE__: int = 411
-    __PHRASE__: str = "Length Required"
+    __STATUS_CODE__: ClassVar[int] = 411
+    __PHRASE__: ClassVar[str] = "Length Required"
 
     @property
     def component_name(self) -> str:
@@ -633,8 +633,8 @@ class ResponsePreconditionFailed(Response):
         https://tools.ietf.org/html/rfc7232#section-4.2
     """
 
-    __STATUS_CODE__: int = 412
-    __PHRASE__: str = "Precondition Failed"
+    __STATUS_CODE__: ClassVar[int] = 412
+    __PHRASE__: ClassVar[str] = "Precondition Failed"
 
     @property
     def component_name(self) -> str:
@@ -655,8 +655,8 @@ class ResponsePayloadTooLarge(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.11
     """
 
-    __STATUS_CODE__: int = 413
-    __PHRASE__: str = "Payload Too Large"
+    __STATUS_CODE__: ClassVar[int] = 413
+    __PHRASE__: ClassVar[str] = "Payload Too Large"
 
     @property
     def component_name(self) -> str:
@@ -677,8 +677,8 @@ class ResponseUriTooLong(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.12
     """
 
-    __STATUS_CODE__: int = 414
-    __PHRASE__: str = "URI Too Long"
+    __STATUS_CODE__: ClassVar[int] = 414
+    __PHRASE__: ClassVar[str] = "URI Too Long"
 
     @property
     def component_name(self) -> str:
@@ -699,8 +699,8 @@ class ResponseUnsupportedMediaType(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.13
     """
 
-    __STATUS_CODE__: int = 415
-    __PHRASE__: str = "Unsupported Media Type"
+    __STATUS_CODE__: ClassVar[int] = 415
+    __PHRASE__: ClassVar[str] = "Unsupported Media Type"
 
     @property
     def component_name(self) -> str:
@@ -721,8 +721,8 @@ class ResponseRangeNotSatisfiable(Response):
         https://tools.ietf.org/html/rfc7233#section-4.4
     """
 
-    __STATUS_CODE__: int = 416
-    __PHRASE__: str = "Range Not Satisfiable"
+    __STATUS_CODE__: ClassVar[int] = 416
+    __PHRASE__: ClassVar[str] = "Range Not Satisfiable"
 
     @property
     def component_name(self) -> str:
@@ -743,8 +743,8 @@ class ResponseExpectationFailed(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.14
     """
 
-    __STATUS_CODE__: int = 417
-    __PHRASE__: str = "Expectation Failed"
+    __STATUS_CODE__: ClassVar[int] = 417
+    __PHRASE__: ClassVar[str] = "Expectation Failed"
 
     @property
     def component_name(self) -> str:
@@ -765,8 +765,8 @@ class ResponseUpgradeRequired(Response):
         https://tools.ietf.org/html/rfc7231#section-6.5.15
     """
 
-    __STATUS_CODE__: int = 426
-    __PHRASE__: str = "Upgrade Required"
+    __STATUS_CODE__: ClassVar[int] = 426
+    __PHRASE__: ClassVar[str] = "Upgrade Required"
 
     @property
     def component_name(self) -> str:
@@ -787,8 +787,8 @@ class ResponseInternalServerError(Response):
         https://tools.ietf.org/html/rfc7231#section-6.6.1
     """
 
-    __STATUS_CODE__: int = 500
-    __PHRASE__: str = "Internal Server Error"
+    __STATUS_CODE__: ClassVar[int] = 500
+    __PHRASE__: ClassVar[str] = "Internal Server Error"
 
     @property
     def component_name(self) -> str:
@@ -809,8 +809,8 @@ class ResponseNotImplemented(Response):
         https://tools.ietf.org/html/rfc7231#section-6.6.2
     """
 
-    __STATUS_CODE__: int = 501
-    __PHRASE__: str = "Not Implemented"
+    __STATUS_CODE__: ClassVar[int] = 501
+    __PHRASE__: ClassVar[str] = "Not Implemented"
 
     @property
     def component_name(self) -> str:
@@ -831,8 +831,8 @@ class ResponseBadGateway(Response):
         https://tools.ietf.org/html/rfc7231#section-6.6.3
     """
 
-    __STATUS_CODE__: int = 502
-    __PHRASE__: str = "Bad Gateway"
+    __STATUS_CODE__: ClassVar[int] = 502
+    __PHRASE__: ClassVar[str] = "Bad Gateway"
 
     @property
     def component_name(self) -> str:
@@ -853,8 +853,8 @@ class ResponseServiceUnavailable(Response):
         https://tools.ietf.org/html/rfc7231#section-6.6.4
     """
 
-    __STATUS_CODE__: int = 503
-    __PHRASE__: str = "Service Unavailable"
+    __STATUS_CODE__: ClassVar[int] = 503
+    __PHRASE__: ClassVar[str] = "Service Unavailable"
 
     @property
     def component_name(self) -> str:
@@ -875,8 +875,8 @@ class ResponseGatewayTimeOut(Response):
         https://tools.ietf.org/html/rfc7231#section-6.6.5
     """
 
-    __STATUS_CODE__: int = 504
-    __PHRASE__: str = "Gateway Time-out"
+    __STATUS_CODE__: ClassVar[int] = 504
+    __PHRASE__: ClassVar[str] = "Gateway Time-out"
 
     @property
     def component_name(self) -> str:
@@ -897,8 +897,8 @@ class ResponseHttpVersionNotSupported(Response):
         https://tools.ietf.org/html/rfc7231#section-6.6.6
     """
 
-    __STATUS_CODE__: int = 505
-    __PHRASE__: str = "HTTP Version Not Supported"
+    __STATUS_CODE__: ClassVar[int] = 505
+    __PHRASE__: ClassVar[str] = "HTTP Version Not Supported"
 
     @property
     def component_name(self) -> str:
@@ -919,8 +919,8 @@ class ResponseProcessing(Response):
         https://tools.ietf.org/html/rfc2518#section-10.1
     """
 
-    __STATUS_CODE__: int = 102
-    __PHRASE__: str = "Processing"
+    __STATUS_CODE__: ClassVar[int] = 102
+    __PHRASE__: ClassVar[str] = "Processing"
 
     @property
     def component_name(self) -> str:
@@ -941,8 +941,8 @@ class ResponseMultiStatus(Response):
         https://tools.ietf.org/html/rfc2518#section-10.2
     """
 
-    __STATUS_CODE__: int = 207
-    __PHRASE__: str = "Multi-Status"
+    __STATUS_CODE__: ClassVar[int] = 207
+    __PHRASE__: ClassVar[str] = "Multi-Status"
 
     @property
     def component_name(self) -> str:
@@ -963,8 +963,8 @@ class ResponseImUsed(Response):
         https://tools.ietf.org/html/rfc3229#section-10.4.1
     """
 
-    __STATUS_CODE__: int = 226
-    __PHRASE__: str = "IM Used"
+    __STATUS_CODE__: ClassVar[int] = 226
+    __PHRASE__: ClassVar[str] = "IM Used"
 
     @property
     def component_name(self) -> str:
@@ -985,8 +985,8 @@ class ResponsePermanentRedirect(Response):
         https://tools.ietf.org/html/rfc7538
     """
 
-    __STATUS_CODE__: int = 308
-    __PHRASE__: str = "Permanent Redirect"
+    __STATUS_CODE__: ClassVar[int] = 308
+    __PHRASE__: ClassVar[str] = "Permanent Redirect"
 
     @property
     def component_name(self) -> str:
@@ -1007,8 +1007,8 @@ class ResponseUnprocessableEntity(Response):
         https://tools.ietf.org/html/rfc2518#section-10.3
     """
 
-    __STATUS_CODE__: int = 422
-    __PHRASE__: str = "Unprocessable Entity"
+    __STATUS_CODE__: ClassVar[int] = 422
+    __PHRASE__: ClassVar[str] = "Unprocessable Entity"
 
     @property
     def component_name(self) -> str:
@@ -1029,8 +1029,8 @@ class ResponseLocked(Response):
         https://tools.ietf.org/html/rfc2518#section-10.4
     """
 
-    __STATUS_CODE__: int = 423
-    __PHRASE__: str = "Locked"
+    __STATUS_CODE__: ClassVar[int] = 423
+    __PHRASE__: ClassVar[str] = "Locked"
 
     @property
     def component_name(self) -> str:
@@ -1051,8 +1051,8 @@ class ResponseFailedDependency(Response):
         https://tools.ietf.org/html/rfc2518#section-10.5
     """
 
-    __STATUS_CODE__: int = 424
-    __PHRASE__: str = "Failed Dependency"
+    __STATUS_CODE__: ClassVar[int] = 424
+    __PHRASE__: ClassVar[str] = "Failed Dependency"
 
     @property
     def component_name(self) -> str:
@@ -1073,8 +1073,8 @@ class ResponsePreconditionRequired(Response):
         https://tools.ietf.org/html/rfc6585#section-3
     """
 
-    __STATUS_CODE__: int = 428
-    __PHRASE__: str = "Precondition Required"
+    __STATUS_CODE__: ClassVar[int] = 428
+    __PHRASE__: ClassVar[str] = "Precondition Required"
 
     @property
     def component_name(self) -> str:
@@ -1095,8 +1095,8 @@ class ResponseTooManyRequests(Response):
         https://tools.ietf.org/html/rfc6585#section-4
     """
 
-    __STATUS_CODE__: int = 429
-    __PHRASE__: str = "Too Many Requests"
+    __STATUS_CODE__: ClassVar[int] = 429
+    __PHRASE__: ClassVar[str] = "Too Many Requests"
 
     @property
     def component_name(self) -> str:
@@ -1117,8 +1117,8 @@ class ResponseRequestHeaderFieldsTooLarge(Response):
         https://tools.ietf.org/html/rfc6585#section-5
     """
 
-    __STATUS_CODE__: int = 431
-    __PHRASE__: str = "Request Header Fields Too Large"
+    __STATUS_CODE__: ClassVar[int] = 431
+    __PHRASE__: ClassVar[str] = "Request Header Fields Too Large"
 
     @property
     def component_name(self) -> str:
@@ -1139,8 +1139,8 @@ class ResponseUnavailableForLegalReasons(Response):
         https://tools.ietf.org/html/draft-ietf-httpbis-legally-restricted-status
     """
 
-    __STATUS_CODE__: int = 451
-    __PHRASE__: str = "Unavailable For Legal Reasons"
+    __STATUS_CODE__: ClassVar[int] = 451
+    __PHRASE__: ClassVar[str] = "Unavailable For Legal Reasons"
 
     @property
     def component_name(self) -> str:
@@ -1161,8 +1161,8 @@ class ResponseVariantAlsoNegotiates(Response):
         https://tools.ietf.org/html/rfc2295#section-8.1
     """
 
-    __STATUS_CODE__: int = 506
-    __PHRASE__: str = "Variant Also Negotiates"
+    __STATUS_CODE__: ClassVar[int] = 506
+    __PHRASE__: ClassVar[str] = "Variant Also Negotiates"
 
     @property
     def component_name(self) -> str:
@@ -1183,8 +1183,8 @@ class ResponseInsufficientStorage(Response):
         https://tools.ietf.org/html/rfc2518#section-10.6
     """
 
-    __STATUS_CODE__: int = 507
-    __PHRASE__: str = "Insufficient Storage"
+    __STATUS_CODE__: ClassVar[int] = 507
+    __PHRASE__: ClassVar[str] = "Insufficient Storage"
 
     @property
     def component_name(self) -> str:
@@ -1205,8 +1205,8 @@ class ResponseNetworkAuthenticationRequired(Response):
         https://tools.ietf.org/html/rfc6585#section-6
     """
 
-    __STATUS_CODE__: int = 511
-    __PHRASE__: str = "Network Authentication Required"
+    __STATUS_CODE__: ClassVar[int] = 511
+    __PHRASE__: ClassVar[str] = "Network Authentication Required"
 
     @property
     def component_name(self) -> str:
