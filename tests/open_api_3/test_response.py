@@ -6,15 +6,18 @@ from flask_oa3.open_api_3.response import Response, get_response_by_status_code
 import flask_oa3.open_api_3.response as responses
 from flask_oa3.open_api_3.component import Component, ComponentType
 
-class TestResponse:
-    @staticmethod
-    def get_predefined_responses() -> List[dict]:
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        responses_path = os.path.join(dir_path, "../../flask_oa3/open_api_3/response/status_codes.json")
-        with open(responses_path, encoding="utf8") as f:
-            f.seek(0)
-            return load(f)
 
+def get_predefined_responses() -> List[dict]:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    responses_path = os.path.join(
+        dir_path, "../../flask_oa3/open_api_3/response/status_codes.json"
+    )
+    with open(responses_path, encoding="utf8") as f:
+        f.seek(0)
+        return load(f)
+
+
+class TestResponse:
     def test_response_component(self):
         assert issubclass(Response, Component)
 
